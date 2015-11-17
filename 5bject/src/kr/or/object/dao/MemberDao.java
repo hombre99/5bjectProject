@@ -3,7 +3,7 @@ package kr.or.object.dao;
 import java.util.List;
 
 import kr.or.object.vo.Members;
-
+// MemberDao
 public interface MemberDao {
 	Members getMemberById(String id);
 
