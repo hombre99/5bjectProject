@@ -21,7 +21,9 @@ public class GameController {
 			 url = "/main.jsp";
 		} else {
 			session.setAttribute("difficulty", difficulty);
-			url = "/WEB-INF/script/main.jsp";
+			
+			//url = "/WEB-INF/script/main.jsp";
+			url = "/WEB-INF/script/game/testgame.jsp";
 		}
 		return url;
 	}
