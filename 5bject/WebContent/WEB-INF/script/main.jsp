@@ -11,47 +11,51 @@
 		<meta charset=" UTF-8">
 		<title>Insert title here</title>
 		<script type="text/javascript" src="/5bject/jquery.do"></script>
-		<c:if test="${ sessionScope.difficulty != null }">
-		<script type="text/javascript">
-			var difficulty = '${ sessionScope.difficulty }';
-		</script>
-		</c:if>
-		<script type="text/javascript" src="/5bject/game/game1js.do"></script>
-		<script type="text/javascript">
-			function click_event() {
-				$("#link2").on("click", function() {
-					window.open('/5bject/game/select_game.do','ok','width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
-				});
+		<c:choose>
+			<c:when test="${ sessionScope.difficulty != null }">
+				<script type="text/javascript">
+					var difficulty = '${ sessionScope.difficulty }';
+				</script>
+				<script type="text/javascript" src="/5bject/game/game1js.do"></script>
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript">
+					$(document).ready(function() {
+						$("#link2").on("click", function() {
+							window.open("/5bject/game/select_game.do","ok","width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
 
-				$("#register_link").on("click", function() {
-					window.open('/5bject/member/register.do','ok','width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
-				});
+						$("#register_link").on("click", function() {
+							window.open("/5bject/member/register.do","ok","width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
 
-				$("#update_link").on("click",function(){
-					window.open('/5bject/member/update.do','ok','width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
-				});
+						$("#update_link").on("click",function(){
+							window.open("/5bject/member/update.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
 
-				// language_link ADD. 20151116. CHJ
-				$("#language_link").on("click", function() {
-					window.open('/5bject/language/computer_language.do','ok','width=1000, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');	
-				});
+						// language_link ADD. 20151116. CHJ
+						$("#language_link").on("click", function() {
+							window.open("/5bject/language/computer_language.do","ok","width=1000, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+						});
 
-				$("#language_link").on("click", function() {
-					// TODO? CHJ
-				});
+						$("#language_link").on("click", function() {
+							// TODO? CHJ
+						});
 
-				// mypage_link, logout_link ADD. 20151116. KKH
-				$("#mypage_link").on("click", function() {
-					window.open('/5bject/member/mypage.do','ok','width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
-				});
+						// mypage_link, logout_link ADD. 20151116. KKH
+						$("#mypage_link").on("click", function() {
+							window.open("/5bject/member/mypage.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
 
-				$("#logout_link").on("click", function() {
-					if ( confirm("로그아웃하시겠습니까?") ) {
-						location.replace('/5bject/member/logout.do');
-					} 
-				});
-			};
-		</script>
+						$("#logout_link").on("click", function() {
+							if ( confirm("로그아웃하시겠습니까?") ) {
+								location.replace("/5bject/member/logout.do");
+							} 
+						});
+					});
+				</script>
+			</c:otherwise>
+		</c:choose>
 
 		<!-- 여기서부터 손대지 마세여... -->
 		<link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
@@ -230,8 +234,7 @@
 				</c:when>
 				<c:otherwise>
 					<div class="color-scheme--white learn-more grid-row" exclude="phone">
-						<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 margin-left--3 grid-col--no--padding"
-							id="gamePannel" style="background:green">
+						<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 margin-left--3 grid-col--no--padding" id="gamePannel">
 						</div>
 						<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
 						</div>
