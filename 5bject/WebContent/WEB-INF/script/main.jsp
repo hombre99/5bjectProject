@@ -181,8 +181,8 @@
 							</c:when>
 							<c:when test="${ sessionScope.id != null }">
 								<p />
-								<font face="impact">${ sessionScope.id }</font><br />
-								${ sessionScope.id }님<br />
+								<font face="impact">${ sessionScope.id }님</font><br />
+								<img src="/5bject/image/member/success_login.jpg" />
 								<input type="button" id="mypage_link" value="마이페이지" />
 								<input type="button" id="logout_link" value="로그아웃" />
 							</c:when>
