@@ -16,7 +16,6 @@ public class GameController {
 		// 이동할 url
 		String url = "";
 		
-		System.out.printf("difficulty[ %d ]\n", difficulty);
 		if ( difficulty < 2 || difficulty > 4 ) {
 			 url = "/main.jsp";
 		} else {
