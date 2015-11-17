@@ -130,7 +130,7 @@
 						for ( var i = 0; i < 3; i++ ) {
 							var aLink = document.createElement("a");
 							// aLink.setAttribute("onclick", "window.open('/5bject/game/testgame.do?difficulty="+(i+2)+"'); window.close();");
-							aLink.setAttribute("onclick", "opener.location.replace('/5bject/game/testgame.do?difficulty="+(i+2)+"'); alert("+(i+2)+"); window.close();");
+							aLink.setAttribute("onclick", "opener.location.replace('/5bject/game/testgame.do?difficulty="+(i+2)+"'); window.close();");
 							// aLink.setAttribute("onclick", startGamePage(i+2));
 	
 							/*
