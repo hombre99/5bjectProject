@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+	<mapper namespace = "languageMapper">
+		<resultMap type="language" id="language-resultmap">
+			<id property="name" column="language_name"/>
+			<result property="definition" column="language_definition"/>
+			<result property="information" column="language_information"/>
+			<result property="detail" column="language_detail"/>
+		</resultMap>
+		<sql id="language_sql">
+			select language_name, language_definition, language_information, language_detail from language
+		</sql>
+		
+		<select id="selectLanguageByName" parameterType="string" resultMap="language-resultmap">
+		<include refid ="language_sql"/> where language_name = #{name}
+		</select>
+		
+	</mapper>
+

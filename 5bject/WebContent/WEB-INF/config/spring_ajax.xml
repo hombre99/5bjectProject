@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+	
+	<!-- BasicDataSource -->
+	<bean name="dataSource" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource"
+		p:driverClassName="oracle.jdbc.driver.OracleDriver"
+		p:url="jdbc:oracle:thin:@127.0.0.1:1521:XE"
+		p:username="scott" p:password="tiger" p:initialSize="2" p:maxTotal="50" />
+	
+	<!-- SqlSessionFactoryBean -->
+	<bean name="SqlSessionFactoryBean" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="dataSource" p:configLocation="classpath:kr/or/object/config/mybatis-config.xml" />
+
+	<!-- SqlSessionTemplate -->
+	<bean name="SqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate"
+		c:sqlSessionFactory-ref="SqlSessionFactoryBean" />
+
+	<!-- ResouceBundleMessageSource -->
+	<bean name="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="kr.or.object.message.error_message" />	
+
+	<!-- annotation설정 -->		
+	<mvc:annotation-driven />
+
+	<context:component-scan base-package="kr.or.object.controller, kr.or.object.dao, kr.or.object.service" />
+
+	<!-- view-controller setting -->
+	<!-- jquery -->
+	<mvc:view-controller path="/jquery.do" view-name="/WEB-INF/script/jquery.js" />
+	
+	<!-- member -->
+	<mvc:view-controller path="/main.do" view-name="/WEB-INF/script/main.jsp" />
+	<mvc:view-controller path="/member/register.do" view-name="/WEB-INF/script/login/register_form_validate.jsp" />
+	<mvc:view-controller path="/member/register_success.do" view-name="/WEB-INF/script/login/register_success.jsp" />
+	<mvc:view-controller path="/member/update.do" view-name="/WEB-INF/script/login/update_form.jsp" />
+	<mvc:view-controller path="/member/login.do" view-name="/WEB-INF/script/main.jsp" />
+	<mvc:view-controller path="/member/mypage.do" view-name="/WEB-INF/script/login/mypage.jsp" />
+	
+	<!-- Language -->
+	<mvc:view-controller path="/language/computer_language.do" view-name="/WEB-INF/script/language/computer_language.jsp" />
+	
+	<!-- game -->
+	<mvc:view-controller path="/game/select_game.do" view-name="/WEB-INF/script/game/EX1.jsp" />
+</beans>

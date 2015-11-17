@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="memberMapper">
+	<resultMap type="members" id="member-resultmap">
+		<id property="id" column="member_id"/>
+		<result property="password" column="member_password"/>
+		<result property="name" column="member_name"/>
+		<result property="month" column="member_month"/>
+		<result property="day" column="member_day"/>
+		<result property="year" column="member_year"/>
+		<result property="gender" column="member_gender"/>
+		<result property="emailId" column="member_email_id"/>
+		<result property="emailAddress" column="member_email_address"/>
+		<result property="phoneNumber" column="member_phone"/>
+	</resultMap>
+	
+	<sql id="member-sql">
+		SELECT	MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_MONTH, MEMBER_DAY, MEMBER_YEAR,
+				MEMBER_GENDER, MEMBER_EMAIL_ID, MEMBER_EMAIL_ADDRESS, MEMBER_PHONE
+	</sql>
+	
+	<insert id="insertMember" parameterType="members">
+		INSERT	INTO MEMBERS VALUES
+				(#{id}, #{password}, #{name}, #{month}, #{day}, #{year}, #{gender}, #{emailId}, #{emailAddress}, #{phoneNumber})
+	</insert>
+	
+	<delete id="removeMemberById" parameterType="string">
+		DELETE	FROM MEMBERS WHERE MEMBER_ID = #{id}
+	</delete>
+	
+	<update id="updateMemberById" parameterType="members">
+		UPDATE	MEMBERS SET MEMBER_PASSWORD = #{password}, MEMBER_NAME = #{name}, MEMBER_MONTH = #{month}, MEMBER_DAY = #{day}, MEMBER_YEAR = #{year}, 
+				MEMBER_GENDER = #{gender}, MEMBER_EMAIL_ID = #{emailId}, MEMBER_EMAIL_ADDRESS = #{emailAddress}, MEMBER_PHONE = #{phoneNumber}
+		WHERE	MEMBER_ID = #{id}
+	</update>
+	
+	<select id="selectMemberById" parameterType="string" resultMap="member-resultmap">
+		<include refid="member-sql"/>
+		FROM	MEMBERs
+		WHERE	MEMBER_ID = #{id}
+	</select>
+	
+	<select id="selectMembers" parameterType="string" resultMap="member-resultmap">
+		<include refid="member-sql"/>
+		FROM	MEMBERS
+	</select>
+</mapper>
