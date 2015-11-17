@@ -12,16 +12,11 @@ public class GameController {
 	
 	@RequestMapping("/testgame.do")
 	public String game(@RequestParam int difficulty, HttpSession session){
-
-		// 이동할 url
-		String url = "";
 		
-		if ( difficulty < 2 || difficulty > 4 ) {
-			 url = "/main.jsp";
-		} else {
+		if ( difficulty > 2 || difficulty < 4 ) {
 			session.setAttribute("difficulty", difficulty);
-			url = "/WEB-INF/script/main.jsp";
 		}
-		return url;
+
+		return "/WEB-INF/script/main.jsp";
 	}
 }
