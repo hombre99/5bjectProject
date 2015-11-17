@@ -48,4 +48,5 @@
 	
 	<!-- game -->
 	<mvc:view-controller path="/game/select_game.do" view-name="/WEB-INF/script/game/EX1.jsp" />
+	<mvc:view-controller path="/game/game1js.do" view-name="/WEB-INF/script/game/game1.js" />
 </beans>
