@@ -114,60 +114,7 @@
 			}
 
 			<!-- 게임1용 CSS -->
-			#artGame {
-				height: 600px;
-			}
-			
-			#dvb {
-				width: 100%;
-				height: 570px;
-				text-align: center;
-				padding-top: 65px;
-				background: white;
-				position: absolute;
-			}
-
-			#dvd {
-				height: 100px;
-				text-align: center;
-				padding: 12px;
-				background: #f8f8ff;
-				position: relative;
-				top: 600px;
-				clear: both;
-			}
-
-			#dve {
-				float: left;
-				margin: 0px;
-				width: 60%;
-				height: 450px;
-				text-align: center;
-				padding-top: 65px;
-				padding-left: 150px;
-				background: white;
-				position: absolute;
-				left: 0%;
-			}
-
-			#dvf {
-				float: left;
-				margin: 0px;
-				width: 40%;
-				height: 450px;
-				text-align: center;
-				padding-top: 65px;
-				background: white;
-				position: absolute;
-				left: 60%;
-			}
-
-			#dvg {
-				margin-top: 10px;
-				text-align: center;
-				padding-top: 65px;
-			}
-
+			<!--
 			#td2 {
 				border: 1px solid black;
 				padding: 0px;
@@ -198,6 +145,7 @@
 				width: 600px;
 				border-collapse: collapse;
 			}
+			-->
 		</style>
 	</head>
 	<body>
@@ -234,15 +182,17 @@
 				</c:when>
 				<c:otherwise>
 					<div class="color-scheme--white learn-more grid-row" exclude="phone">
-						<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 margin-left--3 grid-col--no--padding" id="gamePannel">
+						<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
+						<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
 						</div>
-						<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
+						<div class="grid-col-6 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
 							<div id="question"></div>
 							<div id="selectPannel"></div>
 							<div id="btnPannel">
 								<input type="button" value="제출" id="okBtn" />
 								<input type="button" value="초기화" id="resetBtn" />
 							</div>
+						</div>
 						</div>
 					</div>
 				</c:otherwise>
