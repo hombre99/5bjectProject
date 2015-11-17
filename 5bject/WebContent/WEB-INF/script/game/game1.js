@@ -1,10 +1,13 @@
 $(document).ready(function() {
-	var selectAnswer;
+	var verificationXLoc;
+	var verificationYLoc;
 	var step;
 	var fishXLoc ;
 	var fishYLoc ;
 	var catXLoc ;
 	var catYLoc ;
+	var answerXLoc = 0;
+	var answerYLoc = 0;
 
 	//난이도에 따라 테이블을 자동생성하는 function
 	var gameTable = document.createElement("table");
@@ -32,6 +35,7 @@ $(document).ready(function() {
 		}
 	}
 
+	//난이도 상에서 랜덤으로 고양이와 생선이미지 배치해주는 로직
 	var locCheck = true;
 
 	while ( locCheck ) {
@@ -68,110 +72,129 @@ $(document).ready(function() {
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", "answer");
 		input.setAttribute("value", "2");
-		$("#dvg").append(input);
+		$("#selectPannel").append(input);
 
 		var img = document.createElement("img");
 		img.setAttribute("src", "/5bject/image/game/game2/easy/easy1.jpg" );
 		img.setAttribute("width", "200px" );
 		img.setAttribute("height", "100px" );
-		$("#dvg").append(img);
+		$("#selectPannel").append(img);
 
 		var input = document.createElement("input");
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", "answer");
 		input.setAttribute("value", "1");
-		$("#dvg").append(input);
+		$("#selectPannel").append(input);
 
 		var img = document.createElement("img");
 		img.setAttribute("src", "/5bject/image/game/game2/easy/easy2.jpg" );
 		img.setAttribute("width", "200px" );
 		img.setAttribute("height", "100px" );
-		$("#dvg").append(img);
-		$("#dvg").append(document.createElement("br"));
+		$("#selectPannel").append(img);
+		$("#selectPannel").append(document.createElement("br"));
 
 		var input = document.createElement("input");
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", "answer");
 		input.setAttribute("value", "2");
-		$("#dvg").append(input);
+		$("#selectPannel").append(input);
 
 		var img = document.createElement("img");
 		img.setAttribute("src", "/5bject/image/game/game2/easy/easy3.jpg" );
 		img.setAttribute("width", "200px" );
 		img.setAttribute("height", "100px" );
-		$("#dvg").append(img);
+		$("#selectPannel").append(img);
 
 		var input = document.createElement("input");
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", "answer");
 		input.setAttribute("value", "2");
-		$("#dvg").append(input);
+		$("#selectPannel").append(input);
 
 		var img = document.createElement("img");
 		img.setAttribute("src", "/5bject/image/game/game2/easy/easy4.jpg" );
 		img.setAttribute("width", "200px" );
 		img.setAttribute("height", "100px" );
-		$("#dvg").append(img);
+		$("#selectPannel").append(img);
          			
-		/* var catImg = document.createElement("img");
+		//난이도 하 고양이, 생선 이미지
+		var catImg = document.createElement("img");
 		catImg.setAttribute("src","/5bject/image/game/game2/angrycat.jpg" );
 		catImg.setAttribute("width","200px" );
-		catImg.setAttribute("height","100px" ); */
-		//$().append(catImg); 
+		catImg.setAttribute("height","100px" ); 
+		$("td:eq(0)").append(catImg); 
+
+		var fishImg = document.createElement("img");
+		fishImg.setAttribute("src","/5bject/image/game/game2/fish.jpg" );
+		fishImg.setAttribute("width","150px" );
+		fishImg.setAttribute("height","100px" );
          			
 	} else if ( difficulty == 3 ) {
 		var input = document.createElement("input");
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", "answer");
 		input.setAttribute("value", "2");
-		$("#dvg").append(input);
+		$("#selectPannel").append(input);
 
 		var img = document.createElement("img");
 		img.setAttribute("src", "/5bject/image/game/game2/normal/normal1.jpg" );
 		img.setAttribute("width", "200px" );
 		img.setAttribute("height", "100px" );
-		$("#dvg").append(img);
+		$("#selectPannel").append(img);
          			
 		var input = document.createElement("input");
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", "answer");
 		input.setAttribute("value", "2");
-		$("#dvg").append(input);
+		$("#selectPannel").append(input);
          			
 		var img = document.createElement("img");
 		img.setAttribute("src", "/5bject/image/game/game2/normal/normal2.jpg" );
 		img.setAttribute("width", "200px" );
 		img.setAttribute("height", "100px" );
-		$("#dvg").append(img);
-		$("#dvg").append(document.createElement("br"));
+		$("#selectPannel").append(img);
+		$("#selectPannel").append(document.createElement("br"));
          			
 		var input = document.createElement("input");
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", "answer");
 		input.setAttribute("value", "1");
-		$("#dvg").append(input);
+		$("#selectPannel").append(input);
          			
 		var img = document.createElement("img");
 		img.setAttribute("src", "/5bject/image/game/game2/normal/normal3.jpg" );
 		img.setAttribute("width", "200px" );
 		img.setAttribute("height", "100px" );
-		$("#dvg").append(img);
+		$("#selectPannel").append(img);
          			
 		var input = document.createElement("input");
 		input.setAttribute("type", "radio");
 		input.setAttribute("name", "answer");
 		input.setAttribute("value", "2");
-		$("#dvg").append(input);
+		$("#selectPannel").append(input);
          			
 		var img = document.createElement("img");
 		img.setAttribute("src", "/5bject/image/game/game2/normal/normal4.jpg" );
 		img.setAttribute("width", "200px" );
 		img.setAttribute("height", "100px" );
-		$("#dvg").append(img);
+		$("#selectPannel").append(img);
          			
+		//난이도 중 생선, 고양이 이미지
+		var catImg = document.createElement("img");
+		catImg.setAttribute("src","/5bject/image/game/game2/angrycat.jpg" );
+		catImg.setAttribute("width","200px" );
+		catImg.setAttribute("height","100px" ); 
+		$("td:eq(2)").append(catImg); 
+         			
+		var fishImg = document.createElement("img");
+		fishImg.setAttribute("src","/5bject/image/game/game2/fish.jpg" );
+		fishImg.setAttribute("width","150px" );
+		fishImg.setAttribute("height","100px" );
+		$("td:eq(3)").append(fishImg); 
+
 	} else if ( difficulty == 4 ) {
 		var table = document.createElement("table");
-		$("#answerPannel").append(table);
+		$("#selectPannel").append(table);
 		var tr = document.createElement("tr");
 		$(table).append(tr);   
 		for ( var i = 1; i < 5; i++ ) {
@@ -210,36 +233,167 @@ $(document).ready(function() {
 
 	//정답 체크 버튼 function
 	if ( difficulty == 4 ) {
-		for ( var j = 1; j <= 4; j++ ) {
-			// 답선택 td id별로 클릭이벤트 부여
-			$("#select"+j).on("click", function(){
-				var img = document.createElement("img");
-				img.setAttribute("src", "/5bject/image/game/game2/arrow"+j+".jpg" );
-				img.setAttribute("width", "100px" );
-				img.setAttribute("height", "100px" );
-				for ( var i = 1; i <= step; i++ ) {
-					var result = document.getElementById("result" + i);
-					if ( !result.hasChildNodes() ) {
-						$(result).append(img);
-						break;
-					}
+		$("#select1").on("click", function(){   // 답선택 td id별로 클릭이벤트 부여						
+			var img = document.createElement("img");
+			img.setAttribute("src","/5bject/image/game/game2/arrow1.jpg" );
+			img.setAttribute("width","100px" );
+			img.setAttribute("height","100px" );
+			for(var i = 1; i <= step; i++){
+				var result = document.getElementById("result"+i);
+				if(!(result.hasChildNodes())){
+					$(result).append(img);
+					answerXLoc = answerXLoc - 1;
+					break;
 				}
-			});
-		};
+			}			
+		});
+
+		$("#select2").on("click", function(){   // 답선택 td id별로 클릭이벤트 부여						
+			var img = document.createElement("img");
+			img.setAttribute("src","/5bject/image/game/game2/arrow2.jpg" );
+			img.setAttribute("width","100px" );
+			img.setAttribute("height","100px" );
+			for(var i = 1; i <= step; i++){
+				var result = document.getElementById("result"+i);
+				if(!(result.hasChildNodes())){
+					$(result).append(img);
+					answerXLoc = answerXLoc + 1;
+					break;
+				}
+			}				
+		});
+
+		$("#select3").on("click", function(){   // 답선택 td id별로 클릭이벤트 부여						
+			var img = document.createElement("img");
+			img.setAttribute("src","/5bject/image/game/game2/arrow3.jpg" );
+			img.setAttribute("width","100px" );
+			img.setAttribute("height","100px" );
+			for(var i = 1; i <= step; i++){
+				var result = document.getElementById("result"+i);
+				if(!(result.hasChildNodes())){
+					$(result).append(img);
+					answerYLoc = answerYLoc - 1;
+					break;
+				}
+			}				
+		});
+
+		$("#select4").on("click", function(){   // 답선택 td id별로 클릭이벤트 부여						
+			var img = document.createElement("img");
+			img.setAttribute("src","/5bject/image/game/game2/arrow4.jpg" );
+			img.setAttribute("width","100px" );
+			img.setAttribute("height","100px" );
+			for(var i = 1; i <= step; i++){
+				var result = document.getElementById("result"+i);
+				if(!(result.hasChildNodes())){
+					$(result).append(img);
+					answerYLoc = answerYLoc + 1;
+					break;
+				}
+			}				
+		});
+
+		//정답 검증 로직
+		$("#okBtn").on("click", function(){
+			verificationXLoc =  fishXLoc - catXLoc;
+			verificationYLoc =   fishYLoc - catYLoc;
+
+			//정답시
+			if((verificationXLoc==answerXLoc)&&(verificationYLoc==answerYLoc)){
+				window.open("/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+				var catImg = document.createElement("img");
+				catImg.setAttribute("src","/5bject/image/game/game2/smilecat.jpg" );
+				catImg.setAttribute("width","150px" );
+				catImg.setAttribute("height","100px" );
+				var fishLoc = "td4"+fishXLoc+fishYLoc;
+				var catLoc = "td4"+catXLoc+catYLoc;
+				$("#"+catLoc).empty();
+				$("#"+fishLoc).empty();
+				$("#"+fishLoc).append(catImg);
+
+			//오답시	
+			}else{
+				window.open("/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150");
+				var catImg = document.createElement("img");
+				catImg.setAttribute("src","/5bject/image/game/game2/cryingcat.jpg" );
+				catImg.setAttribute("width","150px" );
+				catImg.setAttribute("height","100px" );
+
+				var fishLoc = "td4"+fishXLoc+fishYLoc;
+				var catLoc = "td4"+catXLoc+catYLoc;
+				$("#"+catLoc).empty(); 
+				$("#"+fishLoc).empty();
+				answerXLoc = answerXLoc + catXLoc;
+				answerYLoc = answerYLoc + catYLoc;
+
+				if(4 < answerXLoc){
+					answerXLoc = 4;
+				}else if(4 < answerYLoc){
+					answerYLoc = 4;
+				}else if(answerXLoc < 1){
+					answerXLoc = 1;
+				}else if(answerYLoc < 1){
+					answerYLoc = 1;
+				}
+
+				var id = "td4"+answerXLoc+answerYLoc;
+				$("#"+id).append(catImg);
+				alert("고양이가 더이상 갈 수 없어요.");
+			}
+		});
+
+		//지우기버튼
+		$("#resetBtn").on("click", function(){
+			for(var i = 1; i <=step; i++){
+				$("#result"+i).empty();
+				for(var j = 1; j <5; j++){
+        			var id1 = "td4"+i+j;
+        			$("#"+id1).empty();
+				}
+			}
+
+			answerXLoc = 0;
+			answerYLoc = 0;
+			var fishImg = document.createElement("img");
+			fishImg.setAttribute("src","/5bject/image/game/game2/fish.jpg" );
+			fishImg.setAttribute("width","150px" );
+			fishImg.setAttribute("height","100px" );
+			var id1 = "td4"+fishXLoc+fishYLoc;
+			$("#"+id1).append(fishImg);
+			var catImg = document.createElement("img");
+			catImg.setAttribute("src","/5bject/image/game/game2/angrycat.jpg" );
+			catImg.setAttribute("width","150px" );
+			catImg.setAttribute("height","100px" );
+			var id2 = "td4"+catXLoc+catYLoc;
+	    	$("#"+id2).append(catImg); 
+		});
 	} else {
-		$("#button").on("click", function(){
+		$("#okBtn").on("click", function(){
 			var answer = $('input[name="answer"]:checked').val();
+			//정답시
 			if ( answer == 1 ) {
 				//alert("정답");   
-				window.open("./correct.jsp", "pop", "width=400, height=150, top=50, left=150"); 
-				// window.open("팝업창 웹페이지","윈도우명","width=350,height=400,top=50,left=150"); 
+				window.open("/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+				var catImg = document.createElement("img");
+         		catImg.setAttribute("src","/5bject/image/game/game2/smilecat.jpg" );
+         		catImg.setAttribute("width","150px" );
+         		catImg.setAttribute("height","100px" );
+         		$("td").empty();
+         		$("td:eq(3)").append(catImg); 
+        		//오답시
 			} else if ( answer == 2 ) {
-				window.open("./incorrect.jsp", "pop", "width=400, height=150, top=50, left=150"); 
-				// window.open("팝업창 웹페이지","윈도우명","width=350,height=400,top=50,left=150"); 
-			} else {
-				alert("답을 선택해주세요");
-			}								
-		});
+				window.open("/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150"); 
+				// window.open("팝업창 웹페이지","윈도우명","width=350,height=400,top=50,left=150");
+				var catImg = document.createElement("img");
+        		catImg.setAttribute("src","/5bject/image/game/game2/cryingcat.jpg" );
+        		catImg.setAttribute("width","150px" );
+        		catImg.setAttribute("height","100px" );
+        		$("td").empty();
+        		$("td:eq(3)").append(catImg); 
+        	} else {
+        		alert("답을 선택해주세요");
+        	}								
+      	});
 	}
 	
 	/* 메인페이지 클릭이벤트 등록 */

@@ -237,6 +237,12 @@
 						<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 margin-left--3 grid-col--no--padding" id="gamePannel">
 						</div>
 						<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
+							<div id="question"></div>
+							<div id="selectPannel"></div>
+							<div id="btnPannel">
+								<input type="button" value="제출" id="okBtn" />
+								<input type="button" value="초기화" id="resetBtn" />
+							</div>
 						</div>
 					</div>
 				</c:otherwise>
