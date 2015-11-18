@@ -204,7 +204,7 @@
 						<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
 						<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
 						</div>
-						<div class="grid-col-6 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
+						<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
 							<div id="question"></div>
 							<div id="selectPannel"></div>
 							<div id="btnPannel">
