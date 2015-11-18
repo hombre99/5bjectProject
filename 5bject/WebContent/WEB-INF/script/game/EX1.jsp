@@ -7,6 +7,9 @@
 		<script type="text/javascript" src="/5bject/jquery.do"></script>
 		<script type="text/javascript">
 			$(document).ready(function() {
+				var gamePath = "/5bject/game/game.do";
+				var gameImgPath = "/5bject/image/game";
+
 				var mouseoverFlag1 = false;
 				var mouseoverFlag2 = false;
 				var mouseoverFlag3 = false;
@@ -15,31 +18,14 @@
 				var game2 = $("span#game2");
 				var game3 = $("span#game3");
 
-				var gameImg1 = document.createElement("img");
-				
-				gameImg1.setAttribute("src", "/5bject/image/game/game1.jpg");
-
-				game1.append(gameImg1);
-				
-				var gameImg3 = document.createElement("img");
-				
-				gameImg3.setAttribute("src", "/5bject/image/game/game3.jpg");
-
-				game3.append(gameImg3);
-				
-				game2.hover(gamePlate2_mouseover, gamePlate2_mouseout);
-				gamePlate2_mouseout();
-
-				/* TODO
 				game1.hover(gamePlate1_mouseover, gamePlate1_mouseout);
 				game2.hover(gamePlate2_mouseover, gamePlate2_mouseout);
 				game3.hover(gamePlate3_mouseover, gamePlate3_mouseout);
-
 				gamePlate1_mouseout();
 				gamePlate2_mouseout();
 				gamePlate3_mouseout();
-				*/
-				
+
+				// game1 Image
 				function gamePlate1_mouseout() {
 					if ( !mouseoverFlag1 ) {
 						game1.empty();
@@ -54,7 +40,7 @@
 
 						var gameImg1 = document.createElement("img");
 
-						gameImg1.setAttribute("src", "/5bject/image/game/game1.jpg");
+						gameImg1.setAttribute("src", gameImgPath + "/game1.jpg");
 
 						gameSpan1.append(gameImg1);
 					
@@ -63,6 +49,7 @@
 					}
 				}
 				
+				// game1 Image
 				function gamePlate1_mouseover() {
 					if ( mouseoverFlag1 ) {
 						game1.empty();
@@ -79,10 +66,10 @@
 	
 						for ( var i = 0; i < 3; i++ ) {
 							var aLink = document.createElement("a");
-							aLink.setAttribute("onclick", "window.open('/5bject/game/game2.do?difficulty="+(i+2)+"'); window.close();");
+							aLink.setAttribute("onclick", "opener.location.replace('" + gamePath + "?gameNum=1&difficulty=" + (i + 2) + "'); window.close();");
 	
 							var gameImg = document.createElement("img");
-							gameImg.setAttribute("src", "/5bject/image/game/game1-" + (i + 1) + ".jpg");
+							gameImg.setAttribute("src", gameImgPath + "/game1-" + (i + 1) + ".jpg");
 							
 							$(aLink).append(gameImg);
 							childSpan.eq(i).append(aLink)
@@ -90,6 +77,7 @@
 						mouseoverFlag1 = false;
 					}
 				}
+				// game2 Image
 				function gamePlate2_mouseout() {
 					if ( !mouseoverFlag2 ) {
 						game2.empty();
@@ -104,7 +92,7 @@
 
 						var gameImg2 = document.createElement("img");
 
-						gameImg2.setAttribute("src", "/5bject/image/game/game2.jpg");
+						gameImg2.setAttribute("src", gameImgPath + "/game2.jpg");
 
 						gameSpan2.append(gameImg2);
 					
@@ -113,6 +101,7 @@
 					}
 				}
 				
+				// game2 Image
 				function gamePlate2_mouseover() {
 					if ( mouseoverFlag2 ) {
 						game2.empty();
@@ -129,32 +118,19 @@
 	
 						for ( var i = 0; i < 3; i++ ) {
 							var aLink = document.createElement("a");
-							// aLink.setAttribute("onclick", "window.open('/5bject/game/game2.do?difficulty="+(i+2)+"'); window.close();");
-							aLink.setAttribute("onclick", "opener.location.replace('/5bject/game/game2.do?difficulty="+(i+2)+"'); window.close();");
-							// aLink.setAttribute("onclick", startGamePage(i+2));
-	
-							/*
-							var test = opener.document.getElementById("main_pannel");
-							$(test).html = "<table><tr><td>asdf</td></tr></table>";
-							*/
+							aLink.setAttribute("onclick", "opener.location.replace('" + gamePath + "?gameNum=2&difficulty=" + (i + 2) + "'); window.close();");
 	
 							var gameImg = document.createElement("img");
-							gameImg.setAttribute("src", "/5bject/image/game/game2-" + (i + 1) + ".jpg");
+							gameImg.setAttribute("src", gameImgPath + "/game2-" + (i + 1) + ".jpg");
 							
-							/*
-							$(gameImg).on("click", function() {
-								//opener.location.replace("/5bject/game/game2.do?difficulty=" + (i + 2));
-								// aLink.setAttribute("onclick", "opener.replace('/5bject/game/game2.do?difficulty="+(i+2)+"'); window.close();");
-								opener.location.replace();
-							});
-							*/
-
 							$(aLink).append(gameImg);
 							childSpan.eq(i).append(aLink)
 						}
 						mouseoverFlag2 = false;
 					}
 				}
+
+				// game3 Image
 				function gamePlate3_mouseout() {
 					if ( !mouseoverFlag3 ) {
 						game3.empty();
@@ -169,7 +145,7 @@
 
 						var gameImg3 = document.createElement("img");
 
-						gameImg3.setAttribute("src", "/5bject/image/game/game3.jpg");
+						gameImg3.setAttribute("src", gameImgPath + "/game3.jpg");
 
 						gameSpan3.append(gameImg3);
 					
@@ -178,6 +154,7 @@
 					}
 				}
 				
+				// game3 Image
 				function gamePlate3_mouseover() {
 					if ( mouseoverFlag3 ) {
 						game3.empty();
@@ -194,10 +171,10 @@
 	
 						for ( var i = 0; i < 3; i++ ) {
 							var aLink = document.createElement("a");
-							aLink.setAttribute("onclick", "window.open('/5bject/game/game2.do?difficulty="+(i+2)+"'); window.close();");
+							aLink.setAttribute("onclick", "opener.location.replace('" + gamePath + "?gameNum=3&difficulty=" + (i + 2) + "'); window.close();");
 	
 							var gameImg = document.createElement("img");
-							gameImg.setAttribute("src", "/5bject/image/game/game3-" + (i + 1) + ".jpg");
+							gameImg.setAttribute("src", gameImgPath + "/game3-" + (i + 1) + ".jpg");
 							
 							$(aLink).append(gameImg);
 							childSpan.eq(i).append(aLink)
@@ -205,13 +182,6 @@
 						mouseoverFlag3 = false;
 					}
 				}
-				
-				/*
-				function startGamePage(difficulty) {
-					opener.location.replace("/5bject/game/game2.do?difficulty=" + difficulty);
-					// window.close();
-				}
-				*/
 			});
 		</script>
 		<style type="text/css">

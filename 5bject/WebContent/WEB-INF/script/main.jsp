@@ -16,7 +16,17 @@
 				<script type="text/javascript">
 					var difficulty = '${ sessionScope.difficulty }';
 				</script>
-				<script type="text/javascript" src="/5bject/game/game2js.do"></script>
+				<c:choose>
+					<c:when test="${ sessionScope.gameNum == 1 }">
+						<script type="text/javascript" src="/5bject/game/game2js.do"></script>
+					</c:when>
+					<c:when test="${ sessionScope.gameNum == 2 }">
+						<script type="text/javascript" src="/5bject/game/game2js.do"></script>
+					</c:when>
+					<c:when test="${ sessionScope.gameNum == 3 }">
+						<script type="text/javascript" src="/5bject/game/game2js.do"></script>
+					</c:when>
+				</c:choose>
 			</c:when>
 			<c:otherwise>
 				<script type="text/javascript">
