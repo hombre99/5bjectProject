@@ -454,7 +454,7 @@ $(document).ready(function() {
 
 	// language_link ADD. 20151116. CHJ
 	$("#language_link").on("click", function() {
-		window.open("/5bject/language/computer_language.do","ok","width=1000, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+		window.open("/5bject/language/computer_language.do","ok","width=1100, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
 	});
 
 	$("#language_link").on("click", function() {

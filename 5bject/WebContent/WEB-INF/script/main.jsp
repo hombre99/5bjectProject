@@ -32,14 +32,10 @@
 						$("#update_link").on("click",function(){
 							window.open("/5bject/member/update.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
-
+						
 						// language_link ADD. 20151116. CHJ
 						$("#language_link").on("click", function() {
-							window.open("/5bject/language/computer_language.do","ok","width=1000, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
-						});
-
-						$("#language_link").on("click", function() {
-							// TODO? CHJ
+							window.open("/5bject/language/computer_language.do","ok","width=1100, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
 						});
 
 						// mypage_link, logout_link ADD. 20151116. KKH
@@ -106,6 +102,10 @@
 				height: 100px;
 				clear: both;
 			}
+			/*css login 추가  CHJ*/
+			.login{
+				margin-left: 20px;
+			}
 			.error {
 				color: red;
 			}
@@ -115,8 +115,7 @@
 				text-align: center;
 			}
 
-			<!-- 게임1용 CSS -->
-			<!--
+			/* 게임1용 CSS */
 			#td2 {
 				border: 1px solid black;
 				padding: 0px;
@@ -249,15 +248,20 @@
 								<input type="button" id="logout_link" value="로그아웃" />
 							</c:when>
 							<c:otherwise>
+
 								<form action ="/5bject/member/login.do" method="post">
 									<table>
-										<tr><td colspan="2" align="center"><img src="/5bject/image/member/login.jpg" /></td></tr> 
-										<tr><td><b>아이디</b></td><td><input type="text" name="id" placeholder="아이디 입력" /></td></tr> 
-										<tr><td><b>비밀번호</b></td><td><input type="password" name="password" placeholder="비밀번호 입력" /></td></tr>
-										<tr><td colspan="2"><span class="error"><b>${sessionScope.error}</b></span></td></tr>
-										<tr><td><input type="submit" value="로그인" id="login" /></td><td><input type="button" id="register_link" value="회원가입" /></td></tr>
+										<tr><td colspan="3" align="center"><img src="/5bject/image/member/login.jpg" /></td></tr> 
+										<tr><td><b>아이디</b></td><td colspan="2"><input type="text" name="id" placeholder="아이디 입력" /></td></tr> 
+										<tr><td><b>비밀번호</b></td><td colspan="2"><input type="password" name="password" placeholder="비밀번호 입력" /></td></tr>
+										<tr><td colspan="3"><span class="error"><b>${sessionScope.error}</b></span></td></tr>	
+										<tr><td colspan="2"><input type="submit" value="로그인" id="login" /></td>
+										<td><img src="/5bject/image/member/register_form.jpg" id=register_link/></td>
+										</tr> 
+										<!-- image로 회원가입추가 -->				
 									</table>
 								</form>
+
 							</c:otherwise>
 						</c:choose>
 					</div>

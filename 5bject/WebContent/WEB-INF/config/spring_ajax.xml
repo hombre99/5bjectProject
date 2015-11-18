@@ -26,11 +26,18 @@
 	<!-- ResouceBundleMessageSource -->
 	<bean name="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="kr.or.object.message.error_message" />	
 
+	<!-- 20151118 CHJ multipart resolver 설정 -->
+ 	<bean name="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/> 
+
+	<!-- 20151118 beanResolver class 설정 CHJ-->
+		<bean class= "org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1"/>
+		<bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver" p:order="2"/>	
+	<!-- downloadView 설정 20151118 CHJ -->
+		<bean name="downloadView" class= "kr.or.object.view.DownloadView"/>
 	<!-- annotation설정 -->		
 	<mvc:annotation-driven />
 
 	<context:component-scan base-package="kr.or.object.controller, kr.or.object.dao, kr.or.object.service" />
-
 	<!-- view-controller setting -->
 	<!-- jquery -->
 	<mvc:view-controller path="/jquery.do" view-name="/WEB-INF/script/jquery.js" />
@@ -42,10 +49,11 @@
 	<mvc:view-controller path="/member/update.do" view-name="/WEB-INF/script/login/update_form.jsp" />
 	<mvc:view-controller path="/member/login.do" view-name="/WEB-INF/script/main.jsp" />
 	<mvc:view-controller path="/member/mypage.do" view-name="/WEB-INF/script/login/mypage.jsp" />
-	<!-- 고객문의 요청 추가 -->
+	
+	<!-- 고객문의 요청 추가 CHJ -->
 	<mvc:view-controller path="/member/request.do" view-name="/WEB-INF/script/login/request_member.jsp" />
 	
-	<!-- Language -->
+	<!-- Language CHJ-->
 	<mvc:view-controller path="/language/computer_language.do" view-name="/WEB-INF/script/language/computer_language.jsp" />
 	
 	<!-- game -->

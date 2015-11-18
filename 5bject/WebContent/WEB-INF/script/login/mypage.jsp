@@ -24,7 +24,7 @@
 					location.replace('/5bject/member/leave.do?id=${sessionScope.member.id}');					
 				}
 			});
-			/*request link for customer*/
+			/*request link for customer CHJ*/
 			$("#request_link").on("click",function(){
 				window.open('/5bject/member/request.do?requestId=${sessionScope.member.id}','ok','width=1000, height=600,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
 			});
@@ -39,7 +39,7 @@
 				padding: 5px;
 			}
 			table{
-				margin-left: 70px;
+				margin-left: 50px;
 				font-family: HY나무M;
 			}
 		</style>
@@ -55,7 +55,7 @@
 			<tr><td>ID </td><td> ${sessionScope.member.id}<br></td></tr>
 			<tr><td>PASSWORD </td><td> ${sessionScope.member.password }<br></td></tr>
 			<tr><td>NAME </td><td> ${sessionScope.member.name }<br></td></tr>
-			<tr><td>BIRTHDAY </td><td> ${sessionScope.member.month }  ${sessionScope.member.day } ${sessionScope.member.year }<br></td></tr>
+			<tr><td>BIRTHDAY </td><td> ${sessionScope.member.month }  ${sessionScope.member.day} ${sessionScope.member.year }<br></td></tr>
 			<tr><td>GENDER </td><td> ${sessionScope.member.gender }<br></td></tr>
 			<tr><td> EMAIL </td><td> ${sessionScope.member.emailId }@${sessionScope.member.emailAddress }<br></td></tr>
 			<tr><td>PHONENUMBER </td><td> 0${sessionScope.member.phoneNumber}</td></tr>
