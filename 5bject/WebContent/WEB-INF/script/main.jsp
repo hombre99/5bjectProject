@@ -44,6 +44,9 @@
 						location.replace('/5bject/member/logout.do');
 					} 
 				});
+				$("#memberList").on("click", function(){
+					window.open('/5bject/member/memberList.do');
+				});
 			});
 		</script>
 
@@ -175,7 +178,6 @@
 							<p />
 							관리자님<br />
 							<input type="button" id="memberList" value="회원정보조회" />
-							<input type="button" value="회원삭제" />
 							<input type="button" value="회원점수조회" />
 							<input type="button" value="로그아웃" id="logout_link" />
 							</c:when>
