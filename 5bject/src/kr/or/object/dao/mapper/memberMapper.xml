@@ -14,6 +14,13 @@
 		<result property="phoneNumber" column="member_phone"/>
 	</resultMap>
 	
+	<!-- resultMap 추가 -->
+	<resultMap type="upload" id="request-member-resultmap">
+		<result property="requestId" column="request_id"/>
+		<result property="requestInfo" column="request_information"/>
+		<result property="date" column="date"/>
+	</resultMap>
+	
 	<sql id="member-sql">
 		SELECT	MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_MONTH, MEMBER_DAY, MEMBER_YEAR,
 				MEMBER_GENDER, MEMBER_EMAIL_ID, MEMBER_EMAIL_ADDRESS, MEMBER_PHONE
@@ -22,6 +29,11 @@
 	<insert id="insertMember" parameterType="members">
 		INSERT	INTO MEMBERS VALUES
 				(#{id}, #{password}, #{name}, #{month}, #{day}, #{year}, #{gender}, #{emailId}, #{emailAddress}, #{phoneNumber})
+	</insert>
+	
+	<!-- request 입력하는 것 추가  20151117 CHJ-->
+	<insert id ="insertRequest" parameterType="upload">
+		insert into request_member values (#{requestId}, #{requestInfo}, #{date})
 	</insert>
 	
 	<delete id="removeMemberById" parameterType="string">

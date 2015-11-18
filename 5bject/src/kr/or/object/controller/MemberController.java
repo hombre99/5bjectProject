@@ -2,20 +2,29 @@ package kr.or.object.controller;
 
 import java.util.List;
 import java.util.Map;
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import javax.servlet.http.HttpServletRequest;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.object.service.MemberService;
 import kr.or.object.validator.MemberValidator;
 import kr.or.object.vo.Members;
+import kr.or.object.vo.Upload;
 
 @Controller
 @RequestMapping("/member")
@@ -34,21 +43,18 @@ public class MemberController {
 		if ( errors.hasErrors() ) {
 			return "/WEB-INF/script/login/register_form_validate.jsp";
 		}
-
 		System.out.printf("EmailAddress[ %s ] EmailId[ %s ]\n",
 											member.getEmailAddress(), member.getEmailId());
-
 		service.insertMember(member);
-
 		// return "/WEB-INF/script/login/register_success.jsp";
 		return "/member/register_success.do";
 	}
 	
 	@RequestMapping("/login.do")
 	public String login(HttpSession session, @RequestParam String id, @RequestParam String password) {
-		// 로그인 체크 - 모델 요청
-		// 성공 : HttpSession에 로그인 여부 체크할 Attribute를 binding
-		// login = service.findMemberById(id);	// 회원의 정보가 넘어온다.
+		// 濡쒓렇�씤 泥댄겕 - 紐⑤뜽 �슂泥�
+		// �꽦怨� : HttpSession�뿉 濡쒓렇�씤 �뿬遺� 泥댄겕�븷 Attribute瑜� binding
+		// login = service.findMemberById(id);	// �쉶�썝�쓽 �젙蹂닿� �꽆�뼱�삩�떎.
 		Members login = service.findMemberById(id);
 		
 		if ( login != null ) {
@@ -57,7 +63,7 @@ public class MemberController {
 				session.setAttribute("member", login);
 			}
 		} else {
-			String error = "아이디 또는 비밀번호를 확인하세요.";
+			String error = "�븘�씠�뵒 �삉�뒗 鍮꾨�踰덊샇瑜� �솗�씤�븯�꽭�슂.";
 			
 			session.setAttribute("error", error);
 		}
@@ -75,7 +81,7 @@ public class MemberController {
 	// ADD. 20151116. KKH
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session){
-		session.invalidate(); // 세션을 전부 삭제
+		session.invalidate(); // �꽭�뀡�쓣 �쟾遺� �궘�젣
 		return "/WEB-INF/script/main.jsp";
 	}
 	
@@ -83,10 +89,11 @@ public class MemberController {
 	@RequestMapping("/leave.do")
 	public String leave(HttpSession session, @RequestParam String id){
 		service.removeMemberById(id);
-		session.invalidate(); // 세션을 전부 삭제
+		session.invalidate(); // �꽭�뀡�쓣 �쟾遺� �궘�젣
 		return "/WEB-INF/script/main.jsp";
 	}
 	
+
 	@RequestMapping("/memberInfo.do")
 	public String memberInfo(HttpSession session, @RequestParam String id){
 		Members member = service.findMemberById(id);
@@ -112,5 +119,29 @@ public class MemberController {
 	public String memberUpdate(HttpSession session, @ModelAttribute Members member){
 		service.updateMemberById(member);
 		return "/WEB-INF/script/login/member_update.jsp";
+	}
+	//ADD. 20151117. CHJ -고객 문의 요청 Controller
+	@RequestMapping("request_member.do")
+	public String RequestUpload(@RequestParam String requestId, @RequestParam String requestInfo, @RequestParam MultipartFile upImage
+			,HttpServletRequest request, ModelMap map) throws IOException{
+		  long today =System.currentTimeMillis();
+		  String date = new SimpleDateFormat("yyyyMMdd").format(today);	
+		Upload upload= new Upload(requestId, requestInfo, date);
+		
+		if(upImage!=null&&!upImage.isEmpty()){
+			String fileName = upImage.getOriginalFilename();		
+			long fileSize = upImage.getSize();
+			//console에서 그냥 보여주는 용도.
+			System.out.println(fileName+"-"+fileSize);
+			long timeMilis = System.currentTimeMillis();
+			String direction = request.getServletContext().getRealPath("/upImage");
+			File uploadImg = new File(direction,fileName);
+			File file = new File("c:\\java\\down", timeMilis+" ");
+			upImage.transferTo(uploadImg);			
+		}else{
+			service.insertRequest(upload);
+		}
+			return "/WEB-INF/script/login/mypage.jsp";
+
 	}
 }

@@ -18,7 +18,7 @@
 #header {
 	width: 900px;
 	height: 130px;
-	margin-left: 50px;
+
 	margin-bottom: 10px;
 	background: lightblue;
 }
@@ -81,9 +81,9 @@
 									<option value="scala">Scala</option>
 							</select></td>
 						</tr>
-						<tr><td><input type="submit" value="선택"></td></tr>
+						<tr><td><input type="submit" value="선택"></td></tr>						
 					</table>
-				</form>
+				</form>	
 			</div>
 			
 			
@@ -94,12 +94,13 @@
 					</c:when>
 					<c:otherwise>
 						<table>
+							<tr><td colspan="2">프로그래밍 언어란 컴퓨터와의 대화에 사용되는 일종의 대화수단 입니다.</td></tr>
 							 <tr><td colspan="2" align="center">선택한<b>${sessionScope.language.name}</b> 프로그래밍 언어에 대해 소개해 드리겠습니다.<p></td></tr>
 							 <tr><td><b>선택한 언어의 정의:</b></td></tr>
 							 <tr><td>${sessionScope.language.definition}<p></td></tr>
 							 <tr><td><b>언어와 관련된 정보:</b></td></tr>
 							 <tr><td> ${sessionScope.language.information}<p></td></tr>
-							<tr><td colspan="2"> ${sessionScope.name}언어를 무기로 표현해 보자면? <br></td></tr>
+							<tr><td colspan="2"><b>${sessionScope.name} 언어가 사용되는 분야에는 무엇이 있을까요?</b><br></td></tr>
 							<tr><td colspan="2"> ${sessionScope.language.detail}</td></tr>
 						 </table>
 					</c:otherwise>

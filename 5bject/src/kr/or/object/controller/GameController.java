@@ -9,20 +9,39 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequestMapping("/game")
 public class GameController {
-	
-	@RequestMapping("/testgame.do")
-	public String game(@RequestParam int difficulty, HttpSession session){
-
-		// 이동할 url
-		String url = "";
+	@RequestMapping("/game.do")
+	public String game(@RequestParam int gameNum, @RequestParam int difficulty, HttpSession session){
 		
-		System.out.printf("difficulty[ %d ]\n", difficulty);
-		if ( difficulty < 2 || difficulty > 4 ) {
-			 url = "/main.jsp";
-		} else {
-			session.setAttribute("difficulty", difficulty);
-			url = "/WEB-INF/script/main.jsp";
+		if ( gameNum > 0 && gameNum < 4 ) {
+			session.setAttribute("gameNum", gameNum);
 		}
-		return url;
+
+		if ( difficulty > 1 && difficulty < 5 ) {
+			session.setAttribute("difficulty", difficulty);
+		}
+
+		return "/WEB-INF/script/main.jsp";
 	}
+
+	/*
+	@RequestMapping("/game2.do")
+	public String game2(@RequestParam int difficulty, HttpSession session){
+		
+		if ( difficulty > 2 || difficulty < 4 ) {
+			session.setAttribute("difficulty", difficulty);
+		}
+
+		return "/WEB-INF/script/main.jsp";
+	}
+
+	@RequestMapping("/game3.do")
+	public String game3(@RequestParam int difficulty, HttpSession session){
+		
+		if ( difficulty > 2 || difficulty < 4 ) {
+			session.setAttribute("difficulty", difficulty);
+		}
+
+		return "/WEB-INF/script/main.jsp";
+	}
+	*/
 }

@@ -42,10 +42,19 @@
 	<mvc:view-controller path="/member/update.do" view-name="/WEB-INF/script/login/update_form.jsp" />
 	<mvc:view-controller path="/member/login.do" view-name="/WEB-INF/script/main.jsp" />
 	<mvc:view-controller path="/member/mypage.do" view-name="/WEB-INF/script/login/mypage.jsp" />
+	<!-- 고객문의 요청 추가 -->
+	<mvc:view-controller path="/member/request.do" view-name="/WEB-INF/script/login/request_member.jsp" />
 	
 	<!-- Language -->
 	<mvc:view-controller path="/language/computer_language.do" view-name="/WEB-INF/script/language/computer_language.jsp" />
 	
 	<!-- game -->
 	<mvc:view-controller path="/game/select_game.do" view-name="/WEB-INF/script/game/EX1.jsp" />
+	<mvc:view-controller path="/game/game1js.do" view-name="/WEB-INF/script/game/game1.js" />
+	<mvc:view-controller path="/game/game2js.do" view-name="/WEB-INF/script/game/game2.js" />
+	<mvc:view-controller path="/game/game3js.do" view-name="/WEB-INF/script/game/game3.js" />
+	
+	<!-- game2 정답 오답 처리 팝업 -->
+	<mvc:view-controller path="/game/game2_correctPop.do" view-name="/WEB-INF/script/game/correct.jsp" />
+	<mvc:view-controller path="/game/game2_incorrectPop.do" view-name="/WEB-INF/script/game/incorrect.jsp" />
 </beans>
