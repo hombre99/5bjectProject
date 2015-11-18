@@ -16,7 +16,7 @@
 				<script type="text/javascript">
 					var difficulty = '${ sessionScope.difficulty }';
 				</script>
-				<script type="text/javascript" src="/5bject/game/game1js.do"></script>
+				<script type="text/javascript" src="/5bject/game/game2js.do"></script>
 			</c:when>
 			<c:otherwise>
 				<script type="text/javascript">

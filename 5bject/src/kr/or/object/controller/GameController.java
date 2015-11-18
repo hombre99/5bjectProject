@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/game")
 public class GameController {
 	
-	@RequestMapping("/testgame.do")
+	@RequestMapping("/game2.do")
 	public String game(@RequestParam int difficulty, HttpSession session){
 		
 		if ( difficulty > 2 || difficulty < 4 ) {

@@ -79,7 +79,7 @@
 	
 						for ( var i = 0; i < 3; i++ ) {
 							var aLink = document.createElement("a");
-							aLink.setAttribute("onclick", "window.open('/5bject/game/testgame.do?difficulty="+(i+2)+"'); window.close();");
+							aLink.setAttribute("onclick", "window.open('/5bject/game/game2.do?difficulty="+(i+2)+"'); window.close();");
 	
 							var gameImg = document.createElement("img");
 							gameImg.setAttribute("src", "/5bject/image/game/game1-" + (i + 1) + ".jpg");
@@ -129,8 +129,8 @@
 	
 						for ( var i = 0; i < 3; i++ ) {
 							var aLink = document.createElement("a");
-							// aLink.setAttribute("onclick", "window.open('/5bject/game/testgame.do?difficulty="+(i+2)+"'); window.close();");
-							aLink.setAttribute("onclick", "opener.location.replace('/5bject/game/testgame.do?difficulty="+(i+2)+"'); window.close();");
+							// aLink.setAttribute("onclick", "window.open('/5bject/game/game2.do?difficulty="+(i+2)+"'); window.close();");
+							aLink.setAttribute("onclick", "opener.location.replace('/5bject/game/game2.do?difficulty="+(i+2)+"'); window.close();");
 							// aLink.setAttribute("onclick", startGamePage(i+2));
 	
 							/*
@@ -143,8 +143,8 @@
 							
 							/*
 							$(gameImg).on("click", function() {
-								//opener.location.replace("/5bject/game/testgame.do?difficulty=" + (i + 2));
-								// aLink.setAttribute("onclick", "opener.replace('/5bject/game/testgame.do?difficulty="+(i+2)+"'); window.close();");
+								//opener.location.replace("/5bject/game/game2.do?difficulty=" + (i + 2));
+								// aLink.setAttribute("onclick", "opener.replace('/5bject/game/game2.do?difficulty="+(i+2)+"'); window.close();");
 								opener.location.replace();
 							});
 							*/
@@ -194,7 +194,7 @@
 	
 						for ( var i = 0; i < 3; i++ ) {
 							var aLink = document.createElement("a");
-							aLink.setAttribute("onclick", "window.open('/5bject/game/testgame.do?difficulty="+(i+2)+"'); window.close();");
+							aLink.setAttribute("onclick", "window.open('/5bject/game/game2.do?difficulty="+(i+2)+"'); window.close();");
 	
 							var gameImg = document.createElement("img");
 							gameImg.setAttribute("src", "/5bject/image/game/game3-" + (i + 1) + ".jpg");
@@ -208,7 +208,7 @@
 				
 				/*
 				function startGamePage(difficulty) {
-					opener.location.replace("/5bject/game/testgame.do?difficulty=" + difficulty);
+					opener.location.replace("/5bject/game/game2.do?difficulty=" + difficulty);
 					// window.close();
 				}
 				*/
