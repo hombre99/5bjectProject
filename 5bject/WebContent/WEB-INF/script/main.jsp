@@ -32,20 +32,20 @@
 				<script type="text/javascript">
 					$(document).ready(function() {
 						$("#link2").on("click", function() {
-							window.open("/5bject/game/select_game.do","ok","width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
 						$("#register_link").on("click", function() {
-							window.open("/5bject/member/register.do","ok","width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							window.open("/5bject/member/register.do" ,"ok", "width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
 						$("#update_link").on("click",function(){
-							window.open("/5bject/member/update.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
 						// language_link ADD. 20151116. CHJ
 						$("#language_link").on("click", function() {
-							window.open("/5bject/language/computer_language.do","ok","width=1000, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+							window.open("/5bject/language/computer_language.do", "ok", "width=1000, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
 						});
 
 						$("#language_link").on("click", function() {
@@ -54,24 +54,23 @@
 
 						// mypage_link, logout_link ADD. 20151116. KKH
 						$("#mypage_link").on("click", function() {
-							window.open("/5bject/member/mypage.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							window.open("/5bject/member/mypage.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
 						$("#logout_link").on("click", function() {
 							if ( confirm("로그아웃하시겠습니까?") ) {
-								location.replace('/5bject/member/logout.do');
+								location.replace("/5bject/member/logout.do");
 							} 
 						});
 						
 						$("#memberList").on("click", function(){
-							window.open('/5bject/member/memberList.do');
+							window.open("/5bject/member/memberList.do");
 						});
 						
 					});
 				</script>
 			</c:otherwise>
 		</c:choose>
-
 
 		<!-- 여기서부터 손대지 마세여... -->
 		<link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
@@ -110,10 +109,12 @@
 				text-align: left;
 				padding: 5px;
 			}
+
 			.blank {
 				background-color: aliceblue;
 				padding: 10px;
 			}
+
 			footer {
 				background-color: lightblue;
 				color: white;
@@ -122,48 +123,16 @@
 				height: 100px;
 				clear: both;
 			}
+
 			.error {
 				color: red;
 			}
+
 			.class{
 				margin-left: 150px;
 				margin-top: 150px;
 				text-align: center;
 			}
-
-			<!-- 게임1용 CSS -->
-			<!--
-			#td2 {
-				border: 1px solid black;
-				padding: 0px;
-				height: 200px;
-				width: 300px;
-				position: relative;
-				text-align: center;
-			}
-
-			#td3 {
-				border: 1px solid black;
-				padding: 0px;
-				height: 130px;
-				width: 170px;
-				text-align: center;
-			}
-
-			#td4 {
-				border: 1px solid black;
-				padding: 0px;
-				height: 100px;
-				width: 150px;
-				position: relative;
-				text-align: center;
-			}
-
-			#gamePannel {
-				width: 600px;
-				border-collapse: collapse;
-			}
-			-->
 		</style>
 	</head>
 	<body>
@@ -183,14 +152,13 @@
 									<font face="impact">How Can coding help you?</font>
 								</h1>
 								<!-- <img src="/5bject/image/member/intro.jpg" /> -->
-								<b>교육용 홈페이지들이 부족하고 <br>
-								학생들에게 흥미있을 만한   <br>
-								교육용 웹이 필요합니다. <br>
-								우리나라 초등학교 고학년들의 <br>
-								<b>흥미와 사고력</b> 증진을 위해 <br>
+								<b>교육용 홈페이지들이 부족하고 <br />
+								학생들에게 흥미있을 만한   <br />
+								교육용 웹이 필요합니다. <br />
+								우리나라 초등학교 고학년들의 <br />
+								<b>흥미와 사고력</b> 증진을 위해 <br />
 								자바를 기반으로 여러<br> 문제를 풀 수 있도록
 								준비했습니다.</b>
-								
 							</div>
 							<div class="grid-col-8 youtube-video">
 								<iframe width="600" height="330" src="//www.youtube.com/embed/fjQ7XaMNQNc?"
@@ -257,7 +225,7 @@
 							</c:when>
 							<c:when test="${ sessionScope.id != null }">
 								<p></p>
-								<font face="impact">${ sessionScope.id }님</font><br/>
+								<font face="impact">${ sessionScope.id }님</font><br />
 								<img src="/5bject/image/member/success_login.jpg" />
 								<input type="button" id="mypage_link" value="마이페이지" />&nbsp;
 								<input type="button" id="logout_link" value="로그아웃" />
