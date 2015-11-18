@@ -12,8 +12,9 @@
 		<title>Insert title here</title>
 		<script type="text/javascript" src="/5bject/jquery.do"></script>
 		<c:choose>
-			<c:when test="${ sessionScope.difficulty != null }">
+			<c:when test="${ sessionScope.gameNum != null && sessionScope.difficulty != null }">
 				<script type="text/javascript">
+					var gameNum = '${ sessionScope.gameNum }';
 					var difficulty = '${ sessionScope.difficulty }';
 				</script>
 				<c:choose>
@@ -142,7 +143,43 @@
 
 		<div class="content">
 			<c:choose>
-				<c:when test="${ sessionScope.difficulty == null || (sessionScope.difficulty < 2 && sessionScope.difficulty > 4) }">
+				<c:when test="${ (sessionScope.gameNum != null && sessionScope.difficulty != null) }">
+					<c:choose>
+						<c:when test="${ sessionScope.gameNum == 1 || sessionScope.gameNum == 2 }">
+							<div class="color-scheme--white learn-more grid-row" exclude="phone">
+								<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
+									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
+									</div>
+									<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
+										<div id="question"></div>
+										<div id="selectPannel"></div>
+										<div id="btnPannel">
+											<input type="button" value="제출" id="okBtn" />
+											<input type="button" value="초기화" id="resetBtn" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:when>
+						<c:when test="${ sessionScope.gameNum == 3 }">
+							<div class="color-scheme--white learn-more grid-row" exclude="phone">
+								<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
+									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
+									</div>
+									<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
+										<div id="question"></div>
+										<div id="selectPannel"></div>
+										<div id="btnPannel">
+											<input type="button" value="제출" id="okBtn" />
+											<input type="button" value="초기화" id="resetBtn" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:when>
+					</c:choose>
+				</c:when>
+				<c:otherwise>
 					<div class="color-scheme--white learn-more" exclude="phone">
 						<div class="fit-fixed grid-row margin-top--3 padding-top--3 padding-bottom--3 grid-row-no-collapse">
 							<div class="grid-col-4 padding-top--5 grid-col--align-right">
@@ -164,22 +201,6 @@
 								<iframe width="600" height="330" src="//www.youtube.com/embed/fjQ7XaMNQNc?"
 									frameborder="20" allowfullscreen></iframe>
 							</div>
-						</div>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<div class="color-scheme--white learn-more grid-row" exclude="phone">
-						<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
-						<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
-						</div>
-						<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
-							<div id="question"></div>
-							<div id="selectPannel"></div>
-							<div id="btnPannel">
-								<input type="button" value="제출" id="okBtn" />
-								<input type="button" value="초기화" id="resetBtn" />
-							</div>
-						</div>
 						</div>
 					</div>
 				</c:otherwise>
