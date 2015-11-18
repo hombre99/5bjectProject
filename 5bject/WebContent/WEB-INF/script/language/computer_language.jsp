@@ -18,8 +18,8 @@
 #header {
 	width: 900px;
 	height: 130px;
-
-	margin-bottom: 10px;
+	margin-left: 50px;
+	margin-bottom: 20px;
 	background: lightblue;
 }
 
@@ -33,8 +33,8 @@
 	width: 200px;
 	height: 500px;
 	float: left;
-	margin-left: 50px;
-	margin-right: 10px;
+	margin-left: 40px;
+	margin-right: 20px;
 	background: beige;
 }
 
@@ -85,8 +85,7 @@
 					</table>
 				</form>	
 			</div>
-			
-			
+					
 			<div id="content">
 				<c:choose>
 					<c:when test="${sessionScope.name==null}">
@@ -94,7 +93,7 @@
 					</c:when>
 					<c:otherwise>
 						<table>
-							<tr><td colspan="2">프로그래밍 언어란 컴퓨터와의 대화에 사용되는 일종의 대화수단 입니다.</td></tr>
+							<tr><td colspan="2" align ="center">프로그래밍 언어란 컴퓨터와의 대화에 사용되는 일종의 대화수단 입니다.</td></tr>
 							 <tr><td colspan="2" align="center">선택한<b>${sessionScope.language.name}</b> 프로그래밍 언어에 대해 소개해 드리겠습니다.<p></td></tr>
 							 <tr><td><b>선택한 언어의 정의:</b></td></tr>
 							 <tr><td>${sessionScope.language.definition}<p></td></tr>

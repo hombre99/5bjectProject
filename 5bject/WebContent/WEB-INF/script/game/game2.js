@@ -11,7 +11,7 @@ $(document).ready(function() {
 	
 	var gameImgPath = "/5bject/image/game/game2";
 
-	//난이도에 따라 테이블을 자동생성하는 function
+	//���대���� �곕�� ���대��� �������깊���� function
 	var gameTable = document.createElement("table");
 	$("div#gamePannel").append(gameTable);
 	
@@ -36,7 +36,7 @@ $(document).ready(function() {
 		}
 	}
 
-	//난이도 상에서 랜덤으로 고양이와 생선이미지 배치해주는 로직
+	//���대�� ������ ���ㅼ�쇰� 怨����댁�� �����대�몄� 諛곗��댁＜�� 濡�吏�
 	var locCheck = true;
 
 	while ( locCheck ) {
@@ -81,7 +81,7 @@ $(document).ready(function() {
 	fishImg.setAttribute("width", "150px");
 	fishImg.setAttribute("height", "100px");
 
-	// 난이도 하 : 정답은 2번으로 고정.
+	// ���대�� �� : ���듭�� 2踰��쇰� 怨���.
 	if ( difficulty == 2 ) {
 		for ( var i = 1; i < 5; i++ ) {
 			var label = document.createElement("label");
@@ -105,10 +105,85 @@ $(document).ready(function() {
 				$("#selectPannel").append(document.createElement("br"));
 		}
 
+		/*
+		var label = document.createElement("label");
+		
+		var input = document.createElement("input");
+		input.setAttribute("type", "radio");
+		input.setAttribute("name", "answer");
+		input.setAttribute("value", "2");
+		// $("#selectPannel").append(input);
+		
+		$(label).append(input);
+		$("#selectPannel").append(label);
+
+		var img = document.createElement("img");
+		img.setAttribute("src", "/5bject/image/game/game2/easy/easy1.jpg");
+		img.setAttribute("width", "200px");
+		img.setAttribute("height", "100px");
+		// $("#selectPannel").append(img);
+
+		$(label).append(img);
+
+		label = document.createElement("label");
+		
+		var input = document.createElement("input");
+		input.setAttribute("type", "radio");
+		input.setAttribute("name", "answer");
+		input.setAttribute("value", "1");
+		// $("#selectPannel").append(input);
+		
+		$(label).append(input);
+		$("#selectPannel").append(label);
+
+		var img = document.createElement("img");
+		img.setAttribute("src", "/5bject/image/game/game2/easy/easy2.jpg");
+		img.setAttribute("width", "200px");
+		img.setAttribute("height", "100px");
+		// $("#selectPannel").append(img);
+		$(label).append(img);
+		$("#selectPannel").append(document.createElement("br"));
+
+		var input = document.createElement("input");
+		input.setAttribute("type", "radio");
+		input.setAttribute("name", "answer");
+		input.setAttribute("value", "2");
+		$("#selectPannel").append(input);
+
+		var img = document.createElement("img");
+		img.setAttribute("src", "/5bject/image/game/game2/easy/easy3.jpg");
+		img.setAttribute("width", "200px");
+		img.setAttribute("height", "100px");
+		$("#selectPannel").append(img);
+
+		var input = document.createElement("input");
+		input.setAttribute("type", "radio");
+		input.setAttribute("name", "answer");
+		input.setAttribute("value", "2");
+		$("#selectPannel").append(input);
+
+		var img = document.createElement("img");
+		img.setAttribute("src", "/5bject/image/game/game2/easy/easy4.jpg");
+		img.setAttribute("width", "200px");
+		img.setAttribute("height", "100px");
+		$("#selectPannel").append(img);
+		*/
+         			
+		// 怨�����
+		var catImg = document.createElement("img");
+		catImg.setAttribute("src", "/5bject/image/game/game2/angrycat.jpg");
+		catImg.setAttribute("width", "200px");
+		catImg.setAttribute("height", "100px"); 
 		$("td:eq(0)").append(catImg); 
+
+		// ����
+		var fishImg = document.createElement("img");
+		fishImg.setAttribute("src", "/5bject/image/game/game2/fish.jpg");
+		fishImg.setAttribute("width", "150px");
+		fishImg.setAttribute("height", "100px");
 		$("td:eq(3)").append(fishImg); 
          			
-	// 난이도 중
+	// ���대�� 以�
 	} else if ( difficulty == 3 ) {
 		for ( var i = 1; i < 5; i++ ) {
 			var label = document.createElement("label");
@@ -132,10 +207,70 @@ $(document).ready(function() {
 				$("#selectPannel").append(document.createElement("br"));
 		}
 
+<<<<<<< HEAD
+		var img = document.createElement("img");
+		img.setAttribute("src", "/5bject/image/game/game2/normal/normal1.jpg");
+		img.setAttribute("width", "200px");
+		img.setAttribute("height", "100px");
+		$("#selectPannel").append(img);
+         			
+		var input = document.createElement("input");
+		input.setAttribute("type", "radio");
+		input.setAttribute("name", "answer");
+		input.setAttribute("value", "2");
+		$("#selectPannel").append(input);
+         			
+		var img = document.createElement("img");
+		img.setAttribute("src", "/5bject/image/game/game2/normal/normal2.jpg");
+		img.setAttribute("width", "200px");
+		img.setAttribute("height", "100px");
+		$("#selectPannel").append(img);
+		$("#selectPannel").append(document.createElement("br"));
+         			
+		var input = document.createElement("input");
+		input.setAttribute("type", "radio");
+		input.setAttribute("name", "answer");
+		input.setAttribute("value", "1");
+		$("#selectPannel").append(input);
+         			
+		var img = document.createElement("img");
+		img.setAttribute("src", "/5bject/image/game/game2/normal/normal3.jpg");
+		img.setAttribute("width", "200px");
+		img.setAttribute("height", "100px");
+		$("#selectPannel").append(img);
+         			
+		var input = document.createElement("input");
+		input.setAttribute("type", "radio");
+		input.setAttribute("name", "answer");
+		input.setAttribute("value", "2");
+		$("#selectPannel").append(input);
+         			
+		var img = document.createElement("img");
+		img.setAttribute("src", "/5bject/image/game/game2/normal/normal4.jpg");
+		img.setAttribute("width", "200px");
+		img.setAttribute("height", "100px");
+		$("#selectPannel").append(img);
+         			
+		// 怨�����
+		var catImg = document.createElement("img");
+		catImg.setAttribute("src", "/5bject/image/game/game2/angrycat.jpg");
+		catImg.setAttribute("width", "200px");
+		catImg.setAttribute("height", "100px"); 
+=======
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 		$("td:eq(2)").append(catImg); 
+<<<<<<< HEAD
+         			
+		// ����
+		var fishImg = document.createElement("img");
+		fishImg.setAttribute("src", "/5bject/image/game/game2/fish.jpg");
+		fishImg.setAttribute("width", "150px");
+		fishImg.setAttribute("height", "100px");
+=======
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 		$("td:eq(3)").append(fishImg); 
 
-	// 난이도 상
+	// ���대�� ��
 	} else if ( difficulty == 4 ) {
 		var table = document.createElement("table");
 		$("#selectPannel").append(table);
@@ -143,7 +278,7 @@ $(document).ready(function() {
 		$(table).append(tr);   
 		for ( var i = 1; i < 5; i++ ) {
 			td = document.createElement("td");
-			td.setAttribute("id", "select" + i); //답 선택td에 id 부여
+			td.setAttribute("id", "select" + i); //�� ����td�� id 遺���
 			var img = document.createElement("img");
 			img.setAttribute("src", gameImgPath + "/arrow" + i + ".jpg");
 			img.setAttribute("width", "100px");
@@ -156,7 +291,7 @@ $(document).ready(function() {
 		$(table).append(tr); 
 		for ( var i = 1 ; i < step + 1; i++ ) {
 			td = document.createElement("td");
-			td.setAttribute("id", "result" + i); //답 선택결과td에 id 부여
+			td.setAttribute("id", "result" + i); //�� ����寃곌낵td�� id 遺���
 			$(td).css({"border" : "1px solid black",
 						"padding" : "0px",
 						"height" : "100px",
@@ -167,17 +302,26 @@ $(document).ready(function() {
 		}
 	}
 
-	//문제 
+	//臾몄�� 
 	if ( difficulty == 4 ) {
+<<<<<<< HEAD
+		$("#question").html("<h3>怨����닿� ������ 癒밴� �띠�댄�댁��!! <br />�ㅼ�� 以� 怨����닿� ����源�吏� "
+		+ step + "踰� 留��� 媛� �� ���� ��怨�由ъ��� 臾댁���쇨���?</h3>");
+=======
 		$("#question").html("<h3>고양이가 생선을 먹고 싶어해요!!<br />다음 중 고양이가 생선까지 "
 		+ step + "번 만에 갈 수 있는 알고리즘은 무엇일까요?</h3>");
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 	} else {
+<<<<<<< HEAD
+		$("#question").html("<h3>怨����닿� ������ 癒밴� �띠�댄�댁��!! <br />�ㅼ�� 以� 怨����닿� ����源�吏� 媛� �� ���� ��怨�由ъ��� 臾댁���쇨���?</h3>");
+=======
 		$("#question").html("<h3>고양이가 생선을 먹고 싶어해요!!<br />다음 중 고양이가 생선까지 갈 수 있는<br />알고리즘은 무엇일까요?</h3>");
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 	}
 
-	//정답 체크 버튼 function
+	//���� 泥댄�� 踰��� function
 	if ( difficulty == 4 ) {
-		$("#select1").on("click", function() {	// 답선택 td id별로 클릭이벤트 부여						
+		$("#select1").on("click", function() {	// �듭���� td id蹂�濡� �대┃�대깽�� 遺���						
 			var img = document.createElement("img");
 			img.setAttribute("src", gameImgPath + "/arrow1.jpg");
 			img.setAttribute("width", "100px");
@@ -192,7 +336,7 @@ $(document).ready(function() {
 			}			
 		});
 
-		$("#select2").on("click", function(){	// 답선택 td id별로 클릭이벤트 부여						
+		$("#select2").on("click", function(){	// �듭���� td id蹂�濡� �대┃�대깽�� 遺���						
 			var img = document.createElement("img");
 			img.setAttribute("src", gameImgPath + "/arrow2.jpg");
 			img.setAttribute("width", "100px");
@@ -207,7 +351,7 @@ $(document).ready(function() {
 			}				
 		});
 
-		$("#select3").on("click", function() {	// 답선택 td id별로 클릭이벤트 부여						
+		$("#select3").on("click", function() {	// �듭���� td id蹂�濡� �대┃�대깽�� 遺���						
 			var img = document.createElement("img");
 			img.setAttribute("src", gameImgPath + "/arrow3.jpg");
 			img.setAttribute("width", "100px");
@@ -222,7 +366,7 @@ $(document).ready(function() {
 			}				
 		});
 
-		$("#select4").on("click", function() {	// 답선택 td id별로 클릭이벤트 부여						
+		$("#select4").on("click", function() {	// �듭���� td id蹂�濡� �대┃�대깽�� 遺���						
 			var img = document.createElement("img");
 			img.setAttribute("src", gameImgPath + "/arrow4.jpg");
 			img.setAttribute("width", "100px");
@@ -237,12 +381,12 @@ $(document).ready(function() {
 			}				
 		});
 
-		//정답 검증 로직
+		//���� 寃�利� 濡�吏�
 		$("#okBtn").on("click", function() {
 			verificationXLoc = fishXLoc - catXLoc;
 			verificationYLoc = fishYLoc - catYLoc;
 
-			//정답시
+			//���듭��
 			if ( (verificationXLoc == answerXLoc) && (verificationYLoc == answerYLoc) ) {
 				window.open("/5bject/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
 				var catImg = document.createElement("img");
@@ -255,7 +399,7 @@ $(document).ready(function() {
 				$("#" + fishLoc).empty();
 				$("#" + fishLoc).append(catImg);
 
-			//오답시	
+			//�ㅻ�듭��	
 			} else {
 				window.open("/5bject/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150");
 				var catImg = document.createElement("img");
@@ -278,11 +422,11 @@ $(document).ready(function() {
 
 				var id = "td4" + answerXLoc + answerYLoc;
 				$("#" + id).append(catImg);
-				alert("고양이가 더이상 갈 수 없어요.");
+				alert("怨����닿� ���댁�� 媛� �� ���댁��.");
 			}
 		});
 
-		//지우기버튼
+		//吏��곌린踰���
 		$("#resetBtn").on("click", function() {
 			for ( var i = 1; i <= step; i++ ) {
 				$("#result" + i).empty();
@@ -310,29 +454,39 @@ $(document).ready(function() {
 	} else {
 		$("#okBtn").on("click", function() {
 			var answer = $("input[name='answer']:checked").val();
-			//정답시
+			//���듭��
 			if ( answer == 1 ) {
+<<<<<<< HEAD
+				//alert("����");   
+				window.open("/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+=======
 				//alert("정답");   
 				window.open("/5bject/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 				var catImg = document.createElement("img");
          		catImg.setAttribute("src", gameImgPath + "/smilecat.jpg");
          		catImg.setAttribute("width", "150px");
          		catImg.setAttribute("height", "100px");
          		$("td").empty();
          		$("td:eq(3)").append(catImg); 
-        	//오답시
+        	//�ㅻ�듭��
 			} else if ( answer == 2 ) {
+<<<<<<< HEAD
+				window.open("/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150"); 
+				// window.open("����李� �뱁���댁�","�����곕�","width=350,height=400,top=50,left=150");
+=======
 				window.open("/5bject/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150"); 
 				// window.open("팝업창 웹페이지","윈도우명","width=350,height=400,top=50,left=150");
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 				var catImg = document.createElement("img");
         		catImg.setAttribute("src", gameImgPath + "/cryingcat.jpg");
         		catImg.setAttribute("width", "150px");
         		catImg.setAttribute("height", "100px");
         		$("td").empty();
-        		// 고양이 이동 필요없어보여서 이미지만 변경.
+        		// 怨����� �대�� �������대낫�ъ�� �대�몄�留� 蹂�寃�.
         		$("td:eq(0)").append(catImg); 
         	} else {
-        		alert("답을 선택해주세요");
+        		alert("�듭�� �����댁＜�몄��");
         	}								
       	});
 		
@@ -341,7 +495,7 @@ $(document).ready(function() {
 		});
 	}
 	
-	/* 메인페이지 클릭이벤트 등록 */
+	/* 硫��명���댁� �대┃�대깽�� �깅� */
 	$("#link2").on("click", function() {
 		window.open("/5bject/game/select_game.do","ok","width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 	});
@@ -369,12 +523,17 @@ $(document).ready(function() {
 	});
 
 	$("#logout_link").on("click", function() {
-		if ( confirm("로그아웃하시겠습니까?") ) {
+		if ( confirm("濡�洹몄��������寃��듬��源�?") ) {
 			location.replace("/5bject/member/logout.do");
 		} 
 	});
 	
+<<<<<<< HEAD
+	$("#memberList").on("click", function(){
+		window.open('/5bject/member/memberList.do');
+=======
 	$("#memberList").on("click", function() {
 		window.open("/5bject/member/memberList.do");
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 	});
 });

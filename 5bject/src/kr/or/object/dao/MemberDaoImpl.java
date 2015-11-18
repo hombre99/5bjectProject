@@ -17,7 +17,7 @@ public class MemberDaoImpl implements MemberDao{
 	public MemberDaoImpl(SqlSessionTemplate session){
 		this.session = session;
 	}
-	
+	//chj add
 	@Override
 	public int insertRequest(Upload upload) {
 		return session.insert("memberMapper.insertRequest",upload);
