@@ -373,4 +373,8 @@ $(document).ready(function() {
 			location.replace("/5bject/member/logout.do");
 		} 
 	});
+	
+	$("#memberList").on("click", function() {
+		window.open("/5bject/member/memberList.do");
+	});
 });
