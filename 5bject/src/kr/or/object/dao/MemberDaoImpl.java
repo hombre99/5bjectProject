@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.or.object.vo.Members;
+import kr.or.object.vo.Upload;
 
 @Repository("memberDao")
 public class MemberDaoImpl implements MemberDao{
@@ -15,6 +16,11 @@ public class MemberDaoImpl implements MemberDao{
 	@Autowired
 	public MemberDaoImpl(SqlSessionTemplate session){
 		this.session = session;
+	}
+	
+	@Override
+	public int insertRequest(Upload upload) {
+		return session.insert("memberMapper.insertRequest",upload);
 	}
 
 	@Override

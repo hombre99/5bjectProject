@@ -23,21 +23,22 @@
 			background-color:lightblue;
 			color:white;
 			text-align:left;
-			padding: 30px;
+			padding: 10px;
 		}
 
-		footer {
+/* 		footer {
 			background-color:lightblue;
 			color:white;
 			padding-top:20px;
 			text-align:center;
-			height:50px;
+			height:30px;
 			clear:both;
-		}
+		} */
 		</style> 
 	</head>
 	<body>
 		<header>
+			<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 		</header>
 
 		<spring:hasBindErrors name="members" /> 

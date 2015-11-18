@@ -3,10 +3,13 @@ package kr.or.object.dao;
 import java.util.List;
 
 import kr.or.object.vo.Members;
+import kr.or.object.vo.Upload;
 
 public interface MemberDao {
 	Members getMemberById(String id);
-
+	//insertRequest 추가
+	int insertRequest(Upload upload);
+	
 	int insertMember(Members member);
 
 	int updateMemberById(Members member);

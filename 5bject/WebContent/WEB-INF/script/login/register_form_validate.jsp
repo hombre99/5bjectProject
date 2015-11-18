@@ -38,6 +38,7 @@
 	</head>
 	<body>
 		<header>
+			<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 		</header>
 
 		<spring:hasBindErrors name="members"/> 

@@ -13,39 +13,64 @@
 		<script type="text/javascript">
 		$(document).ready(function() {
 			$("#update_link").on("click", function() {
-				window.open('/5bject/member/update.do','ok','width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
+				/* width 800과 height 700으로 수정*/
+				window.open('/5bject/member/update.do','ok','width=800, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
 			});
 			$("#close").on("click",function(){
 				window.close();
 			});
 			$("#leave").on("click",function(){
 				if(confirm("정말 탈퇴하시겠습니까?")){
-					
-					location.replace('/5bject/member/leave.do?id=${sessionScope.member.id}');
-					
+					location.replace('/5bject/member/leave.do?id=${sessionScope.member.id}');					
 				}
 			});
+			/*request link for customer*/
+			$("#request_link").on("click",function(){
+				window.open('/5bject/member/request.do?requestId=${sessionScope.member.id}','ok','width=1000, height=600,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
+			});
 		});
-		
-		
-		
-		
 		</script>
+		<!-- css header, table 처리 -->
+		<style type="text/css">
+			header{
+				background-color: lightblue;
+				color: white;
+				text-align: left;
+				padding: 5px;
+			}
+			table{
+				margin-left: 70px;
+				font-family: HY나무M;
+			}
+		</style>
 </head>
 <body>
-<h2>회원정보</h2>
-ID : ${sessionScope.member.id}<br>
-PASSWORD : ${sessionScope.member.password }<br>
-NAME : ${sessionScope.member.name }<br>
-BIRTHDAY : ${sessionScope.member.month }  ${sessionScope.member.day } ${sessionScope.member.year }<br>
-GENDER : ${sessionScope.member.gender }<br>
- EMAIL : ${sessionScope.member.emailId }@${sessionScope.member.emailAddress }<br>
-PHONENUMBER : 0${sessionScope.member.phoneNumber }<br>
-
-<input type="button" id="update_link" value="회원정보수정"><br>
-<input type="button" value="회원탈퇴" id="leave"><br>
-<input type="button"  value="닫기" id="close"><br>
-
-
+<!-- table로 처리 -->
+	<!-- header include로 처리 -->
+	<header>
+		<jsp:include page="/WEB-INF/script/layout/header.jsp" />
+	</header>
+		<table>
+			<tr><td colspan="2" align="center"><h2>${sessionScope.member.id}의 회원정보</h2>
+			<tr><td>ID </td><td> ${sessionScope.member.id}<br></td></tr>
+			<tr><td>PASSWORD </td><td> ${sessionScope.member.password }<br></td></tr>
+			<tr><td>NAME </td><td> ${sessionScope.member.name }<br></td></tr>
+			<tr><td>BIRTHDAY </td><td> ${sessionScope.member.month }  ${sessionScope.member.day } ${sessionScope.member.year }<br></td></tr>
+			<tr><td>GENDER </td><td> ${sessionScope.member.gender }<br></td></tr>
+			<tr><td> EMAIL </td><td> ${sessionScope.member.emailId }@${sessionScope.member.emailAddress }<br></td></tr>
+			<tr><td>PHONENUMBER </td><td> 0${sessionScope.member.phoneNumber}</td></tr>
+			<tr><td colspan="2"></td></tr>
+			<tr>
+				<td colspan="2">
+					<!-- 고객문의요청 페이지 추가 -->
+					<input type="button" id="update_link" value="회원정보수정">
+					<input type="button" id="request_link" value="고객문의요청">
+					<input type="button" value="회원탈퇴" id="leave">
+					<input type="button"  value="닫기" id="close">
+				</td>
+			</tr>
+		</table>			
+	<footer>
+	</footer>
 </body>
 </html>
