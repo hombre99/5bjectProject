@@ -359,10 +359,6 @@ $(document).ready(function() {
 		window.open("/5bject/language/computer_language.do","ok","width=1000, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
 	});
 
-	$("#language_link").on("click", function() {
-		// TODO? CHJ
-	});
-
 	// mypage_link, logout_link ADD. 20151116. KKH
 	$("#mypage_link").on("click", function() {
 		window.open("/5bject/member/mypage.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
@@ -376,5 +372,9 @@ $(document).ready(function() {
 	
 	$("#memberList").on("click", function() {
 		window.open("/5bject/member/memberList.do");
+	});
+	
+	$("#findID").on("click", function() {
+		window.open("/5bject/member/findID.do", "ok", "width=400, height=150");
 	});
 });
