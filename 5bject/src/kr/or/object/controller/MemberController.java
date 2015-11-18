@@ -1,5 +1,8 @@
 package kr.or.object.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -82,5 +85,32 @@ public class MemberController {
 		service.removeMemberById(id);
 		session.invalidate(); // 세션을 전부 삭제
 		return "/WEB-INF/script/main.jsp";
+	}
+	
+	@RequestMapping("/memberInfo.do")
+	public String memberInfo(HttpSession session, @RequestParam String id){
+		Members member = service.findMemberById(id);
+		session.setAttribute("memberInfo", member);
+		return "/WEB-INF/script/login/member_info.jsp";
+	}
+	
+	@RequestMapping("/memberList.do")
+	public String memberList(HttpSession session){
+		List<Members> members = service.getMembers();
+		session.setAttribute("member", members);
+		return "/WEB-INF/script/login/member_list.jsp";
+	}
+	
+	@RequestMapping("/memberRemove.do")
+	public String remove(HttpSession session, @RequestParam String id){
+		service.removeMemberById(id);
+		
+		return "/member/memberList.do";
+	}
+	
+	@RequestMapping("/memberUpdate.do")
+	public String memberUpdate(HttpSession session, @ModelAttribute Members member){
+		service.updateMemberById(member);
+		return "/WEB-INF/script/login/member_update.jsp";
 	}
 }
