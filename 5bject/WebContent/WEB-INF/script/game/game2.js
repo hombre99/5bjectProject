@@ -8,6 +8,8 @@ $(document).ready(function() {
 	var catYLoc ;
 	var answerXLoc = 0;
 	var answerYLoc = 0;
+	
+	var gameImgPath = "/5bject/image/game/game2";
 
 	//���대���� �곕�� ���대��� �������깊���� function
 	var gameTable = document.createElement("table");
@@ -50,14 +52,14 @@ $(document).ready(function() {
 
 		if( ( 3 < step ) && ( step < 7 ) && !(fishXLoc == catXLoc) ) {
 			var fishImg = document.createElement("img");
-			fishImg.setAttribute("src", "/5bject/image/game/game2/fish.jpg");
+			fishImg.setAttribute("src", gameImgPath + "/fish.jpg");
 			fishImg.setAttribute("width", "150px");
 			fishImg.setAttribute("height", "100px");
 			var id1 = "td4" + fishXLoc + fishYLoc;
 			$("#" + id1).append(fishImg);
 
 			var catImg = document.createElement("img");
-			catImg.setAttribute("src", "/5bject/image/game/game2/angrycat.jpg");
+			catImg.setAttribute("src", gameImgPath + "/angrycat.jpg");
 			catImg.setAttribute("width", "150px");
 			catImg.setAttribute("height", "100px");
 			var id2 = "td4" + catXLoc + catYLoc;
@@ -65,6 +67,19 @@ $(document).ready(function() {
 			locCheck = false;
 		}
 	} 
+
+	// 공용 이미지
+	// 고양이
+	var catImg = document.createElement("img");
+	catImg.setAttribute("src", gameImgPath + "/angrycat.jpg");
+	catImg.setAttribute("width", "200px");
+	catImg.setAttribute("height", "100px"); 
+
+	// 생선
+	var fishImg = document.createElement("img");
+	fishImg.setAttribute("src", gameImgPath + "/fish.jpg");
+	fishImg.setAttribute("width", "150px");
+	fishImg.setAttribute("height", "100px");
 
 	// ���대�� �� : ���듭�� 2踰��쇰� 怨���.
 	if ( difficulty == 2 ) {
@@ -79,7 +94,7 @@ $(document).ready(function() {
 			$(label).append(input);
 			
 			var img = document.createElement("img");
-			img.setAttribute("src", "/5bject/image/game/game2/easy/easy" + i + ".jpg");
+			img.setAttribute("src", gameImgPath + "/easy/easy" + i + ".jpg");
 			img.setAttribute("width", "200px");
 			img.setAttribute("height", "100px");
 			
@@ -170,12 +185,29 @@ $(document).ready(function() {
          			
 	// ���대�� 以�
 	} else if ( difficulty == 3 ) {
-		var input = document.createElement("input");
-		input.setAttribute("type", "radio");
-		input.setAttribute("name", "answer");
-		input.setAttribute("value", "2");
-		$("#selectPannel").append(input);
+		for ( var i = 1; i < 5; i++ ) {
+			var label = document.createElement("label");
+			
+			var input = document.createElement("input");
+			input.setAttribute("type", "radio");
+			input.setAttribute("name", "answer");
+			input.setAttribute("value", i == 3 ? "1" : "2");
+			
+			$(label).append(input);
+			
+			var img = document.createElement("img");
+			img.setAttribute("src", gameImgPath + "/normal/normal" + i + ".jpg");
+			img.setAttribute("width", "200px");
+			img.setAttribute("height", "100px");
+			
+			$(label).append(img);
+			$("#selectPannel").append(label);
+			
+			if ( i == 2 )
+				$("#selectPannel").append(document.createElement("br"));
+		}
 
+<<<<<<< HEAD
 		var img = document.createElement("img");
 		img.setAttribute("src", "/5bject/image/game/game2/normal/normal1.jpg");
 		img.setAttribute("width", "200px");
@@ -224,13 +256,18 @@ $(document).ready(function() {
 		catImg.setAttribute("src", "/5bject/image/game/game2/angrycat.jpg");
 		catImg.setAttribute("width", "200px");
 		catImg.setAttribute("height", "100px"); 
+=======
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 		$("td:eq(2)").append(catImg); 
+<<<<<<< HEAD
          			
 		// ����
 		var fishImg = document.createElement("img");
 		fishImg.setAttribute("src", "/5bject/image/game/game2/fish.jpg");
 		fishImg.setAttribute("width", "150px");
 		fishImg.setAttribute("height", "100px");
+=======
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 		$("td:eq(3)").append(fishImg); 
 
 	// ���대�� ��
@@ -243,7 +280,7 @@ $(document).ready(function() {
 			td = document.createElement("td");
 			td.setAttribute("id", "select" + i); //�� ����td�� id 遺���
 			var img = document.createElement("img");
-			img.setAttribute("src", "/5bject/image/game/game2/arrow" + i + ".jpg");
+			img.setAttribute("src", gameImgPath + "/arrow" + i + ".jpg");
 			img.setAttribute("width", "100px");
 			img.setAttribute("height", "100px");
 			$(td).append(img); 			
@@ -267,17 +304,26 @@ $(document).ready(function() {
 
 	//臾몄�� 
 	if ( difficulty == 4 ) {
+<<<<<<< HEAD
 		$("#question").html("<h3>怨����닿� ������ 癒밴� �띠�댄�댁��!! <br />�ㅼ�� 以� 怨����닿� ����源�吏� "
 		+ step + "踰� 留��� 媛� �� ���� ��怨�由ъ��� 臾댁���쇨���?</h3>");
+=======
+		$("#question").html("<h3>고양이가 생선을 먹고 싶어해요!!<br />다음 중 고양이가 생선까지 "
+		+ step + "번 만에 갈 수 있는 알고리즘은 무엇일까요?</h3>");
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 	} else {
+<<<<<<< HEAD
 		$("#question").html("<h3>怨����닿� ������ 癒밴� �띠�댄�댁��!! <br />�ㅼ�� 以� 怨����닿� ����源�吏� 媛� �� ���� ��怨�由ъ��� 臾댁���쇨���?</h3>");
+=======
+		$("#question").html("<h3>고양이가 생선을 먹고 싶어해요!!<br />다음 중 고양이가 생선까지 갈 수 있는<br />알고리즘은 무엇일까요?</h3>");
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 	}
 
 	//���� 泥댄�� 踰��� function
 	if ( difficulty == 4 ) {
 		$("#select1").on("click", function() {	// �듭���� td id蹂�濡� �대┃�대깽�� 遺���						
 			var img = document.createElement("img");
-			img.setAttribute("src", "/5bject/image/game/game2/arrow1.jpg");
+			img.setAttribute("src", gameImgPath + "/arrow1.jpg");
 			img.setAttribute("width", "100px");
 			img.setAttribute("height", "100px");
 			for ( var i = 1; i <= step; i++ ) {
@@ -292,7 +338,7 @@ $(document).ready(function() {
 
 		$("#select2").on("click", function(){	// �듭���� td id蹂�濡� �대┃�대깽�� 遺���						
 			var img = document.createElement("img");
-			img.setAttribute("src", "/5bject/image/game/game2/arrow2.jpg");
+			img.setAttribute("src", gameImgPath + "/arrow2.jpg");
 			img.setAttribute("width", "100px");
 			img.setAttribute("height", "100px");
 			for ( var i = 1; i <= step; i++ ) {
@@ -307,7 +353,7 @@ $(document).ready(function() {
 
 		$("#select3").on("click", function() {	// �듭���� td id蹂�濡� �대┃�대깽�� 遺���						
 			var img = document.createElement("img");
-			img.setAttribute("src", "/5bject/image/game/game2/arrow3.jpg");
+			img.setAttribute("src", gameImgPath + "/arrow3.jpg");
 			img.setAttribute("width", "100px");
 			img.setAttribute("height", "100px");
 			for ( var i = 1; i <= step; i++ ) {
@@ -322,7 +368,7 @@ $(document).ready(function() {
 
 		$("#select4").on("click", function() {	// �듭���� td id蹂�濡� �대┃�대깽�� 遺���						
 			var img = document.createElement("img");
-			img.setAttribute("src", "/5bject/image/game/game2/arrow4.jpg");
+			img.setAttribute("src", gameImgPath + "/arrow4.jpg");
 			img.setAttribute("width", "100px");
 			img.setAttribute("height", "100px");
 			for ( var i = 1; i <= step; i++ ) {
@@ -342,9 +388,9 @@ $(document).ready(function() {
 
 			//���듭��
 			if ( (verificationXLoc == answerXLoc) && (verificationYLoc == answerYLoc) ) {
-				window.open("/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+				window.open("/5bject/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
 				var catImg = document.createElement("img");
-				catImg.setAttribute("src", "/5bject/image/game/game2/smilecat.jpg");
+				catImg.setAttribute("src", gameImgPath + "/smilecat.jpg");
 				catImg.setAttribute("width", "150px");
 				catImg.setAttribute("height", "100px");
 				var fishLoc = "td4" + fishXLoc + fishYLoc;
@@ -355,9 +401,9 @@ $(document).ready(function() {
 
 			//�ㅻ�듭��	
 			} else {
-				window.open("/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150");
+				window.open("/5bject/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150");
 				var catImg = document.createElement("img");
-				catImg.setAttribute("src", "/5bject/image/game/game2/cryingcat.jpg");
+				catImg.setAttribute("src", gameImgPath + "/cryingcat.jpg");
 				catImg.setAttribute("width", "150px");
 				catImg.setAttribute("height", "100px");
 
@@ -393,13 +439,13 @@ $(document).ready(function() {
 			answerXLoc = 0;
 			answerYLoc = 0;
 			var fishImg = document.createElement("img");
-			fishImg.setAttribute("src", "/5bject/image/game/game2/fish.jpg");
+			fishImg.setAttribute("src", gameImgPath + "/fish.jpg");
 			fishImg.setAttribute("width", "150px");
 			fishImg.setAttribute("height", "100px");
 			var id1 = "td4" + fishXLoc + fishYLoc;
 			$("#" + id1).append(fishImg);
 			var catImg = document.createElement("img");
-			catImg.setAttribute("src", "/5bject/image/game/game2/angrycat.jpg");
+			catImg.setAttribute("src", gameImgPath + "/angrycat.jpg");
 			catImg.setAttribute("width", "150px");
 			catImg.setAttribute("height", "100px");
 			var id2 = "td4" + catXLoc + catYLoc;
@@ -410,20 +456,30 @@ $(document).ready(function() {
 			var answer = $("input[name='answer']:checked").val();
 			//���듭��
 			if ( answer == 1 ) {
+<<<<<<< HEAD
 				//alert("����");   
 				window.open("/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+=======
+				//alert("정답");   
+				window.open("/5bject/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 				var catImg = document.createElement("img");
-         		catImg.setAttribute("src", "/5bject/image/game/game2/smilecat.jpg");
+         		catImg.setAttribute("src", gameImgPath + "/smilecat.jpg");
          		catImg.setAttribute("width", "150px");
          		catImg.setAttribute("height", "100px");
          		$("td").empty();
          		$("td:eq(3)").append(catImg); 
         	//�ㅻ�듭��
 			} else if ( answer == 2 ) {
+<<<<<<< HEAD
 				window.open("/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150"); 
 				// window.open("����李� �뱁���댁�","�����곕�","width=350,height=400,top=50,left=150");
+=======
+				window.open("/5bject/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150"); 
+				// window.open("팝업창 웹페이지","윈도우명","width=350,height=400,top=50,left=150");
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 				var catImg = document.createElement("img");
-        		catImg.setAttribute("src", "/5bject/image/game/game2/cryingcat.jpg");
+        		catImg.setAttribute("src", gameImgPath + "/cryingcat.jpg");
         		catImg.setAttribute("width", "150px");
         		catImg.setAttribute("height", "100px");
         		$("td").empty();
@@ -472,7 +528,12 @@ $(document).ready(function() {
 		} 
 	});
 	
+<<<<<<< HEAD
 	$("#memberList").on("click", function(){
 		window.open('/5bject/member/memberList.do');
+=======
+	$("#memberList").on("click", function() {
+		window.open("/5bject/member/memberList.do");
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
 	});
 });
