@@ -42,6 +42,8 @@
 	<mvc:view-controller path="/member/update.do" view-name="/WEB-INF/script/login/update_form.jsp" />
 	<mvc:view-controller path="/member/login.do" view-name="/WEB-INF/script/main.jsp" />
 	<mvc:view-controller path="/member/mypage.do" view-name="/WEB-INF/script/login/mypage.jsp" />
+	<!-- 고객문의 요청 추가 -->
+	<mvc:view-controller path="/member/request.do" view-name="/WEB-INF/script/login/request_member.jsp" />
 	
 	<!-- Language -->
 	<mvc:view-controller path="/language/computer_language.do" view-name="/WEB-INF/script/language/computer_language.jsp" />

@@ -29,21 +29,23 @@ create table members(
 	-- 참조하는 값이 삭제된 경우 자식테이블의 row도 같이 삭제.
 	--references department
  )
+ --------------------------------------------------------------------------------------------
+  --고객 요청을 받기위한 table
+ drop table request_member; 
  
+   create table request_member(
+  	 	request_id varchar2(50) not null,
+ 		request_information varchar2(4000) not null,
+ 		request_date varchar2(50) not null,
+ 	 	constraint member_fk foreign key (request_id) 
+ 	  	references members(member_id) 
+ ) 
+  --------------------------------------------------------------------------------------------
  create table game1(
  		level_1 number(20) not null,
  		level_2 number(20) not null,
  		level_3 number(20) not null,
- 	 	constraint member_fk foreign key(member_id) 
- 	   references members on delete cascade
- ) 
- 
-  create table game2(
- 		level_1 number(20) not null,
- 		level_2 number(20) not null,
- 		level_3 number(20) not null,
- 	 	constraint member_fk foreign key(member_id) 
- 	   references members on delete cascade
+ 	 	constraint member_fk foreign key(member_id) references members (member_id)
  ) 
  
   create table game3(
@@ -58,7 +60,7 @@ create table members(
  
  
  ----------------------------------
- insert into employee values(100,'차현지','hyunji3190@gmail.com','신입사원',3000000,'20100319',600)
+
  
  select  e.employee_id, e.employee_name, e.email, e.job_position,e.salary, e.hire_date,
  			d.department_id, d.department_name, d.department_location

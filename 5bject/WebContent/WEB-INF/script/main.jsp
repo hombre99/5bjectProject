@@ -82,14 +82,12 @@
 				background-color: lightblue;
 				color: white;
 				text-align: left;
-				padding: 20px;
+				padding: 5px;
 			}
-
 			.blank {
 				background-color: aliceblue;
 				padding: 10px;
 			}
-
 			footer {
 				background-color: lightblue;
 				color: white;
@@ -98,9 +96,13 @@
 				height: 100px;
 				clear: both;
 			}
-
 			.error {
 				color: red;
+			}
+			.class{
+				margin-left: 150px;
+				margin-top: 150px;
+				text-align: center;
 			}
 		</style>
 	</head>
@@ -128,6 +130,7 @@
 								<b>흥미와 사고력</b> 증진을 위해 <br>
 								자바를 기반으로 여러<br> 문제를 풀 수 있도록
 								준비했습니다.</b>
+								
 							</div>
 							<div class="grid-col-8 youtube-video">
 								<iframe width="600" height="330" src="//www.youtube.com/embed/fjQ7XaMNQNc?"
@@ -172,18 +175,19 @@
 						<!-- Login Image ADD. 20151116. CHJ -->
 						<c:choose>			
 							<c:when test="${ sessionScope.member.id == 'objectclass' }">
-							<p />
-							관리자님<br />
-							<input type="button" id="memberList" value="회원정보조회" />
-							<input type="button" value="회원삭제" />
-							<input type="button" value="회원점수조회" />
-							<input type="button" value="로그아웃" id="logout_link" />
-							</c:when>
+								<p><p/>
+								<b>관리자님</b><br/>
+								<img src="/5bject/image/member/manager.jpg" />
+								<input type="button" id="memberList" value="회원정보조회" />
+								<input type="button" value="회원삭제" />
+								<input type="button" value="회원점수조회" />
+								<input type="button" value="로그아웃" id="logout_link" />
+								</c:when>
 							<c:when test="${ sessionScope.id != null }">
-								<p />
-								<font face="impact">${ sessionScope.id }님</font><br />
+								<p></p>
+								<font face="impact">${ sessionScope.id }님</font><br/>
 								<img src="/5bject/image/member/success_login.jpg" />
-								<input type="button" id="mypage_link" value="마이페이지" />
+								<input type="button" id="mypage_link" value="마이페이지" />&nbsp;
 								<input type="button" id="logout_link" value="로그아웃" />
 							</c:when>
 							<c:otherwise>

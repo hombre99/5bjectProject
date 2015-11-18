@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kr.or.object.dao.MemberDao;
 import kr.or.object.vo.Members;
+import kr.or.object.vo.Upload;
 @Service("memberService")
 public class MemberServiceImpl implements MemberService {
 	private MemberDao dao;
@@ -15,6 +16,11 @@ public class MemberServiceImpl implements MemberService {
 		this.dao = dao;
 	}
 	
+	@Override
+	public void insertRequest(Upload upload) {
+		dao.insertRequest(upload);
+	}
+
 	@Override
 	public Members findMemberById(String id) {
 		return dao.getMemberById(id);
