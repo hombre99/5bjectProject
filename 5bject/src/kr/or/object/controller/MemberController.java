@@ -103,7 +103,16 @@ public class MemberController {
 	
 	@RequestMapping("/memberList.do")
 	public String memberList(HttpSession session){
+		
 		List<Members> members = service.getMembers();
+		
+		// 20151118. 관리자 정보는 회원 ID에서 삭제
+		for(int i =0; i<members.size(); i++){
+			if((members.get(i).getId()).equals("objectclass")){
+				members.remove(i);
+			}
+		}
+		
 		session.setAttribute("member", members);
 		return "/WEB-INF/script/login/member_list.jsp";
 	}
@@ -115,10 +124,10 @@ public class MemberController {
 		return "/member/memberList.do";
 	}
 	
-	@RequestMapping("/memberUpdate.do")
+	@RequestMapping("/update_member.do")
 	public String memberUpdate(HttpSession session, @ModelAttribute Members member){
 		service.updateMemberById(member);
-		return "/WEB-INF/script/login/member_update.jsp";
+		return "/WEB-INF/script/login/member_list.jsp";
 	}
 	//ADD. 20151117. CHJ -고객 문의 요청 Controller
 	@RequestMapping("request_member.do")
@@ -142,6 +151,7 @@ public class MemberController {
 			service.insertRequest(upload);
 		}
 			return "/WEB-INF/script/login/mypage.jsp";
-
 	}
+	
+
 }

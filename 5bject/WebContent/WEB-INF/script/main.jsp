@@ -67,6 +67,9 @@
 							window.open('/5bject/member/memberList.do');
 						});
 						
+						$("#findID").on("click", function() {
+							window.open("/5bject/member/findID.do","ok","width=400, height=150");
+						});
 					});
 				</script>
 			</c:otherwise>
@@ -271,6 +274,7 @@
 										<tr><td colspan="2"><span class="error"><b>${sessionScope.error}</b></span></td></tr>
 										<tr><td><input type="submit" value="로그인" id="login" /></td><td><input type="button" id="register_link" value="회원가입" /></td></tr>
 									</table>
+									<a id="findID">아이디</a>/<a href="">비밀번호 찾기</a>
 								</form>
 							</c:otherwise>
 						</c:choose>
