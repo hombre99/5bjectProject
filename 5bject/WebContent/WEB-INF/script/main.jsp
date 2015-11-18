@@ -12,35 +12,47 @@
 		<title>Insert title here</title>
 		<script type="text/javascript" src="/5bject/jquery.do"></script>
 		<c:choose>
-			<c:when test="${ sessionScope.difficulty != null }">
+			<c:when test="${ sessionScope.gameNum != null && sessionScope.difficulty != null }">
 				<script type="text/javascript">
+					var gameNum = '${ sessionScope.gameNum }';
 					var difficulty = '${ sessionScope.difficulty }';
 				</script>
-				<script type="text/javascript" src="/5bject/game/game1js.do"></script>
+				<c:choose>
+					<c:when test="${ sessionScope.gameNum == 1 }">
+						<script type="text/javascript" src="/5bject/game/game2js.do"></script>
+					</c:when>
+					<c:when test="${ sessionScope.gameNum == 2 }">
+						<script type="text/javascript" src="/5bject/game/game2js.do"></script>
+					</c:when>
+					<c:when test="${ sessionScope.gameNum == 3 }">
+						<script type="text/javascript" src="/5bject/game/game2js.do"></script>
+					</c:when>
+				</c:choose>
 			</c:when>
 			<c:otherwise>
 				<script type="text/javascript">
 					$(document).ready(function() {
 						$("#link2").on("click", function() {
-							window.open("/5bject/game/select_game.do","ok","width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
 						$("#register_link").on("click", function() {
-							window.open("/5bject/member/register.do","ok","width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							window.open("/5bject/member/register.do" ,"ok", "width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
 						$("#update_link").on("click",function(){
-							window.open("/5bject/member/update.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 						
 						// language_link ADD. 20151116. CHJ
 						$("#language_link").on("click", function() {
 							window.open("/5bject/language/computer_language.do","ok","width=1100, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+
 						});
 
 						// mypage_link, logout_link ADD. 20151116. KKH
 						$("#mypage_link").on("click", function() {
-							window.open("/5bject/member/mypage.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							window.open("/5bject/member/mypage.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
 						$("#logout_link").on("click", function() {
@@ -48,6 +60,11 @@
 								location.replace("/5bject/member/logout.do");
 							} 
 						});
+						
+						$("#memberList").on("click", function(){
+							window.open("/5bject/member/memberList.do");
+						});
+						
 					});
 				</script>
 			</c:otherwise>
@@ -90,10 +107,12 @@
 				text-align: left;
 				padding: 5px;
 			}
+
 			.blank {
 				background-color: aliceblue;
 				padding: 10px;
 			}
+
 			footer {
 				background-color: lightblue;
 				color: white;
@@ -102,18 +121,22 @@
 				height: 100px;
 				clear: both;
 			}
+
 			/*css login 추가  CHJ*/
 			.login{
 				margin-left: 20px;
 			}
+
 			.error {
 				color: red;
 			}
+
 			.class{
 				margin-left: 150px;
 				margin-top: 150px;
 				text-align: center;
 			}
+
 
 			/* 게임1용 CSS */
 			#td2 {
@@ -146,7 +169,7 @@
 				width: 600px;
 				border-collapse: collapse;
 			}
-			-->
+
 		</style>
 	</head>
 	<body>
@@ -156,7 +179,43 @@
 
 		<div class="content">
 			<c:choose>
-				<c:when test="${ sessionScope.difficulty == null || (sessionScope.difficulty < 2 && sessionScope.difficulty > 4) }">
+				<c:when test="${ (sessionScope.gameNum != null && sessionScope.difficulty != null) }">
+					<c:choose>
+						<c:when test="${ sessionScope.gameNum == 1 || sessionScope.gameNum == 2 }">
+							<div class="color-scheme--white learn-more grid-row" exclude="phone">
+								<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
+									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
+									</div>
+									<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
+										<div id="question"></div>
+										<div id="selectPannel"></div>
+										<div id="btnPannel">
+											<input type="button" value="제출" id="okBtn" />
+											<input type="button" value="초기화" id="resetBtn" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:when>
+						<c:when test="${ sessionScope.gameNum == 3 }">
+							<div class="color-scheme--white learn-more grid-row" exclude="phone">
+								<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
+									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
+									</div>
+									<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
+										<div id="question"></div>
+										<div id="selectPannel"></div>
+										<div id="btnPannel">
+											<input type="button" value="제출" id="okBtn" />
+											<input type="button" value="초기화" id="resetBtn" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</c:when>
+					</c:choose>
+				</c:when>
+				<c:otherwise>
 					<div class="color-scheme--white learn-more" exclude="phone">
 						<div class="fit-fixed grid-row margin-top--3 padding-top--3 padding-bottom--3 grid-row-no-collapse">
 							<div class="grid-col-4 padding-top--5 grid-col--align-right">
@@ -166,35 +225,18 @@
 									<font face="impact">How Can coding help you?</font>
 								</h1>
 								<!-- <img src="/5bject/image/member/intro.jpg" /> -->
-								<b>교육용 홈페이지들이 부족하고 <br>
-								학생들에게 흥미있을 만한   <br>
-								교육용 웹이 필요합니다. <br>
-								우리나라 초등학교 고학년들의 <br>
-								<b>흥미와 사고력</b> 증진을 위해 <br>
+								<b>교육용 홈페이지들이 부족하고 <br />
+								학생들에게 흥미있을 만한   <br />
+								교육용 웹이 필요합니다. <br />
+								우리나라 초등학교 고학년들의 <br />
+								<b>흥미와 사고력</b> 증진을 위해 <br />
 								자바를 기반으로 여러<br> 문제를 풀 수 있도록
 								준비했습니다.</b>
-								
 							</div>
 							<div class="grid-col-8 youtube-video">
 								<iframe width="600" height="330" src="//www.youtube.com/embed/fjQ7XaMNQNc?"
 									frameborder="20" allowfullscreen></iframe>
 							</div>
-						</div>
-					</div>
-				</c:when>
-				<c:otherwise>
-					<div class="color-scheme--white learn-more grid-row" exclude="phone">
-						<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
-						<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
-						</div>
-						<div class="grid-col-6 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
-							<div id="question"></div>
-							<div id="selectPannel"></div>
-							<div id="btnPannel">
-								<input type="button" value="제출" id="okBtn" />
-								<input type="button" value="초기화" id="resetBtn" />
-							</div>
-						</div>
 						</div>
 					</div>
 				</c:otherwise>
@@ -232,17 +274,15 @@
 						<!-- Login Image ADD. 20151116. CHJ -->
 						<c:choose>			
 							<c:when test="${ sessionScope.member.id == 'objectclass' }">
-								<p><p/>
-								<b>관리자님</b><br/>
-								<img src="/5bject/image/member/manager.jpg" />
-								<input type="button" id="memberList" value="회원정보조회" />
-								<input type="button" value="회원삭제" />
-								<input type="button" value="회원점수조회" />
-								<input type="button" value="로그아웃" id="logout_link" />
-								</c:when>
+							<p />
+							관리자님<br />
+							<input type="button" id="memberList" value="회원정보조회" />
+							<input type="button" value="회원점수조회" />
+							<input type="button" value="로그아웃" id="logout_link" />
+							</c:when>
 							<c:when test="${ sessionScope.id != null }">
 								<p></p>
-								<font face="impact">${ sessionScope.id }님</font><br/>
+								<font face="impact">${ sessionScope.id }님</font><br />
 								<img src="/5bject/image/member/success_login.jpg" />
 								<input type="button" id="mypage_link" value="마이페이지" />&nbsp;
 								<input type="button" id="logout_link" value="로그아웃" />

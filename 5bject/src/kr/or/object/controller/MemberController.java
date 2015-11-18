@@ -1,5 +1,7 @@
 package kr.or.object.controller;
 
+import java.util.List;
+import java.util.Map;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -7,6 +9,7 @@ import java.util.Date;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,11 +90,36 @@ public class MemberController {
 		return "/WEB-INF/script/main.jsp";
 	}
 
-	// ADD. 20151118. CHJ -고객 문의 요청  File을 받아서 서버에 등록(DB연동) Controller
-	@RequestMapping("/request_member.do")
-	public String RequestUpload(HttpServletRequest request, @RequestParam String requestId, @RequestParam String requestInfo, @RequestParam MultipartFile upImage) throws IOException {
-		//VO 생성자(requestId, requestInfo, date) 설정 - 오늘 날짜와 요청하는 고객 아이디, 그리고 requestInfo
+	@RequestMapping("/memberInfo.do")
+	public String memberInfo(HttpSession session, @RequestParam String id){
+		Members member = service.findMemberById(id);
+		session.setAttribute("memberInfo", member);
+		return "/WEB-INF/script/login/member_info.jsp";
+	}
+	
+	@RequestMapping("/memberList.do")
+	public String memberList(HttpSession session){
+		List<Members> members = service.getMembers();
+		session.setAttribute("member", members);
+		return "/WEB-INF/script/login/member_list.jsp";
+	}
+	
+	@RequestMapping("/memberRemove.do")
+	public String remove(HttpSession session, @RequestParam String id){
+		service.removeMemberById(id);
 		
+		return "/member/memberList.do";
+	}
+	
+	@RequestMapping("/memberUpdate.do")
+	public String memberUpdate(HttpSession session, @ModelAttribute Members member){
+		service.updateMemberById(member);
+		return "/WEB-INF/script/login/member_update.jsp";
+	}
+	//ADD. 20151118. CHJ -고객 문의 요청 Controller
+	@RequestMapping("request_member.do")
+	public String RequestUpload(@RequestParam String requestId, @RequestParam String requestInfo, @RequestParam MultipartFile upImage
+			,HttpServletRequest request, ModelMap map) throws IOException{
 		Date today = new Date();
 		String date = new SimpleDateFormat("yyyyMMdd").format(today);
 		Upload upload = new Upload(requestId, requestInfo, date);
@@ -117,5 +145,7 @@ public class MemberController {
 			url = "/WEB-INF/script/login/request_member.jsp";
 		}
 		 return url;
+
+
 	}
 }
