@@ -11,41 +11,51 @@
 		<meta charset=" UTF-8">
 		<title>Insert title here</title>
 		<script type="text/javascript" src="/5bject/jquery.do"></script>
-		<script type="text/javascript">
-			$(document).ready(function() {
-				$("#link2").on("click", function() {
-					window.open('/5bject/game/select_game.do','ok','width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
-				});
-				
-				$("#register_link").on("click", function() {
-					window.open('/5bject/member/register.do','ok','width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
-				});
-				
-				$("#update_link").on("click",function(){
-					window.open('/5bject/member/update.do','ok','width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
-				});
-				
-				// language_link ADD. 20151116. CHJ
-				$("#language_link").on("click", function() {
-					window.open('/5bject/language/computer_language.do','ok','width=1000, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');	
-				});
-				
-				$("#language_link").on("click", function() {
-					// TODO? CHJ
-				});
-				
-				// mypage_link, logout_link ADD. 20151116. KKH
-				$("#mypage_link").on("click", function() {
-					window.open('/5bject/member/mypage.do','ok','width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
-				});
+		<c:choose>
+			<c:when test="${ sessionScope.difficulty != null }">
+				<script type="text/javascript">
+					var difficulty = '${ sessionScope.difficulty }';
+				</script>
+				<script type="text/javascript" src="/5bject/game/game1js.do"></script>
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript">
+					$(document).ready(function() {
+						$("#link2").on("click", function() {
+							window.open("/5bject/game/select_game.do","ok","width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
 
-				$("#logout_link").on("click", function() {
-					if ( confirm("로그아웃하시겠습니까?") ) {
-						location.replace('/5bject/member/logout.do');
-					} 
-				});
-			});
-		</script>
+						$("#register_link").on("click", function() {
+							window.open("/5bject/member/register.do","ok","width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
+
+						$("#update_link").on("click",function(){
+							window.open("/5bject/member/update.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
+
+						// language_link ADD. 20151116. CHJ
+						$("#language_link").on("click", function() {
+							window.open("/5bject/language/computer_language.do","ok","width=1000, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+						});
+
+						$("#language_link").on("click", function() {
+							// TODO? CHJ
+						});
+
+						// mypage_link, logout_link ADD. 20151116. KKH
+						$("#mypage_link").on("click", function() {
+							window.open("/5bject/member/mypage.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
+
+						$("#logout_link").on("click", function() {
+							if ( confirm("로그아웃하시겠습니까?") ) {
+								location.replace("/5bject/member/logout.do");
+							} 
+						});
+					});
+				</script>
+			</c:otherwise>
+		</c:choose>
 
 		<!-- 여기서부터 손대지 마세여... -->
 		<link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
@@ -104,6 +114,40 @@
 				margin-top: 150px;
 				text-align: center;
 			}
+
+			<!-- 게임1용 CSS -->
+			<!--
+			#td2 {
+				border: 1px solid black;
+				padding: 0px;
+				height: 200px;
+				width: 300px;
+				position: relative;
+				text-align: center;
+			}
+
+			#td3 {
+				border: 1px solid black;
+				padding: 0px;
+				height: 130px;
+				width: 170px;
+				text-align: center;
+			}
+
+			#td4 {
+				border: 1px solid black;
+				padding: 0px;
+				height: 100px;
+				width: 150px;
+				position: relative;
+				text-align: center;
+			}
+
+			#gamePannel {
+				width: 600px;
+				border-collapse: collapse;
+			}
+			-->
 		</style>
 	</head>
 	<body>
@@ -140,6 +184,20 @@
 					</div>
 				</c:when>
 				<c:otherwise>
+					<div class="color-scheme--white learn-more grid-row" exclude="phone">
+						<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
+						<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
+						</div>
+						<div class="grid-col-6 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
+							<div id="question"></div>
+							<div id="selectPannel"></div>
+							<div id="btnPannel">
+								<input type="button" value="제출" id="okBtn" />
+								<input type="button" value="초기화" id="resetBtn" />
+							</div>
+						</div>
+						</div>
+					</div>
 				</c:otherwise>
 			</c:choose>
 			<c:remove var="difficulty" scope="session" />
@@ -160,11 +218,11 @@
 
 				<div class="grid-row">
 					<div id="language_link"
-						class="grid-col-4   grid-col--no--padding grid-col--no-margin card card--link ">
+						class="grid-col-4 grid-col--no--padding grid-col--no-margin card card--link ">
 						<img src="/5bject/image/member/newlink11.jpg" />
 					</div>
 					<div id="link2"
-						class="grid-col-4  grid-col--no--padding grid-col--no-margin card card--link">
+						class="grid-col-4 grid-col--no--padding grid-col--no-margin card card--link">
 						<img src="/5bject/image/member/newlink22.jpg" />
 					</div>
 					
