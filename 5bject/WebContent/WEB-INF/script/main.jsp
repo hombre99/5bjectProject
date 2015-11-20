@@ -216,13 +216,13 @@
 						<c:when test="${ sessionScope.gameNum == 3 }">
 							<div class="color-scheme--white learn-more grid-row" exclude="phone">
 								<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
-									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel" style="background:red">
+									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
 										<div id="menu"></div>
-										<div class="grid-row grid-col-8 grid-row-6" id="display" style="background:orange;"></div>
+										<div class="grid-row grid-col-8 grid-row-6" id="display"></div>
 									</div>
-									<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel" style="background:green">
-										<div id="score" style="background:skyblue"></div>
-										<div id="input" style="background:yellow"></div>
+									<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
+										<div id="score"></div>
+										<div id="input"></div>
 									</div>
 								</div>
 							</div>

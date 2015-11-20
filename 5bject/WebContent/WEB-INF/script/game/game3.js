@@ -53,8 +53,12 @@ $(document).ready(function(){
 	inputBtn.setAttribute("id", "inputBtn");
 	inputBtn.setAttribute("value", "입력");
 	
+	/*
 	$("div#input").append(inputWord);
 	$("div#input").append(inputBtn);
+	*/
+	display.append(inputWord);
+	display.append(inputBtn);
 	
 	$(inputWord).focus();
 
