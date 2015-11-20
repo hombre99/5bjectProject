@@ -1,6 +1,7 @@
 package kr.or.object.service;
 
 
+import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -44,4 +45,24 @@ public class MemberServiceImpl implements MemberService {
 	public List<Members> getMembers() {
 		return dao.getMembers();
 	}
+
+	// 20151118. ADD KKH - 잃어버린 아이디 찾기
+	@Override
+	public String findMemberId(HashMap map) {
+		return dao.findMemberId(map);
+	}
+
+	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
+	@Override
+	public String findMemberPassword(HashMap map) {
+		return dao.findMemberPassword(map);
+	}
+	
+	// 20151120 ADD KKH - 임시비밀번호로 바꿔주기
+	@Override
+	public void updateMemberPassword(HashMap map) {
+		dao.updateMemberPassword(map);
+	}
+	
+
 }
