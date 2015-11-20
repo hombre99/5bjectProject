@@ -8,13 +8,12 @@ $(document).ready(function() {
 	var catYLoc ;
 	var answerXLoc = 0;
 	var answerYLoc = 0;
-	
+	alert(1);
 	var gameImgPath = "/5bject/image/game/game2";
 
 	//난이도에 따라 테이블을 자동생성하는 function
 	var gameTable = document.createElement("table");
 	$("div#gamePannel").append(gameTable);
-	
 	for ( var j = 1; j <= difficulty; j++ ) {         
 		tr = document.createElement("tr");
 		$(gameTable).append(tr);  

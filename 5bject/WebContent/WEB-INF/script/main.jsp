@@ -16,6 +16,7 @@
 				<script type="text/javascript">
 					var gameNum = '${ sessionScope.gameNum }';
 					var difficulty = '${ sessionScope.difficulty }';
+					alert(difficulty);
 				</script>
 				<c:choose>
 					<c:when test="${ sessionScope.gameNum == 1 }">
@@ -249,7 +250,7 @@
 
 		<div class="blank"></div>
 
-		<!-- <article class="fit-full color-scheme--#e6e6fa"> -->
+		<!-- <article class="fit-full color-scheme#e6e6fa" -->
 		<article id="art" class="fit-full color-scheme--red">
 			<article class="fit-fixed">
 				<div class="grid-row stories padding-top--3">
