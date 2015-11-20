@@ -16,7 +16,6 @@
 				<script type="text/javascript">
 					var gameNum = '${ sessionScope.gameNum }';
 					var difficulty = '${ sessionScope.difficulty }';
-					alert(difficulty);
 				</script>
 				<c:choose>
 					<c:when test="${ sessionScope.gameNum == 1 }">
