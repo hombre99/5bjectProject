@@ -377,4 +377,14 @@ $(document).ready(function() {
 	$("#memberList").on("click", function() {
 		window.open("/5bject/member/memberList.do");
 	});
+	
+	$("#close").on("click",function(){
+		var value = alert("문의사항은 빠른 시일내에 이메일로 알려드리겠습니다.");
+		document.write(value);
+	});
+	
+	/*chj 20151120 link ADD*/
+	$("#request_list").on("click", function(){
+		window.open("/5bject/member/request_list.do","ok","width=1000, height=700");
+	});
 });

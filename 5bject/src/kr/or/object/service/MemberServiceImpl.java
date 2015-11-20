@@ -15,12 +15,18 @@ public class MemberServiceImpl implements MemberService {
 	private MemberServiceImpl(MemberDao dao) {
 		this.dao = dao;
 	}
-	
+
 	@Override
 	public void insertRequest(Upload upload) {
 		dao.insertRequest(upload);
 	}
-
+	
+	//20151120 service 추가 chj
+	@Override
+	public List<Upload> getRequestList(){
+		return dao.getRequests();
+	}
+	
 	@Override
 	public Members findMemberById(String id) {
 		return dao.getMemberById(id);

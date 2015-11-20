@@ -16,10 +16,20 @@
 	
 	<!-- resultMap 추가 -->
 	<resultMap type="upload" id="request-member-resultmap">
-		<result property="requestId" column="request_id"/>
+		<result property="id" column="request_id"/>
 		<result property="requestInfo" column="request_information"/>
-		<result property="date" column="date"/>
+		<result property="date" column="request_date"/>
 	</resultMap>
+
+	<!--select를 위한 resultMap구문  -->
+	<resultMap type="upload" id="select-request-resultmap">
+		<result property="id" column="request_id"/>
+		<result property="requestInfo" column="request_information"/>
+		<result property="date" column="request_date"/>
+		<association property="members" javaType="members" resultMap="member-resultmap"/>
+	</resultMap>
+	
+
 	
 	<sql id="member-sql">
 		SELECT	MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_MONTH, MEMBER_DAY, MEMBER_YEAR,
@@ -33,7 +43,7 @@
 	
 	<!-- request 입력하는 것 추가  20151117 CHJ-->
 	<insert id ="insertRequest" parameterType="upload">
-		insert into request_member values (#{requestId}, #{requestInfo}, #{date})
+		insert into request_member values (#{id}, #{requestInfo}, #{date})
 	</insert>
 	
 	<delete id="removeMemberById" parameterType="string">
@@ -55,5 +65,13 @@
 	<select id="selectMembers" parameterType="string" resultMap="member-resultmap">
 		<include refid="member-sql"/>
 		FROM	MEMBERS
+	</select>
+	<!-- chj 20151120 customer request list -->
+	
+	<select id="selectRequests" resultMap="select-request-resultmap">
+		select r.request_id, r.request_information, r.request_date, 
+				m.member_id, m.member_password, m.member_name, m.member_month,
+				m.member_day, m.member_year, m.member_gender, m.member_email_id, m.member_email_address, m.member_phone
+				from request_member r, members m
 	</select>
 </mapper>
