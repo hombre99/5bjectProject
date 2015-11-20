@@ -29,8 +29,6 @@
 		<association property="members" javaType="members" resultMap="member-resultmap"/>
 	</resultMap>
 	
-
-	
 	<sql id="member-sql">
 		SELECT	MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_MONTH, MEMBER_DAY, MEMBER_YEAR,
 				MEMBER_GENDER, MEMBER_EMAIL_ID, MEMBER_EMAIL_ADDRESS, MEMBER_PHONE
@@ -58,7 +56,7 @@
 	
 	<select id="selectMemberById" parameterType="string" resultMap="member-resultmap">
 		<include refid="member-sql"/>
-		FROM	MEMBERs
+		FROM	 MEMBERS
 		WHERE	MEMBER_ID = #{id}
 	</select>
 	
@@ -66,12 +64,29 @@
 		<include refid="member-sql"/>
 		FROM	MEMBERS
 	</select>
+
 	<!-- chj 20151120 customer request list -->
-	
 	<select id="selectRequests" resultMap="select-request-resultmap">
 		select r.request_id, r.request_information, r.request_date, 
 				m.member_id, m.member_password, m.member_name, m.member_month,
 				m.member_day, m.member_year, m.member_gender, m.member_email_id, m.member_email_address, m.member_phone
 				from request_member r, members m
+	</select>
+	
+	<!-- 20151118. ADD KKH - 아이디 찾는 SQL문 추가 -->
+	<select id = "selectMemberId" parameterType="hashmap" resultType="string">
+		SELECT MEMBER_ID FROM MEMBERS 
+		WHERE MEMBER_EMAIL_ID = #{emailId} AND MEMBER_EMAIL_ADDRESS = #{emailAddress} AND MEMBER_PHONE=#{phoneNumber}
+	</select>
+	
+	<!-- 20151120. ADD KKH 비밀번호 찾는 SQL문 추가 -->
+	<select id="selectMemberPassword" parameterType="hashmap" resultType="string">
+		SELECT MEMBER_PASSWORD FROM MEMBERS
+		WHERE MEMBER_ID = #{id} AND MEMBER_EMAIL_ID = #{emailId} AND MEMBER_EMAIL_ADDRESS = #{emailAddress} AND MEMBER_PHONE=#{phoneNumber}
+	</select>
+	
+	<!-- 20151120. ADD KKH 임시비밀번호 바꿔주기 -->
+	<select id ="updateMemberPassword" parameterType="hashmap" >
+		UPDATE MEMBERS SET MEMBER_PASSWORD=#{newPassword} WHERE MEMBER_ID=#{id}
 	</select>
 </mapper>

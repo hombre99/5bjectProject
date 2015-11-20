@@ -1,5 +1,6 @@
 package kr.or.object.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -52,4 +53,28 @@ public class MemberDaoImpl implements MemberDao{
 	public List<Members> getMembers() {
 		return session.selectList("memberMapper.selectMembers");
 	}
+	
+	// 20151118. KKH ADD - 아이디 찾기
+	@Override
+	// 잃어버린 아이디 찾기
+	public String findMemberId(HashMap map) {
+		
+		return session.selectOne("memberMapper.selectMemberId",map);
+	}
+	
+	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
+	@Override
+	public String findMemberPassword(HashMap map) {
+		// TODO Auto-generated method stub
+		return session.selectOne("memberMapper.selectMemberPassword",map);
+	}
+	
+	// 20151120. ADD KKH - 임시비밀번호로 바꿔주기
+	@Override
+	public int updateMemberPassword(HashMap map) {
+		// TODO Auto-generated method stub
+		return session.update("memberMapper.updateMemberPassword",map);
+	}
+	
+	
 }

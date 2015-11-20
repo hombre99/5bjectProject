@@ -28,6 +28,8 @@ create table members(
 	--references department on delete set null  : 삭제된 경우에 컬럼값에 null 설정.
 	-- 참조하는 값이 삭제된 경우 자식테이블의 row도 같이 삭제.
 	--references department
+	
+  	insert into members values('cccccccc','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',11111111111)
  )
  --------------------------------------------------------------------------------------------
   --고객 요청을 받기위한 table

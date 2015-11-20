@@ -50,7 +50,10 @@
 	<mvc:view-controller path="/member/login.do" view-name="/WEB-INF/script/main.jsp" />
 	<mvc:view-controller path="/member/mypage.do" view-name="/WEB-INF/script/login/mypage.jsp" />
 	<mvc:view-controller path="/member/memberUpdate.do" view-name="/WEB-INF/script/login/member_update.jsp" />
+	<!-- 20151118 ADD KKH - 잃어버린 아이디 찾기 추가 -->
 	<mvc:view-controller path="/member/findID.do" view-name="/WEB-INF/script/login/find_id.jsp" />
+	<!-- 20151120 ADD KKH - 잃어버린 비밀번호 찾기 -->
+	<mvc:view-controller path="/member/findPwd.do" view-name="/WEB-INF/script/login/find_password.jsp" />
 	<!-- 고객문의 요청 추가 -->
 	<mvc:view-controller path="/member/request.do" view-name="/WEB-INF/script/login/request_member.jsp" />
 
@@ -62,8 +65,11 @@
 	<mvc:view-controller path="/game/game1js.do" view-name="/WEB-INF/script/game/game1.js" />
 	<mvc:view-controller path="/game/game2js.do" view-name="/WEB-INF/script/game/game2.js" />
 	<mvc:view-controller path="/game/game3js.do" view-name="/WEB-INF/script/game/game3.js" />
+
+	<!-- game3 test -->
+	<mvc:view-controller path="/game/game3.do" view-name="/WEB-INF/script/game/game3.jsp" />
 	
-	<!-- game2 정답 오답 처리 팝업 -->
-	<mvc:view-controller path="/game/game2_correctPop.do" view-name="/WEB-INF/script/game/correct.jsp" />
-	<mvc:view-controller path="/game/game2_incorrectPop.do" view-name="/WEB-INF/script/game/incorrect.jsp" />
+	<!-- game1-2 정답 오답 처리 팝업 -->
+	<mvc:view-controller path="/game/game_correctPop.do" view-name="/WEB-INF/script/game/correct.jsp" />
+	<mvc:view-controller path="/game/game_incorrectPop.do" view-name="/WEB-INF/script/game/incorrect.jsp" />
 </beans>

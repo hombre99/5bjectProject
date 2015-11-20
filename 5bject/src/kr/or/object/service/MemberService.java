@@ -1,5 +1,6 @@
 package kr.or.object.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import kr.or.object.vo.Members;
@@ -18,5 +19,14 @@ public interface MemberService {
 	void removeMemberById(String id);
 	
 	List<Members> getMembers();
+
+	// 20151118. ADD KKH - 잃어버린 아이디찾기
+	String findMemberId(HashMap map);
+	
+	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
+	String findMemberPassword(HashMap map);
+	
+	// 20151120 ADD KKH - 임시비밀번호로 바꿔주기
+	void updateMemberPassword(HashMap map);
 
 }

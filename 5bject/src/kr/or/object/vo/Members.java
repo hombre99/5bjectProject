@@ -2,6 +2,7 @@ package kr.or.object.vo;
 
 import java.io.Serializable;
 
+// 20151120. ADD -> private int phoneNumber -> private long phoneNumber
 public class Members implements Serializable {
 	// 변수 선언
 	private String id;
@@ -13,13 +14,13 @@ public class Members implements Serializable {
 	private String gender;
 	private String emailId;
 	private String emailAddress;
-	private int phoneNumber;
+	private long phoneNumber;
 	
 	public Members() {
 	}
-
+	
 	public Members(String id, String password, String name, String month, int day, int year,
-								String gender, String emailId, String emailAddress, int phoneNumber) {
+								String gender, String emailId, String emailAddress, long phoneNumber) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -28,6 +29,14 @@ public class Members implements Serializable {
 		this.day = day;
 		this.year = year;
 		this.gender = gender;
+		this.emailId = emailId;
+		this.emailAddress = emailAddress;
+		this.phoneNumber = phoneNumber;
+	}
+
+	// 20151118. ADD	KKH - 아이디 찾기 
+	public Members(String emailId, String emailAddress, long phoneNumber) {
+		super();
 		this.emailId = emailId;
 		this.emailAddress = emailAddress;
 		this.phoneNumber = phoneNumber;
@@ -105,11 +114,11 @@ public class Members implements Serializable {
 		this.emailAddress = emailAddress;
 	}
 
-	public int getPhoneNumber() {
+	public long getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(long phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -132,7 +141,7 @@ public class Members implements Serializable {
 		result = prime * result + ((month == null) ? 0 : month.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + phoneNumber;
+		result = prime * result + (int) (phoneNumber ^ (phoneNumber >>> 32));
 		result = prime * result + year;
 		return result;
 	}
@@ -189,4 +198,5 @@ public class Members implements Serializable {
 			return false;
 		return true;
 	}
+
 }
