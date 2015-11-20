@@ -110,28 +110,27 @@ $(document).ready(function() {
          			
 	// 난이도 중
 	} else if ( difficulty == 3 ) {
+		/*var table = document.createElement("table");*/
 		for ( var i = 1; i < 5; i++ ) {
 			var label = document.createElement("label");
-			
+		/*	var tr = document.createElement("tr");*/
 			var input = document.createElement("input");
 			input.setAttribute("type", "radio");
 			input.setAttribute("name", "answer");
-			input.setAttribute("value", i == 3 ? "1" : "2");
-			
+			input.setAttribute("value", i == 3 ? "1" : "2");			
 			$(label).append(input);
 			
 			var img = document.createElement("img");
 			img.setAttribute("src", gameImgPath + "/normal/normal" + i + ".jpg");
 			img.setAttribute("width", "200px");
 			img.setAttribute("height", "100px");
-			
 			$(label).append(img);
 			$("#selectPannel").append(label);
 			
 			if ( i == 2 )
 				$("#selectPannel").append(document.createElement("br"));
 		}
-
+	
 		$("td:eq(2)").append(catImg); 
 		$("td:eq(3)").append(fishImg); 
 
@@ -244,7 +243,7 @@ $(document).ready(function() {
 
 			//정답시
 			if ( (verificationXLoc == answerXLoc) && (verificationYLoc == answerYLoc) ) {
-				window.open("/5bject/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+				window.open("/5bject/game/game_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
 				var catImg = document.createElement("img");
 				catImg.setAttribute("src", gameImgPath + "/smilecat.jpg");
 				catImg.setAttribute("width", "150px");
@@ -257,7 +256,7 @@ $(document).ready(function() {
 
 			//오답시	
 			} else {
-				window.open("/5bject/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150");
+				window.open("/5bject/game/game_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150");
 				var catImg = document.createElement("img");
 				catImg.setAttribute("src", gameImgPath + "/cryingcat.jpg");
 				catImg.setAttribute("width", "150px");
@@ -313,7 +312,7 @@ $(document).ready(function() {
 			//정답시
 			if ( answer == 1 ) {
 				//alert("정답");   
-				window.open("/5bject/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+				window.open("/5bject/game/game_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
 				var catImg = document.createElement("img");
          		catImg.setAttribute("src", gameImgPath + "/smilecat.jpg");
          		catImg.setAttribute("width", "150px");
@@ -322,7 +321,7 @@ $(document).ready(function() {
          		$("td:eq(3)").append(catImg); 
         	//오답시
 			} else if ( answer == 2 ) {
-				window.open("/5bject/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150"); 
+				window.open("/5bject/game/game_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150"); 
 				// window.open("팝업창 웹페이지","윈도우명","width=350,height=400,top=50,left=150");
 				var catImg = document.createElement("img");
         		catImg.setAttribute("src", gameImgPath + "/cryingcat.jpg");
