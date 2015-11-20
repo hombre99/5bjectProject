@@ -54,7 +54,7 @@ public class MemberValidator implements Validator {
 		}	
 		
 		// 20151116 ADD. CHJ
-		if ( !member.getGender().equals("female") && !member.getGender().equals("male") ) {
+		if ( !member.getGender().equals("female")&&!member.getGender().equals("male") ) {
 			errors.rejectValue("gender", "gender", "성별을 선택하여 주세요.");
 		}
 
