@@ -14,7 +14,7 @@
 		$(document).ready(function() {
 			$("#update_link").on("click", function() {
 				/* width 800과 height 700으로 수정*/
-				window.open('/5bject/member/update.do','ok','width=800, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
+				window.open('/5bject/member/update.do','ok','width=800, height=500,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
 			});
 			$("#close").on("click",function(){
 				window.close();

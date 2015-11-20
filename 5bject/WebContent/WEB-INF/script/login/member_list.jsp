@@ -35,10 +35,10 @@
 			<th>연락처</th>
 		</tr>
 		
-		<c:forEach items="${sessionScope.member }" var="member">
+		<c:forEach items="${sessionScope.member}" var="member">
 			<tr>
 				<td>
-				<a href="/5bject/member/memberInfo.do?id=${member.id }">${member.id }</a>
+				<a href="/5bject/member/memberInfo.do?id=${member.id}">${member.id }</a>
 				</td>
 				<td>${member.name }</td>
 				<td>${member.month }/${member.day }/${member.year }</td>
