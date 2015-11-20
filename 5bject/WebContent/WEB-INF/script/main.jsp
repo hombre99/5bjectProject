@@ -18,7 +18,7 @@
 				</script>
 				<c:choose>
 					<c:when test="${ sessionScope.gameNum == 1 }">
-						<script type="text/javascript" src="/5bject/game/game2js.do"></script>
+						<script type="text/javascript" src="/5bject/game/game1js.do"></script>
 					</c:when>
 					<c:when test="${ sessionScope.gameNum == 2 }">
 						<script type="text/javascript" src="/5bject/game/game2js.do"></script>
