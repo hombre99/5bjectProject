@@ -65,8 +65,21 @@
 							window.open("/5bject/member/memberList.do");
 						});
 						
+						// 20151120. ADD KKH - 아이디찾기
 						$("#findID").on("click", function() {
-							window.open("/5bject/member/findID.do","ok","width=400, height=150");
+							window.open("/5bject/member/findID.do","width=400, height=150");
+						});
+						// 20151120. ADD KKH - 포인터 발생
+						$("a").on("mouseover",function(){ 
+							$(this).css("text-decoration","underline"); 
+							
+						});
+						$("a").on("mouseout",function(){
+							$(this).css("text-decoration","none");
+						});
+						// 20151120. ADD KKH - 비밀번호찾기
+						$("#findPwd").on("click",function(){
+							window.open("/5bject/member/findPwd.do","width=400,height=150");
 						});
 					});
 				</script>
@@ -301,7 +314,8 @@
 										</tr> 
 										<!-- image로 회원가입추가 -->				
 									</table>
-									<a id="findID">아이디</a>/<a href="">비밀번호 찾기</a>
+									<!-- 20151120. ADD 아이디/비밀번호 찾기 추가 -->
+									<a id="findID">아이디</a>/<a id="findPwd">비밀번호 찾기</a>
 								</form>
 
 							</c:otherwise>

@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -156,5 +157,44 @@ public class MemberController {
 		 return url;
 	}
 	
+	//20151120. ADD KKH - 잃어버린 ID찾기
+	@RequestMapping(value = "/find_memberId.do", method = RequestMethod.POST)
 
+	public String findMemberId(HttpSession session ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
+		//System.out.printf("eID[%s]eAdd[%s]pn[0%d]\n", emailId, emailAddress, phoneNumber);
+		HashMap map = new HashMap();
+		map.put("emailId", emailId);
+		map.put("emailAddress", emailAddress);
+		map.put("phoneNumber",phoneNumber);
+		String id = service.findMemberId(map);
+		session.setAttribute("memId", id);
+		return "/WEB-INF/script/login/find_id_result.jsp";  
+	}
+	
+	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
+	@RequestMapping(value="/find_MemberPassword.do", method = RequestMethod.POST)
+	public String findMemberPassword(HttpSession session, @RequestParam String id, @RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
+		HashMap map = new HashMap();
+		map.put("id", id);
+		map.put("emailId", emailId);
+		map.put("emailAddress", emailAddress);
+		map.put("phoneNumber",phoneNumber);
+		String password = service.findMemberPassword(map);
+		
+		if(password!=null){
+			// 총 36개의 문자
+			System.out.println(id); // test
+			String[] str = {"a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z","1","2","3","4","5","6","7","8","9","0"};
+			String newPassword="";
+			for(int i =0; i<7;i++){
+				int j = (int)(Math.random()*36);
+				newPassword = newPassword +str[j];
+			}
+			System.out.println(newPassword); // test
+			map.put("newPassword", newPassword);
+			service.updateMemberPassword(map);
+			session.setAttribute("newPassword", newPassword);
+	}
+		return "/WEB-INF/script/login/find_password_result.jsp"; 
+}
 }

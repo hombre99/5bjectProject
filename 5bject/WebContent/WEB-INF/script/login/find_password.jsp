@@ -14,9 +14,13 @@
       </script>
 </head>
 <body>
-<h2>아이디 찾기</h2>
-	<form action ="/5bject/member/find_memberId.do" method="post">
-	이메일 : 
+<h2>비밀번호찾기</h2>
+
+<form action="/5bject/member/find_MemberPassword.do" method="post">
+아이디 : 
+		<input type="text" name="id" id="id" placeholder="아이디를 입력하세요">
+		<br>
+이메일 : 
 		<input type="text" name="emailId" id="emailId"  placeholder="email을 입력하세요" />@ 
 			<select name="emailAddress" id="emailAddress">
 				<option value="선택하세요">선택하세요</option>
@@ -33,8 +37,8 @@
 		핸드폰 번호 : 
 		<input type="number" name="phoneNumber" id="phoneNumber"  placeholder="핸드폰 번호를 입력하세요">
 		<br>
-		<input type="submit" value="아이디 찾기" ><br>
-		<input type="submit" id="close" value="닫기">
-		</form>
+		<input type="submit" value="비밀번호 발급받기" ><br>
+		<input type="button"  id="close" value="닫기">
+</form>
 </body>
 </html>

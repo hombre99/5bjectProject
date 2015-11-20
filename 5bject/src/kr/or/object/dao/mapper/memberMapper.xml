@@ -48,12 +48,29 @@
 	
 	<select id="selectMemberById" parameterType="string" resultMap="member-resultmap">
 		<include refid="member-sql"/>
-		FROM	MEMBERs
+		FROM	 MEMBERS
 		WHERE	MEMBER_ID = #{id}
 	</select>
 	
 	<select id="selectMembers" parameterType="string" resultMap="member-resultmap">
 		<include refid="member-sql"/>
 		FROM	MEMBERS
+	</select>
+	
+	<!-- 20151118. ADD KKH - 아이디 찾는 SQL문 추가 -->
+	<select id = "selectMemberId" parameterType="hashmap" resultType="string">
+		SELECT MEMBER_ID FROM MEMBERS 
+		WHERE MEMBER_EMAIL_ID = #{emailId} AND MEMBER_EMAIL_ADDRESS = #{emailAddress} AND MEMBER_PHONE=#{phoneNumber}
+	</select>
+	
+	<!-- 20151120. ADD KKH 비밀번호 찾는 SQL문 추가 -->
+	<select id="selectMemberPassword" parameterType="hashmap" resultType="string">
+		SELECT MEMBER_PASSWORD FROM MEMBERS
+		WHERE MEMBER_ID = #{id} AND MEMBER_EMAIL_ID = #{emailId} AND MEMBER_EMAIL_ADDRESS = #{emailAddress} AND MEMBER_PHONE=#{phoneNumber}
+	</select>
+	
+	<!-- 20151120. ADD KKH 임시비밀번호 바꿔주기 -->
+	<select id ="updateMemberPassword" parameterType="hashmap" >
+		UPDATE MEMBERS SET MEMBER_PASSWORD=#{newPassword} WHERE MEMBER_ID=#{id}
 	</select>
 </mapper>
