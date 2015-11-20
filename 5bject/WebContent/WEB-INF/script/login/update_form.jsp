@@ -110,7 +110,11 @@
 										<option>${ num }</option>
 									</c:forEach>
 							</select>
-						<input type="number" name="year" value="${ sessionScope.member.year }" placeholder="Year" maxlength="4" />
+						 	<select name="year">
+								<c:forEach var="num" begin="1900" end="2015">
+										<option>${ num }</option>
+								</c:forEach>
+							</select>
 				 		<span class="error"><form:errors path="members.year" delimiter=" - " /></span>
 						<span class="error"><form:errors path="members.day" delimiter=" - " /></span>
 						<span class="error"><form:errors path="members.month" delimiter=" - " /></span>

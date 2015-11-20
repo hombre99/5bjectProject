@@ -19,13 +19,17 @@ public class DownloadView extends AbstractView{
 		
 		public void renderMergedOutputModel(Map model, HttpServletRequest request, HttpServletResponse response) throws Exception{
 			String fileName= (String)model.get("downFileName");
+			System.out.println("파일이름");
 			//file내용 한글로도 받을 수 있게 끔 설정해줌
 			String downFileName= new String(fileName.getBytes("euc-kr"),"8859_1");
 			//1.contentType값 설정
+			System.out.println(downFileName+ "-1");
 			response.setContentType(getContentType());
 			response.setHeader("content-disposition", "attachment;filename="+downFileName);
-			FileInputStream fi = new FileInputStream("c:\\java\\down\\"+downFileName);
+			FileInputStream fi = new FileInputStream("c:\\java\\request\\"+downFileName);
+			System.out.println(downFileName+ "-2");
 			OutputStream os = response.getOutputStream();
 			FileCopyUtils.copy(fi, os);
+			
 		}
 }

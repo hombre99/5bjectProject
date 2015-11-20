@@ -3,19 +3,22 @@ package kr.or.object.controller;
 import java.util.List;
 import java.util.Map;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +26,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.AbstractView;
 
 import kr.or.object.service.MemberService;
 import kr.or.object.validator.MemberValidator;
+import kr.or.object.view.DownloadView;
 import kr.or.object.vo.Members;
 import kr.or.object.vo.Upload;
 
@@ -109,7 +114,7 @@ public class MemberController {
 				members.remove(i);
 			}
 		}
-		
+		System.out.println(members);
 		session.setAttribute("member", members);
 		return "/WEB-INF/script/login/member_list.jsp";
 	}
@@ -126,26 +131,27 @@ public class MemberController {
 		service.updateMemberById(member);
 		return "/WEB-INF/script/login/member_list.jsp";
 	}
-	//ADD. 20151118. CHJ -고객 문의 요청 Controller
+	//ADD. 2015118~20. CHJ -고객 문의 요청 Controller
 	@RequestMapping("request_member.do")
 	public String RequestUpload(@RequestParam String requestId, @RequestParam String requestInfo, @RequestParam MultipartFile upImage
-			,HttpServletRequest request, ModelMap map) throws IOException{
+			,HttpServletRequest request) throws IOException{
+		//한글처리
+		request.setCharacterEncoding("euc-kr");
+		
 		Date today = new Date();
-		String date = new SimpleDateFormat("yyyyMMdd").format(today);
+		String date = new SimpleDateFormat("yyyyMMdd HHmm").format(today);
 		Upload upload = new Upload(requestId, requestInfo, date);
 		//return 값 일괄적으로 처리
 		String url = " ";
-
+		
 		if(!requestInfo.isEmpty()){
 			if (upImage!=null){
 				//파일에 시간을 같이 넣어 회원들 요청을 매칭하여 관리
 				String downFileName = date+"_"+upImage.getOriginalFilename();
-				new ModelAndView("downloadView","downFileName",downFileName);
 				System.out.println(downFileName);
-				
-				String direction = request.getServletContext().getRealPath("/upImage");
-				File uploadImg = new File(direction, downFileName);
-				upImage.transferTo(uploadImg);
+				// c:\\java\\request에 회원들이 요청하는 파일이 도착하는 경로 설정 
+				File destFile = new File("c:\\Java\\request",downFileName);
+				upImage.transferTo(destFile);
 			}
 			service.insertRequest(upload);
 			url= "/WEB-INF/script/login/mypage.jsp";
@@ -155,6 +161,17 @@ public class MemberController {
 			url = "/WEB-INF/script/login/request_member.jsp";
 		}
 		 return url;
+	}
+
+	//20151120 chj select upload ADD
+	@RequestMapping("request_list.do")
+	public String requestList(HttpSession session){		
+		List<Upload> upload= service.getRequestList();
+		
+		session.setAttribute("upload",upload);
+		System.out.println(upload);
+		
+		return "/WEB-INF/script/login/request_list.jsp";
 	}
 	
 	//20151120. ADD KKH - 잃어버린 ID찾기
@@ -196,5 +213,5 @@ public class MemberController {
 			session.setAttribute("newPassword", newPassword);
 	}
 		return "/WEB-INF/script/login/find_password_result.jsp"; 
-}
+	}
 }
