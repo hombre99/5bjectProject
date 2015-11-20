@@ -11,7 +11,7 @@ $(document).ready(function() {
 	var answerYLoc = 0;
 	var painting = 1;
 	var gameImgPath = "/5bject/image/game/game1";
-
+	
 	//난이도에 따라 테이블을 자동생성하는 function
 	var gameTable = document.createElement("table");
 
@@ -40,34 +40,42 @@ $(document).ready(function() {
 	startXLoc = Math.floor(Math.random() * difficulty) + 1;
 	startYLoc = Math.floor(Math.random() * difficulty) + 1;
 
+	
 	for ( var i = 1; i < difficulty; i++ ) {
-		paintXLoc = Math.floor(Math.random() * difficulty) + 1;
-		paintYLoc = Math.floor(Math.random() * difficulty) + 1;
-
-		if ( (!paintXLoc == startXLoc) || (!paintYLoc == startYLoc) ) {
-			paintLoc = {paintXLoc : paintXLoc, paintYLoc : paintYLoc};   
-			alert(paintLoc.paintXLoc);
-
+		var LocCheck = true;
+		while(LocCheck){
+				paintXLoc = Math.floor(Math.random() * difficulty) + 1;
+				paintYLoc = Math.floor(Math.random() * difficulty) + 1;
+		
+			if ( !(paintXLoc == startXLoc) || !(paintYLoc == startYLoc) ) {
+					paintLoc = {paintXLoc : paintXLoc, paintYLoc : paintYLoc};   
+					alert(paintLoc.paintXLoc);
+					LocCheck = false;
+				}
+			}
 			if ( paintLocArray.length == 0 ) {
-				var tdId = "td" + difficulty + paintXLoc + paintYLoc;
-				$("#" + tdId).attr("bgcolor", "black"); //css적용안됨
-				paintLocArray.push(paintLoc);
+						var tdId = "td" + difficulty + paintXLoc + paintYLoc;
+						//$("#" + tdId).attr("class", "game1black"); //css적용안됨
+						$("#" + tdId).attr("bgcolor", "black");
+						paintLocArray.push(paintLoc);						
 			} else {
 				for ( var j = 0; j < paintLocArray.length; j++ ) {
 					var tempXLoc = paintLocArray[j].paintXLoc;
 					var tempYLoc = paintLocArray[j].paintYLoc;
-					var newPaintXLoc = paintLoc.paintXLoc;
-					var newPaintYLoc = paintLoc.paintYLoc;
 
-					if ( (!tempXLoc == newPaintXLoc) || (!tempYLoc == newPaintYLoc) ) {
+					if ( !(tempXLoc == paintLoc.paintXLoc) || !(tempYLoc == paintLoc.paintYLoc) ) {
 						var tdId = "td"  + difficulty + paintXLoc + paintYLoc;
 						$("#" + tdId).attr("bgcolor", "black");
+						//$("#" + tdId).attr("class", "game1black"); 
 						paintLocArray.push(paintLoc);
+						}
 					}
-				}
 			}
+					
+				
+				
+			
 		}
-	}
 
 	verificationArray = paintLocArray;
 	step = Math.pow(difficulty,2) - 1;
@@ -105,7 +113,8 @@ $(document).ready(function() {
 	$(table).append(tr); 
 	for ( var i = 1 ; i < step + 1; i++ ) {
 		if ( i == 9 ) {
-			var tr = document.createElement("tr");            
+			var tr = document.createElement("tr");    
+			$(table).append(tr); 
 		} else {
 			td = document.createElement("td");
 			td.setAttribute("id", "result" + i); //답 선택결과td에 id 부여
