@@ -47,7 +47,6 @@
 						// language_link ADD. 20151116. CHJ
 						$("#language_link").on("click", function() {
 							window.open("/5bject/language/computer_language.do","ok","width=1100, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
-
 						});
 
 						// mypage_link, logout_link ADD. 20151116. KKH
@@ -65,21 +64,22 @@
 							window.open("/5bject/member/memberList.do");
 						});
 						
+						// 20151120. ADD KKH - 포인터 발생
+						$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
+
 						// 20151120. ADD KKH - 아이디찾기
 						$("#findID").on("click", function() {
 							window.open("/5bject/member/findID.do","width=400, height=150");
 						});
-						// 20151120. ADD KKH - 포인터 발생
-						$("a").on("mouseover",function(){ 
-							$(this).css("text-decoration","underline"); 
-							
-						});
-						$("a").on("mouseout",function(){
-							$(this).css("text-decoration","none");
-						});
+
 						// 20151120. ADD KKH - 비밀번호찾기
 						$("#findPwd").on("click",function(){
 							window.open("/5bject/member/findPwd.do","width=400,height=150");
+						});
+
+						/* chj 20151120 link ADD*/
+						$("#request_list").on("click", function() {
+							window.open("/5bject/member/request_list.do", "ok", "width=1000, height=700");
 						});
 					});
 				</script>
@@ -153,7 +153,6 @@
 				text-align: center;
 			}
 
-
 			/* 게임1용 CSS */
 			#td2 {
 				border: 1px solid black;
@@ -221,8 +220,8 @@
 										<div class="grid-row grid-col-8 grid-row-6" id="display"></div>
 									</div>
 									<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
-										<div id="score" style="background:skyblue"></div>
-										<div id="input" style="background:yellow"></div>
+										<div id="score"></div>
+										<div id="input"></div>
 									</div>
 								</div>
 							</div>
@@ -248,7 +247,7 @@
 								준비했습니다.</b>
 							</div>
 							<div class="grid-col-8 youtube-video">
-								<iframe width="600" height="330" src="//www.youtube.com/embed/fjQ7XaMNQNc?"
+								<iframe width="600" height="330" src="https://www.youtube.co/embed/9xqQY-pB1dE?"
 									frameborder="20" allowfullscreen></iframe>
 							</div>
 						</div>
@@ -288,11 +287,13 @@
 						<!-- Login Image ADD. 20151116. CHJ -->
 						<c:choose>			
 							<c:when test="${ sessionScope.member.id == 'objectclass' }">
-							<p />
-							관리자님<br />
-							<input type="button" id="memberList" value="회원정보조회" />
-							<input type="button" value="회원점수조회" />
-							<input type="button" value="로그아웃" id="logout_link" />
+								<p><p/>
+								<table>
+									<tr><td colspan="2"><b>objectclass</b>님<br/></td></tr>
+									<tr><td colspan="2"><img src="/5bject/image/member/manager.jpg" /><p></td></tr>
+									<tr><td colspan="2"><input type="button" id="memberList" value="회원정보조회" /><input type="button" value="회원점수조회" /><br/></td></tr>
+									<tr><td colspan="2"><input type="button" id="request_list" value="고객문의-리스트" /><input type="button" value="로그아웃" id="logout_link" /></td></tr>
+								</table>
 							</c:when>
 							<c:when test="${ sessionScope.id != null }">
 								<p></p>
@@ -310,12 +311,12 @@
 										<tr><td><b>비밀번호</b></td><td colspan="2"><input type="password" name="password" placeholder="비밀번호 입력" /></td></tr>
 										<tr><td colspan="3"><span class="error"><b>${sessionScope.error}</b></span></td></tr>	
 										<tr><td colspan="2"><input type="submit" value="로그인" id="login" /></td>
-										<td><img src="/5bject/image/member/register_form.jpg" id=register_link/></td>
+										<td><img src="/5bject/image/member/register_form.jpg" id="register_link" /></td>
 										</tr> 
 										<!-- image로 회원가입추가 -->				
 									</table>
 									<!-- 20151120. ADD 아이디/비밀번호 찾기 추가 -->
-									<a id="findID">아이디</a>/<a id="findPwd">비밀번호 찾기</a>
+									<a id="findID" class="findInfo">아이디</a>/<a id="findPwd" class="findInfo">비밀번호 찾기</a>
 								</form>
 
 							</c:otherwise>

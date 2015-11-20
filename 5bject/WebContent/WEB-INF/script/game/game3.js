@@ -174,25 +174,25 @@ $(document).ready(function(){
 
 	/* 메인페이지 클릭이벤트 등록 */
 	$("#link2").on("click", function() {
-		window.open("/5bject/game/select_game.do","ok","width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+		window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 	});
 
 	$("#register_link").on("click", function() {
-		window.open("/5bject/member/register.do","ok","width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
-	});
-	
-	$("#update_link").on("click",function(){
-		window.open("/5bject/member/update.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+		window.open("/5bject/member/register.do" ,"ok", "width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 	});
 
+	$("#update_link").on("click",function(){
+		window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+	});
+	
 	// language_link ADD. 20151116. CHJ
 	$("#language_link").on("click", function() {
-		window.open("/5bject/language/computer_language.do","ok","width=1000, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+		window.open("/5bject/language/computer_language.do","ok","width=1100, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
 	});
 
 	// mypage_link, logout_link ADD. 20151116. KKH
 	$("#mypage_link").on("click", function() {
-		window.open("/5bject/member/mypage.do","ok","width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+		window.open("/5bject/member/mypage.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 	});
 
 	$("#logout_link").on("click", function() {
@@ -200,12 +200,26 @@ $(document).ready(function(){
 			location.replace("/5bject/member/logout.do");
 		} 
 	});
-
-	$("#memberList").on("click", function() {
+	
+	$("#memberList").on("click", function(){
 		window.open("/5bject/member/memberList.do");
 	});
+	
+	// 20151120. ADD KKH - 포인터 발생
+	$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
 
+	// 20151120. ADD KKH - 아이디찾기
 	$("#findID").on("click", function() {
-		window.open("/5bject/member/findID.do", "ok", "width=400, height=150");
+		window.open("/5bject/member/findID.do","width=400, height=150");
+	});
+
+	// 20151120. ADD KKH - 비밀번호찾기
+	$("#findPwd").on("click",function(){
+		window.open("/5bject/member/findPwd.do","width=400,height=150");
+	});
+
+	/* chj 20151120 link ADD*/
+	$("#request_list").on("click", function() {
+		window.open("/5bject/member/request_list.do", "ok", "width=1000, height=700");
 	});
 });
