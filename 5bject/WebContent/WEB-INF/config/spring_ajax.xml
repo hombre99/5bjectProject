@@ -62,6 +62,9 @@
 	<mvc:view-controller path="/game/game1js.do" view-name="/WEB-INF/script/game/game1.js" />
 	<mvc:view-controller path="/game/game2js.do" view-name="/WEB-INF/script/game/game2.js" />
 	<mvc:view-controller path="/game/game3js.do" view-name="/WEB-INF/script/game/game3.js" />
+
+	<!-- game3 test -->
+	<mvc:view-controller path="/game/game3.do" view-name="/WEB-INF/script/game/game3.jsp" />
 	
 	<!-- game1-2 정답 오답 처리 팝업 -->
 	<mvc:view-controller path="/game/game_correctPop.do" view-name="/WEB-INF/script/game/correct.jsp" />
