@@ -152,7 +152,15 @@
 				margin-top: 150px;
 				text-align: center;
 			}
-
+			.game1black {
+				border: 1px solid black;
+				padding: 0px;
+				height: 100px;
+				width: 150px;
+				position: relative;
+				text-align: center;
+				bgcolor: black;
+			}
 
 			/* 게임1용 CSS */
 			#td2 {
