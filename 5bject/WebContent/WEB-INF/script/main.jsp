@@ -197,7 +197,7 @@
 				<c:when test="${ (sessionScope.gameNum != null && sessionScope.difficulty != null) }">
 					<c:choose>
 						<c:when test="${ sessionScope.gameNum == 1 || sessionScope.gameNum == 2 }">
-							<div class="color-scheme--white learn-more grid-row" exclude="phone">
+							<div class="color-scheme--white learn-more grid-row margin-top--3" exclude="phone">
 								<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
 									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
 									</div>
@@ -213,7 +213,7 @@
 							</div>
 						</c:when>
 						<c:when test="${ sessionScope.gameNum == 3 }">
-							<div class="color-scheme--white learn-more grid-row" exclude="phone">
+							<div class="color-scheme--white learn-more grid-row margin-top--3" exclude="phone">
 								<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
 									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
 										<div id="menu"></div>
