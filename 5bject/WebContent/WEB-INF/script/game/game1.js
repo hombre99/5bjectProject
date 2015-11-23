@@ -216,10 +216,10 @@ $(document).ready(function() {
 	$("#okBtn").on("click", function() {
 		//정답시
 		if ( verificationArray.length == 0 ) {
-			window.open("/5bject/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+			window.open("/5bject/game/game_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
 		//오답시   
 		} else {
-			window.open("/5bject/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150");
+			window.open("/5bject/game/game_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150");
 		}
 	});
 
