@@ -4,6 +4,9 @@ $(document).ready(function(){
 	var gameDifficulty = 0;			// 난이도별 게임 단어 수
 	var answerCount = 0;			// 남은 정답 갯수
 	var totalScore = 0;				// 죄종 점수
+	var easyScore = -1;
+	var normalScore = -1;
+	var hardScore = -1;
 
 	if ( difficulty == 2 ) {
 		// 난이도 하
@@ -28,6 +31,12 @@ $(document).ready(function(){
 	// 테스트용 단어 배열
 	var words =["public","void","main","request","response","bean","getter","setter","class","interface","arraylist","hashmap",
              	"list","map","exception","java","a","b","c","d","e","f","g","h","i","j","k","q"];	
+	
+	/*
+	$.ajax({
+		"url" : "/5bject/game/"
+	});
+	*/
 
 	// 난이도에 따라 사용될 단어 갯수만큼 저장할 배열
 	var gameWords = new Array(gameDifficulty);	
@@ -92,10 +101,34 @@ $(document).ready(function(){
 			if ( gameTime < 1 || totalScore ) {
 				alert("게임이 끝났습니다." + (totalScore ? " " + totalScore + "점 입니다." : ""));
 				clearInterval(timer);
+				
+				if ( difficulty == 2 )
+					easyScore = totalScore;
+				else if ( difficulty == 3 )
+					normalScore = totalScore;
+				else if ( difficulty == 4 )
+					hardScore = totalScore;
 
-				if ( confirm("다시 시작하시겠습니까?") ) {
-					location.reload();
-				}
+				$.ajax({
+					"url" : "/5bject/game/setGameScore.do",
+					"data" : { "id" : loginId,
+								"gameNum" : gameNum,
+								"easy" : easyScore,
+								"normal" : normalScore,
+								"hard" : hardScore,
+								"difficulty" : difficulty },
+					"type" : "POST",
+//					"dataType" : "json",
+					"success" : function() {
+									if ( confirm("다시 시작하시겠습니까?") ) {
+										location.reload();
+									}
+								},
+					"error" : function(request, status, error) {
+									alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+									location.reload();
+								}
+				});
 			}
 
 			$("#scoreTd2").text(gameTime);
