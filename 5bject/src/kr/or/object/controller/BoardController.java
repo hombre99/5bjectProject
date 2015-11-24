@@ -15,11 +15,20 @@ public class BoardController {
 	@Autowired
 	private BoardService service;
 	
+	//공지사항 
+	@RequestMapping("/notice.do")
+	public String Notice(HttpSession session){
+		
+		
+		return "/WEB-INF/script/board/notice.jsp";
+	}
+	
+	//자유게시판
 	@RequestMapping("/board.do")
 	public String Board(HttpSession session){
 		
 		
-		return "/WEB-INF/script/board/list.jsp";
+		return "/WEB-INF/script/board/board.jsp";
 	}
 	
 	@RequestMapping("/write.do")
