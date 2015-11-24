@@ -18,6 +18,8 @@ public class BoardController {
 	//공지사항 
 	@RequestMapping("/notice.do")
 	public String Notice(HttpSession session){
+		String id = (String)session.getAttribute("id");
+		
 		
 		
 		return "/WEB-INF/script/board/notice.jsp";
