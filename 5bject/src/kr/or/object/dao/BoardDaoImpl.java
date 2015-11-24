@@ -2,64 +2,65 @@ package kr.or.object.dao;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import kr.or.object.vo.Board;
 
+@Repository("boardDao")
 public class BoardDaoImpl implements BoardDao{
 
-	@Override
-	public ArrayList<Board> getContentList() {
-		// TODO Auto-generated method stub
-		return null;
+	private SqlSessionTemplate session;
+
+	@Autowired
+	public BoardDaoImpl(SqlSessionTemplate session){
+		this.session = session;
+	}
+	
+	// 글 전체 목록 보기
+	public List<Board> getContentList() {
+		List<Board> boardList = session.selectList("boardMapper.boardAllSelect");
+		return boardList;
 	}
 
-	@Override
-	public int count() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
+	// 총 글 갯수
 	public int getMax() {
-		// TODO Auto-generated method stub
-		return 0;
+		int max = session.selectList("boardMapper.boardAllSelect").size();
+		return max;
 	}
 
-	@Override
+	// 게시글 쓰기
 	public void insertWrite(Board board, int max) {
-		// TODO Auto-generated method stub
-		
+		session.insert("boardMapper.boardInsert",board);
 	}
+	
+	// 댓글 쓰기
+	public void insertReply(Board board) {
+		session.update("boardMapper.updateReply",board);
+	}	
 
-	@Override
+
+	// 글제목으로 글보기
 	public Board getView(int idx) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void updateHit(int idx) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void delete(int idx) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void update(Board board, int max) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void insertReply(Board board, int ref, Date date) {
-		// TODO Auto-generated method stub
-		
+		return session.selectOne("boardMapper.boardContentSelect",idx);
 	}
 
 	
+	// 조회수 증가
+	public void updateHit(Board board) {
+		session.update("boardMapper.boardHitUpdate",board);		
+	}
+
+	// 게시 글 삭제
+	public void delete(int idx) {
+		session.delete("boardMapper.boardDelete",idx);
+		
+	}
+	// 게시 글 수정
+	public void update(Board board, int max) {
+		session.update("boardMapper.boardModify",board);
+	}
 }

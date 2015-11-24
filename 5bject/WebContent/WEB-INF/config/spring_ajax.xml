@@ -74,6 +74,10 @@
 	<mvc:view-controller path="/game/game1js.do" view-name="/WEB-INF/script/game/game1.js" />
 	<mvc:view-controller path="/game/game2js.do" view-name="/WEB-INF/script/game/game2.js" />
 	<mvc:view-controller path="/game/game3js.do" view-name="/WEB-INF/script/game/game3.js" />
+	<mvc:view-controller path="/5bject/game/game_menu.do" view-name="" />
+	<mvc:view-controller path="/game/add/word.do" view-name="/WEB-INF/script/game/add_gameword.jsp" />
+	<mvc:view-controller path="/game/find/word.do" view-name="/WEB-INF/script/game/find_gameword_form.jsp" />
+	<mvc:view-controller path="/game/find/allWord.do" view-name="/WEB-INF/script/game/find_gameword.jsp" />
 
 	<!-- game1-2 정답 오답 처리 팝업 -->
 	<mvc:view-controller path="/game/game_correctPop.do" view-name="/WEB-INF/script/game/correct.jsp" />
