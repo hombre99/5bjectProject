@@ -67,9 +67,8 @@ public class MemberDaoImpl implements MemberDao{
 	// 20151118. KKH ADD - 아이디 찾기
 	@Override
 	// 잃어버린 아이디 찾기
-	public String findMemberId(HashMap map) {
-		
-		return session.selectOne("memberMapper.selectMemberId",map);
+	public List findMemberId(HashMap map) {
+		return session.selectList("memberMapper.selectMemberId",map);
 	}
 	
 	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기

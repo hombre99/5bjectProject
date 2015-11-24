@@ -21,7 +21,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="2" align ="center"><font color="lightblue"><h2>${requestScope.members.name }님</h2></font></td>
+				<td colspan="2" align ="center"><h2><font color="lightblue">${requestScope.members.name }님</font></h2></td>
 			</tr>
 			<tr>
 				<td colspan="2">가입에 성공하신걸 진심으로 환영합니다.</td>

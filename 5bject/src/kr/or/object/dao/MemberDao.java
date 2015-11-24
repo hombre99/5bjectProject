@@ -25,7 +25,7 @@ public interface MemberDao {
 	List<Members> getMembers();
 	
 	// 20151118. KKH ADD - 아이디 찾기
-	String findMemberId(HashMap map);
+	List findMemberId(HashMap map);
 	
 	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
 	String findMemberPassword(HashMap map);

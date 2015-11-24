@@ -35,7 +35,6 @@
 			} */
 			table{
 				margin-left: 50px;
-				font-family: HY나무M;
 			}
 		</style> 
 	</head>

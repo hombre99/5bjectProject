@@ -61,7 +61,7 @@ public class MemberServiceImpl implements MemberService {
 
 	// 20151118. ADD KKH - 잃어버린 아이디 찾기
 	@Override
-	public String findMemberId(HashMap map) {
+	public List findMemberId(HashMap map) {
 		return dao.findMemberId(map);
 	}
 
