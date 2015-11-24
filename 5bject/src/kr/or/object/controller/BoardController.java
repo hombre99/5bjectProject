@@ -43,17 +43,17 @@ public class BoardController {
 	
 	
 	@RequestMapping("/write.do")
-	public String Write(HttpSession session , @RequestParam Board board){
+	public String Write(HttpSession session , @RequestParam Board board){		
 		
-		String id = session.getId();
+		String id = session.getId();		
 		
 		if(id.equals("object")){
 			board.setNotice(1);
 		}else{
 			board.setNotice(2);
-		}
+		}		
 		
-		service.insertWrite(board);
+		service.insertWrite(board);		
 		
 		return "/WEB-INF/script/board/write_success.jsp";
 	}
@@ -103,4 +103,9 @@ public class BoardController {
 		
 		return "/WEB-INF/script/board/view.jsp";
 	}	
+	
+	public void getMax(){
+		service.getMax();
+	}
+	
 }
