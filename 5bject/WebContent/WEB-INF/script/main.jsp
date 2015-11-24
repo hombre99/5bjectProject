@@ -14,6 +14,7 @@
 		<c:choose>
 			<c:when test="${ sessionScope.gameNum != null && sessionScope.difficulty != null }">
 				<script type="text/javascript">
+					var loginId = '${ sessionScope.member.id }';
 					var gameNum = '${ sessionScope.gameNum }';
 					var difficulty = '${ sessionScope.difficulty }';
 				</script>

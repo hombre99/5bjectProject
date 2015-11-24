@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="gamewordMapper">
+	<resultMap id="gameWord-resultMap" type="gameWord">
+		<constructor>
+			<idArg column="game_num" javaType="_int" />
+			<arg column="difficulty" javaType="_int" />
+			<arg column="word" javaType="string" />
+		</constructor>
+	</resultMap>
+
+	<sql id="selectGameWord-sql">
+		SELECT GAME_NUM, DIFFICULTY, WORD
+	</sql>
+
+	<insert id="insertGameWord" parameterType="gameWord">
+		INSERT	INTO GAMEWORD VALUES(#{ gameNum }, #{ difficulty }, #{ word })
+	</insert>
+	
+	<select id="selectGameWord" resultMap="gameWord-resultMap">
+		<include refid="selectGameWord-sql" />
+		FROM 	GAMEWORD
+		WHERE	WORD = #{ word }
+	</select>
+	
+	<select id="selectAllGameWord" resultMap="gameWord-resultMap">
+		<include refid="selectGameWord-sql" />
+		FROM	GAMEWORD
+		ORDER BY GAME_NUM ASC, DIFFICULTY ASC, WORD ASC
+	</select>
+</mapper>
