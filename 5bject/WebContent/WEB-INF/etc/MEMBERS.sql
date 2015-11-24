@@ -25,6 +25,7 @@ create table members(
   	member_email_id varchar(25) not null,
   	member_email_address varchar(25) not null,
   	member_phone number(11) 
+  	);
 	--references department on delete set null  : 삭제된 경우에 컬럼값에 null 설정.
 	-- 참조하는 값이 삭제된 경우 자식테이블의 row도 같이 삭제.
 	--references department
@@ -34,6 +35,7 @@ create table members(
  --------------------------------------------------------------------------------------------
   --고객 요청을 받기위한 table
  drop table request_member; 
+ 
  
    create table request_member(
   	 	request_id varchar2(50) not null,

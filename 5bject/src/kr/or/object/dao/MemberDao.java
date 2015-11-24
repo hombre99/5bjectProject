@@ -10,8 +10,11 @@ public interface MemberDao {
 	Members getMemberById(String id);
 	
 	int insertRequest(Upload upload);
-	//getRequests해서 요청정보 전체공개 20151120 CHJ
-	List<Upload> getRequests();
+	//getRequests해서 요청정보 전체공개 20151123 CHJ 
+	List<Upload> getRequests(int pageNo);
+	
+	//20151123 CHJ 
+	int selectCountRequests();
 	
 	int insertMember(Members member);
 

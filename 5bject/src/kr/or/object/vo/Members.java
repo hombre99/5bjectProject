@@ -16,6 +16,7 @@ public class Members implements Serializable {
 	private String emailAddress;
 	private long phoneNumber;
 	
+	private static final long serialVersionUID = 1L;
 	public Members() {
 	}
 	

@@ -3,34 +3,26 @@ package kr.or.object.controller;
 import java.util.List;
 import java.util.Map;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.util.FileCopyUtils;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.AbstractView;
 
 import kr.or.object.service.MemberService;
 import kr.or.object.validator.MemberValidator;
-import kr.or.object.view.DownloadView;
 import kr.or.object.vo.Members;
 import kr.or.object.vo.Upload;
 
@@ -43,14 +35,13 @@ public class MemberController {
 	@RequestMapping(value = "/register_form_validate.do", method = RequestMethod.POST)
 	public String registerValidate(@ModelAttribute Members member, Errors errors) {
 		MemberValidator validate = new MemberValidator();
-
 		validate.validate(member, errors);
 
 		System.out.printf("Total Error Count [ %d ]\n", errors.getErrorCount());
-
 		if (errors.hasErrors()) {
-			return "/WEB-INF/script/login/register_form_validate.jsp";
+				return "/WEB-INF/script/login/register_form_validate.jsp";
 		}
+		
 		System.out.printf("EmailAddress[ %s ] EmailId[ %s ]\n", member.getEmailAddress(), member.getEmailId());
 		service.insertMember(member);
 		// return "/WEB-INF/script/login/register_success.jsp";
@@ -65,6 +56,10 @@ public class MemberController {
 			if (id.equals(login.getId()) && password.equals(login.getPassword())) {
 				session.setAttribute("id", id);
 				session.setAttribute("member", login);
+			}else{
+				//20151124
+				String error = "아이디 또는 비밀번호를 정확하게 입력하여 주세요.";
+				session.setAttribute("error", error);
 			}
 		} else {
 			String error = "아이디 또는 비밀번호를 정확하게 입력하여 주세요.";
@@ -119,6 +114,10 @@ public class MemberController {
 		return "/WEB-INF/script/login/member_list.jsp";
 	}
 	
+	
+	
+	
+	
 	@RequestMapping("/memberRemove.do")
 	public String remove(HttpSession session, @RequestParam String id){
 		service.removeMemberById(id);
@@ -139,7 +138,7 @@ public class MemberController {
 		request.setCharacterEncoding("euc-kr");
 		
 		Date today = new Date();
-		String date = new SimpleDateFormat("yyyyMMdd HHmm").format(today);
+		String date = new SimpleDateFormat("yyyyMMdd HHmmss").format(today);
 		Upload upload = new Upload(requestId, requestInfo, date);
 		//return 값 일괄적으로 처리
 		String url = " ";
@@ -165,21 +164,25 @@ public class MemberController {
 
 	//20151120 chj select upload ADD
 	@RequestMapping("request_list.do")
-	public String requestList(HttpSession session){		
-		List<Upload> upload= service.getRequestList();
+	public String requestList(@RequestParam(defaultValue="1") String pageNo,
+			ModelMap model){		
 		
-		session.setAttribute("upload",upload);
-		System.out.println(upload);
-		
+		int page = 1;
+		try{
+			page = Integer.parseInt(pageNo);
+		}catch(NumberFormatException e){}
+		Map attributes= service.getRequestList(page);
+		model.addAllAttributes(attributes);
+		System.out.println(attributes);
 		return "/WEB-INF/script/login/request_list.jsp";
+		
 	}
 	
 	//20151120. ADD KKH - 잃어버린 ID찾기
 	@RequestMapping(value = "/find_memberId.do", method = RequestMethod.POST)
-
 	public String findMemberId(HttpSession session ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
 		//System.out.printf("eID[%s]eAdd[%s]pn[0%d]\n", emailId, emailAddress, phoneNumber);
-		HashMap map = new HashMap();
+		HashMap <String, Object>map = new HashMap();
 		map.put("emailId", emailId);
 		map.put("emailAddress", emailAddress);
 		map.put("phoneNumber",phoneNumber);
@@ -191,7 +194,7 @@ public class MemberController {
 	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
 	@RequestMapping(value="/find_MemberPassword.do", method = RequestMethod.POST)
 	public String findMemberPassword(HttpSession session, @RequestParam String id, @RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
-		HashMap map = new HashMap();
+		HashMap  <String, Object> map = new HashMap();
 		map.put("id", id);
 		map.put("emailId", emailId);
 		map.put("emailAddress", emailAddress);

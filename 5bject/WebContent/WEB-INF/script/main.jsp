@@ -37,7 +37,7 @@
 						});
 
 						$("#register_link").on("click", function() {
-							window.open("/5bject/member/register.do" ,"ok", "width=1000, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							window.open("/5bject/member/register.do" ,"ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,resizable=0");
 						});
 
 						$("#update_link").on("click",function(){
@@ -46,7 +46,7 @@
 						
 						// language_link ADD. 20151116. CHJ
 						$("#language_link").on("click", function() {
-							window.open("/5bject/language/computer_language.do","ok","width=1100, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+							window.open("/5bject/language/computer_language.do","ok","width=1100, height=850,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
 						});
 
 						// mypage_link, logout_link ADD. 20151116. KKH
@@ -66,21 +66,18 @@
 						// 20151120. ADD KKH - 포인터 발생
 						$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
 
-						// 20151120. ADD KKH - 아이디찾기
-						$("#findID").on("click", function() {
-							window.open("/5bject/member/findID.do","width=400, height=150");
-						});
-
-						// 20151120. ADD KKH - 비밀번호찾기
-						$("#findPwd").on("click",function(){
-							window.open("/5bject/member/findPwd.do","width=400,height=150");
-						});
-
 						/* chj 20151120 link ADD*/
 						$("#request_list").on("click", function() {
-							window.open("/5bject/member/request_list.do", "ok", "width=1000, height=700");
+							window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
 						});
 					});
+					/*20151123 findId & Pwd ADD*/
+						function findId(){
+							window.open("/5bject/member/findId.do","ok","width=450, height=400");
+						};
+						function findPwd(){
+							window.open("/5bject/member/findPwd.do","ok","width=450, height=300");
+						};
 				</script>
 			</c:otherwise>
 		</c:choose>
@@ -122,30 +119,25 @@
 				text-align: left;
 				padding: 5px;
 			}
-
 			.blank {
 				background-color: aliceblue;
-				padding: 10px;
+				padding: 20px;
 			}
-
 			footer {
 				background-color: lightblue;
 				color: white;
-				padding-top: 20px;
-				text-align: center;
 				height: 100px;
 				clear: both;
+				text-align: center;
 			}
-
 			/*css login 추가  CHJ*/
+
 			.login{
 				margin-left: 20px;
 			}
-
 			.error {
 				color: red;
 			}
-
 			.class{
 				margin-left: 150px;
 				margin-top: 150px;
@@ -237,17 +229,16 @@
 									<font face="impact">How Can coding help you?</font>
 								</h1>
 								<!-- <img src="/5bject/image/member/intro.jpg" /> -->
-								<b>교육용 홈페이지들이 부족하고 <br />
+								<b>교육용 홈페이지들이 부족하고 <br/>
 								학생들에게 흥미있을 만한   <br />
-								교육용 웹이 필요합니다. <br />
+								교육용 웹이 필요합니다. <br/>
 								우리나라 초등학교 고학년들의 <br />
 								<b>흥미와 사고력</b> 증진을 위해 <br />
 								자바를 기반으로 여러<br> 문제를 풀 수 있도록
 								준비했습니다.</b>
 							</div>
 							<div class="grid-col-8 youtube-video">
-								<iframe width="600" height="330" src="https://www.youtube.co/embed/9xqQY-pB1dE?"
-									frameborder="20" allowfullscreen></iframe>
+								<iframe width="600" height="350" src="https://www.youtube.co/embed/9xqQY-pB1dE?"frameborder="20" allowfullscreen></iframe>
 							</div>
 						</div>
 					</div>
@@ -257,17 +248,14 @@
 		</div>
 		<div class="blank"></div>
 		<!-- <article class="fit-full color-scheme#e6e6fa" -->
-		
+		<!-- <article class="fit-full color-scheme#e6e6fa" -->
 		<article id="art" class="fit-full color-scheme--red">
 			<article class="fit-fixed">
-				<div class="grid-row stories padding-top--3">
+ 				<div class="grid-row stories padding-top--3">
 					<div class="grid-col-12 grid-col--center grid-col--align-center">
-						<h2>
-							<font face="impact">Enjoy Coding</font>
-						</h2>
+							<font size="6" face="impact" color="skyblue">Enjoy Coding</font>
 					</div>
-				</div>
-
+				</div> 
 				<div class="grid-row">
 					<div id="language_link"
 						class="grid-col-4 grid-col--no--padding grid-col--no-margin card card--link ">
@@ -301,30 +289,34 @@
 								<input type="button" id="logout_link" value="로그아웃" />
 							</c:when>
 							<c:otherwise>
-
 								<form action ="/5bject/member/login.do" method="post">
 									<table>
-										<tr><td colspan="3" align="center"><img src="/5bject/image/member/login.jpg" /></td></tr> 
-										<tr><td><b>아이디</b></td><td colspan="2"><input type="text" name="id" placeholder="아이디 입력" /></td></tr> 
-										<tr><td><b>비밀번호</b></td><td colspan="2"><input type="password" name="password" placeholder="비밀번호 입력" /></td></tr>
+										<p></p>
+										<tr><td colspan="2" align="center"><img src="/5bject/image/member/login.jpg" /></td></tr> 
+										<tr><td>&nbsp;아이디</td><td>&nbsp;<input type="text" name="id" placeholder="아이디 입력" /></td></tr> 
+										<tr><td>&nbsp;비밀번호</td><td>&nbsp;<input type="password" name="password" placeholder="비밀번호 입력" /></td></tr>
 										<tr><td colspan="3"><span class="error"><b>${sessionScope.error}</b></span></td></tr>	
-										<tr><td colspan="2"><input type="submit" value="로그인" id="login" /></td>
-										<td><img src="/5bject/image/member/register_form.jpg" id="register_link" /></td>
-										</tr> 
-										<!-- image로 회원가입추가 -->				
+										<tr><td>&nbsp;&nbsp;<input type="submit" value="로그인" id="login" /></td><td>&nbsp;&nbsp;<img src="/5bject/image/member/register_form.jpg" id="register_link" /></td></tr>
+										<!-- 20151120. ADD 아이디/비밀번호 찾기 추가 -->
+									</table>			
+									<table>
+										<tr><td colspan="3" align="center">&nbsp;&nbsp;<a href ="javascript:findId()" class="findInfo">아이디</a>/<a href="javascript:findPwd()" class="findInfo">비밀번호 찾기</a></td></tr>			
 									</table>
-									<!-- 20151120. ADD 아이디/비밀번호 찾기 추가 -->
-									<a id="findID" class="findInfo">아이디</a>/<a id="findPwd" class="findInfo">비밀번호 찾기</a>
 								</form>
-
 							</c:otherwise>
 						</c:choose>
 					</div>
 				</div>
-		<footer>
-			<table>
-				<tr><td align ="center"><h5>© 2015 5bject. All Rights Reserved.</h5></td></tr>
-			</table>
-		</footer>
+
+				<div class="grid-row stories padding-top--3">
+					<div class="grid-col-12 grid-col--center grid-col--align-center">
+							<font face="impact" size="6" color="lightslategray">Develop Children's ability to think</font>
+					</div>
+				</div>
+			</article>
+		</article>
+		<footer>		
+				<jsp:include page="/WEB-INF/script/layout/footer.jsp" />
+		</footer>	
 	</body>
 </html>

@@ -1,7 +1,6 @@
 package kr.or.object.vo;
 import java.io.Serializable;
-import java.sql.Date;
-import java.util.List;
+
 
 public class Upload implements Serializable{
 
@@ -9,7 +8,8 @@ public class Upload implements Serializable{
 	private String requestInfo;
 	private String date;
 	private Members members;
-
+	
+	private static final long serialVersionUID = 1L;
 	public Upload() {
 		super();
 	}

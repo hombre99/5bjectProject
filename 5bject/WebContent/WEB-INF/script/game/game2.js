@@ -372,16 +372,16 @@ $(document).ready(function() {
 	});
 	
 	// 20151120. ADD KKH - 포인터 발생
-	$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
+	$(".findInfo").css("cursor","pointer").css("text-decoration","none !important");
 
 	// 20151120. ADD KKH - 아이디찾기
-	$("#findID").on("click", function() {
-		window.open("/5bject/member/findID.do","width=400, height=150");
+	$("#findId").on("click", function() {
+		window.open("/5bject/member/findID.do","ok","width=400, height=150");
 	});
 
 	// 20151120. ADD KKH - 비밀번호찾기
 	$("#findPwd").on("click",function(){
-		window.open("/5bject/member/findPwd.do","width=400,height=150");
+		window.open("/5bject/member/findPwd.do","ok","width=400,height=150");
 	});
 
 	/* chj 20151120 link ADD*/
@@ -389,3 +389,10 @@ $(document).ready(function() {
 		window.open("/5bject/member/request_list.do", "ok", "width=1000, height=700");
 	});
 });
+/*20151123 findId & Pwd ADD*/
+	function findId(){
+		window.open("/5bject/member/findId.do","ok","width=450, height=600");
+	};
+	function findPwd(){
+		window.open("5bject/member/findPwd.do","width=450, height=600");
+	};
