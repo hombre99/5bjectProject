@@ -19,6 +19,11 @@ public class MemberDaoImpl implements MemberDao{
 	public MemberDaoImpl(SqlSessionTemplate session){
 		this.session = session;
 	}
+	@Override
+	//chj add 20151120
+	public List<Upload> getRequests() {
+		return session.selectList("memberMapper.selectRequests");
+	}
 	//chj add
 	@Override
 	public int insertRequest(Upload upload) {
@@ -26,31 +31,26 @@ public class MemberDaoImpl implements MemberDao{
 	}
 
 	@Override
-	// �쉶�썝 �젙蹂� �궫�엯
 	public int insertMember(Members member) {
 		return session.insert("memberMapper.insertMember", member);
 	}
 
 	@Override
-	// �븘�씠�뵒濡� �쉶�썝 �젙蹂� �닔�젙
 	public int updateMemberById(Members member) {
 		return session.update("memberMapper.updateMemberById", member);
 	}
 
 	@Override
-	// �븘�씠�뵒濡� �쉶�썝�젙蹂� 議고쉶
 	public Members getMemberById(String id) {
 		return session.selectOne("memberMapper.selectMemberById", id);
 	}
 
 	@Override
-	// �븘�씠�뵒濡� �쉶�썝�젙蹂� �궘�젣
 	public int removeMemberById(String id) {
 		return session.delete("memberMapper.removeMemberById", id);
 	}
 
 	@Override
-	// �쟾泥� �쉶�썝�젙蹂� 議고쉶
 	public List<Members> getMembers() {
 		return session.selectList("memberMapper.selectMembers");
 	}

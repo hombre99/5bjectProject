@@ -19,12 +19,18 @@ public class MemberServiceImpl implements MemberService {
 	private MemberServiceImpl(MemberDao dao) {
 		this.dao = dao;
 	}
-	
+
 	@Override
 	public void insertRequest(Upload upload) {
 		dao.insertRequest(upload);
 	}
-
+	
+	//20151120 service 추가 chj
+	@Override
+	public List<Upload> getRequestList(){
+		return dao.getRequests();
+	}
+	
 	@Override
 	public Members findMemberById(String id) {
 		return dao.getMemberById(id);
@@ -69,7 +75,7 @@ public class MemberServiceImpl implements MemberService {
 
 	//20151123 ADD KKH - 고객목록 관련 페이징 처리
 	@Override
-	public Map getMembersPaing(int pageNo) {
+	public Map getMembersPaging(int pageNo) {
 		HashMap map = new HashMap();
 		map.put("list", dao.getMembersPaging(pageNo));
 		PagingBean pagingBean = new PagingBean(dao.selectCountMembers(),pageNo);

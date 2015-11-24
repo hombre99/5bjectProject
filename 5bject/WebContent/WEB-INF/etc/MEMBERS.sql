@@ -42,6 +42,10 @@ create table members(
   	insert into members values('object','class','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
   	insert into members values('objectclass','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
 
+	
+ )
+  	insert into members values('cccccccc','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',11111111111)
+
  --------------------------------------------------------------------------------------------
   --고객 요청을 받기위한 table
  drop table request_member; 
@@ -51,8 +55,13 @@ create table members(
  		request_information varchar2(4000) not null,
  		request_date varchar2(50) not null,
  	 	constraint member_fk foreign key (request_id) 
- 	  	references members(member_id) 
+ 	  	references members(member_id) on delete cascade
  ) 
+ 
+ 		select r.request_id, r.request_information, r.request_date, 
+				m.member_id, m.member_password, m.member_name, m.member_month,
+				m.member_day, m.member_year, m.member_gender, m.member_email_id, m.member_email_address, m.member_phone
+				from request_member r, members m;
   --------------------------------------------------------------------------------------------
  create table game1(
  		level_1 number(20) not null,

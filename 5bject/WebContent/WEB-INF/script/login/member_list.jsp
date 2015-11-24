@@ -34,11 +34,13 @@
 			<th>이메일주소</th>
 			<th>연락처</th>
 		</tr>
-		
+
 		<c:forEach items="${requestScope.list }" var="member">
 			<tr>
 				<td>
+
 				<a href="/5bject/member/memberInfo.do?id=${member.id }&pageNo=${requestScope.pagingBean.currentPage}">${member.id }</a>
+
 				</td>
 				<td>${member.name }</td>
 				<td>${member.month }/${member.day }/${member.year }</td>

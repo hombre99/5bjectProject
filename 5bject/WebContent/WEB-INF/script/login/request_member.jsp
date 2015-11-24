@@ -6,13 +6,13 @@
 <title>Insert title here</title>
 <!-- 20151116~지속중 -->
 <script type="text/javascript">
-	$(document).ready(function(){
-		$("#close").on("click",function(){
-			if(confirm("문의사항은 빠른 시일내에 이메일로 알려드리겠습니다.")){
-				window.close();
+		function request_click(){
+			if(confirm("문의사항을 제출하시겠습니까?")){
+				document.form.submit();
+			}else{
+				return false;
 			}
-		});
-	});
+		}		
 </script>
 <style type="text/css">
 		table{
@@ -34,7 +34,7 @@
 		<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 	</header>
 	<p></p>
-	<form action="/5bject/member/request_member.do" method="post" enctype="multipart/form-data">
+	<form action="/5bject/member/request_member.do" method="post" enctype="multipart/form-data" onsubmit="return request_click()">
 		<table>
 			<tr><td><b>${sessionScope.member.id}</b>님</td></tr>
 			<tr><td><input type ="hidden" name="requestId" value="${sessionScope.member.id}"></td></tr>
@@ -44,7 +44,7 @@
 			<tr><td ><b>문의사항</b></td></tr>
 			<tr><td><textarea name="requestInfo" cols="60" rows="15" placeholder="문의사항을 입력해주세요"></textarea></td></tr>
 			<tr><td colspan="2"><span class="error"><b>${requestScope.error}</b></span></td></tr>
-			<tr><td><input type="submit" value="전송" id="close"></td></tr>
+			<tr><td><input type="submit" value="문의하기"></td></tr>
 		</table>
 	</form>
 </body>

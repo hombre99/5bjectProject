@@ -18,21 +18,24 @@
 				face: impact;
 				font-size : 2;
 			}
-	
 			header {
 				background-color: lightblue;
 				color: white;
 				text-align: left;
-				padding: 20px;
+				padding: 10px;
 			}
 	
 			footer {
 				background-color: lightblue;
 				color: white;
-				padding-top: 20px;
+				padding-top: 10px;
 				text-align: center;
-				height: 100px;
+				height: 30px;
 				clear: both;
+			}
+			table{
+				margin-left: 50px;
+				font-family: HY나무M;
 			}
 		</style> 
 	</head>
@@ -88,7 +91,7 @@
 						<td colspan="2"><b>생년월일</b></td>
 					</tr>
 					<tr>
-						<td colspan="2">
+						<td colspan="2">					
 							<select name="month">
 								<option>선택하세요</option>
 								<option>January</option>
@@ -108,7 +111,11 @@
 									<option>${ num }</option>
 								</c:forEach>
 							</select>
-							<input type="number" name="year" value="${ requestScope.members.year }" placeholder="Year" maxlength="4" />
+							<select name="year">
+								<c:forEach var="num" begin="1900" end="2015">
+										<option>${ num }</option>
+								</c:forEach>
+							</select>
 				 			<span class="error"><form:errors path="members.year" delimiter=" - "/></span>
 							<span class="error"><form:errors path="members.day" delimiter=" - "/></span>
 							<span class="error"><form:errors path="members.month" delimiter=" - "/></span>

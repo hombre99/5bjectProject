@@ -56,7 +56,7 @@
 	<mvc:view-controller path="/member/findPwd.do" view-name="/WEB-INF/script/login/find_password.jsp" />
 	<!-- 고객문의 요청 추가 -->
 	<mvc:view-controller path="/member/request.do" view-name="/WEB-INF/script/login/request_member.jsp" />
-	
+
 	<!-- Language CHJ-->
 	<mvc:view-controller path="/language/computer_language.do" view-name="/WEB-INF/script/language/computer_language.jsp" />
 	
@@ -66,9 +66,6 @@
 	<mvc:view-controller path="/game/game2js.do" view-name="/WEB-INF/script/game/game2.js" />
 	<mvc:view-controller path="/game/game3js.do" view-name="/WEB-INF/script/game/game3.js" />
 
-	<!-- game3 test -->
-	<mvc:view-controller path="/game/game3.do" view-name="/WEB-INF/script/game/game3.jsp" />
-	
 	<!-- game1-2 정답 오답 처리 팝업 -->
 	<mvc:view-controller path="/game/game_correctPop.do" view-name="/WEB-INF/script/game/correct.jsp" />
 	<mvc:view-controller path="/game/game_incorrectPop.do" view-name="/WEB-INF/script/game/incorrect.jsp" />
