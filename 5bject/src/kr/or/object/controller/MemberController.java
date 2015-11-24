@@ -67,6 +67,9 @@ public class MemberController {
 			if (id.equals(login.getId()) && password.equals(login.getPassword())) {
 				session.setAttribute("id", id);
 				session.setAttribute("member", login);
+			}else {
+				String error = "아이디 또는 비밀번호를 정확하게 입력하여 주세요.";
+				session.setAttribute("error", error);
 			}
 		} else {
 			String error = "아이디 또는 비밀번호를 정확하게 입력하여 주세요.";
