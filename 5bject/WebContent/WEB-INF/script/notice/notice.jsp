@@ -25,9 +25,7 @@
 				<td align="center">&nbsp;</td>
 				<td>${board.writeNo}</td>
 				<td>
-					<a href="${board.writeNo}">
-						${board.title}
-					</a>
+					<a href="/5bject/board.do?writeNo="${board.writeNo}>${board.title}</a>
 				</td>
 				<td>${board.memberId}</td>
 				<td>${board.writeDate}</td>
