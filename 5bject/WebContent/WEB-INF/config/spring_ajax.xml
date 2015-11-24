@@ -59,7 +59,8 @@
 	<mvc:view-controller path="/member/mypage.do" view-name="/WEB-INF/script/login/mypage.jsp" />
 	<mvc:view-controller path="/member/memberUpdate.do" view-name="/WEB-INF/script/login/member_update.jsp" />
 	<!-- 20151118 ADD KKH - 잃어버린 아이디 찾기 추가 -->
-	<mvc:view-controller path="/member/findId.do" view-name="/WEB-INF/script/login/find_id.jsp" /> 
+	<mvc:view-controller path="/member/findId.do" view-name="/WEB-INF/script/login/find_id.jsp" />
+
 	<!-- 20151120 ADD KKH - 잃어버린 비밀번호 찾기 -->
 	<mvc:view-controller path="/member/findPwd.do" view-name="/WEB-INF/script/login/find_password.jsp" /> 
 	<!-- 고객문의 요청 추가 -->

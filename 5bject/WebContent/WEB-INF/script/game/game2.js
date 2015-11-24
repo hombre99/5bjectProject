@@ -310,7 +310,7 @@ $(document).ready(function() {
 			//정답시
 			if ( answer == 1 ) {
 				//alert("정답");   
-				window.open("/5bject/game/game_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+				window.open("/5bject/game/game_correctPop.do", "pop", "width=450, height=200, top=50, left=150");
 				var catImg = document.createElement("img");
          		catImg.setAttribute("src", gameImgPath + "/smilecat.jpg");
          		catImg.setAttribute("width", "150px");
@@ -319,7 +319,7 @@ $(document).ready(function() {
          		$("td:eq(3)").append(catImg); 
         	//오답시
 			} else if ( answer == 2 ) {
-				window.open("/5bject/game/game_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150"); 
+				window.open("/5bject/game/game_incorrectPop.do", "pop", "width=450, height=200, top=50, left=150"); 
 				// window.open("팝업창 웹페이지","윈도우명","width=350,height=400,top=50,left=150");
 				var catImg = document.createElement("img");
         		catImg.setAttribute("src", gameImgPath + "/cryingcat.jpg");
@@ -389,6 +389,7 @@ $(document).ready(function() {
 		window.open("/5bject/member/request_list.do", "ok", "width=1000, height=700");
 	});
 });
+<<<<<<< HEAD
 /*20151123 findId & Pwd ADD*/
 	function findId(){
 		window.open("/5bject/member/findId.do","ok","width=450, height=600");
@@ -396,3 +397,11 @@ $(document).ready(function() {
 	function findPwd(){
 		window.open("5bject/member/findPwd.do","width=450, height=600");
 	};
+=======
+function findId(){
+    window.open("/5bject/member/findId.do","ok","width=450, height=400");
+ };
+ function findPwd(){
+    window.open("/5bject/member/findPwd.do","ok","width=450, height=300");
+ };
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git

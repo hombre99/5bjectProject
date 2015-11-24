@@ -29,9 +29,24 @@ create table members(
 	--references department on delete set null  : 삭제된 경우에 컬럼값에 null 설정.
 	-- 참조하는 값이 삭제된 경우 자식테이블의 row도 같이 삭제.
 	--references department
+	 )
+  	insert into members values('ccccccc1','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('ccccccc2','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('ccccccc3','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('ccccccc4','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('ccccccc5','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('ccccccc6','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('ccccccc7','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('ccccccc8','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('ccccccc9','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('cccccc11','123456','kunhoe','March', 11, 2000, 'male', 'ranibow','gmail.com',01111111112);
+  	insert into members values('object','class','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('objectclass','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+
 	
-  	insert into members values('cccccccc','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',11111111111)
  )
+  	insert into members values('cccccccc','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',11111111111)
+
  --------------------------------------------------------------------------------------------
   --고객 요청을 받기위한 table
  drop table request_member; 

@@ -6,6 +6,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-정돱
-</body>
+<a href=""></a>
+<img src="/5bject/image/game/correct.jpg" width=370px, height=130px>
 </html>

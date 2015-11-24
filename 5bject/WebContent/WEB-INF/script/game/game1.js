@@ -1,14 +1,11 @@
 $(document).ready(function() {
 	var verificationArray = new Array();//정답 검증용 배열 
 	var step;
-	var startXLoc;
-	var startYLoc;
-	var paintXLoc;
-	var paintYLoc;
-	var paintLoc = {paintXLoc : "0", PaintYLoc : "0"};
-	var paintLocArray  = new Array(); //좌표 배열
-	var answerXLoc = 0;
-	var answerYLoc = 0;
+	var startLoc;
+	var paintLoc;
+	var LocArray = new Array(); //전체 좌표 배열
+	var paintLocArray  = new Array(); //검은색 좌표 배열
+	var answerLoc;
 	var painting = 1;
 	var gameImgPath = "/5bject/image/game/game1";
 	
@@ -37,47 +34,29 @@ $(document).ready(function() {
 	}
 
 	//난이도별로 랜덤으로 시작점과 색칠된 칸을 배치해주는 로직      
-	startXLoc = Math.floor(Math.random() * difficulty) + 1;
-	startYLoc = Math.floor(Math.random() * difficulty) + 1;
+	for ( var i = 1; i <= difficulty; i++ ){
+		var XLoc = i * 10;
+		for ( var j= 1; j <= difficulty; j++ ){
+			var YLoc = j;
+			Loc = XLoc + YLoc;
+			LocArray.push( Loc ); 
+		}	
+	}
+	for ( var i = 0; i < difficulty; i++ ){
+		var idx = Math.floor( Math.random() * LocArray.length ) ;
+		var val = LocArray[idx];
+		paintLocArray.push( val );
+		verificationArray.push( val );
+		LocArray.splice( idx,1 );
+	}	
+	startLoc = verificationArray.shift();
+	paintLocArray.shift();
+		for ( var i = 0; i < paintLocArray.length; i++ ) {
+			var tdIdx = paintLocArray[i];	
+			var tdId = "td" + difficulty + tdIdx;
+			$("#" + tdId).attr("bgcolor", "black");
+		}					
 
-	
-	for ( var i = 1; i < difficulty; i++ ) {
-		var LocCheck = true;
-		while(LocCheck){
-				paintXLoc = Math.floor(Math.random() * difficulty) + 1;
-				paintYLoc = Math.floor(Math.random() * difficulty) + 1;
-		
-			if ( !(paintXLoc == startXLoc) || !(paintYLoc == startYLoc) ) {
-					paintLoc = {paintXLoc : paintXLoc, paintYLoc : paintYLoc};   
-					alert(paintLoc.paintXLoc);
-					LocCheck = false;
-				}
-			}
-			if ( paintLocArray.length == 0 ) {
-						var tdId = "td" + difficulty + paintXLoc + paintYLoc;
-						//$("#" + tdId).attr("class", "game1black"); //css적용안됨
-						$("#" + tdId).attr("bgcolor", "black");
-						paintLocArray.push(paintLoc);						
-			} else {
-				for ( var j = 0; j < paintLocArray.length; j++ ) {
-					var tempXLoc = paintLocArray[j].paintXLoc;
-					var tempYLoc = paintLocArray[j].paintYLoc;
-
-					if ( !(tempXLoc == paintLoc.paintXLoc) || !(tempYLoc == paintLoc.paintYLoc) ) {
-						var tdId = "td"  + difficulty + paintXLoc + paintYLoc;
-						$("#" + tdId).attr("bgcolor", "black");
-						//$("#" + tdId).attr("class", "game1black"); 
-						paintLocArray.push(paintLoc);
-						}
-					}
-			}
-					
-				
-				
-			
-		}
-
-	verificationArray = paintLocArray;
 	step = Math.pow(difficulty,2) - 1;
 
 	var startImg = document.createElement("img");
@@ -85,12 +64,11 @@ $(document).ready(function() {
 	startImg.setAttribute("width", "150px"); //난이도별 이미지크기 체크 필요할듯?
 	startImg.setAttribute("height", "100px");
 
-	var id2 = "td" + difficulty + startXLoc + startYLoc;
+	var id2 = "td" + difficulty + startLoc;
 	$("#" + id2).append(startImg);
 
-	answerXLoc = startXLoc;
-	answerYLoc = startYLoc;
-
+	answerLoc = startLoc;
+	alert("answerLoc=" + answerLoc);
 	//난이도 별 보기 및 선택답패널 생성로직
 	var table = document.createElement("table");
 	$("#selectPannel").append(table);
@@ -112,10 +90,10 @@ $(document).ready(function() {
 	var tr = document.createElement("tr");
 	$(table).append(tr); 
 	for ( var i = 1 ; i < step + 1; i++ ) {
-		if ( i == 9 ) {
+		if ( difficulty==4 && i == 9 ) {
 			var tr = document.createElement("tr");    
 			$(table).append(tr); 
-		} else {
+		}
 			td = document.createElement("td");
 			td.setAttribute("id", "result" + i); //답 선택결과td에 id 부여
 			$(td).css({"border" : "1px solid black",
@@ -126,11 +104,9 @@ $(document).ready(function() {
 					"text-align" : "center"});
 			$(tr).append(td);
 		}
-	}
-
-
+	
 	//문제 
-	$("#question").html("<h3>다음 그림을 완성해 봅시다!!<br />" + step + "번 만에 왼쪽 그림과 같이 색칠할 수 있는 알고리즘을 완성해주세요.</h3>");
+	$("#question").html("<h3>다음 그림을 완성해 봅시다!!<br />" + step + "번 안에 왼쪽 그림과 같이 색칠할 수 있는 알고리즘을 완성해주세요.</h3>");
 
 	//정답 체크 버튼 function
 	$("#select1").on("click", function() {   // 답선택 td id별로 클릭이벤트 부여                  
@@ -144,11 +120,12 @@ $(document).ready(function() {
 
 			if ( !result.hasChildNodes() ) {
 				$(result).append(img);
-				answerXLoc = answerXLoc - 1;
+				answerLoc = answerLoc - 10; //X좌표 값 수정 
+				painting = 1;
 				break;
 			}
 		}      
-		painting = 1;
+		
 	});
 	
 	$("#select2").on("click", function(){   // 답선택 td id별로 클릭이벤트 부여                  
@@ -162,11 +139,11 @@ $(document).ready(function() {
 
 			if ( !result.hasChildNodes() ) {
 				$(result).append(img);
-				answerXLoc = answerXLoc + 1;
+				answerLoc = answerLoc + 10;
+				painting = 1;
 				break;
 			}
 		}   
-		painting = 1;
 	});
 
 	$("#select3").on("click", function() {   // 답선택 td id별로 클릭이벤트 부여                  
@@ -180,11 +157,11 @@ $(document).ready(function() {
 
 			if ( !result.hasChildNodes() ) {
 				$(result).append(img);
-				answerYLoc = answerYLoc - 1;
+				answerLoc = answerLoc - 1;
+				painting = 1;
 				break;
 			}
 		}
-		painting = 1;
 	});
 
 	$("#select4").on("click", function() {   // 답선택 td id별로 클릭이벤트 부여                  
@@ -198,11 +175,11 @@ $(document).ready(function() {
 
 			if ( !result.hasChildNodes() ) {
 				$(result).append(img);
-				answerYLoc = answerYLoc + 1;
+				answerLoc = answerLoc + 1;
+				painting = 1;
 				break;
 			}
 		}
-		painting = 1;
 	});
 
 	$("#select5").on("click", function() {   // 클릭이벤트 및 정답값 처리               
@@ -215,7 +192,7 @@ $(document).ready(function() {
 		img.setAttribute("src", gameImgPath + "/arrow5.jpg");
 		img.setAttribute("width", "100px");
 		img.setAttribute("height", "100px");
-
+		
 		for ( var i = 1; i <= step; i++ ) {
 			var result = document.getElementById("result" + i);
 
@@ -223,27 +200,26 @@ $(document).ready(function() {
 				$(result).append(img);
 
 				for(var j = 0; j < verificationArray.length; j ++) {
-					var tempXLoc = paintLocArray[j].paintXLoc;
-					var tempYLoc = paintLocArray[j].paintYLoc;
-
-					if ( (tempXLoc == answerXLoc) || (tempYLoc == answerYLoc) ) {
-						verificartionArray[j].slice(j, 1);
+					var tempLoc = verificationArray[j];
+					if ( (tempLoc == answerLoc) ) {
+						tempArray = verificationArray.splice(j, 1); 						
 					}   
 				}
+				painting = 0;
 				break;
 			}
 		}
-		painting = 0;
+		
 	});
 
 	//정답 검증 버튼
 	$("#okBtn").on("click", function() {
 		//정답시
 		if ( verificationArray.length == 0 ) {
-			window.open("/5bject/game/game2_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
+			window.open("/5bject/game/game_correctPop.do", "pop", "width=400, height=150, top=50, left=150");
 		//오답시   
 		} else {
-			window.open("/5bject/game/game2_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150");
+			window.open("/5bject/game/game_incorrectPop.do", "pop", "width=400, height=150, top=50, left=150");
 		}
 	});
 
@@ -252,10 +228,10 @@ $(document).ready(function() {
 		for ( var i = 1; i <= step; i++ ) {
 			$("#result" + i).empty();
 		}
-
-		answerXLoc = startXLoc;
-		answerYLoc = startYLoc; 
-		verificationArray = paintLocArray;
+		answerLoc = startLoc; 
+		for( var i = 0; i < paintLocArray.length; i++ ){
+			verificationArray[i] = paintLocArray[i];
+		}
 	});
 
 

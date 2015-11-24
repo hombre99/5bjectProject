@@ -76,6 +76,23 @@ public class MemberServiceImpl implements MemberService {
 	public void updateMemberPassword(HashMap map) {
 		dao.updateMemberPassword(map);
 	}
+
+	//20151123 ADD KKH - 고객목록 관련 페이징 처리
+	@Override
+	public Map getMembersPaging(int pageNo) {
+		HashMap map = new HashMap();
+		map.put("list", dao.getMembersPaging(pageNo));
+		PagingBean pagingBean = new PagingBean(dao.selectCountMembers(),pageNo);
+		map.put("pagingBean", pagingBean);
+		return map;
+	}
+	
+	// 20151123 추가
+	public int getCountMember(){
+		return dao.selectCountMembers();
+	}
+
+	
 	
 
 }

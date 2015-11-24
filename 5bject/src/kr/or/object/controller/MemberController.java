@@ -10,6 +10,7 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.tiles.template.AttributeResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.object.service.MemberService;
+import kr.or.object.util.PagingBean;
 import kr.or.object.validator.MemberValidator;
 import kr.or.object.vo.Members;
 import kr.or.object.vo.Upload;
@@ -98,26 +100,19 @@ public class MemberController {
 		return "/WEB-INF/script/login/member_info.jsp";
 	}
 	
+	//20151123. ADD KKH
 	@RequestMapping("/memberList.do")
-	public String memberList(HttpSession session){
+	public String list(@RequestParam(defaultValue="1") String pageNo, ModelMap model){
+		int page = 1;
+		try{
+			page=Integer.parseInt(pageNo);
+		}catch(NumberFormatException e){}
 		
-		List<Members> members = service.getMembers();
-		
-		// 20151118. 관리자 정보는 회원 ID에서 삭제
-		for(int i =0; i<members.size(); i++){
-			if((members.get(i).getId()).equals("objectclass")){
-				members.remove(i);
-			}
-		}
-		System.out.println(members);
-		session.setAttribute("member", members);
+		Map attributes = service.getMembersPaging(page);
+		model.addAllAttributes(attributes);
 		return "/WEB-INF/script/login/member_list.jsp";
 	}
-	
-	
-	
-	
-	
+
 	@RequestMapping("/memberRemove.do")
 	public String remove(HttpSession session, @RequestParam String id){
 		service.removeMemberById(id);
@@ -200,6 +195,7 @@ public class MemberController {
 		map.put("emailAddress", emailAddress);
 		map.put("phoneNumber",phoneNumber);
 		String password = service.findMemberPassword(map);
+		session.setAttribute("password", password);
 		
 		if(password!=null){
 			// 총 36개의 문자
