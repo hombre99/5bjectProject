@@ -3,17 +3,17 @@
 <%@ page import="java.util.*" %>
 <jsp:useBean id="dao" class="kr.or.object.dao.BoardDaoImpl"/>
 <!DOCTYPE html>
-<html>
+<%-- <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
 
 <%	
-	int total = dao.count();
-	ArrayList<Board> alist = dao.getContentList();
-	int size = alist.size();
-	int size2 = size;
+	//int total = dao.count();
+	//ArrayList<Board> alist = dao.getContentList();
+	//int size = alist.size();
+	//int size2 = size;
 	
 	final int ROWSIZE = 4;
 	final int BLOCK = 5;
@@ -139,5 +139,5 @@ if(total==0) {
    <td><input type=button value="글쓰기" OnClick="window.location='/board/write.do'"></td>
   </tr>
  </table>
-</body>
+</body> --%>
 </html>

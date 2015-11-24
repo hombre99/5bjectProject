@@ -13,7 +13,7 @@
 	int pg = Integer.parseInt(request.getParameter("pg"));
 	boolean ch = true;
 	if(ch) {
-			dao.update(vo, idx);
+			//dao.update(vo, idx);
 		%>
 			<script type="text/javascript">
 				self.window.alert("글이 수정되었습니다.");

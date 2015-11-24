@@ -17,7 +17,7 @@
 	int ref = vo1.getRef();
 	Date date = vo1.getDate();
 		
-	dao.insertReply(vo, ref, date);
+	//dao.insertReply(vo, ref, date);
 	%>
   <script type="text/javascript">
    self.window.alert("입력한 답글을 저장하였습니다.");

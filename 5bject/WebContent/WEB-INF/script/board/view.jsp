@@ -11,7 +11,7 @@
 	int idx = Integer.parseInt(request.getParameter("idx"));
 	int pg = Integer.parseInt(request.getParameter("pg"));
 	Board vo = dao.getView(idx);	
-	dao.updateHit(idx);
+	//dao.updateHit(idx);
 %>
 </head>
 <body>

@@ -10,7 +10,7 @@
 <%	
 	request.setCharacterEncoding("euc-kr");
 	int max = dao.getMax();
-	dao.insertWrite(board, max);
+	//dao.insertWrite(board, max);
 %>
   <script type="text/javascript">
    self.window.alert("입력한 글을 저장하였습니다.");
