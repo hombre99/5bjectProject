@@ -7,6 +7,7 @@ public class Language implements Serializable{
 	private String definition;
 	private String information;
 	private String detail;
+	private static final long serialVersionUID = 1L;
 	public Language() {
 		super();
 	}

@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.object.util.PagingBean;
 import kr.or.object.vo.Members;
 import kr.or.object.vo.Upload;
 
@@ -20,10 +21,19 @@ public class MemberDaoImpl implements MemberDao{
 	}
 	@Override
 	//chj add 20151120
-	public List<Upload> getRequests() {
-		return session.selectList("memberMapper.selectRequests");
+	public List<Upload> getRequests(int pageNo) {
+		HashMap map= new HashMap();
+		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
+		map.put("pageNo", pageNo);
+		List<Upload> list= session.selectList("memberMapper.selectRequests",map);
+		return list;
 	}
-	//chj add
+	//chj add 20151123
+	@Override
+	public int selectCountRequests() {
+		return session.selectOne("memberMapper.selectCountRequests");
+	}
+	//chj add 20151120
 	@Override
 	public int insertRequest(Upload upload) {
 		return session.insert("memberMapper.insertRequest",upload);
@@ -75,6 +85,27 @@ public class MemberDaoImpl implements MemberDao{
 		// TODO Auto-generated method stub
 		return session.update("memberMapper.updateMemberPassword",map);
 	}
+	
+	//20151123. ADD KKH - 고객목록 페이징 처리
+	@Override
+	public List<Members> getMembersPaging(int pageNo) {
+		HashMap map = new HashMap();
+		
+		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
+		map.put("pageNo", pageNo);
+		
+		List<Members> list = session.selectList("memberMapper.selectMemberPaging",map);
+		
+		return list;
+	}
+	
+	// 20151123. KKH ADD - 아이디 조회시 paging 처리관련
+	@Override
+	public int selectCountMembers() {
+		return session.selectOne("memberMapper.selectCountMembers");
+	}
+	
+	
 	
 	
 }

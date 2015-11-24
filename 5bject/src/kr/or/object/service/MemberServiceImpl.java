@@ -3,9 +3,12 @@ package kr.or.object.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import kr.or.object.dao.MemberDao;
+import kr.or.object.util.PagingBean;
 import kr.or.object.vo.Members;
 import kr.or.object.vo.Upload;
 @Service("memberService")
@@ -24,8 +27,12 @@ public class MemberServiceImpl implements MemberService {
 	
 	//20151120 service 추가 chj
 	@Override
-	public List<Upload> getRequestList(){
-		return dao.getRequests();
+	public Map getRequestList(int pageNo){
+		HashMap map = new HashMap();
+		map.put("list", dao.getRequests(pageNo));
+		PagingBean pagingBean = new PagingBean(dao.selectCountRequests(),pageNo);
+		map.put("pagingBean", pagingBean);
+		return map;
 	}
 	
 	@Override
@@ -69,6 +76,23 @@ public class MemberServiceImpl implements MemberService {
 	public void updateMemberPassword(HashMap map) {
 		dao.updateMemberPassword(map);
 	}
+
+	//20151123 ADD KKH - 고객목록 관련 페이징 처리
+	@Override
+	public Map getMembersPaging(int pageNo) {
+		HashMap map = new HashMap();
+		map.put("list", dao.getMembersPaging(pageNo));
+		PagingBean pagingBean = new PagingBean(dao.selectCountMembers(),pageNo);
+		map.put("pagingBean", pagingBean);
+		return map;
+	}
+	
+	// 20151123 추가
+	public int getCountMember(){
+		return dao.selectCountMembers();
+	}
+
+	
 	
 
 }

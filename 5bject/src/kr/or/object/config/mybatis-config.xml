@@ -21,5 +21,8 @@
 		<!-- GameMapper ADD. -->
 		<mapper resource="kr/or/object/dao/mapper/gamescoreMapper.xml" />
 		<mapper resource="kr/or/object/dao/mapper/gamewordMapper.xml" />
+
+		<!-- BoardMapper ADD. -->
+		<mapper resource="kr/or/object/dao/mapper/boardMapper.xml" />
 	</mappers>
 </configuration>

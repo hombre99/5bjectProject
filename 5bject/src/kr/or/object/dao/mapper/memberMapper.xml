@@ -34,6 +34,26 @@
 				MEMBER_GENDER, MEMBER_EMAIL_ID, MEMBER_EMAIL_ADDRESS, MEMBER_PHONE
 	</sql>
 	
+	<!-- sql upload request CHJ20151123 -->
+	<sql id="request-sql">
+				r.request_id, r.request_information, r.request_date, 
+				m.member_id, m.member_password, m.member_name, m.member_month,
+				m.member_day, m.member_year, m.member_gender, m.member_email_id, m.member_email_address, m.member_phone	
+	</sql>
+
+	<sql id="request-sql2">
+				request_id, request_information, request_date, 
+				member_id, member_password, member_name, member_month,
+				member_day, member_year, member_gender, member_email_id, member_email_address, member_phone
+	</sql>
+	<!-- from request_member r, members m -->
+	
+	<!-- 20151123. ADD KKH - 고객목록 페이징처리 추가 -->
+	<sql id="member-column">
+	MEMBER_ID, MEMBER_PASSWORD, MEMBER_NAME, MEMBER_MONTH, MEMBER_DAY, MEMBER_YEAR,
+				MEMBER_GENDER, MEMBER_EMAIL_ID, MEMBER_EMAIL_ADDRESS, MEMBER_PHONE
+	</sql>
+				
 	<insert id="insertMember" parameterType="members">
 		INSERT	INTO MEMBERS VALUES
 				(#{id}, #{password}, #{name}, #{month}, #{day}, #{year}, #{gender}, #{emailId}, #{emailAddress}, #{phoneNumber})
@@ -66,13 +86,17 @@
 	</select>
 
 	<!-- chj 20151120 customer request list -->
-	<select id="selectRequests" resultMap="select-request-resultmap">
-		select r.request_id, r.request_information, r.request_date, 
-				m.member_id, m.member_password, m.member_name, m.member_month,
-				m.member_day, m.member_year, m.member_gender, m.member_email_id, m.member_email_address, m.member_phone
-				from request_member r, members m
+	<select id="selectRequests" parameterType="hashmap" resultMap="select-request-resultmap">
+		select <include refid ="request-sql2"/> from (select <include refid ="request-sql2"/> 
+		, ceil(rownum/#{contentsPerPage}) page
+			from (select <include refid ="request-sql"/> from request_member r, members m)
+		)where page= #{pageNo}
 	</select>
 	
+	<!-- chj 20151123 -->
+	<select id="selectCountRequests" resultType="_int">
+		select count(request_id) from request_member
+	</select>
 	<!-- 20151118. ADD KKH - 아이디 찾는 SQL문 추가 -->
 	<select id = "selectMemberId" parameterType="hashmap" resultType="string">
 		SELECT MEMBER_ID FROM MEMBERS 
@@ -89,4 +113,23 @@
 	<select id ="updateMemberPassword" parameterType="hashmap" >
 		UPDATE MEMBERS SET MEMBER_PASSWORD=#{newPassword} WHERE MEMBER_ID=#{id}
 	</select>
+
+	<!-- 20151123. ADD KKH 고객목록 페이징 처리 -->
+	<select id="selectMemberPaging" parameterType="hashmap" resultMap="member-resultmap">
+		select <include refid="member-column"/>
+			from (
+				select <include refid="member-column"/>, ceil(rownum/#{contentsPerPage}) page
+				from(
+					select <include refid="member-column"/>
+					from members
+					order by member_id
+				)
+			)
+			where page = #{pageNo}	
+	</select>
+	<!-- 20151123.ADD KKH 고객목록 페이징 처리 -->
+	<select id="selectCountMembers" resultType="_int">
+		select count(member_id) from members
+	</select>
+
 </mapper>

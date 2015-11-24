@@ -25,14 +25,14 @@
 				padding: 10px;
 			}
 	
-			footer {
+/* 			footer {
 				background-color: lightblue;
 				color: white;
 				padding-top: 10px;
 				text-align: center;
 				height: 30px;
 				clear: both;
-			}
+			} */
 			table{
 				margin-left: 50px;
 				font-family: HY나무M;
@@ -61,7 +61,10 @@
 					<tr>
 						<td>
 							<input type="text" name="id" value="${ requestScope.members.id }" placeholder="사용할 아이디를 입력하세요." size="25" maxlength="25" />
-							<span class="error"><form:errors path = "members.id"/></span>
+							<br>
+
+							<span class="error"><form:errors path ="members.id"/></span>
+
 						</td>
 						<td></td>
 					</tr>
@@ -71,6 +74,7 @@
 					<tr>
 						<td>
 							<input type="password" name="password" value="${ requestScope.members.password }" placeholder="비밀번호를 입력하세요." size="25" maxlength="25" />
+							<br>
 							<span class="error"><form:errors path="members.password" delimiter=" - "/></span>
 						</td>
 						<td></td>
@@ -80,8 +84,11 @@
 					</tr>
 					<tr>
 						<td colspan="2">
+
 							<input type="text" name="name" id="name" value="${requestScope.members.name}" placeholder="이름을 입력하세요" autofocus="autofocus" />
+							<br>
 							<span class="error"><form:errors path = "members.name" delimiter=" - "/></span>
+
 						</td>
 					</tr>
 					<tr>
@@ -116,6 +123,7 @@
 										<option>${ num }</option>
 								</c:forEach>
 							</select>
+							<br>
 				 			<span class="error"><form:errors path="members.year" delimiter=" - "/></span>
 							<span class="error"><form:errors path="members.day" delimiter=" - "/></span>
 							<span class="error"><form:errors path="members.month" delimiter=" - "/></span>
@@ -137,6 +145,7 @@
 								<option value="hotmail.com">hotmail.com</option>
 								<option value="daum.com">daum.com</option>
 						</select>
+						<br>
 						<span class="error"><form:errors path="members.emailId" delimiter=" - "/></span>
 					</td>
 				<tr>
@@ -146,6 +155,7 @@
 					<td colspan="2">
 						<label>male:<input type="radio" name="gender" value="male" /></label>
 						<label>female:<input type="radio" name="gender" value="female" /></label>
+						<br>
 						<span class="error"><form:errors path = "members.gender" delimiter=" - "/></span>
 					</td>
 				</tr>
@@ -155,6 +165,7 @@
 				<tr>
 					<td>
 						<input type="number" name="phoneNumber" value="${requestScope.members.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" size="11" maxlength="11" />
+						<br>
 						<span class="error"><form:errors path="members.phoneNumber" delimiter=" - "/></span>
 					</td>
 					<td></td>
