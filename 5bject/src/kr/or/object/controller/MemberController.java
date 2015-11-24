@@ -10,11 +10,10 @@ import java.util.HashMap;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tiles.template.AttributeResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.validation.BindingResult;
+
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -58,8 +57,8 @@ public class MemberController {
 			if (id.equals(login.getId()) && password.equals(login.getPassword())) {
 				session.setAttribute("id", id);
 				session.setAttribute("member", login);
-			} else {
-				// 20151124
+			}else{
+				//20151124
 				String error = "아이디 또는 비밀번호를 정확하게 입력하여 주세요.";
 				session.setAttribute("error", error);
 			}

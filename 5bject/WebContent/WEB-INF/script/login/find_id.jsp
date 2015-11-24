@@ -5,12 +5,14 @@
 <meta charset=" UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="/5bject/jquery.do"></script>
+
 <script type="text/javascript">
    $(document).ready(function() {
       $("#close").on("click", function() {
          window.close();
-      });     
+      });      
    });
+
 </script>
 <style type="text/css">
 table {
@@ -50,5 +52,6 @@ table {
          </tr>
       </table>
    </form>
+
 </body>
 </html>

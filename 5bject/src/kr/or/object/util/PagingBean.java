@@ -26,6 +26,12 @@ public class PagingBean {
 	 */
 	public static int PAGES_PER_PAGEGROUP = 5;
 	
+	/*
+	 * Board용 static 변수
+	 */
+	public static int CONTENTS_PER_PAGE_BOARD = 10;
+	public static int PAGES_PER_PAGEGROUP_BOARD = 10;
+	
 	/**
 	 * 총 데이터(내용) 개수, 현재 페이지를 받아 member variable에 할당
 	 * @param totalContent

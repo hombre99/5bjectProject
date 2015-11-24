@@ -7,61 +7,64 @@
 
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="UTF-8">
-      <title>Insert title here</title>
-      <script type="text/javascript" src="/5bject/jquery.do"></script>
-      <c:choose>
-         <c:when test="${ sessionScope.gameNum != null && sessionScope.difficulty != null }">
-            <script type="text/javascript">
-               var gameNum = '${ sessionScope.gameNum }';
-               var difficulty = '${ sessionScope.difficulty }';
-            </script>
-            <c:choose>
-               <c:when test="${ sessionScope.gameNum == 1 }">
-                  <script type="text/javascript" src="/5bject/game/game1js.do"></script>
-               </c:when>
-               <c:when test="${ sessionScope.gameNum == 2 }">
-                  <script type="text/javascript" src="/5bject/game/game2js.do"></script>
-               </c:when>
-               <c:when test="${ sessionScope.gameNum == 3 }">
-                  <script type="text/javascript" src="/5bject/game/game3js.do"></script>
-               </c:when>
-            </c:choose>
-         </c:when>
-         <c:otherwise>
-            <script type="text/javascript">
-               $(document).ready(function() {
-                  $("#link2").on("click", function() {
-                     window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
-                  });
-                  $("#register_link").on("click", function() {
-                     window.open("/5bject/member/register.do" ,"ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,resizable=0");
-                  });
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="/5bject/jquery.do"></script>
+		<c:choose>
+			<c:when test="${ sessionScope.gameNum != null && sessionScope.difficulty != null }">
+				<script type="text/javascript">
+					var loginId = '${ sessionScope.member.id }';
+					var gameNum = '${ sessionScope.gameNum }';
+					var difficulty = '${ sessionScope.difficulty }';
+				</script>
+				<c:choose>
+					<c:when test="${ sessionScope.gameNum == 1 }">
+						<script type="text/javascript" src="/5bject/game/game1js.do"></script>
+					</c:when>
+					<c:when test="${ sessionScope.gameNum == 2 }">
+						<script type="text/javascript" src="/5bject/game/game2js.do"></script>
+					</c:when>
+					<c:when test="${ sessionScope.gameNum == 3 }">
+						<script type="text/javascript" src="/5bject/game/game3js.do"></script>
+					</c:when>
+				</c:choose>
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript">
+					$(document).ready(function() {
+						$("#link2").on("click", function() {
+							window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
 
-                  $("#update_link").on("click",function(){
-                     window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
-                  });
-                  
-                  // language_link ADD. 20151116. CHJ
-                  $("#language_link").on("click", function() {
-                     window.open("/5bject/language/computer_language.do","ok","width=1100, height=850,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");   
-                  });
+						$("#register_link").on("click", function() {
+							window.open("/5bject/member/register.do" ,"ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,resizable=0");
+						});
 
-                  // mypage_link, logout_link ADD. 20151116. KKH
-                  $("#mypage_link").on("click", function() {
-                     window.open("/5bject/member/mypage.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
-                  });
-          
-					$("#logout_link").on("click", function() {
+						$("#update_link").on("click",function(){
+							window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
+
+						// language_link ADD. 20151116. CHJ
+						$("#language_link").on("click", function() {
+							window.open("/5bject/language/computer_language.do","ok","width=1100, height=850,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+						});
+						// mypage_link, logout_link ADD. 20151116. KKH
+						$("#mypage_link").on("click", function() {
+							window.open("/5bject/member/mypage.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
+
+						$("#memberList").on("click", function(){
+							window.open("/5bject/member/memberList.do?pageNo=${param.pageNo}");
+						});
+
+						// 20151120. ADD KKH - 포인터 발생
+						$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
+
+						$("#logout_link").on("click", function() {
 							if ( confirm("로그아웃하시겠습니까?") ) {
 								location.replace("/5bject/member/logout.do");
-							} 
-						});					
-						$("#memberList").on("click", function(){
-							window.open("/5bject/member/memberList.do","ok","width=1000, height=700");
-						});
-						
+							} 			
 						// 20151120. ADD KKH - 포인터 발생
 						$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
 
@@ -69,18 +72,20 @@
 						$("#request_list").on("click", function() {
 							window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
 						});
-					});
-               /*20151123 findId & Pwd ADD*/
-                  function findId(){
-                     window.open("/5bject/member/findId.do","ok","width=650, height=300");
-                  };
-                  function findPwd(){
-                     window.open("/5bject/member/findPwd.do","ok","width=650, height=300");
-                  };
-            </script>
-         </c:otherwise>
-      </c:choose>
 
+					});
+						/*20151123 findId & Pwd ADD*/
+						function findId() {
+							window.open("/5bject/member/findId.do","ok","width=450, height=400");
+						};
+
+						function findPwd() {
+							window.open("/5bject/member/findPwd.do","ok","width=450, height=300");
+						};
+					});					
+				</script>
+			</c:otherwise>
+		</c:choose>
       <!-- 여기서부터 손대지 마세여... -->
       <link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
       <link
@@ -110,7 +115,6 @@
          //]]>
       </script>
       <!-- 여기까지 손대지 마세여... -->
-
       <style type="text/css">
          header{
             background-color: lightblue;
@@ -142,18 +146,6 @@
             margin-top: 150px;
             text-align: center;
          }
-
-
-         /* 게임1용 CSS */
-         #td2 {
-            border: 1px solid black;
-            padding: 0px;
-            height: 200px;
-            width: 300px;
-            position: relative;
-            text-align: center;
-         }
-
 			/* 게임1용 CSS */
 			#td2 {
 				border: 1px solid black;
@@ -185,7 +177,7 @@
 				width: 600px;
 				border-collapse: collapse;
 			}
-      </style>
+		</style>
    </head>
    <body>
       <header>
