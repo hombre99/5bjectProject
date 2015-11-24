@@ -12,16 +12,18 @@
          window.close();
       });
    });
-
 </script>
+<style type="text/css">
+table {
+	margin-left: 70px;
+}
+</style>
 </head>
 <body>
 
    <form action="/5bject/member/find_MemberPassword.do" method="post">
       <table>
-         <tr>
-            <td colspan="4" align="center"><font color="lightblue">비밀번호 찾기</font></td>
-         </tr>
+         <tr><td colspan="4"><img src="/5bject/image/member/failPassword.jpg" /></td></tr>
          <tr>
             <td>아이디</td>
             <td colspan="3"><input type="text" name="id" id="id"

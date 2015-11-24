@@ -14,7 +14,7 @@
 		$(document).ready(function() {
 			$("#update_link").on("click", function() {
 				/* width 800과 height 700으로 수정*/
-				window.open('/5bject/member/update.do','ok','width=800, height=500,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
+				window.open('/5bject/member/update.do','ok','width=800, height=500, toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
 			});
 			$("#close").on("click",function(){
 				window.close();
@@ -38,9 +38,9 @@
 				text-align: left;
 				padding: 5px;
 			}
+			/*table margin-left 70px change 20151124 CHJ*/
 			table{
-				margin-left: 50px;
-				font-family: HY나무M;
+				margin-left: 70px;
 			}
 		</style>
 </head>
@@ -50,15 +50,17 @@
 	<header>
 		<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 	</header>
+	<!-- 20151124 CHJ table update -->
 		<table>
-			<tr><td colspan="2" align="center"><h2>${sessionScope.member.id}의 회원정보</h2>
-			<tr><td>ID </td><td> ${sessionScope.member.id}<br></td></tr>
-			<tr><td>PASSWORD </td><td> ${sessionScope.member.password }<br></td></tr>
-			<tr><td>NAME </td><td> ${sessionScope.member.name }<br></td></tr>
-			<tr><td>BIRTHDAY </td><td> ${sessionScope.member.month }  ${sessionScope.member.day} ${sessionScope.member.year }<br></td></tr>
-			<tr><td>GENDER </td><td> ${sessionScope.member.gender }<br></td></tr>
-			<tr><td> EMAIL </td><td> ${sessionScope.member.emailId }@${sessionScope.member.emailAddress }<br></td></tr>
-			<tr><td>PHONENUMBER </td><td> 0${sessionScope.member.phoneNumber}</td></tr>
+			<tr><td colspan="2" align="center"><br><font size="5" face="impact" color="lightblue">${sessionScope.member.id}</font><font color="lightblue">의 회원정보</font><br></td></tr>
+			<tr><td colspan="2"> </td></tr>
+			<tr><td><b>ID</b></td><td> ${sessionScope.member.id}<br></td></tr>
+			<tr><td><b>PASSWORD</b></td><td> ${sessionScope.member.password }<br></td></tr>
+			<tr><td><b>NAME</b></td><td> ${sessionScope.member.name }<br></td></tr>
+			<tr><td><b>BIRTHDAY</b></td><td> ${sessionScope.member.month }  ${sessionScope.member.day} ${sessionScope.member.year }<br></td></tr>
+			<tr><td><b>GENDER</b></td><td> ${sessionScope.member.gender }<br></td></tr>
+			<tr><td><b>EMAIL</b></td><td> ${sessionScope.member.emailId }@${sessionScope.member.emailAddress }<br></td></tr>
+			<tr><td><b>PHONENUMBER</b></td><td> 0${sessionScope.member.phoneNumber}</td></tr>
 			<tr><td colspan="2"></td></tr>
 			<tr>
 				<td colspan="2">

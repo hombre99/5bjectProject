@@ -12,7 +12,11 @@
 			}else{
 				return false;
 			}
-		}		
+		}
+		/*20151124 CHJ page back ADD*/
+		function page_back(){
+			history.go(-1);
+		}
 </script>
 <style type="text/css">
 		table{
@@ -44,7 +48,7 @@
 			<tr><td ><b>문의사항</b></td></tr>
 			<tr><td><textarea name="requestInfo" cols="60" rows="15" placeholder="문의사항을 입력해주세요"></textarea></td></tr>
 			<tr><td colspan="2"><span class="error"><b>${requestScope.error}</b></span></td></tr>
-			<tr><td><input type="submit" value="문의하기"></td></tr>
+			<tr><td colspan="2"><input type="submit" value="문의하기">&nbsp;<input type="button" onclick="page_back();" value="뒤로가기"></td></tr>
 		</table>
 	</form>
 </body>

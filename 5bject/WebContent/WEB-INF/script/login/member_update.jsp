@@ -8,8 +8,14 @@
 <html>
 	<head>
 		<meta charset=" UTF-8">
+		
 		<title>UPDATE FORM</title>
+		<script type="text/javascript" src="/5bject/jquery.do"></script>
 		<script type="text/javascript">
+			/*20151124 CHJ page back ADD*/
+			function page_back(){
+				history.go(-1);
+			}
 		</script>
 		<style type="text/css">
 		/* css 설정 */
@@ -154,7 +160,7 @@
 					<td></td>
 				</tr>
 				<tr>
-					<td><input type="submit" value="수정하기" /></td>
+					<td colspan="2"><input type="submit" value="수정하기" />&nbsp;<input type="button" onclick="page_back();" value="뒤로가기"></td>
 					<td></td>
 				</tr>
 			</table>
