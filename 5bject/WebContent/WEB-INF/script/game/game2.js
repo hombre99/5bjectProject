@@ -376,3 +376,9 @@ $(document).ready(function() {
 		window.open("/5bject/member/findID.do", "ok", "width=400, height=150");
 	});
 });
+function findId(){
+    window.open("/5bject/member/findId.do","ok","width=450, height=400");
+ };
+ function findPwd(){
+    window.open("/5bject/member/findPwd.do","ok","width=450, height=300");
+ };

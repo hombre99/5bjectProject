@@ -27,4 +27,10 @@ public interface MemberDao {
 	
 	// 20151120. ADD KKH - 임시비밀번호로 바꿔주기
 	int updateMemberPassword(HashMap map);
+	
+	// 20151123. KKH ADD - 아이디 조회시 paging 처리관련
+	int selectCountMembers();
+	
+	// 20151123. KKH ADD - 아이디 조회시 paging 처리관련
+	List<Members> getMembersPaging(int pageNo);
 }

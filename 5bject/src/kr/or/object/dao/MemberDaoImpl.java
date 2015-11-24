@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.object.util.PagingBean;
 import kr.or.object.vo.Members;
 import kr.or.object.vo.Upload;
 
@@ -75,6 +76,27 @@ public class MemberDaoImpl implements MemberDao{
 		// TODO Auto-generated method stub
 		return session.update("memberMapper.updateMemberPassword",map);
 	}
+	
+	//20151123. ADD KKH - 고객목록 페이징 처리
+	@Override
+	public List<Members> getMembersPaging(int pageNo) {
+		HashMap map = new HashMap();
+		
+		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
+		map.put("pageNo", pageNo);
+		
+		List<Members> list = session.selectList("memberMapper.selectMemberPaging",map);
+		
+		return list;
+	}
+	
+	// 20151123. KKH ADD - 아이디 조회시 paging 처리관련
+	@Override
+	public int selectCountMembers() {
+		return session.selectOne("memberMapper.selectCountMembers");
+	}
+	
+	
 	
 	
 }
