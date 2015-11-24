@@ -16,5 +16,8 @@
 		
 		<!-- LanguageMapper ADD. -->
 		<mapper resource="kr/or/object/dao/mapper/languageMapper.xml" />
+		
+		<!-- BoardMapper ADD. -->
+		<mapper resource="kr/or/object/dao/mapper/boardMapper.xml" />
 	</mappers>
 </configuration>
