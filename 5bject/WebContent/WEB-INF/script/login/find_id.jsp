@@ -6,21 +6,22 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 <script type="text/javascript">
-
    $(document).ready(function() {
       $("#close").on("click", function() {
          window.close();
-      });
-      
+      });     
    });
-
 </script>
+<style type="text/css">
+table {
+   margin-left: 70px;
+}
+</style>
 </head>
 <body>
-
    <form action="/5bject/member/find_memberId.do" method="post">
       <table>
-         <tr><td colspan="4" align="center"><h2><font color="lightblue">아이디 찾기</font></h2></td></tr>
+         <tr><td colspan="4"><img src="/5bject/image/member/failId.jpg" /></td></tr>
          <tr>
             <td>이메일</td>
             <td><input type="text" name="emailId" id="emailId"
@@ -49,6 +50,5 @@
          </tr>
       </table>
    </form>
-
 </body>
 </html>

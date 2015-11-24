@@ -46,7 +46,7 @@ public class MemberController {
 		
 		System.out.printf("EmailAddress[ %s ] EmailId[ %s ]\n", member.getEmailAddress(), member.getEmailId());
 		service.insertMember(member);
-		// return "/WEB-INF/script/login/register_success.jsp";
+		
 		return "/member/register_success.do";
 	}
 
@@ -177,27 +177,30 @@ public class MemberController {
 	
 	//20151120. ADD KKH - 잃어버린 ID찾기
 	@RequestMapping(value = "/find_memberId.do", method = RequestMethod.POST)
-	public String findMemberId(HttpSession session ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
+	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
 		//System.out.printf("eID[%s]eAdd[%s]pn[0%d]\n", emailId, emailAddress, phoneNumber);
-		HashMap <String, Object>map = new HashMap();
+		HashMap map = new HashMap();
 		map.put("emailId", emailId);
 		map.put("emailAddress", emailAddress);
 		map.put("phoneNumber",phoneNumber);
-		String id = service.findMemberId(map);
-		session.setAttribute("memId", id);
+		List idList = service.findMemberId(map);
+		if(idList.size()!=0){
+			request.setAttribute("memId", idList);
+		}
+		System.out.println(idList);
 		return "/WEB-INF/script/login/find_id_result.jsp";  
 	}
 	
 	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
 	@RequestMapping(value="/find_MemberPassword.do", method = RequestMethod.POST)
-	public String findMemberPassword(HttpSession session, @RequestParam String id, @RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
-		HashMap  <String, Object> map = new HashMap();
+	public String findMemberPassword(HttpServletRequest request, @RequestParam String id, @RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
+		HashMap  map = new HashMap();
 		map.put("id", id);
 		map.put("emailId", emailId);
 		map.put("emailAddress", emailAddress);
 		map.put("phoneNumber",phoneNumber);
 		String password = service.findMemberPassword(map);
-		session.setAttribute("password", password);
+		request.setAttribute("password", password);
 		
 		if(password!=null){
 			// 총 36개의 문자
@@ -211,7 +214,7 @@ public class MemberController {
 			System.out.println(newPassword); // test
 			map.put("newPassword", newPassword);
 			service.updateMemberPassword(map);
-			session.setAttribute("newPassword", newPassword);
+			request.setAttribute("newPassword", newPassword);
 	}
 		return "/WEB-INF/script/login/find_password_result.jsp"; 
 	}

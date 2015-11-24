@@ -55,9 +55,9 @@
                      window.open("/5bject/member/mypage.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
                   });
 
-                              
+                   //20151124 
                   $("#memberList").on("click", function(){
-                     window.open("/5bject/member/memberList.do?pageNo=${param.pageNo}");
+                     window.open("/5bject/member/memberList.do?pageNo=${param.pageNo}","ok","width=1000, height=700");
                   });
                   
                   // 20151120. ADD KKH - 포인터 발생
@@ -77,10 +77,10 @@
 
 					/*20151123 findId & Pwd ADD*/
 						function findId(){
-							window.open("/5bject/member/findId.do","ok","width=450, height=400");
+							window.open("/5bject/member/findId.do","ok","width=650, height=300");
 						};
 						function findPwd(){
-							window.open("/5bject/member/findPwd.do","ok","width=450, height=300");
+							window.open("/5bject/member/findPwd.do","ok","width=650, height=300");
 						};
 				</script>
 			</c:otherwise>
@@ -267,8 +267,7 @@
                         <table>
                            <tr><td colspan="2"><b>objectclass</b>님<br/></td></tr>
                            <tr><td colspan="2"><img src="/5bject/image/member/manager.jpg" /><p></td></tr>
-                           <tr><td colspan="2"><input type="button" id="memberList" value="회원정보조회" /><input type="button" value="회원점수조회" /><br/></td></tr>
-                           <tr><td colspan="2"><input type="button" id="request_list" value="고객문의-리스트" /><input type="button" value="로그아웃" id="logout_link" /></td></tr>
+                           <tr><td colspan="2"><input type="button" id="memberList" value="회원정보" /><input type="button" value="게임정보" /><input type="button" value="로그아웃" id="logout_link" /></td></tr>
                         </table>
                      </c:when>
                      <c:when test="${ sessionScope.id != null }">
@@ -311,72 +310,6 @@
       </footer>   
    </body>
 
-		<div class="blank"></div>
-		
-		<!-- <article class="fit-full color-scheme#e6e6fa" -->
-		<article id="art" class="fit-full color-scheme--red">
-			<article class="fit-fixed">
- 				<div class="grid-row stories padding-top--3">
-					<div class="grid-col-12 grid-col--center grid-col--align-center">
-							<font size="6" face="impact" color="skyblue">Enjoy Coding</font>
-					</div>
-				</div> 
-				<div class="grid-row">
-					<div id="language_link"
-						class="grid-col-4 grid-col--no--padding grid-col--no-margin card card--link ">
-						<img src="/5bject/image/member/newlink11.jpg" />
-					</div>
-					<div id="link2"
-						class="grid-col-4 grid-col--no--padding grid-col--no-margin card card--link">
-						<img src="/5bject/image/member/newlink22.jpg" />
-					</div>
-					
-					<div class="login">			
-						<!-- Admin Info ADD. 20151116. KKH -->
-						<!-- TODO 관리자 계정명 바뀔 수 있음. -->
-						<!-- font face ADD. 20151116. CHJ -->
-						<!-- Login Image ADD. 20151116. CHJ -->
-						<c:choose>			
-							<c:when test="${ sessionScope.member.id == 'objectclass' }">
-								<p><p/>
-								<table>
-									<tr><td colspan="2"><b>objectclass</b>님<br/></td></tr>
-									<tr><td colspan="2"><img src="/5bject/image/member/manager.jpg" /><p></td></tr>
-									<tr><td colspan="2"><input type="button" id="memberList" value="회원정보조회" /><input type="button" value="회원점수조회" /><br/></td></tr>
-									<tr><td colspan="2"><input type="button" id="request_list" value="고객문의-리스트" /><input type="button" value="로그아웃" id="logout_link" /></td></tr>
-								</table>
-							</c:when>
-							<c:when test="${ sessionScope.id != null }">
-								<p></p>
-								<font face="impact">${ sessionScope.id }님</font><br />
-								<img src="/5bject/image/member/success_login.jpg" />
-								<input type="button" id="mypage_link" value="마이페이지" />&nbsp;
-								<input type="button" id="logout_link" value="로그아웃" />
-							</c:when>
-							<c:otherwise>
-								<form action ="/5bject/member/login.do" method="post">
-									<table>
-										<p></p>
-										<tr><td colspan="2" align="center"><img src="/5bject/image/member/login.jpg" /></td></tr> 
-										<tr><td>&nbsp;아이디</td><td>&nbsp;<input type="text" name="id" placeholder="아이디 입력" /></td></tr> 
-										<tr><td>&nbsp;비밀번호</td><td>&nbsp;<input type="password" name="password" placeholder="비밀번호 입력" /></td></tr>
-										<tr><td colspan="3"><span class="error"><b>${sessionScope.error}</b></span></td></tr>	
-										<tr><td>&nbsp;&nbsp;<input type="submit" value="로그인" id="login" /></td><td>&nbsp;&nbsp;<img src="/5bject/image/member/register_form.jpg" id="register_link" /></td></tr>
-										<!-- 20151120. ADD 아이디/비밀번호 찾기 추가 -->
-									</table>			
-									<table>
-										<tr><td colspan="3" align="center">&nbsp;&nbsp;<a href ="javascript:findId()" class="findInfo">아이디</a>/<a href="javascript:findPwd()" class="findInfo">비밀번호 찾기</a></td></tr>			
-									</table>
-								</form>
-							</c:otherwise>
-						</c:choose>
-					</div>
-				</div>
-			</article>
-		</article>
-		<footer>		
-				<jsp:include page="/WEB-INF/script/layout/footer.jsp" />
-		</footer>	
-	</body>
+	
 
 </html>
