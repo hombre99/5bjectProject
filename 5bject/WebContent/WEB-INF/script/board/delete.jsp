@@ -26,7 +26,7 @@ function deleteCheck()
 </head>
 <body>
 <table>
-<form name=deleteform method=post action="delete_ok.jsp?idx=<%=idx%>&pg=<%=pg%>">
+<form name=deleteform method=post action="delete_success.do?idx=<%=idx%>&pg=<%=pg%>">
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">

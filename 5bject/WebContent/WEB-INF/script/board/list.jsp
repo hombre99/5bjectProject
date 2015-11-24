@@ -1,5 +1,5 @@
 <%@page contentType = "text/html;charset=UTF-8" %>
-<%@ page import="kr.or.object.*" %>
+<%@ page import="kr.or.object.vo.*" %>
 <%@ page import="java.util.*" %>
 <jsp:useBean id="dao" class="kr.or.object.dao.BoardDaoImpl"/>
 <!DOCTYPE html>
@@ -9,15 +9,15 @@
 <title>Insert title here</title>
 
 
-<%-- <%	
+<%	
 	int total = dao.count();
-	ArrayList<VO> alist = dao.getMemberList();
+	ArrayList<Board> alist = dao.getContentList();
 	int size = alist.size();
 	int size2 = size;
 	
 	final int ROWSIZE = 4;
 	final int BLOCK = 5;
-	int indent = 0;
+	int ref ;
 
 	int pg = 1;
 	
@@ -44,7 +44,7 @@
 	}
 	
 %>
-
+<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 </head>
 <body>
 <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -59,7 +59,7 @@
    <td width="7"><img src="img/table_right.gif" width="5" height="30" /></td>
   </tr>
 <%
-//	if(total==0) {
+if(total==0) {
 %>
 	 		<tr align="center" bgcolor="#FFFFFF" height="30">
 	 	   <td colspan="6">등록된 글이 없습니다.</td>
@@ -67,32 +67,32 @@
 	 <%
 	 	} else {
 	 		for(int i=ROWSIZE*(pg-1); i<end;i++){
-				VO vo = alist.get(i);
-				indent = vo.getIndent();
-				int idx = vo.getNum();
+				Board board = alist.get(i);
+				ref = board.getRef();
+				int idx = board.getWriteNo();
 %>
 	<tr height="25" align="center">
 	<td align="center">&nbsp;</td>
 	<td align="center"><%=idx%></td>
 	<td align="left"><% 
 		
-		for(int j=0;j<indent;j++){
+		for(int j=0;j<ref;j++){
 		%> &nbsp;&nbsp;&nbsp;<%
 		}
-		if(indent!=0){
+		if(ref!=0){
 			%><img src='img/reply_icon.gif' /><%
 		}
 	%>
-	<a href="view.jsp?idx=<%=idx%>&pg=<%=pg%>"><%=vo.getTitle() %></a><%
-		if(vo.isDayNew()){
+	<a href="view.jsp?idx=<%=idx%>&pg=<%=pg%>"><%=board.getTitle() %></a><%
+		if(board.isDayNew()){
 			%>
 			<img src='img/new.jpg' />
 			<%
 		}
 	%></td>
-   <td align="center"><%=vo.getName()%></td>
-   <td align="center"><%=vo.getTime() %></td>
-   <td align="center"><%=vo.getHit() %></td>
+   <td align="center"><%=board.getId()%></td>
+   <td align="center"><%=board.getDate() %></td>
+   <td align="center"><%=board.getHit() %></td>
    <td align="center">&nbsp;</td>
   <tr height="1" bgcolor="#D2D2D2"><td colspan="6"></td></tr>
 <% }} %>
@@ -136,8 +136,8 @@
 		</td>
 		</tr>
 	<tr align="center">
-   <td><input type=button value="글쓰기" OnClick="window.location='write.jsp'"></td>
+   <td><input type=button value="글쓰기" OnClick="window.location='/board/write.do'"></td>
   </tr>
- </table> --%>
+ </table>
 </body>
 </html>

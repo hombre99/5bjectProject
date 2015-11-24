@@ -12,19 +12,30 @@ public class Board{
    private int notice;
    private int hit;
    private int ref;
+   private boolean isDayNew;
    
    public Board(){}
+	
+	public Board(int writeNo, String id, String title, String content, Date date, int notice, int hit, int ref,
+		boolean isDayNew) {
+	super();
+	this.writeNo = writeNo;
+	this.id = id;
+	this.title = title;
+	this.content = content;
+	this.date = date;
+	this.notice = notice;
+	this.hit = hit;
+	this.ref = ref;
+	this.isDayNew = isDayNew;
+}
 
-	public Board(int writeNo, String id, String title, String content, Date date, int notice, int hit, int ref) {
-		super();
-		this.writeNo = writeNo;
-		this.id = id;
-		this.title = title;
-		this.content = content;
-		this.date = date;
-		this.notice = notice;
-		this.hit = hit;
-		this.ref = ref;
+	public boolean isDayNew() {
+		return isDayNew;
+	}
+
+	public void setDayNew(boolean isDayNew) {
+		this.isDayNew = isDayNew;
 	}
 
 	public int getWriteNo() {
@@ -99,6 +110,7 @@ public class Board{
 		result = prime * result + ((date == null) ? 0 : date.hashCode());
 		result = prime * result + hit;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + (isDayNew ? 1231 : 1237);
 		result = prime * result + notice;
 		result = prime * result + ref;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -132,6 +144,8 @@ public class Board{
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (isDayNew != other.isDayNew)
+			return false;
 		if (notice != other.notice)
 			return false;
 		if (ref != other.ref)
@@ -149,6 +163,8 @@ public class Board{
 	@Override
 	public String toString() {
 		return "Board [writeNo=" + writeNo + ", id=" + id + ", title=" + title + ", content=" + content + ", date="
-				+ date + ", notice=" + notice + ", hit=" + hit + ", ref=" + ref + "]";
-	}   
+				+ date + ", notice=" + notice + ", hit=" + hit + ", ref=" + ref + ", isDayNew=" + isDayNew + "]";
+	}
+
+	  
 }

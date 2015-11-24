@@ -7,6 +7,9 @@ import kr.or.object.vo.Board;
 
 public interface BoardService {
 
+	
+	
+	
 	ArrayList<Board> getContentList();
 
 	int count();

@@ -21,7 +21,7 @@
 	%>
   <script type="text/javascript">
    self.window.alert("입력한 답글을 저장하였습니다.");
-   location.href="list.jsp?pg=<%=pg%>";
+   location.href="list.do?pg=<%=pg%>";
   </script>
 </head>
 <body>
