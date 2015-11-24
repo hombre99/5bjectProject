@@ -1,15 +1,14 @@
 package kr.or.object.dao;
 
 import java.sql.Date;
-import java.util.ArrayList;
+import java.util.List;
 
 import kr.or.object.vo.Board;
 
 public interface BoardDao {
 
-	ArrayList<Board> getContentList();
+	List<Board> getContentList();
 
-	int count();
 	
 	int getMax();
 	
@@ -17,12 +16,12 @@ public interface BoardDao {
 	
 	Board getView(int idx);
 	
-	void updateHit(int idx);
+	void updateHit(Board board);
 	
 	void delete(int idx);
 	
 	void update(Board board, int max);
 	
-	void insertReply(Board board, int ref, Date date);
+	void insertReply(Board board);
 	
 }

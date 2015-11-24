@@ -9,7 +9,7 @@
 </head>
 <body>
 <h1>공지사항</h1>
-		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+		<table width="70%" cellpadding="0" cellspacing="0" border="0">
   				<tr height="5"><td width="5"></td></tr>
 				<tr style="background:url('image/board/table_mid.gif') repeat-x; text-align:center;">
 				    <td width="5"><img src="image/board/table_left.gif" width="5" height="30" /></td>
