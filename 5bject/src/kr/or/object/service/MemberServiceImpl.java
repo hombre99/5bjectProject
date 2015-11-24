@@ -27,8 +27,12 @@ public class MemberServiceImpl implements MemberService {
 	
 	//20151120 service 추가 chj
 	@Override
-	public List<Upload> getRequestList(){
-		return dao.getRequests();
+	public Map getRequestList(int pageNo){
+		HashMap map = new HashMap();
+		map.put("list", dao.getRequests(pageNo));
+		PagingBean pagingBean = new PagingBean(dao.selectCountRequests(),pageNo);
+		map.put("pagingBean", pagingBean);
+		return map;
 	}
 	
 	@Override

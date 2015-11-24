@@ -7,6 +7,8 @@ import kr.or.object.vo.Members;
 
 public class MemberValidator implements Validator {
 
+
+
    @Override
    public boolean supports(Class<?> clazz) {
       return clazz.isAssignableFrom(Members.class);
@@ -17,6 +19,7 @@ public class MemberValidator implements Validator {
       if ( !supports(target.getClass()) ) {
          errors.reject("notsupport", "적절하지 않은 객체입니다.");
       }
+
 
       Members member = (Members)target;
 
@@ -55,4 +58,6 @@ public class MemberValidator implements Validator {
          errors.rejectValue("phoneNumber", "phone", "핸드폰 번호는 11글자입니다.");
       }
    }
+
+	
 }

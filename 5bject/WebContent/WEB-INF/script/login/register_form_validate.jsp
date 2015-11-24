@@ -25,14 +25,14 @@
 				padding: 10px;
 			}
 	
-			footer {
+/* 			footer {
 				background-color: lightblue;
 				color: white;
 				padding-top: 10px;
 				text-align: center;
 				height: 30px;
 				clear: both;
-			}
+			} */
 			table{
 				margin-left: 50px;
 				font-family: HY나무M;
@@ -62,7 +62,9 @@
 						<td>
 							<input type="text" name="id" value="${ requestScope.members.id }" placeholder="사용할 아이디를 입력하세요." size="25" maxlength="25" />
 							<br>
-							<span class="error"><form:errors path = "members.id"/></span>
+
+							<span class="error"><form:errors path ="members.id"/></span>
+
 						</td>
 						<td></td>
 					</tr>
@@ -82,9 +84,11 @@
 					</tr>
 					<tr>
 						<td colspan="2">
+
 							<input type="text" name="name" id="name" value="${requestScope.members.name}" placeholder="이름을 입력하세요" autofocus="autofocus" />
 							<br>
 							<span class="error"><form:errors path = "members.name" delimiter=" - "/></span>
+
 						</td>
 					</tr>
 					<tr>

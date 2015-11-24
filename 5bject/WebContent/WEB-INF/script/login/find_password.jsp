@@ -6,14 +6,17 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 <script type="text/javascript">
+
    $(document).ready(function() {
       $("#close").on("click", function() {
          window.close();
       });
    });
+
 </script>
 </head>
 <body>
+
    <form action="/5bject/member/find_MemberPassword.do" method="post">
       <table>
          <tr>
@@ -53,5 +56,6 @@
          </tr>
       </table>
    </form>
+
 </body>
 </html>

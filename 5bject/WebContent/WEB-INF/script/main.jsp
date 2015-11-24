@@ -7,48 +7,39 @@
 
 <!DOCTYPE html>
 <html>
-   <head>
-      <meta charset="UTF-8">
-      <title>Insert title here</title>
-      <script type="text/javascript" src="/5bject/jquery.do"></script>
-      <c:choose>
-         <c:when test="${ sessionScope.gameNum != null && sessionScope.difficulty != null }">
-            <script type="text/javascript">
-               var gameNum = '${ sessionScope.gameNum }';
-               var difficulty = '${ sessionScope.difficulty }';
-            </script>
-            <c:choose>
-               <c:when test="${ sessionScope.gameNum == 1 }">
-                  <script type="text/javascript" src="/5bject/game/game1js.do"></script>
-               </c:when>
-               <c:when test="${ sessionScope.gameNum == 2 }">
-                  <script type="text/javascript" src="/5bject/game/game2js.do"></script>
-               </c:when>
-               <c:when test="${ sessionScope.gameNum == 3 }">
-                  <script type="text/javascript" src="/5bject/game/game3js.do"></script>
-               </c:when>
-            </c:choose>
-         </c:when>
-         <c:otherwise>
-            <script type="text/javascript">
-               $(document).ready(function() {
-                  $("#link2").on("click", function() {
-                     window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
-                  });
 
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="/5bject/jquery.do"></script>
+		<c:choose>
+			<c:when test="${ sessionScope.gameNum != null && sessionScope.difficulty != null }">
+				<script type="text/javascript">
+					var gameNum = '${ sessionScope.gameNum }';
+					var difficulty = '${ sessionScope.difficulty }';
+				</script>
+				<c:choose>
+					<c:when test="${ sessionScope.gameNum == 1 }">
+						<script type="text/javascript" src="/5bject/game/game1js.do"></script>
+					</c:when>
+					<c:when test="${ sessionScope.gameNum == 2 }">
+						<script type="text/javascript" src="/5bject/game/game2js.do"></script>
+					</c:when>
+					<c:when test="${ sessionScope.gameNum == 3 }">
+						<script type="text/javascript" src="/5bject/game/game3js.do"></script>
+					</c:when>
+				</c:choose>
+			</c:when>
+			<c:otherwise>
+				<script type="text/javascript">
+					$(document).ready(function() {
+						$("#link2").on("click", function() {
+							window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
 
-                  $("#register_link").on("click", function() {
-                     window.open("/5bject/member/register.do" ,"ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,resizable=0");
-                  });
-
-                  $("#update_link").on("click",function(){
-                     window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
-                  });
-                  
-                  // language_link ADD. 20151116. CHJ
-                  $("#language_link").on("click", function() {
-                     window.open("/5bject/language/computer_language.do","ok","width=1100, height=850,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");   
-                  });
+						$("#register_link").on("click", function() {
+							window.open("/5bject/member/register.do" ,"ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,resizable=0");
+						});
 
 						$("#update_link").on("click",function(){
 							window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
@@ -56,9 +47,8 @@
 						
 						// language_link ADD. 20151116. CHJ
 						$("#language_link").on("click", function() {
-							window.open("/5bject/language/computer_language.do","ok","width=1100, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+							window.open("/5bject/language/computer_language.do","ok","width=1100, height=850,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
 						});
-
 
                   // mypage_link, logout_link ADD. 20151116. KKH
                   $("#mypage_link").on("click", function() {
@@ -77,29 +67,25 @@
 							if ( confirm("로그아웃하시겠습니까?") ) {
 								location.replace("/5bject/member/logout.do");
 							} 
+
 						});
+						/* chj 20151120 link ADD*/
+						$("#request_list").on("click", function() {
+							window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
+						});
+					});					
 
-						
-						// 20151120. ADD KKH - 포인터 발생
-						$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
+					/*20151123 findId & Pwd ADD*/
+						function findId(){
+							window.open("/5bject/member/findId.do","ok","width=450, height=400");
+						};
+						function findPwd(){
+							window.open("/5bject/member/findPwd.do","ok","width=450, height=300");
+						};
+				</script>
+			</c:otherwise>
+		</c:choose>
 
-					});
-
-                  /* chj 20151120 link ADD*/
-                  $("#request_list").on("click", function() {
-                     window.open("/5bject/member/request_list.do", "ok", "width=1000, height=700");
-                  });
-               
-               /*20151123 findId & Pwd ADD*/
-                  function findId(){
-                     window.open("/5bject/member/findId.do","ok","width=450, height=400");
-                  };
-                  function findPwd(){
-                     window.open("/5bject/member/findPwd.do","ok","width=450, height=400");
-                  };
-            </script>
-         </c:otherwise>
-      </c:choose>
 
       <!-- 여기서부터 손대지 마세여... -->
       <link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
@@ -113,23 +99,6 @@
          href="https://cdn-production.codecademy.com/assets/webpack/vendor.bundle-59164de1b85d70aee596322a1c89ef69.css"
          media="screen" rel="stylesheet" type="text/css" />
 
-      <script id="CCDATA" type="text/javascript">
-         //<![CDATA[
-         var CCDATA = CCDATA || {};
-         CCDATA['env'] = "production";
-         CCDATA['request_host'] = "www.codecademy.com";
-         CCDATA['request_path'] = "/";
-         CCDATA['asset_host'] = "cdn-production.codecademy.com";
-         CCDATA['assets_compiled'] = true;
-         CCDATA['pollForNotifications'] = false;
-         CCDATA['locale'] = "en";
-         CCDATA['API_HOST'] = "/api";
-         CCDATA['authenticity_token'] = "6fYL1Pw65Flr6Evs9dYj/v7ySAtMEvAZ/QOShXpeHdQ=";
-         CCDATA['available_locales'] = "en|ko|fa|ru|es-AR|ja|fr|et-EE|zh|fr-FR|pt-BR|de|en-GB|ky-KG|es|en-US|pt|ar";
-         CCDATA.secureSandboxIndexPath = 'https://cdn-production.codecademy.com/assets/secure/index-c5bf1319f62cb07c26239e761a9ed5c9.html';
-         //]]>
-      </script>
-      <!-- 여기까지 손대지 마세여... -->
 
       <style type="text/css">
          header{
@@ -174,34 +143,27 @@
             text-align: center;
          }
 
-			.class{
-				margin-left: 150px;
-				margin-top: 150px;
+			#td3 {
+				border: 1px solid black;
+				padding: 0px;
+				height: 130px;
+				width: 170px;
 				text-align: center;
 			}
 
+			#td4 {
+				border: 1px solid black;
+				padding: 0px;
+				height: 100px;
+				width: 150px;
+				position: relative;
+				text-align: center;
+			}
 
-         #td3 {
-            border: 1px solid black;
-            padding: 0px;
-            height: 130px;
-            width: 170px;
-            text-align: center;
-         }
-
-         #td4 {
-            border: 1px solid black;
-            padding: 0px;
-            height: 100px;
-            width: 150px;
-            position: relative;
-            text-align: center;
-         }
-
-         #gamePannel {
-            width: 600px;
-            border-collapse: collapse;
-         }
+			#gamePannel {
+				width: 600px;
+				border-collapse: collapse;
+			}
 
       </style>
    </head>
@@ -337,22 +299,84 @@
                </div>
             </div>
 
+            <div class="grid-row stories padding-top--3">
+               <div class="grid-col-12 grid-col--center grid-col--align-center">
+                     <font face="impact" size="6" color="lightslategray">Develop Children's ability to think</font>
+               </div>
+            </div>
+         </article>
+      </article>
+      <footer>      
+            <jsp:include page="/WEB-INF/script/layout/footer.jsp" />
+      </footer>   
+   </body>
 
-				<div class="grid-row stories padding-top--3">
+		<div class="blank"></div>
+		
+		<!-- <article class="fit-full color-scheme#e6e6fa" -->
+		<article id="art" class="fit-full color-scheme--red">
+			<article class="fit-fixed">
+ 				<div class="grid-row stories padding-top--3">
 					<div class="grid-col-12 grid-col--center grid-col--align-center">
-						<h3>
-							<font face="impact">Develop Children's ability to think</font>
-						</h3>
+							<font size="6" face="impact" color="skyblue">Enjoy Coding</font>
+					</div>
+				</div> 
+				<div class="grid-row">
+					<div id="language_link"
+						class="grid-col-4 grid-col--no--padding grid-col--no-margin card card--link ">
+						<img src="/5bject/image/member/newlink11.jpg" />
+					</div>
+					<div id="link2"
+						class="grid-col-4 grid-col--no--padding grid-col--no-margin card card--link">
+						<img src="/5bject/image/member/newlink22.jpg" />
+					</div>
+					
+					<div class="login">			
+						<!-- Admin Info ADD. 20151116. KKH -->
+						<!-- TODO 관리자 계정명 바뀔 수 있음. -->
+						<!-- font face ADD. 20151116. CHJ -->
+						<!-- Login Image ADD. 20151116. CHJ -->
+						<c:choose>			
+							<c:when test="${ sessionScope.member.id == 'objectclass' }">
+								<p><p/>
+								<table>
+									<tr><td colspan="2"><b>objectclass</b>님<br/></td></tr>
+									<tr><td colspan="2"><img src="/5bject/image/member/manager.jpg" /><p></td></tr>
+									<tr><td colspan="2"><input type="button" id="memberList" value="회원정보조회" /><input type="button" value="회원점수조회" /><br/></td></tr>
+									<tr><td colspan="2"><input type="button" id="request_list" value="고객문의-리스트" /><input type="button" value="로그아웃" id="logout_link" /></td></tr>
+								</table>
+							</c:when>
+							<c:when test="${ sessionScope.id != null }">
+								<p></p>
+								<font face="impact">${ sessionScope.id }님</font><br />
+								<img src="/5bject/image/member/success_login.jpg" />
+								<input type="button" id="mypage_link" value="마이페이지" />&nbsp;
+								<input type="button" id="logout_link" value="로그아웃" />
+							</c:when>
+							<c:otherwise>
+								<form action ="/5bject/member/login.do" method="post">
+									<table>
+										<p></p>
+										<tr><td colspan="2" align="center"><img src="/5bject/image/member/login.jpg" /></td></tr> 
+										<tr><td>&nbsp;아이디</td><td>&nbsp;<input type="text" name="id" placeholder="아이디 입력" /></td></tr> 
+										<tr><td>&nbsp;비밀번호</td><td>&nbsp;<input type="password" name="password" placeholder="비밀번호 입력" /></td></tr>
+										<tr><td colspan="3"><span class="error"><b>${sessionScope.error}</b></span></td></tr>	
+										<tr><td>&nbsp;&nbsp;<input type="submit" value="로그인" id="login" /></td><td>&nbsp;&nbsp;<img src="/5bject/image/member/register_form.jpg" id="register_link" /></td></tr>
+										<!-- 20151120. ADD 아이디/비밀번호 찾기 추가 -->
+									</table>			
+									<table>
+										<tr><td colspan="3" align="center">&nbsp;&nbsp;<a href ="javascript:findId()" class="findInfo">아이디</a>/<a href="javascript:findPwd()" class="findInfo">비밀번호 찾기</a></td></tr>			
+									</table>
+								</form>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</article>
 		</article>
-
-		<footer>
-			<table>
-				<tr><td align ="center"><h5>© 2015 5bject. All Rights Reserved.</h5></td></tr>
-			</table>
-		</footer>
+		<footer>		
+				<jsp:include page="/WEB-INF/script/layout/footer.jsp" />
+		</footer>	
 	</body>
 
 </html>

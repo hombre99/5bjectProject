@@ -11,8 +11,10 @@ public interface MemberService {
 	Members findMemberById(String id);
 	//insertRequest추가 CHJ
 	void insertRequest(Upload upload);
-	//getRequest for customer requests 20151120 chj
-	List<Upload> getRequestList();
+	//getRequest for customer requests 20151123 chj pagingean
+	
+	Map getRequestList(int pageNo);
+	
 	void insertMember(Members member);
 
 	void updateMemberById(Members member);

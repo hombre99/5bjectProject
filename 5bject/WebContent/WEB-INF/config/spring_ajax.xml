@@ -5,9 +5,14 @@
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:tx="http://www.springframework.org/schema/tx"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context  http://www.springframework.org/schema/context/spring-context-4.2.xsd">
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.2.xsd">
+	
+	<!--  transaction  annotation-driven CHJ 20151123 -->
+	<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
 	
 	<!-- BasicDataSource -->
 	<bean name="dataSource" class="org.apache.tomcat.dbcp.dbcp2.BasicDataSource"
@@ -32,11 +37,14 @@
 	<!-- 20151118 beanResolver class 설정 CHJ-->
 		<bean class= "org.springframework.web.servlet.view.BeanNameViewResolver" p:order="1"/>
 		<bean class = "org.springframework.web.servlet.view.InternalResourceViewResolver" p:order="2"/>	
-	<!-- downloadView 설정 20151118 CHJ -->
-		<bean name="downloadView" class= "kr.or.object.view.DownloadView"/>
 	<!-- annotation설정 -->		
 	<mvc:annotation-driven />
 
+	<!--  20151123 transaction manager 설정 CHJ -->
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource"/>
+		</bean>
+		
 	<context:component-scan base-package="kr.or.object.controller, kr.or.object.dao, kr.or.object.service" />
 	<!-- view-controller setting -->
 	<!-- jquery -->
@@ -52,8 +60,9 @@
 	<mvc:view-controller path="/member/memberUpdate.do" view-name="/WEB-INF/script/login/member_update.jsp" />
 	<!-- 20151118 ADD KKH - 잃어버린 아이디 찾기 추가 -->
 	<mvc:view-controller path="/member/findId.do" view-name="/WEB-INF/script/login/find_id.jsp" />
+
 	<!-- 20151120 ADD KKH - 잃어버린 비밀번호 찾기 -->
-	<mvc:view-controller path="/member/findPwd.do" view-name="/WEB-INF/script/login/find_password.jsp" />
+	<mvc:view-controller path="/member/findPwd.do" view-name="/WEB-INF/script/login/find_password.jsp" /> 
 	<!-- 고객문의 요청 추가 -->
 	<mvc:view-controller path="/member/request.do" view-name="/WEB-INF/script/login/request_member.jsp" />
 
