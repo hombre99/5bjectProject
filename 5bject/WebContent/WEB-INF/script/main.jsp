@@ -71,6 +71,10 @@
 						$("#request_list").on("click", function() {
 							window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
 						});
+						
+						$("#gameInfo").on("click", function() {
+							window.open("/5bject/game/findAllWord.do?pageNo=${param.pageNo}");
+						})
 					});					
 				</script>
 			</c:otherwise>
@@ -80,7 +84,6 @@
 			/*20151123 findId & Pwd ADD */
 			/* 20151125. MOD. 위치변경. JSJ. */
 			function findId() {
-				alert(123);
 				window.open("/5bject/member/findId.do", "ok", "width=450, height=400");
 			};
 
@@ -289,7 +292,7 @@
 								<table>
 									<tr><td colspan="2"><b>objectclass</b>님<br/></td></tr>
 									<tr><td colspan="2"><img src="/5bject/image/member/manager.jpg" /><p></td></tr>
-									<tr><td colspan="2"><input type="button" id="memberList" value="회원정보" /><input type="button" value="게임정보" /><input type="button" value="로그아웃" id="logout_link" /></td></tr>
+									<tr><td colspan="2"><input type="button" id="memberList" value="회원정보" /><input type="button" id="gameInfo" value="게임정보" /><input type="button" value="로그아웃" id="logout_link" /></td></tr>
 								</table>
 							</c:when>
 							<c:when test="${ sessionScope.id != null }">

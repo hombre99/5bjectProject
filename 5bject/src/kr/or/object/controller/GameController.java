@@ -2,11 +2,13 @@ package kr.or.object.controller;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -98,26 +100,26 @@ public class GameController {
 
 			
 	@RequestMapping("/findWord.do")
-	public String findWord(@RequestParam String word, HttpSession session) {
-		GameWord gw = gwService.findWord(word);
+	public String findWord(@RequestParam String word, ModelMap model) {
+		HashMap map = new HashMap();
+		
+		map.put("gameWord", gwService.findWord(word));
 
-		if ( gw != null ) {
-			session.setAttribute("gameWord", gw);
-		} else {
-			session.setAttribute("errMsg", "조회결과가 없습니다.");
-		}
+		model.addAllAttributes(map);
 			
 		return "/WEB-INF/script/game/find_gameword.jsp";
 	}
 	
 	@RequestMapping("/findAllWord.do")
-	public String findAllWord(HttpSession session) {
-		List<GameWord> wordList = gwService.findAllWord();
-		if ( wordList != null ) {
-			session.setAttribute("wordList", wordList);
-		} else {
-			session.setAttribute("errMsg", "조회결과가 없습니다.");
+	public String findAllWord(@RequestParam(defaultValue="1") String pageNo, ModelMap model) {
+		int page = 1;
+		try {
+			page = Integer.parseInt(pageNo);
+		} catch ( NumberFormatException e ) {
 		}
+
+		Map attributes = gwService.findAllWord(page);
+		model.addAllAttributes(attributes);
 
 		return "/WEB-INF/script/game/find_gameword.jsp";
 	}

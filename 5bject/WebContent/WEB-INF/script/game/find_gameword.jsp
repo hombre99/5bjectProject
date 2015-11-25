@@ -5,31 +5,55 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>FIND_GAMEWORD</title>
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/menu.css" />
 	</head>
 	<body>
+		<menu>
+			<jsp:include page="/WEB-INF/script/layout/game_menu.jsp" />
+		</menu>
 		<h2>게임 단어 조회</h2>
-		<table>
+		<table border="1">
 			<tr>
 				<th>게임번호</th>
 				<th>난이도</th>
 				<th>단어</th>
 			</tr>
 			<c:choose>
-				<c:when test="${ sessionScope.gameWord != null }">
+				<c:when test="${ requestScope.gameWord != null }">
 					<tr>
-						<td> ${ sessionScope.gameWord.gameNum } </td>
-						<td> ${ sessionScope.gameWord.difficulty } </td>
-						<td> ${ sessionScope.gameWord.word } </td>
+						<td> ${ requestScope.gameWord.gameNum } </td>
+						<td> ${ requestScope.gameWord.difficulty } </td>
+						<td> ${ requestScope.gameWord.word } </td>
 					</tr>
 				</c:when>
-				<c:when test="${ sessionScope.wordList != null }">
-					<c:forEach items="${ sessionScope.wordList }" var="gameWord">
+				<c:when test="${ requestScope.list != null }">
+					<c:forEach items="${ requestScope.list }" var="gameWord">
 						<tr>
 							<td> ${ gameWord.gameNum } </td>
 							<td> ${ gameWord.difficulty } </td>
 							<td> ${ gameWord.word } </td>
 						</tr>
 					</c:forEach>
+					<tr>
+						<td colspan="3" align="center">
+							<c:if test="${ requestScope.pagingBean.previousPageGroup }">
+								<a href="/5bject/game/findAllWord.do?pageNo=${ requestScope.pagingBean.startPageOfPageGroup - 1 }">
+									◀
+								</a>
+							</c:if>
+							<c:forEach begin="${ requestScope.pagingBean.startPageOfPageGroup }"
+								end="${ requestScope.pagingBean.endPageOfPageGroup }" var="page">
+								<a href="/5bject/game/findAllWord.do?pageNo=${ page }">
+									${ page }
+								</a>
+							</c:forEach>
+							<c:if test="${ requestScope.pagingBean.nextPageGroup }">
+								<a href="/5bject/game/findAllWord.do?pageNo=${ requestScope.pagingBean.endPageOfPageGroup + 1 }">
+									▶
+								</a>
+							</c:if>
+						</td>
+					</tr>
 				</c:when>
 				<c:otherwise>
 					<c:if test="${ sessionScope.errMsg != null }">
@@ -42,14 +66,5 @@
 				</c:otherwise>
 			</c:choose>
 		</table>
-		<c:if test="${ sessionScope.gameWord != null }">
-			<c:remove var="gameWord" scope="session" />
-		</c:if>
-		<c:if test="${ sessionScope.wordList != null }">
-			<c:remove var="wordList" scope="session" />
-		</c:if>
-		<c:if test="${ sessionScope.errMsg != null }">
-			<c:remove var="errMsg" scope="session" />
-		</c:if>
 	</body>
 </html>
