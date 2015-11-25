@@ -95,9 +95,9 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/view.do")
-	public String View(HttpSession session,@RequestParam Board board){
+	public String View(HttpSession session,@RequestParam int idx){
 		
-		Board contectBoard = service.getView(board.getWriteNo());
+		Board contectBoard = service.getView(idx);
 		
 		session.setAttribute("contectBoard", contectBoard);
 		
