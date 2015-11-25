@@ -1,6 +1,5 @@
 package kr.or.object.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import kr.or.object.vo.GameScore;
@@ -10,5 +9,5 @@ public interface GameScoreService {
 	
 	void updateGameScore(GameScore gameScore);
 	
-	List<GameScore> selectGameScore(HashMap map);
+	List<GameScore> selectGameScore(String id);
 }
