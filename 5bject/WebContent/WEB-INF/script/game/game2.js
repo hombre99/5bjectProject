@@ -389,19 +389,10 @@ $(document).ready(function() {
 		window.open("/5bject/member/request_list.do", "ok", "width=1000, height=700");
 	});
 });
-<<<<<<< HEAD
-/*20151123 findId & Pwd ADD*/
-	function findId(){
-		window.open("/5bject/member/findId.do","ok","width=450, height=600");
-	};
-	function findPwd(){
-		window.open("5bject/member/findPwd.do","width=450, height=600");
-	};
-=======
 function findId(){
     window.open("/5bject/member/findId.do","ok","width=450, height=400");
  };
  function findPwd(){
     window.open("/5bject/member/findPwd.do","ok","width=450, height=300");
  };
->>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
+

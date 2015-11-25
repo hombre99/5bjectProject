@@ -92,7 +92,7 @@ public class MemberController {
 	// ADD. 20151116. KKH
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
-		session.invalidate(); //
+		session.invalidate(); 
 		return "/WEB-INF/script/main.jsp";
 	}
 
@@ -100,7 +100,7 @@ public class MemberController {
 	@RequestMapping("/leave.do")
 	public String leave(HttpSession session, @RequestParam String id) {
 		service.removeMemberById(id);
-		session.invalidate(); //
+		session.invalidate();
 		return "/WEB-INF/script/main.jsp";
 	}
 
