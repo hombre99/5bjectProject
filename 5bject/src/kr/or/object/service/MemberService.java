@@ -16,7 +16,7 @@ public interface MemberService {
 	Map getRequestList(int pageNo);
 	
 	void insertMember(Members member);
-
+	//수정 CHJ 20151124
 	void updateMemberById(Members member);
 
 	void removeMemberById(String id);
@@ -24,7 +24,7 @@ public interface MemberService {
 	List<Members> getMembers();
 
 	// 20151118. ADD KKH - 잃어버린 아이디찾기
-	String findMemberId(HashMap map);
+	List findMemberId(HashMap map);
 	
 	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
 	String findMemberPassword(HashMap map);

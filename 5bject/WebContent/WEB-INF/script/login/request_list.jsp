@@ -13,26 +13,33 @@
 			window.close();
 		});
 	});
+	function page_back(){
+		history.go(-1);
+	}
 </script>
 <style type="text/css">
 table {
 	background-color: white;
-	width: 1300px;
+	width: 1100px;
 	margin-top: 20px;
 }
-header {
-	background-color: lightblue;
+a{
+	text-decoration: none !important;
+	color: white;
 }
-.answer{
-	background-color:"lightblue";
+menu{
+	background-color: powderblue;
+	color: white;
+	padding: 10px;
+	font-weight: bold;
 }
 
 </style>
 </head>
 <body>
-	<header>
-		<jsp:include page="/WEB-INF/script/layout/header.jsp" />
-	</header>
+	<menu>
+		<jsp:include page="/WEB-INF/script/layout/menu.jsp" />
+	</menu>
 	<c:choose>
 		<c:when test="${fn:length(requestScope.list)==0 }">
 		등록된 고객이 없습니다.
@@ -40,9 +47,9 @@ header {
 		<c:otherwise>
 			<table>
 				<tr>
-					<td></td><td colspan="2" align="center"><h2>고객문의요청</h2></td>
+					<td></td><td colspan="2" align="center"><h2><font color="lightblue">고객문의요청</font></h2></td>
 				</tr>
-				<tr id="answer">
+				<tr>
 					<td><b>고객문의날짜</b></td>
 					<td><b>고객아이디</b></td>
 					<td><b>고객 이메일주소</b></td>
@@ -54,11 +61,10 @@ header {
 						<td>${upload.id}</td>
 						<td>${upload.members.emailId}@${upload.members.emailAddress}</td>
 						<td>${upload.requestInfo}</td>
-
 					</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="4"><input type="button" value="닫기" id="close"></td>
+					<td colspan="4"><input type="button" value="닫기" id="close">&nbsp;<input type="button" onclick="page_back();" value="뒤로가기"></td>
 				</tr>
 			</table>
 		</c:otherwise>
@@ -69,7 +75,8 @@ header {
 1. 이전 페이지 그룹으로 이동 처리
   이전페이지 그룹이 있으면 링크처리 없으면 <- 모양만 나오도록 처리.
  -->
-
+<table>
+<tr><td> </td><td colspan="2" align="center">
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.previousPageGroup }">
 			<a href="/5bject/member/request_list.do?pageNo=${requestScope.pagingBean.startPageOfPageGroup-1}">
@@ -84,6 +91,7 @@ header {
  -->
 	<c:forEach begin="${requestScope.pagingBean.startPageOfPageGroup }"
 		end="${requestScope.pagingBean.endPageOfPageGroup }" var="page">
+		
 		<c:choose>
 			<c:when test="${page == requestScope.pagingBean.currentPage }">
 				(${page})
@@ -95,9 +103,7 @@ header {
 			</c:otherwise>
 		</c:choose>
 </c:forEach>
-	<!-- 3. 다음 페이지 그룹 링크
-    다음 페이지 그룹이 있으면 링크 처리 없으면 그냥 화살표만 나오도록 처리.
- -->
+	<!-- 3. 다음 페이지 그룹 링크  다음 페이지 그룹이 있으면 링크 처리 없으면 그냥 화살표만 나오도록 처리. -->
 
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.nextPageGroup}">
@@ -106,6 +112,9 @@ header {
 		</c:when>
 		<c:otherwise>▶</c:otherwise>
 	</c:choose>
-
+</td>
+<td> </td>
+</tr>
+</table>
 </body>
 </html>

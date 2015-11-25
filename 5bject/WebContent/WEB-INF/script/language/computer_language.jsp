@@ -11,7 +11,7 @@
 <style type="text/css">
 #wrap {
    width: 1000px;
-   height: 820px;
+   height: 930px;
    margin-left: 50px;
    background: lightgrey;
 }
@@ -19,12 +19,12 @@
 #header {
    width: 900px;
    height: 130px;
-   margin-left: 50px;w
+   margin-left: 50px;
    margin-bottom: 20px;
    background: lightblue;
 }
 
-#middle {
+#middle{
    width: 1000px;
    float: left;
    background: palegoldenrod;
@@ -43,6 +43,24 @@
 #content {
    width: 700px;
    height: 500px;
+   float: left;
+   background: beige;
+}
+  /*추가하는 부분 20151124 화요일 CHJ*/
+#middle2 {
+   width: 1000px;
+   margin-top: 10px;
+   margin-botton: 10px;
+   height: 100px;
+   float: left;
+   background: palegoldenrod;
+}
+  /*추가하는 부분 20151124 화요일 CHJ*/
+#content2 {
+   width: 920px;
+   margin-right: 20px;
+   margin-left: 40px;
+   height: 100px;
    float: left;
    background: beige;
 }
@@ -110,7 +128,18 @@
             </c:choose>
          </div>
       </div>
-      
+      <!-- 추가하는 부분 20151124 화요일 CHJ -->
+      <div id="middle2">
+      	<div id="content2">
+	      	<table>
+	      		<tr>
+		      		<td colspan="2"><font size="3"><b>알고리즘이란 무엇일까요?</b></font></td>
+		      		<td> 컴퓨터로 계산을 할때의 계산방법을 말하지만 넓게 생각해보면 무엇이든 어떤 행동을 할때에 어떻게 할것인가에 대한 방법을 알고리즘이라고 생각하면 됩니다. 
+		      		알고리즘을 배우는 이유는 같은 행동을 할때라도 어떤 방법으로 하느냐에 따라 조금 더 쉽고 빠르게 할 수 있기 때문입니다.</td>
+	      		</tr>
+	      	</table>
+      	</div>
+      </div>
       <div id="footer">
          <jsp:include page="/WEB-INF/script/layout/footer.jsp" />
       </div>

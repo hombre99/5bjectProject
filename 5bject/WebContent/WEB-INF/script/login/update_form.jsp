@@ -9,7 +9,12 @@
 	<head>
 		<meta charset=" UTF-8">
 		<title>UPDATE FORM</title>
+		<!-- 20151124 page back 과 jquery경로 설정 -->
+		<script type="text/javascript" src="/5bject/jquery.do"></script>
 		<script type="text/javascript">
+			function page_back(){
+				history.go(-1);
+			}
 		</script>
 		<style type="text/css">
 		/* css 설정 */
@@ -18,22 +23,22 @@
 			face: impact;
 			font-size : 2;
 		}
-
+		/*20151124 CHJ ADD*/
+		table{
+		margin-left: 70px;
+		}
 		header {
 			background-color:lightblue;
 			color:white;
 			text-align:left;
 			padding: 10px;
 		}
+			.error {
+			color: red;
+			face: impact;
+			font-size : 2;
+		}
 
-/* 		footer {
-			background-color:lightblue;
-			color:white;
-			padding-top:20px;
-			text-align:center;
-			height:30px;
-			clear:both;
-		} */
 		</style> 
 	</head>
 	<body>
@@ -45,8 +50,12 @@
 			<form action="/5bject/member/update_form.do" method="post">
 				<table>
 					<tr>
-						<td colspan="2" align="center">
-							<h2><font color="skyblue">Edit your information</font></h2>
+						<td colspan="2" align="center">					
+							<!-- change font 20151124 CHJ ADD -->
+							<br>
+							<font color="skyblue" face="impact" size="6">Edit your information</font>
+							<br>
+							<span class="error"><b>${sessionScope.error}</b></span>
 						</td>
 					</tr>
 					<tr>
@@ -58,7 +67,7 @@
 					<tr>
 						<td>
 							<input type="text" name="id"  value="${ sessionScope.member.id }" size="25" maxlength="25"  disabled="disabled" />
-							<input type="hidden" name="id"  value="${ sessionScope.member.id }" size="25" maxlength="25" />
+							<input type="hidden" name="id"  value="${sessionScope.member.id }" size="25" maxlength="25" />
 							<span class="error"><form:errors path = "members.id" /></span>
 						</td>
 						<td></td>
@@ -68,7 +77,7 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="text" name="password" value="${ sessionScope.member.password }" placeholder="비밀번호를 입력하세요." size="25" maxlength="25" />
+							<input type="text" name="password" value="${sessionScope.member.password }" placeholder="비밀번호를 입력하세요." size="25" maxlength="25" />
 							<span class="error"><form:errors path="members.password" delimiter=" - " /></span>
 						</td>
 						<td></td>
@@ -157,9 +166,9 @@
 					</td>
 					<td></td>
 				</tr>
+				<!-- 20151124 3:20 pm page back ADD -->
 				<tr>
-					<td><input type="submit" value="수정하기" /></td>
-					<td></td>
+					<td colspan="2"><input type="submit" value="수정하기" />&nbsp;<input type="button" onclick="page_back();" value="뒤로가기"></td>
 				</tr>
 			</table>
 		</form>
