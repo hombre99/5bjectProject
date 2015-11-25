@@ -65,56 +65,55 @@
 							if ( confirm("로그아웃하시겠습니까?") ) {
 								location.replace("/5bject/member/logout.do");
 							} 			
-						// 20151120. ADD KKH - 포인터 발생
-						$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
+						});
 
 						/* chj 20151120 link ADD*/
 						$("#request_list").on("click", function() {
 							window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
 						});
-
-					});
+					});					
+				</script>
+				<script type="text/javascript">
 						/*20151123 findId & Pwd ADD*/
 						function findId() {
-							window.open("/5bject/member/findId.do","ok","width=450, height=400");
+							window.open("/5bject/member/findId.do", "ok", "width=450, height=400");
 						};
 
 						function findPwd() {
-							window.open("/5bject/member/findPwd.do","ok","width=450, height=300");
+							window.open("/5bject/member/findPwd.do", "ok", "width=450, height=300");
 						};
-					});					
 				</script>
 			</c:otherwise>
 		</c:choose>
       <!-- 여기서부터 손대지 마세여... -->
-      <link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
-      <link
-         href="https://cdn-production.codecademy.com/assets/rebrand/core-51a92b73616bc4ee9446ad082ee0ce7e.css"
-         media="screen" rel="stylesheet" type="text/css" />
-      <link
-         href="https://cdn-production.codecademy.com/ass;[']ets/rebrand/controllers/home/show-17141dd9781a3ee228fefc2b7da9d7d3.css"
-         media="screen" rel="stylesheet" type="text/css" />
-      <link
-         href="https://cdn-production.codecademy.com/assets/webpack/vendor.bundle-59164de1b85d70aee596322a1c89ef69.css"
-         media="screen" rel="stylesheet" type="text/css" />
+		<link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
+		<link
+			href="https://cdn-production.codecademy.com/assets/rebrand/core-51a92b73616bc4ee9446ad082ee0ce7e.css"
+			media="screen" rel="stylesheet" type="text/css" />
+		<link
+			href="https://cdn-production.codecademy.com/ass;[']ets/rebrand/controllers/home/show-17141dd9781a3ee228fefc2b7da9d7d3.css"
+			media="screen" rel="stylesheet" type="text/css" />
+		<link
+			href="https://cdn-production.codecademy.com/assets/webpack/vendor.bundle-59164de1b85d70aee596322a1c89ef69.css"
+			media="screen" rel="stylesheet" type="text/css" />
 
-      <script id="CCDATA" type="text/javascript">
-         //<![CDATA[
-         var CCDATA = CCDATA || {};
-         CCDATA['env'] = "production";
-         CCDATA['request_host'] = "www.codecademy.com";
-         CCDATA['request_path'] = "/";
-         CCDATA['asset_host'] = "cdn-production.codecademy.com";
-         CCDATA['assets_compiled'] = true;
-         CCDATA['pollForNotifications'] = false;
-         CCDATA['locale'] = "en";
-         CCDATA['API_HOST'] = "/api";
-         CCDATA['authenticity_token'] = "6fYL1Pw65Flr6Evs9dYj/v7ySAtMEvAZ/QOShXpeHdQ=";
-         CCDATA['available_locales'] = "en|ko|fa|ru|es-AR|ja|fr|et-EE|zh|fr-FR|pt-BR|de|en-GB|ky-KG|es|en-US|pt|ar";
-         CCDATA.secureSandboxIndexPath = 'https://cdn-production.codecademy.com/assets/secure/index-c5bf1319f62cb07c26239e761a9ed5c9.html';
-         //]]>
-      </script>
-      <!-- 여기까지 손대지 마세여... -->
+		<script id="CCDATA" type="text/javascript">
+			//<![CDATA[
+			var CCDATA = CCDATA || {};
+			CCDATA['env'] = "production";
+			CCDATA['request_host'] = "www.codecademy.com";
+			CCDATA['request_path'] = "/";
+			CCDATA['asset_host'] = "cdn-production.codecademy.com";
+			CCDATA['assets_compiled'] = true;
+			CCDATA['pollForNotifications'] = false;
+			CCDATA['locale'] = "en";
+			CCDATA['API_HOST'] = "/api";
+			CCDATA['authenticity_token'] = "6fYL1Pw65Flr6Evs9dYj/v7ySAtMEvAZ/QOShXpeHdQ=";
+			CCDATA['available_locales'] = "en|ko|fa|ru|es-AR|ja|fr|et-EE|zh|fr-FR|pt-BR|de|en-GB|ky-KG|es|en-US|pt|ar";
+			CCDATA.secureSandboxIndexPath = 'https://cdn-production.codecademy.com/assets/secure/index-c5bf1319f62cb07c26239e761a9ed5c9.html';
+			//]]>
+		</script>
+		<!-- 여기까지 손대지 마세여... -->
       <style type="text/css">
          header{
             background-color: lightblue;
@@ -250,7 +249,6 @@
       </div>
       <div class="blank"></div>
       <!-- <article class="fit-full color-scheme#e6e6fa" -->
-      <!-- <article class="fit-full color-scheme#e6e6fa" -->
       <article id="art" class="fit-full color-scheme--red">
          <article class="fit-fixed">
              <div class="grid-row stories padding-top--3">
@@ -309,7 +307,6 @@
                   </c:choose>
                </div>
             </div>
-		<!-- <article class="fit-full color-scheme#e6e6fa" -->
             <div class="grid-row stories padding-top--3">
                <div class="grid-col-12 grid-col--center grid-col--align-center">
                      <font face="impact" size="6" color="lightslategray">Develop Children's ability to think</font>
