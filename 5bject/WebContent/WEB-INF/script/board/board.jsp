@@ -13,7 +13,9 @@
 </header>
 <c:choose>
 	<c:when test="${fn:length(sessionScope.boardList)==0 }">
-		등록된 글이 없습니다.
+		<div align="center"><h2>등록된 글이 없습니다.</h2><p></div>
+		
+		<div align="center"><input type=button value="글쓰기" OnClick="window.location='write.jsp'"></div>
 	</c:when>
 <c:otherwise>
 <h1>자유 게시판</h1>
@@ -59,10 +61,15 @@
 				<td align="center">&nbsp;</td>                                                                                                                                                                                                                        
 			</tr>
 			</c:forEach>
+			<tr align="center">
+  			 <td>
+   				<input type=button value="글쓰기" OnClick="window.location='write.jsp'">
+   			</td>
+  			</tr>
 			</table>
 			</c:otherwise>
-</c:choose>
-<p/>
+		</c:choose>
+		<p/>
 			
 			<footer>		
 			<jsp:include page="/WEB-INF/script/layout/footer.jsp" />
