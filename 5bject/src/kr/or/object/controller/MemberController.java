@@ -119,8 +119,15 @@ public class MemberController {
 			page = Integer.parseInt(pageNo);
 		} catch (NumberFormatException e) {
 		}
-
 		Map attributes = service.getMembersPaging(page);
+		List<Members> list2 = (List<Members>) attributes.get("list");
+
+		for(int i=0; i<list2.size(); i++){
+			if ( list2.get(i).getId().equals("objectclass")){
+				list2.remove(i);
+			}
+		}
+
 		model.addAllAttributes(attributes);
 		return "/WEB-INF/script/login/member_list.jsp";
 	}
@@ -131,24 +138,15 @@ public class MemberController {
 
 		return "/member/memberList.do";
 	}
-	/*20151124 Error  CHJADD */
+	/*
+	  20151125 Error  CHJADD
+	  return 값을 /WEB-INF/script/login/member_info2.jsp 로 바꿔줌
+	 *  */
 	@RequestMapping("/update_member.do")
 	public String memberUpdate(HttpSession session, @ModelAttribute Members member, Errors errors) {
-		MemberValidator validate = new MemberValidator();
-		System.out.println(member);
-		if (service.findMemberById(member.getId()).equals(member)) {
-			String error = "회원정보를 수정해주셔야합니다.";
-			System.out.println(error);
-			session.setAttribute("error", error);
-		}else{
-			validate.validate(member, errors);
-			if(errors.hasErrors()){
-				return "/WEB-INF/script/login/member_list.jsp";
-			}
-			service.updateMemberById(member);
-			session.setAttribute("member", member);
-		}
-		return "/WEB-INF/script/login/member_list.jsp";
+        service.updateMemberById(member);
+        session.setAttribute("memberInfo", member);      
+        return "/WEB-INF/script/login/member_info2.jsp";
 	}
 
 	// ADD. 2015118~20. CHJ -고객 문의 요청 Controller
@@ -203,6 +201,7 @@ public class MemberController {
 	@RequestMapping(value = "/find_memberId.do", method = RequestMethod.POST)
 	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
 		//System.out.printf("eID[%s]eAdd[%s]pn[0%d]\n", emailId, emailAddress, phoneNumber);
+		
 		HashMap map = new HashMap();
 		map.put("emailId", emailId);
 		map.put("emailAddress", emailAddress);
@@ -211,7 +210,6 @@ public class MemberController {
 		if(idList.size()!=0){
 			request.setAttribute("memId", idList);
 		}
-		System.out.println(idList);
 		return "/WEB-INF/script/login/find_id_result.jsp";  
 	}
 

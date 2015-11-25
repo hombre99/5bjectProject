@@ -48,7 +48,8 @@
 		</header>
 
 		<spring:hasBindErrors name="members" /> 
-			<form action="/5bject/member/update_form.do" method="post">
+		<!-- 20151125 수정 -->
+			<form action="/5bject/member/update_member.do" method="post">
 				<table>
 					<tr>
 						<td colspan="2" align="center">

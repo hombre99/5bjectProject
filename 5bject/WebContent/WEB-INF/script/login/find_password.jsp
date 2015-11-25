@@ -11,6 +11,22 @@
          window.close();
       });
    });
+   
+   function checkForm(){
+	   if(document.member.id.value==""){
+		   alert("아이디를 입력해주세요.");
+		   return false;
+	   }else if(document.member.emailId.value=""){
+		   alert("이메일 아이디를 입력해주세요.");
+		   return false;
+	   }else if(document.member.emailAddress.value==""){
+		   alert("이메일 주소를 선택해 주세요.");
+		   return false;
+	   }else if(document.member.phoneNumber.value==""){
+		   alert("휴대전화 번호를 입력해 주세요.");
+		   return false;
+	   }
+   }
 
 </script>
 <style type="text/css">
@@ -22,7 +38,7 @@ table {
 </head>
 
 <body>
-   <form action="/5bject/member/find_MemberPassword.do" method="post">
+   <form action="/5bject/member/find_MemberPassword.do" name="member" method="post" onsubmit="return checkForm()">
       <table>
          <tr><td colspan="4"><img src="/5bject/image/member/failPassword.jpg" /></td></tr>
          <tr>

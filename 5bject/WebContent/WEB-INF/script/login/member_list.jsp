@@ -64,6 +64,7 @@ menu {
 				</tr>
 
 				<c:forEach items="${requestScope.list }" var="member">
+					
 					<tr>
 						<td><a href="/5bject/member/memberInfo.do?id=${member.id }&pageNo=${requestScope.pagingBean.currentPage}">${member.id }</a>
 
@@ -73,6 +74,7 @@ menu {
 						<td>${member.gender }</td>
 						<td>${member.emailId }@ ${member.emailAddress }</td>
 						<td>${member.phoneNumber }</td>
+					</tr>
 				</c:forEach>
 			</table>
 			<!-- 20151124 3:30pm CHJ ADD -->

@@ -30,7 +30,7 @@
 </style>
 </head>
 <body>
-<<<<<<< HEAD
+
    <header>
       <jsp:include page="/WEB-INF/script/layout/header.jsp" />
    </header>
