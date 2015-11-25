@@ -43,7 +43,7 @@
 				<td align="center">&nbsp;</td>                                                                                                                                                                                                                        
 			<tr>
 			</c:forEach> --%>
-			<c:forEach items="${sessionScope.board }" var="board">
+			<c:forEach items="${sessionScope.boardList }" var="board">
 			<tr>
 				<td align="center">&nbsp;</td>
 				<td>${board.writeNo}</td>
@@ -53,8 +53,8 @@
 					</a>
 					</td>
 <a href="${initParam.rootPath}/controller?command=getInfo&customerId=${customer.customerId }&pageNo=${requestScope.pagingBean.currentPage}"></a>
-					<td>${board.memberId}</td>
-				<td>${board.writeDate}</td>
+					<td>${board.id}</td>
+				<td>${board.date}</td>
 				<td>${board.hit}</td>
 				<td align="center">&nbsp;</td>                                                                                                                                                                                                                        
 			</tr>
