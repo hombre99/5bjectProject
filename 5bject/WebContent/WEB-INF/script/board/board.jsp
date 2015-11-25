@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>NOTICE</title>
+<title>BOARD</title>
 </head>
 <body>
 <header>

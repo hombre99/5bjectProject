@@ -45,12 +45,12 @@
 	</select>
 	
 	<!-- 공지사항 내용 셀렉트 -->
-	<select id="boardNoticeSelect">
+	<select id="boardNoticeSelect" resultMap="board-resultmap" resultType="board">
 			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 1
 	</select>
 	
 	<!-- 게시글 목록 셀렉트 -->
-	<select id="boardBoardSelect" resultType="board">
+	<select id="boardBoardSelect" resultMap="board-resultmap" resultType="board">
 			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 2
 	</select>
 	  
