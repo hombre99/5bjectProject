@@ -6,6 +6,10 @@ import java.util.List;
 import kr.or.object.vo.Board;
 
 public interface BoardService {
+	
+	List<Board> getContentBoardList();
+	
+	List<Board> getContentNoticeList();
    
    int getMax();
    
