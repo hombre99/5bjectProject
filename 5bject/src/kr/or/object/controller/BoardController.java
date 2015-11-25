@@ -101,7 +101,9 @@ public class BoardController {
 		
 		session.setAttribute("contectBoard", contectBoard);
 		
-		return "/WEB-INF/script/board/view.jsp";
+		String url ="/WEB-INF/script/board/view.jsp";
+		
+		return url;
 	}	
 	
 	public void getMax(){

@@ -40,7 +40,7 @@
 	</delete>
 	
 	<!--  글 내용 셀렉트 -->
-	<select id="boardContentSelect" resultType="board">
+	<select id="boardContentSelect" resultMap="board-resultmap" resultType="board">
 			SELECT write_no, member_id, title, content, write_date,notice,ref,hit FROM BOARD WHERE write_no= #{writeNo}
 	</select>
 	
