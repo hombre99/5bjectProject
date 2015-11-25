@@ -115,6 +115,7 @@
 		</script>
 		<!-- 여기까지 손대지 마세여... -->
       <style type="text/css">
+      <!--
          header{
             background-color: lightblue;
             color: white;
@@ -176,6 +177,7 @@
 				width: 600px;
 				border-collapse: collapse;
 			}
+			-->
 		</style>
    </head>
    <body>
