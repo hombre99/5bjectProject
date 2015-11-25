@@ -1,6 +1,5 @@
 package kr.or.object.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import kr.or.object.vo.GameScore;
@@ -10,5 +9,5 @@ public interface GameScoreDao {
 
 	void updateGameScore(GameScore gameScore);
 	
-	List selectGameScore(HashMap map);
+	List selectGameScore(String id);
 }

@@ -8,22 +8,7 @@
 
 function writeCheck()
   {
-   var form = document.writeform;
-   
-   if( !form.name.value )   // form 에 있는 name 값이 없을 때
-   {
-    alert( "이름을 적어주세요" ); // 경고창 띄움
-    form.name.focus();   // form 에 있는 name 위치로 이동
-    return;
-   }
-   
-   if( !form.password.value )
-   {
-    alert( "비밀번호를 적어주세요" );
-    form.password.focus();
-    return;
-   }
-   
+   var form = document.writeform; 
   if( !form.title.value )
    {
     alert( "제목을 적어주세요" );
@@ -44,46 +29,34 @@ function writeCheck()
 </head>
 <body>
 <table>
-<form name=writeform method=post action="/board/write_success.do">
+<form name=writeform method=post action="write_success.do">
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
-     <tr style="background:url('img/table_mid.gif') repeat-x; text-align:center;">
-      <td width="5"><img src="img/table_left.gif" width="5" height="30" /></td>
+     <tr style="background:url('/5bject/image/board/table_mid.gif') repeat-x; text-align:center;">
+      <td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
       <td>글쓰기</td>
-      <td width="5"><img src="img/table_right.gif" width="5" height="30" /></td>
+      <td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
      </tr>
     </table>
    <table>
      <tr>
       <td>&nbsp;</td>
       <td align="center">제목</td>
-      <td><input name="title" size="50" maxlength="100"></td>
+      <td><input name="title" size="100" maxlength="100"></td>
       <td>&nbsp;</td>
      </tr>
-     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td align="center">이름</td>
-      <td><input name="name" size="50" maxlength="50"></td>
-      <td>&nbsp;</td>
-     </tr>
-      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-    <tr>
-      <td>&nbsp;</td>
-      <td align="center">비밀번호</td>
-      <td><input type="password" name="password" size="50" maxlength="50"></td>
-      <td>&nbsp;</td>
-     </tr>
-     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
+     <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
+
+     <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
      <tr>
       <td>&nbsp;</td>
       <td align="center">내용</td>
-      <td><textarea name="memo" cols="50" rows="13"></textarea></td>
+      <td><textarea name="memo" cols="100" rows="20"></textarea></td>
       <td>&nbsp;</td>
      </tr>
-     <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
-     <tr height="1" bgcolor="#82B5DF"><td colspan="4"></td></tr>
+     <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
+     <tr height="2" bgcolor="#82B5DF"><td colspan="5"></td></tr>
      <tr align="center">
       <td>&nbsp;</td>
       <td colspan="2"><input type=button value="등록" OnClick="javascript:writeCheck();">

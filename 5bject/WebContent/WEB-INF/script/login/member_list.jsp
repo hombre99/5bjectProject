@@ -67,7 +67,6 @@ menu {
 					
 					<tr>
 						<td><a href="/5bject/member/memberInfo.do?id=${member.id }&pageNo=${requestScope.pagingBean.currentPage}">${member.id }</a>
-
 						</td>
 						<td>${member.name }</td>
 						<td>${member.month }/${member.day }/${member.year }</td>
@@ -76,9 +75,10 @@ menu {
 						<td>${member.phoneNumber }</td>
 					</tr>
 				</c:forEach>
+				<!-- 20151125 2:30pm CHJ ADD -->
+				
+			<tr><td colspan="6"><input type="button" value="닫기" id="close"></td></tr>
 			</table>
-			<!-- 20151124 3:30pm CHJ ADD -->
-			<tr><td colspan="3"><input type="button" value="닫기" id="close"></td></tr>
 		</c:otherwise>
 	</c:choose>
 	

@@ -28,4 +28,9 @@ public class GameWordServiceImpl implements GameWordService {
 	public List<GameWord> findAllWord() {
 		return dao.findAllWord();
 	}
+	
+	@Override
+	public List<GameWord> findPlayingWord(HashMap map) {
+		return dao.findPlayingWord(map);
+	}
 }

@@ -35,9 +35,9 @@
             text-align: left;
             padding: 5px;
          }
+         /*margin change for Internet Explorer 20151125 130 to 250*/
          table{
-            margin-left: 70px;
-            font-family: HY나무M;
+            margin-left: 250px;
          }
       </style>
 </head>
@@ -48,9 +48,9 @@
       <jsp:include page="/WEB-INF/script/layout/header.jsp" />
    </header>
       <table>
-         <tr><td colspan="2" align="center"><h2>${memberInfo.id}의 회원정보</h2>
+      <!--***님의 회원정보 font color change 20151125 -->
+         <tr><td colspan="2" align="center"><h2><font color="lightblue">${memberInfo.id}의 회원정보</font></h2></td></tr>
          <tr><td>ID </td><td> ${memberInfo.id}<br></td></tr>
-         <tr><td>PASSWORD </td><td> ${memberInfo.password }<br></td></tr>
          <tr><td>NAME </td><td> ${memberInfo.name }<br></td></tr>
          <tr><td>BIRTHDAY </td><td> ${memberInfo.month }  ${memberInfo.day } ${memberInfo.year }<br></td></tr>
          <tr><td>GENDER </td><td> ${memberInfo.gender }<br></td></tr>

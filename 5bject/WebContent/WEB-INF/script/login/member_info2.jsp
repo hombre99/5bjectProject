@@ -1,3 +1,4 @@
+
 <!-- 20151125 ADD 추가 -->
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page import="java.util.Enumeration" %>
@@ -42,6 +43,7 @@
          }
       </style>
 </head>
+
 <body>
 <!-- table로 처리 -->
    <!-- header include로 처리 -->
@@ -49,9 +51,9 @@
       <jsp:include page="/WEB-INF/script/layout/header.jsp" />
    </header>
       <table>
-         <tr><td colspan="2" align="center"><h2>${sessionScope.memberInfo.id}의 회원정보</h2>
+      <!--***님의 회원정보 font color change 20151125 -->
+         <tr><td colspan="2" align="center"><h2><font color="lightblue">${sessionScope.memberInfo.id}의 회원정보</font></h2></td></tr>
          <tr><td>ID </td><td> ${sessionScope.memberInfo.id}<br></td></tr>
-         <tr><td>PASSWORD </td><td> ${sessionScope.memberInfo.password }<br></td></tr>
          <tr><td>NAME </td><td> ${sessionScope.memberInfo.name }<br></td></tr>
          <tr><td>BIRTHDAY </td><td> ${sessionScope.memberInfo.month }  ${sessionScope.memberInfo.day } ${sessionScope.memberInfo.year }<br></td></tr>
          <tr><td>GENDER </td><td> ${sessionScope.memberInfo.gender }<br></td></tr>

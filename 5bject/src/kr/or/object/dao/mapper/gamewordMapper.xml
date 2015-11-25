@@ -17,7 +17,7 @@
 		INSERT	INTO GAMEWORD VALUES(#{ gameNum }, #{ difficulty }, #{ word })
 	</insert>
 	
-	<select id="selectGameWord" resultMap="gameWord-resultMap">
+	<select id="selectGameWordByWord" resultMap="gameWord-resultMap">
 		<include refid="selectGameWord-sql" />
 		FROM 	GAMEWORD
 		WHERE	WORD = #{ word }
@@ -27,5 +27,13 @@
 		<include refid="selectGameWord-sql" />
 		FROM	GAMEWORD
 		ORDER BY GAME_NUM ASC, DIFFICULTY ASC, WORD ASC
+	</select>
+	
+	<select id="selectPlayingGameWord" parameterType="map" resultMap="gameWord-resultMap">
+		<include refid="selectGameWord-sql" />
+		FROM	GAMEWORD
+		<![CDATA[
+		WHERE	GAME_NUM = #{ gameNum } AND DIFFICULTY <= #{ difficulty }
+		]]>
 	</select>
 </mapper>
