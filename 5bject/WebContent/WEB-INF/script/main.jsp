@@ -98,7 +98,22 @@
       <link
          href="https://cdn-production.codecademy.com/assets/webpack/vendor.bundle-59164de1b85d70aee596322a1c89ef69.css"
          media="screen" rel="stylesheet" type="text/css" />
-
+         
+		<script id="CCDATA" type="text/javascript">
+         //<![CDATA[
+         var CCDATA = CCDATA || {};
+         CCDATA['env'] = "production";
+         CCDATA['request_host'] = "www.codecademy.com";
+         CCDATA['request_path'] = "/";
+         CCDATA['asset_host'] = "cdn-production.codecademy.com";
+         CCDATA['assets_compiled'] = true;
+         CCDATA['pollForNotifications'] = false;
+         CCDATA['locale'] = "en";
+         CCDATA['API_HOST'] = "/api";
+         CCDATA['authenticity_token'] = "6fYL1Pw65Flr6Evs9dYj/v7ySAtMEvAZ/QOShXpeHdQ=";
+         CCDATA['available_locales'] = "en|ko|fa|ru|es-AR|ja|fr|et-EE|zh|fr-FR|pt-BR|de|en-GB|ky-KG|es|en-US|pt|ar";
+ 		 //  ]]>
+      </script> 
 
       <style type="text/css">
          header{
