@@ -62,7 +62,9 @@ public class BoardController {
 	public String Delete(HttpSession session,@RequestParam Board board){
 		
 		String id = session.getId();
+		
 		Board boardId = service.getView(board.getWriteNo());
+		
 		if(id.equals(boardId.getId())){
 			service.delete(board.getWriteNo());
 		}else{
