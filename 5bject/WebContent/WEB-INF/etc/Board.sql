@@ -13,16 +13,19 @@
    drop sequence s_write_no
 
    
-   create table BOARD(   
-      write_no number(6) primary key,   
-      member_id varchar2(50), 
-      title varchar2(50) not null,
-      content varchar2(2000) not null,
-      write_date date not null,
-      notice number(2) not null,
-      ref number(6) default 0, 
-      hit number(6) default 0
-   );
+	create table BOARD(	
+		write_no number(6) primary key,	
+		member_id varchar2(50)
+		CONSTRAINT member_id
+		REFERENCES MEMBERS(MEMBER_ID)
+		ON DELETE CASCADE, 
+		title varchar2(50) not null,
+		content varchar2(2000) not null,
+		write_date date not null,
+		notice number(2) not null,
+		ref number(6) default 0, 
+		hit number(6) default 0
+	);
 
 INSERT INTO board (write_no, member_id, title, content, write_date,notice,hit) 
 VALUES (s_write_no.nextval, 'chan', '안녕하세요', '오늘의 공지사항은 없습니다.', sysdate,1, 5)
