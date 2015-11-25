@@ -23,7 +23,8 @@ public interface MemberService {
 	
 	List<Members> getMembers();
 
-	// 20151118. ADD KKH - 잃어버린 아이디찾기
+
+	// 20151124. ADD KKH - 아이디 찾기
 	List findMemberId(HashMap map);
 	
 	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기

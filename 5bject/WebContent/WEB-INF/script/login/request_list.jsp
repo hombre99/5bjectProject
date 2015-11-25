@@ -23,17 +23,17 @@ table {
 	width: 1100px;
 	margin-top: 20px;
 }
-a{
+
+a {
 	text-decoration: none !important;
 	color: white;
-}
-menu{
+
+menu {
 	background-color: powderblue;
 	color: white;
 	padding: 10px;
 	font-weight: bold;
 }
-
 </style>
 </head>
 <body>
@@ -47,7 +47,8 @@ menu{
 		<c:otherwise>
 			<table>
 				<tr>
-					<td></td><td colspan="2" align="center"><h2><font color="lightblue">고객문의요청</font></h2></td>
+					<td></td>
+					<td colspan="2" align="center"><h2>고객문의요청</h2></td>
 				</tr>
 				<tr>
 					<td><b>고객문의날짜</b></td>
@@ -79,7 +80,8 @@ menu{
 <tr><td> </td><td colspan="2" align="center">
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.previousPageGroup }">
-			<a href="/5bject/member/request_list.do?pageNo=${requestScope.pagingBean.startPageOfPageGroup-1}">
+			<a
+				href="/5bject/member/request_list.do?pageNo=${requestScope.pagingBean.startPageOfPageGroup-1}">
 				◀ </a>
 		</c:when>
 		<c:otherwise>
@@ -97,17 +99,19 @@ menu{
 				(${page})
 			</c:when>
 			<c:otherwise>
-				<a href="/5bject/member/request_list.do?pageNo=${page}">
-					${page} 
+				<a href="/5bject/member/request_list.do?pageNo=${page}"> ${page}
 				</a>
 			</c:otherwise>
 		</c:choose>
-</c:forEach>
-	<!-- 3. 다음 페이지 그룹 링크  다음 페이지 그룹이 있으면 링크 처리 없으면 그냥 화살표만 나오도록 처리. -->
 
+	</c:forEach>
+	<!-- 3. 다음 페이지 그룹 링크
+    다음 페이지 그룹이 있으면 링크 처리 없으면 그냥 화살표만 나오도록 처리.
+ -->
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.nextPageGroup}">
-			<a href="/5bject/member/request_list.do?pageNo=${requestScope.pagingBean.endPageOfPageGroup+1}">
+			<a
+				href="/5bject/member/request_list.do?pageNo=${requestScope.pagingBean.endPageOfPageGroup+1}">
 				▶ </a>
 		</c:when>
 		<c:otherwise>▶</c:otherwise>

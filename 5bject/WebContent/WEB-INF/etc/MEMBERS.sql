@@ -30,15 +30,15 @@ create table members(
 	-- 참조하는 값이 삭제된 경우 자식테이블의 row도 같이 삭제.
 	--references department
 	 )
-  	insert into members values('cccccc32','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
-  	insert into members values('cccccc33','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
-  	insert into members values('cccccc34','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
-  	insert into members values('cccccc35','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
-  	insert into members values('cccccc36','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
-  	insert into members values('cccccc37','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
-  	insert into members values('cccccc38','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
-  	insert into members values('cccccc39','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
-  	insert into members values('cccccc40','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('aaaaa1','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
+  	insert into members values('aaaaa2','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
+  	insert into members values('aaaaa3','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
+  	insert into members values('aaaaa4','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
+  	insert into members values('aaaaa5','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
+  	insert into members values('aaaaa6','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
+  	insert into members values('aaaaa7','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
+  	insert into members values('aaaaa8','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
+  	insert into members values('aaaaa9','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
   	insert into members values('cccccc41','123456','kunhoe','March', 11, 2000, 'male', 'ranibow','gmail.com',01111111112);
   	insert into members values('object','class','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
   	insert into members values('objectclass','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);

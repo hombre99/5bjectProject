@@ -6,7 +6,9 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.object.service.BoardService;
@@ -42,27 +44,34 @@ public class BoardController {
 	}
 	
 	
-	@RequestMapping("/write.do")
-	public String Write(HttpSession session , @RequestParam Board board){		
+	@RequestMapping(value = "/write_success.do", method = RequestMethod.POST)
+	public String Write(HttpSession session , @ModelAttribute Board board){		
 		
-		String id = session.getId();		
+		String id = board.getId();		
 		
 		if(id.equals("object")){
 			board.setNotice(1);
 		}else{
 			board.setNotice(2);
 		}		
+		System.out.println(board.getTitle()  +"        ----------        "+board.getContent()+"        ----------        "+board.getId());
 		
 		service.insertWrite(board);		
 		
-		return "/WEB-INF/script/board/write_success.jsp";
+		if(id.equals("object")){
+			return "/5bject/board/notice.do";
+		}else{
+			return "/5bject/board/board.do";
+		}
 	}
 	
 	@RequestMapping("/delete.do")
 	public String Delete(HttpSession session,@RequestParam Board board){
 		
 		String id = session.getId();
+		
 		Board boardId = service.getView(board.getWriteNo());
+		
 		if(id.equals(boardId.getId())){
 			service.delete(board.getWriteNo());
 		}else{
@@ -99,11 +108,9 @@ public class BoardController {
 		
 		Board contectBoard = service.getView(idx);
 		
-		session.setAttribute("contectBoard", contectBoard);
+		session.setAttribute("contectBoard", contectBoard);	
 		
-		String url ="/WEB-INF/script/board/view.jsp";
-		
-		return url;
+		return "/WEB-INF/script/board/view.jsp";
 	}	
 	
 	public void getMax(){

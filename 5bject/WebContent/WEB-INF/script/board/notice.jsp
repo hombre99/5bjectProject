@@ -62,6 +62,11 @@
 				<td align="center">&nbsp;</td>                                                                                                                                                                                                                 
 			<tr>
 			</c:forEach>
+			<tr align="center">
+  			 <td colspan="7">
+   				<input type=button value="글쓰기" OnClick="window.location.href='/5bject/board/write.do'">
+   			</td>
+  			</tr>
 		</table>
 	</div>
 		<footer>		

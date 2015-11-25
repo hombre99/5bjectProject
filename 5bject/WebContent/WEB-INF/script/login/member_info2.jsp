@@ -1,3 +1,5 @@
+
+<!-- 20151125 ADD 추가 -->
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page import="java.util.Enumeration" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -35,12 +37,13 @@
             text-align: left;
             padding: 5px;
          }
-         /*margin change for Internet Explorer 20151125*/
          table{
-            margin-left: 200px;
+            margin-left: 70px;
+            font-family: HY나무M;
          }
       </style>
 </head>
+
 <body>
 <!-- table로 처리 -->
    <!-- header include로 처리 -->

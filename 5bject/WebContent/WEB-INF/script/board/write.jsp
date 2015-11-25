@@ -16,7 +16,7 @@ function writeCheck()
     return;
    }
  
-  if( !form.memo.value )
+  if( !form.content.value )
    {
     alert( "내용을 적어주세요" );
     form.memo.focus();
@@ -29,7 +29,7 @@ function writeCheck()
 </head>
 <body>
 <table>
-<form name=writeform method=post action="write_success.do">
+<form name="writeform" method="post" action="/5bject/board/write_success.do">
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -43,16 +43,21 @@ function writeCheck()
      <tr>
       <td>&nbsp;</td>
       <td align="center">제목</td>
-      <td><input name="title" size="100" maxlength="100"></td>
+      <td><input name="title" size="100" maxlength="100" value="${requestScope.board.title }"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
-
+	<tr>
+      <td>&nbsp;</td>
+      <td align="center">작성자</td>
+      <td><input type="text" readonly="readonly"  name="id" value="${sessionScope.member.id}" size="20"></td>
+      <td>&nbsp;</td>
+     </tr>
      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
      <tr>
       <td>&nbsp;</td>
       <td align="center">내용</td>
-      <td><textarea name="memo" cols="100" rows="20"></textarea></td>
+      <td><input name="content" value="${requestScope.board.content}" size="20" style="width:100%; height:360px"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>

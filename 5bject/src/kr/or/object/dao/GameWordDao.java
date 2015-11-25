@@ -10,7 +10,9 @@ public interface GameWordDao {
 	
 	GameWord findWord(String word);
 	
-	List<GameWord> findAllWord();
+	List<GameWord> findAllWord(int pageNo);
 
 	List<GameWord> findPlayingWord(HashMap map);
+	
+	int totalWordCount();
 }
