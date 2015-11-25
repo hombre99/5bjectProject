@@ -5,28 +5,16 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>FIND_GAMEWORD_FORM</title>
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/menu.css" />
 	</head>
 	<body>
+		<menu>
+			<jsp:include page="/WEB-INF/script/layout/game_menu.jsp" />
+		</menu>
 		<h2>등록된 특정단어 찾기</h2>
 		<form action="/5bject/game/findWord.do">
 			<table>
 				<tr>
-				<!--
-					<td>
-						<select name="gameNum">
-							<c:forEach begin="3" end="3" var="num">
-								<option>${ num }</option>
-							</c:forEach>
-						</select>
-					</td>
-					<td>
-						<select name="difficulty">
-							<c:forEach begin="2" end="4" var="num">
-								<option>${ num }</option>
-							</c:forEach>
-						</select>
-					</td>
-				-->
 					<td>
 						<input type="text" name="word" />
 					</td>

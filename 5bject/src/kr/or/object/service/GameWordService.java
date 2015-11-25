@@ -2,6 +2,7 @@ package kr.or.object.service;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.object.vo.GameWord;
 
@@ -10,7 +11,7 @@ public interface GameWordService {
 	
 	GameWord findWord(String word);
 	
-	List<GameWord> findAllWord();
+	Map findAllWord(int pageNo);
 
 	List<GameWord> findPlayingWord(HashMap map);
 }
