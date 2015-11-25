@@ -350,12 +350,11 @@ $(document).ready(function() {
 	$("#update_link").on("click",function(){
 		window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 	});
-	
+
 	// language_link ADD. 20151116. CHJ
 	$("#language_link").on("click", function() {
-		window.open("/5bject/language/computer_language.do","ok","width=1100, height=800,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+		window.open("/5bject/language/computer_language.do","ok","width=1100, height=850,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
 	});
-
 	// mypage_link, logout_link ADD. 20151116. KKH
 	$("#mypage_link").on("click", function() {
 		window.open("/5bject/member/mypage.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
@@ -364,25 +363,15 @@ $(document).ready(function() {
 	$("#logout_link").on("click", function() {
 		if ( confirm("로그아웃하시겠습니까?") ) {
 			location.replace("/5bject/member/logout.do");
-		} 
+		} 			
 	});
-	
+
 	$("#memberList").on("click", function(){
-		window.open("/5bject/member/memberList.do");
+		window.open("/5bject/member/memberList.do?pageNo=${param.pageNo}");
 	});
-	
+
 	// 20151120. ADD KKH - 포인터 발생
-	$(".findInfo").css("cursor","pointer").css("text-decoration","none !important");
-
-	// 20151120. ADD KKH - 아이디찾기
-	$("#findId").on("click", function() {
-		window.open("/5bject/member/findID.do","ok","width=400, height=150");
-	});
-
-	// 20151120. ADD KKH - 비밀번호찾기
-	$("#findPwd").on("click",function(){
-		window.open("/5bject/member/findPwd.do","ok","width=400,height=150");
-	});
+	$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
 
 	/* chj 20151120 link ADD*/
 	$("#request_list").on("click", function() {
@@ -395,4 +384,5 @@ function findId(){
  function findPwd(){
     window.open("/5bject/member/findPwd.do","ok","width=650, height=300");
  };
+
 

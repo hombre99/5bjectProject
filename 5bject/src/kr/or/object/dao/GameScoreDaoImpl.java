@@ -25,7 +25,7 @@ public class GameScoreDaoImpl implements GameScoreDao {
 	}
 
 	@Override
-	public List selectGameScore(HashMap map) {
-		return session.selectList("gamescoreMapper.selectGameScore", map);
+	public List selectGameScore(String id) {
+		return session.selectList("gamescoreMapper.selectGameScoreById", id);
 	}
 }

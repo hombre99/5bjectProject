@@ -188,9 +188,7 @@
       <header>
          <jsp:include page="/WEB-INF/script/layout/header.jsp" />
       </header>
-
-
-      <div class="content">
+	<div class="content">
          <c:choose>
             <c:when test="${ (sessionScope.gameNum != null && sessionScope.difficulty != null) }">
                <c:choose>
@@ -325,5 +323,6 @@
       </footer>   
 
    </body>
+
 
 </html>
