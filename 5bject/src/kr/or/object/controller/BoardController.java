@@ -106,6 +106,6 @@ public class BoardController {
 	
 	public void getMax(){
 		service.getMax();
-	}
-	
+		System.out.println(service.getMax());
+	}	
 }
