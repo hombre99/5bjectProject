@@ -1,6 +1,5 @@
 package kr.or.object.service;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +24,7 @@ public class GameScoreServiceImpl implements GameScoreService {
 	}
 
 	@Override
-	public List<GameScore> selectGameScore(HashMap map) {
-		return dao.selectGameScore(map);
+	public List<GameScore> selectGameScore(String id) {
+		return dao.selectGameScore(id);
 	}
 }

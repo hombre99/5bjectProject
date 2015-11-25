@@ -24,8 +24,8 @@
 		WHERE	MEMBER_ID = #{ id }
 	</update>
 
-	<select id="selectGameScore" resultMap="gameScore_resultMap">
+	<select id="selectGameScoreById" resultMap="gameScore_resultMap">
 		<include refid="gamescore_select" />
-		WHERE	MEMBER_ID = #{ id } AND GAME_NUM = #{ gameNum }
+		WHERE	MEMBER_ID = #{ id }
 	</select>
 </mapper>

@@ -1,5 +1,6 @@
 package kr.or.object.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -20,11 +21,16 @@ public class GameWordDaoImpl implements GameWordDao {
 
 	@Override
 	public GameWord findWord(String word) {
-		return session.selectOne("gamewordMapper.selectGameWord", word);
+		return session.selectOne("gamewordMapper.selectGameWordByWord", word);
 	}
 
 	@Override
 	public List<GameWord> findAllWord() {
 		return session.selectList("gamewordMapper.selectAllGameWord");
+	}
+	
+	@Override
+	public List<GameWord> findPlayingWord(HashMap map) {
+		return session.selectList("gamewordMapper.selectPlayingGameWord", map);
 	}
 }
