@@ -70,24 +70,27 @@ public class MemberController {
 	}
 
 	// ADD. 20151116. KKH - 20151124 CHJ validator ADD
-	@RequestMapping("/update_form.do")
-	public String update(HttpSession session, @ModelAttribute Members member, Errors errors) {
+	@RequestMapping(value="/update_form.do", method = RequestMethod.POST)
+	public String update(HttpSession session, @ModelAttribute Members member, Errors errors) {	
 		MemberValidator validate = new MemberValidator();
-		System.out.println(member);
-		if (service.findMemberById(member.getId()).equals(member)) {
-			String error = "회원정보를 수정해주셔야합니다.";
-			session.setAttribute("error", error);
-		}else{
-			validate.validate(member, errors);
-			if(errors.hasErrors()){
-				return "/WEB-INF/script/login/update_result.jsp";
+		validate.validate(member, errors);
+		if(errors.hasErrors()){
+			return "/WEB-INF/script/login/update_form.jsp";
 			}
-			service.updateMemberById(member);
-			session.setAttribute("member", member);
-		}
+		
+		service.updateMemberById(member);
+		session.setAttribute("member", member);	
 		return "/WEB-INF/script/login/update_result.jsp";
+			
 	}
-
+	
+	/*20151125 Error  CHJ ADD */
+	@RequestMapping(value="/update_member.do", method = RequestMethod.POST)
+	public String memberUpdate(HttpSession session, @ModelAttribute Members member) {
+			service.updateMemberById(member);
+			session.setAttribute("memberInfo", member);		
+			return "/WEB-INF/script/login/member_info2.jsp";
+	}
 
 	// ADD. 20151116. KKH
 	@RequestMapping("/logout.do")
@@ -130,25 +133,6 @@ public class MemberController {
 		service.removeMemberById(id);
 
 		return "/member/memberList.do";
-	}
-	/*20151124 Error  CHJADD */
-	@RequestMapping("/update_member.do")
-	public String memberUpdate(HttpSession session, @ModelAttribute Members member, Errors errors) {
-		MemberValidator validate = new MemberValidator();
-		System.out.println(member);
-		if (service.findMemberById(member.getId()).equals(member)) {
-			String error = "회원정보를 수정해주셔야합니다.";
-			System.out.println(error);
-			session.setAttribute("error", error);
-		}else{
-			validate.validate(member, errors);
-			if(errors.hasErrors()){
-				return "/WEB-INF/script/login/member_list.jsp";
-			}
-			service.updateMemberById(member);
-			session.setAttribute("member", member);
-		}
-		return "/WEB-INF/script/login/member_list.jsp";
 	}
 
 	// ADD. 2015118~20. CHJ -고객 문의 요청 Controller
