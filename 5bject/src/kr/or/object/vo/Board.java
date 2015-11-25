@@ -1,8 +1,9 @@
 package kr.or.object.vo;
 
+import java.io.Serializable;
 import java.sql.Date;
 
-public class Board{
+public class Board implements Serializable{
    
    private int writeNo;
    private String id;

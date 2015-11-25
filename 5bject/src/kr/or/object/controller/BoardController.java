@@ -95,17 +95,19 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/view.do")
-	public String View(HttpSession session,@RequestParam Board board){
+	public String View(HttpSession session,@RequestParam int idx){
 		
-		Board contectBoard = service.getView(board.getWriteNo());
+		Board contectBoard = service.getView(idx);
 		
 		session.setAttribute("contectBoard", contectBoard);
 		
-		return "/WEB-INF/script/board/view.jsp";
+		String url ="/WEB-INF/script/board/view.jsp";
+		
+		return url;
 	}	
 	
 	public void getMax(){
 		service.getMax();
-	}
-	
+		System.out.println(service.getMax());
+	}	
 }
