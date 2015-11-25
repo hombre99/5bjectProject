@@ -12,8 +12,8 @@
 			<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 </header>
 <c:choose>
-	<c:when test="${fn:length(requestScope.list)==0 }">
-		등록된 고객이 없습니다.
+	<c:when test="${fn:length(sessionScope.boardList)==0 }">
+		등록된 글이 없습니다.
 	</c:when>
 <c:otherwise>
 <h1>자유 게시판</h1>

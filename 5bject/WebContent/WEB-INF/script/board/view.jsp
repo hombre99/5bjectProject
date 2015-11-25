@@ -1,7 +1,4 @@
 <%@page contentType = "text/html;charset=UTF-8" %>
-<%@ page import="kr.or.object.vo.*" %>
-
-<jsp:useBean id="dao" class="kr.or.object.dao.BoardDaoImpl"/>
 <!DOCTYPE html>
 <html>
 <head>
