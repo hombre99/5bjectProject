@@ -6,7 +6,6 @@
 <head>
 <meta charset=" UTF-8">
 <title>전체회원정보</title>
-
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -14,7 +13,14 @@
 			window.close();
 		});
 	});
+	
+	/*20151124 CHJ page back ADD*/
+	function page_back(){
+		history.go(-1);
+	}
+
 </script>
+
 <style type="text/css">
 a {
 	text-decoration: none !important;
@@ -35,14 +41,14 @@ menu {
 	<c:choose>
 
 		<c:when test="${fn:length(requestScope.list)==0 }">
-		         <tr>
-            <td align="center"><h2>회원목록</h2></td>
-         </tr>
-				<tr>
+			<tr>
+				<td align="center"><h2>회원목록</h2></td>
+			</tr>
+			<tr>
 				<td>등록된 고객이 없습니다.</td>
-				</tr>
-</c:when>
-
+			</tr>
+		</c:when>
+		
 		<c:otherwise>
 			<table style="width: 800px" border="1">
 				<tr>
@@ -59,8 +65,7 @@ menu {
 
 				<c:forEach items="${requestScope.list }" var="member">
 					<tr>
-						<td><a
-							href="/5bject/member/memberInfo.do?id=${member.id }&pageNo=${requestScope.pagingBean.currentPage}">${member.id }</a>
+						<td><a href="/5bject/member/memberInfo.do?id=${member.id }&pageNo=${requestScope.pagingBean.currentPage}">${member.id }</a>
 
 						</td>
 						<td>${member.name }</td>
@@ -70,14 +75,18 @@ menu {
 						<td>${member.phoneNumber }</td>
 				</c:forEach>
 			</table>
+			<!-- 20151124 3:30pm CHJ ADD -->
+			<tr><td colspan="3"><input type="button" value="닫기" id="close"></td></tr>
 		</c:otherwise>
 	</c:choose>
+	
 	<p />
 	<!-- Paging처리 -->
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.previousPageGroup }">
-			<a
-				href="/5bject/member/memberList.do?pageNo=${requestScope.pagingBean.startPageOfPageGroup-1 }">
+
+			<a href="/5bject/member/memberList.do?pageNo=${requestScope.pagingBean.startPageOfPageGroup-1 }">
+
 				◀ </a>
 		</c:when>
 		<c:otherwise>
@@ -113,7 +122,8 @@ menu {
 		</c:when>
 		<c:otherwise>▶</c:otherwise>
 	</c:choose>
+
 	<br>
-	<input type="button" value="닫기" id="close">
+
 </body>
 </html>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="gamescoreMapper">
+	<resultMap id="gameScore_resultMap" type="gameScore">
+		<constructor>
+			<idArg column="member_id" javaType="string" />
+			<arg column="game_num" javaType="_int" />
+			<arg column="easy" javaType="_int" />
+			<arg column="normal" javaType="_int" />
+			<arg column="hard" javaType="_int" />
+		</constructor>
+	</resultMap>
+
+	<sql id="gamescore_select">
+		SELECT	MEMBER_ID, GAME_NUM, EASY, NORMAL, HARD FROM GAMESCORE
+	</sql>
+	
+	<insert id="insertGameScore" parameterType="gameScore">
+		INSERT	INTO GAMESCORE VALUES (#{ id }, #{ gameNum }, #{ easy }, #{ normal }, #{ hard })
+	</insert>
+
+	<update id="updateGameScore" parameterType="gameScore">
+		UPDATE	GAMESCORE SET GAME_NUM = #{ gameNum }, EASY = #{ easy }, NORMAL = #{ normal }, HARD = #{ hard }
+		WHERE	MEMBER_ID = #{ id }
+	</update>
+
+	<select id="selectGameScore" resultMap="gameScore_resultMap">
+		<include refid="gamescore_select" />
+		WHERE	MEMBER_ID = #{ id } AND GAME_NUM = #{ gameNum }
+	</select>
+</mapper>

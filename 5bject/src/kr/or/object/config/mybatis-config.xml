@@ -12,9 +12,17 @@
 	</typeAliases>
 	
 	<mappers>
+		<!-- MemberMapper ADD. -->
 		<mapper resource="kr/or/object/dao/mapper/memberMapper.xml" />
 		
 		<!-- LanguageMapper ADD. -->
 		<mapper resource="kr/or/object/dao/mapper/languageMapper.xml" />
+		
+		<!-- GameMapper ADD. -->
+		<mapper resource="kr/or/object/dao/mapper/gamescoreMapper.xml" />
+		<mapper resource="kr/or/object/dao/mapper/gamewordMapper.xml" />
+
+		<!-- BoardMapper ADD. -->
+		<mapper resource="kr/or/object/dao/mapper/boardMapper.xml" />
 	</mappers>
 </configuration>

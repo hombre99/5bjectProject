@@ -24,6 +24,7 @@ public interface MemberDao {
 	
 	List<Members> getMembers();
 	
+
 	// 20151124. KKH ADD - 아이디 찾기
 	List findMemberId(HashMap map);
 	

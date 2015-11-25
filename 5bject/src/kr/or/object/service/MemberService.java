@@ -16,12 +16,13 @@ public interface MemberService {
 	Map getRequestList(int pageNo);
 	
 	void insertMember(Members member);
-
+	//수정 CHJ 20151124
 	void updateMemberById(Members member);
 
 	void removeMemberById(String id);
 	
 	List<Members> getMembers();
+
 
 	// 20151124. ADD KKH - 아이디 찾기
 	List findMemberId(HashMap map);

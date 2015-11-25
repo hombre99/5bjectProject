@@ -22,7 +22,7 @@
 				}
 			});
     	  $("#update").on("click", function() {
-				window.open('/5bject/member/memberUpdate.do');
+				window.open('/5bject/member/memberUpdate.do','ok', 'width=500, height=700,toolbar=0,location=0,status=0,menubar=0,resizable=0');
 			});
     	  
       });

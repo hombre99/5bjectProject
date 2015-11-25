@@ -13,18 +13,20 @@
 			window.close();
 		});
 	});
+	function page_back(){
+		history.go(-1);
+	}
 </script>
 <style type="text/css">
 table {
 	background-color: white;
-	width: 1300px;
+	width: 1100px;
 	margin-top: 20px;
 }
 
 a {
 	text-decoration: none !important;
 	color: white;
-}
 
 menu {
 	background-color: powderblue;
@@ -48,7 +50,7 @@ menu {
 					<td></td>
 					<td colspan="2" align="center"><h2>고객문의요청</h2></td>
 				</tr>
-				<tr id="answer">
+				<tr>
 					<td><b>고객문의날짜</b></td>
 					<td><b>고객아이디</b></td>
 					<td><b>고객 이메일주소</b></td>
@@ -60,11 +62,10 @@ menu {
 						<td>${upload.id}</td>
 						<td>${upload.members.emailId}@${upload.members.emailAddress}</td>
 						<td>${upload.requestInfo}</td>
-
 					</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="4"><input type="button" value="닫기" id="close"></td>
+					<td colspan="4"><input type="button" value="닫기" id="close">&nbsp;<input type="button" onclick="page_back();" value="뒤로가기"></td>
 				</tr>
 			</table>
 		</c:otherwise>
@@ -75,7 +76,8 @@ menu {
 1. 이전 페이지 그룹으로 이동 처리
   이전페이지 그룹이 있으면 링크처리 없으면 <- 모양만 나오도록 처리.
  -->
-
+<table>
+<tr><td> </td><td colspan="2" align="center">
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.previousPageGroup }">
 			<a
@@ -91,6 +93,7 @@ menu {
  -->
 	<c:forEach begin="${requestScope.pagingBean.startPageOfPageGroup }"
 		end="${requestScope.pagingBean.endPageOfPageGroup }" var="page">
+		
 		<c:choose>
 			<c:when test="${page == requestScope.pagingBean.currentPage }">
 				(${page})
@@ -100,11 +103,11 @@ menu {
 				</a>
 			</c:otherwise>
 		</c:choose>
+
 	</c:forEach>
 	<!-- 3. 다음 페이지 그룹 링크
     다음 페이지 그룹이 있으면 링크 처리 없으면 그냥 화살표만 나오도록 처리.
  -->
-
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.nextPageGroup}">
 			<a
@@ -113,6 +116,9 @@ menu {
 		</c:when>
 		<c:otherwise>▶</c:otherwise>
 	</c:choose>
-
+</td>
+<td> </td>
+</tr>
+</table>
 </body>
 </html>

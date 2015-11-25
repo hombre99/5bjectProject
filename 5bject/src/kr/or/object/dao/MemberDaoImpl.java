@@ -68,7 +68,6 @@ public class MemberDaoImpl implements MemberDao{
 	// 20151124. KKH ADD - 아이디 찾기
 	@Override
 	public List findMemberId(HashMap map) {
-		
 		return session.selectList("memberMapper.selectMemberId",map);
 	}
 	

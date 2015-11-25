@@ -7,7 +7,6 @@
 
 <!DOCTYPE html>
 <html>
-
 	<head>
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
@@ -15,6 +14,7 @@
 		<c:choose>
 			<c:when test="${ sessionScope.gameNum != null && sessionScope.difficulty != null }">
 				<script type="text/javascript">
+					var loginId = '${ sessionScope.member.id }';
 					var gameNum = '${ sessionScope.gameNum }';
 					var difficulty = '${ sessionScope.difficulty }';
 				</script>
@@ -44,16 +44,19 @@
 						$("#update_link").on("click",function(){
 							window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
-						
+
 						// language_link ADD. 20151116. CHJ
 						$("#language_link").on("click", function() {
 							window.open("/5bject/language/computer_language.do","ok","width=1100, height=850,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
 						});
+						// mypage_link, logout_link ADD. 20151116. KKH
+						$("#mypage_link").on("click", function() {
+							window.open("/5bject/member/mypage.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+						});
 
-                  // mypage_link, logout_link ADD. 20151116. KKH
-                  $("#mypage_link").on("click", function() {
-                     window.open("/5bject/member/mypage.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
-                  });
+						// 20151120. ADD KKH - 포인터 발생
+						$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
+
 
                    //20151124 
                   $("#memberList").on("click", function(){
@@ -64,11 +67,12 @@
                   $(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
 
 						$("#logout_link").on("click", function() {
+
 							if ( confirm("로그아웃하시겠습니까?") ) {
 								location.replace("/5bject/member/logout.do");
-							} 
-
+							} 			
 						});
+
 						/* chj 20151120 link ADD*/
 						$("#request_list").on("click", function() {
 							window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
@@ -79,41 +83,42 @@
 						function findId(){
 							window.open("/5bject/member/findId.do","ok","width=650, height=300");
 						};
+
 						function findPwd(){
 							window.open("/5bject/member/findPwd.do","ok","width=650, height=300");
 						};
 				</script>
 			</c:otherwise>
 		</c:choose>
-
-
       <!-- 여기서부터 손대지 마세여... -->
-      <link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
-      <link
-         href="https://cdn-production.codecademy.com/assets/rebrand/core-51a92b73616bc4ee9446ad082ee0ce7e.css"
-         media="screen" rel="stylesheet" type="text/css" />
-      <link
-         href="https://cdn-production.codecademy.com/ass;[']ets/rebrand/controllers/home/show-17141dd9781a3ee228fefc2b7da9d7d3.css"
-         media="screen" rel="stylesheet" type="text/css" />
-      <link
-         href="https://cdn-production.codecademy.com/assets/webpack/vendor.bundle-59164de1b85d70aee596322a1c89ef69.css"
-         media="screen" rel="stylesheet" type="text/css" />
-         
+		<link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
+		<link
+			href="https://cdn-production.codecademy.com/assets/rebrand/core-51a92b73616bc4ee9446ad082ee0ce7e.css"
+			media="screen" rel="stylesheet" type="text/css" />
+		<link
+			href="https://cdn-production.codecademy.com/ass;[']ets/rebrand/controllers/home/show-17141dd9781a3ee228fefc2b7da9d7d3.css"
+			media="screen" rel="stylesheet" type="text/css" />
+		<link
+			href="https://cdn-production.codecademy.com/assets/webpack/vendor.bundle-59164de1b85d70aee596322a1c89ef69.css"
+			media="screen" rel="stylesheet" type="text/css" />
+
 		<script id="CCDATA" type="text/javascript">
-         //<![CDATA[
-         var CCDATA = CCDATA || {};
-         CCDATA['env'] = "production";
-         CCDATA['request_host'] = "www.codecademy.com";
-         CCDATA['request_path'] = "/";
-         CCDATA['asset_host'] = "cdn-production.codecademy.com";
-         CCDATA['assets_compiled'] = true;
-         CCDATA['pollForNotifications'] = false;
-         CCDATA['locale'] = "en";
-         CCDATA['API_HOST'] = "/api";
-         CCDATA['authenticity_token'] = "6fYL1Pw65Flr6Evs9dYj/v7ySAtMEvAZ/QOShXpeHdQ=";
-         CCDATA['available_locales'] = "en|ko|fa|ru|es-AR|ja|fr|et-EE|zh|fr-FR|pt-BR|de|en-GB|ky-KG|es|en-US|pt|ar";
- 		 //  ]]>
-      </script> 
+			//<![CDATA[
+			var CCDATA = CCDATA || {};
+			CCDATA['env'] = "production";
+			CCDATA['request_host'] = "www.codecademy.com";
+			CCDATA['request_path'] = "/";
+			CCDATA['asset_host'] = "cdn-production.codecademy.com";
+			CCDATA['assets_compiled'] = true;
+			CCDATA['pollForNotifications'] = false;
+			CCDATA['locale'] = "en";
+			CCDATA['API_HOST'] = "/api";
+			CCDATA['authenticity_token'] = "6fYL1Pw65Flr6Evs9dYj/v7ySAtMEvAZ/QOShXpeHdQ=";
+			CCDATA['available_locales'] = "en|ko|fa|ru|es-AR|ja|fr|et-EE|zh|fr-FR|pt-BR|de|en-GB|ky-KG|es|en-US|pt|ar";
+			CCDATA.secureSandboxIndexPath = 'https://cdn-production.codecademy.com/assets/secure/index-c5bf1319f62cb07c26239e761a9ed5c9.html';
+			//]]>
+		</script>
+		<!-- 여기까지 손대지 마세여... -->
 
       <style type="text/css">
          header{
@@ -146,17 +151,15 @@
             margin-top: 150px;
             text-align: center;
          }
-
-
-         /* 게임1용 CSS */
-         #td2 {
-            border: 1px solid black;
-            padding: 0px;
-            height: 200px;
-            width: 300px;
-            position: relative;
-            text-align: center;
-         }
+			/* 게임1용 CSS */
+			#td2 {
+				border: 1px solid black;
+				padding: 0px;
+				height: 200px;
+				width: 300px;
+				position: relative;
+				text-align: center;
+			}
 
 			#td3 {
 				border: 1px solid black;
@@ -179,8 +182,7 @@
 				width: 600px;
 				border-collapse: collapse;
 			}
-
-      </style>
+		</style>
    </head>
    <body>
       <header>
@@ -253,7 +255,6 @@
       </div>
       <div class="blank"></div>
       <!-- <article class="fit-full color-scheme#e6e6fa" -->
-      <!-- <article class="fit-full color-scheme#e6e6fa" -->
       <article id="art" class="fit-full color-scheme--red">
          <article class="fit-fixed">
              <div class="grid-row stories padding-top--3">
@@ -312,7 +313,6 @@
                   </c:choose>
                </div>
             </div>
-
             <div class="grid-row stories padding-top--3">
                <div class="grid-col-12 grid-col--center grid-col--align-center">
                      <font face="impact" size="6" color="lightslategray">Develop Children's ability to think</font>
@@ -323,8 +323,7 @@
       <footer>      
             <jsp:include page="/WEB-INF/script/layout/footer.jsp" />
       </footer>   
-   </body>
 
-	
+   </body>
 
 </html>

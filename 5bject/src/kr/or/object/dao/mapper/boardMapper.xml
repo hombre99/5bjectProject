@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="boardMapper">
+  <resultMap type="board" id="board-resultmap">
+  	<id property = "writeNo" column="write_no"/>
+  	<result property="id" column="member_id"/>
+  	<result property="title" column="title"/>
+  	<result property="content" column="content"/>
+  	<result property="date" column="write_date"/>
+  	<result property="notice" column="notice"/>
+  	<result property="ref" column="ref"/>
+  	<result property="hit" column="hit"/> 
+  </resultMap>
+  	
+  	<!-- 게시글 입력 -->
+	<insert id="boardInsert" parameterType="board">
+			INSERT INTO board (write_no, member_id, title, content, write_date,notice,hit) 
+			VALUES (s_write_no.nextval, #{id}, #{title}, #{content}, sysdate , #{notice}, #{hit})
+	</insert>
+	
+	<!-- 댓글 입력 -->
+	<update id="boardInsertReply" parameterType="board">
+			INSERT INTO board (write_no, member_id, title, content, write_date,notice,ref,hit) 
+			VALUES (s_write_no.nextval, #{id}, #{title}, #{content}, sysdate , #{notice}, #{writeNo}, #{hit})
+	</update>
+	
+	<!-- 게시글 수정 -->
+	<update id="boardModify" parameterType="board">
+			UPDATE board SET title= #{title},content=#{content},write_date=sysdate where write_no=#{writeNo}
+	</update>
+	
+	<!-- 조회수 업데이트 -->
+	<update id="boardHitUpdate">
+			UPDATE board SET hit=#{hit} where write_no = #{writeNo}
+	</update>
+	
+	<!--  게시글 삭제 -->
+	<delete id="boardDelete" parameterType="_int">
+			DELETE FROM board WHERE wirte_no=#{writeNo}
+	</delete>
+	
+	<!--  글 내용 셀렉트 -->
+	<select id="boardContentSelect" resultType="board">
+			SELECT write_no, member_id, title, content, write_date,notice,ref,hit FROM BOARD WHERE write_no= #{writeNo}
+	</select>
+	
+	<!-- 공지사항 내용 셀렉트 -->
+	<select id="boardNoticeSelect">
+			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 1
+	</select>
+	
+	<!-- 게시글 목록 셀렉트 -->
+	<select id="boardBoardSelect" resultType="board">
+			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 2
+	</select>
+	  
+</mapper>

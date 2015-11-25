@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 <style type="text/css">
 header {
+
    background-color: lightblue;
    color: white;
    text-align: left;
@@ -16,6 +17,7 @@ header {
 #memId {
    margin-left: 70px;
 }
+
 
 </style>
 </head>

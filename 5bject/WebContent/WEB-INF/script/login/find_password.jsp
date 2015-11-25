@@ -11,13 +11,16 @@
          window.close();
       });
    });
+
 </script>
 <style type="text/css">
 table {
+
    margin-left: 70px;
 }
 </style>
 </head>
+
 <body>
    <form action="/5bject/member/find_MemberPassword.do" method="post">
       <table>
@@ -56,5 +59,6 @@ table {
          </tr>
       </table>
    </form>
+
 </body>
 </html>

@@ -5,20 +5,26 @@
 <meta charset=" UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="/5bject/jquery.do"></script>
+
 <script type="text/javascript">
+
+
    $(document).ready(function() {
       $("#close").on("click", function() {
+
          window.close();
       });     
    });
 </script>
 <style type="text/css">
 table {
-   margin-left: 70px;
+
+	margin-left: 70px;
 }
 </style>
 </head>
 <body>
+>>>>>>> branch 'master' of https://github.com/hombre99/5bjectProject.git
    <form action="/5bject/member/find_memberId.do" method="post">
       <table>
          <tr><td colspan="4"><img src="/5bject/image/member/failId.jpg" /></td></tr>
