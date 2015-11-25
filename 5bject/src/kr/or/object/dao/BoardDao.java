@@ -7,7 +7,9 @@ import kr.or.object.vo.Board;
 
 public interface BoardDao {
 
-   List<Board> getContentList();
+   List<Board> getContentBoardList();
+   
+   List<Board> getContentNoticeList();
    
    int getMax();
    

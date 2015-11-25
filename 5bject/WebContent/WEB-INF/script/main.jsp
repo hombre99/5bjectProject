@@ -66,15 +66,16 @@
 						$("#logout_link").on("click", function() {
 							if ( confirm("로그아웃하시겠습니까?") ) {
 								location.replace("/5bject/member/logout.do");
+
 							} 
 
 						});
 						/* chj 20151120 link ADD*/
 						$("#request_list").on("click", function() {
 							window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
+
 						});
 					});					
-
 					/*20151123 findId & Pwd ADD*/
 						function findId(){
 							window.open("/5bject/member/findId.do","ok","width=650, height=300");
@@ -114,7 +115,6 @@
          CCDATA['available_locales'] = "en|ko|fa|ru|es-AR|ja|fr|et-EE|zh|fr-FR|pt-BR|de|en-GB|ky-KG|es|en-US|pt|ar";
  		 //  ]]>
       </script> 
-
       <style type="text/css">
          header{
             background-color: lightblue;
@@ -253,7 +253,6 @@
       </div>
       <div class="blank"></div>
       <!-- <article class="fit-full color-scheme#e6e6fa" -->
-      <!-- <article class="fit-full color-scheme#e6e6fa" -->
       <article id="art" class="fit-full color-scheme--red">
          <article class="fit-fixed">
              <div class="grid-row stories padding-top--3">
@@ -311,8 +310,8 @@
                      </c:otherwise>
                   </c:choose>
                </div>
-            </div>
 
+            </div>
             <div class="grid-row stories padding-top--3">
                <div class="grid-col-12 grid-col--center grid-col--align-center">
                      <font face="impact" size="6" color="lightslategray">Develop Children's ability to think</font>
