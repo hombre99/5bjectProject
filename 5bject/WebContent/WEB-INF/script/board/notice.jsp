@@ -13,21 +13,21 @@
 <h1>공지사항</h1>
 		<table width="70%" cellpadding="0" cellspacing="0" border="0">
   				<tr height="5"><td width="5"></td></tr>
-				<tr style="background:url('image/board/table_mid.gif') repeat-x; text-align:center;">
-				    <td width="5"><img src="image/board/table_left.gif" width="5" height="30" /></td>
+				<tr style="background:url('/5bject/image/board/table_mid.gif') repeat-x; text-align:center;">
+				    <td width="5"><img src="/5bject/image/board/table_left.gif" width="5" height="30" /></td>
   					 <td width="73">번호</td>
    					<td width="379">제목</td>
    					<td width="90">글쓴이</td>
    					<td width="164">등록일</td>
    					<td width="58">조회수</td>
-   					<td width="7"><img src="image/board/table_right.gif" width="5" height="30" /></td>
+   					<td width="7"><img src="/5bject/image/board/table_right.gif" width="5" height="30" /></td>
 			</tr>
 			<c:forEach items="${sessionScope.noticeList}"  var="board">
 			<tr>
 				<td align="center">&nbsp;</td>
 				<td>${board.writeNo}</td>
 				<td>
-						<a href="/board/notice.do&writeNo=${board.writeNo}">
+						<a href="/board/view.do?writeNo=${board.writeNo}">
 						${board.title}
 					</a>
 				</td>
