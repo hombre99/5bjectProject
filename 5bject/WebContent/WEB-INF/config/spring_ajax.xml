@@ -86,6 +86,9 @@
 	<!-- 게시판 -->
 	<mvc:view-controller path="/board/board.do" view-name="/WEB-INF/script/board/board.jsp"/>
 	<mvc:view-controller path="/board/view.do" view-name="/WEB-INF/script/board/view.jsp"/>
+	<mvc:view-controller path="/board/write.do" view-name="/WEB-INF/script/board/write.jsp"/>
+	<mvc:view-controller path="/board/update.do" view-name="/WEB-INF/script/board/updatd.jsp"/>
+	<mvc:view-controller path="/board/delete.do" view-name="/WEB-INF/script/board/delete.jsp"/>
 	<!-- 공지사항 -->
 	<mvc:view-controller path="/board/notice.do" view-name="/WEB-INF/script/board/notice.jsp"/>
 	

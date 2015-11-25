@@ -6,6 +6,30 @@
 <head>
 <meta charset="UTF-8">
 <title>BOARD</title>
+	<style type="text/css">
+			header {
+				background-color: lightblue;
+				color: white;
+				text-align: left;
+				padding: 5px;
+			}
+			
+			footer {
+				background-color: lightblue;
+				color: white;
+				height: 100px;
+				clear: both;
+				text-align: center;
+			}
+			
+			table{
+			margin-left: 250px;
+			text-align: center;
+			}
+			#boardDiv{
+			height: 750px;
+			}
+			</style>
 </head>
 <body>
 <header>
@@ -13,11 +37,14 @@
 </header>
 <c:choose>
 	<c:when test="${fn:length(sessionScope.boardList)==0 }">
-		등록된 글이 없습니다.
+		<div id=boardDiv>
+		<div align="center"><h2>등록된 글이 없습니다.</h2><p></div>
+		<div align="center"><input type=button value="글쓰기" OnClick="window.location.href='/5bject/board/write.do'"></div>
+		</div>
 	</c:when>
 <c:otherwise>
 <h1>자유 게시판</h1>
-		<table width="100%" cellpadding="0" cellspacing="0" border="0">
+		<div id=boardDiv><table width="100%" cellpadding="0" cellspacing="0" border="0">
   				<tr height="5"><td width="5"></td></tr>
 				<tr style="background:url('/5bject/image/board/table_mid.gif') repeat-x; text-align:center;">
 				    <td width="5"><img src="/5bject/image/board/table_left.gif" width="5" height="30" /></td>
@@ -59,10 +86,16 @@
 				<td align="center">&nbsp;</td>                                                                                                                                                                                                                        
 			</tr>
 			</c:forEach>
+			<tr align="center">
+  			 <td>
+   				<input type=button value="글쓰기" OnClick="window.location.href='/5bject/board/write.do'">
+   			</td>
+  			</tr>
 			</table>
+			</div>
 			</c:otherwise>
-</c:choose>
-<p/>
+		</c:choose>
+		<p/>
 			
 			<footer>		
 			<jsp:include page="/WEB-INF/script/layout/footer.jsp" />
