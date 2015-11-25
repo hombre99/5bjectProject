@@ -47,17 +47,21 @@ public class BoardController {
 	@RequestMapping(value = "/write_success.do", method = RequestMethod.POST)
 	public String Write(HttpSession session , @ModelAttribute Board board){		
 		
-		String id = session.getId();		
+		String id = board.getId();		
 		
 		if(id.equals("object")){
 			board.setNotice(1);
 		}else{
 			board.setNotice(2);
 		}		
-		System.out.println(board.getTitle()  +"        ----------        "+board.getContent());
+		System.out.println(board.getTitle()  +"        ----------        "+board.getContent()+"        ----------        "+board.getId());
 		service.insertWrite(board);		
 		
-		return "/WEB-INF/script/board/write_success.jsp";
+		if(id.equals("object")){
+			return "/5bject/board/notice.do";
+		}else{
+			return "/WEB-INF/script/board/board.jsp";
+		}
 	}
 	
 	@RequestMapping("/delete.do")

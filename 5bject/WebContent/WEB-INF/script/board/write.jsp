@@ -47,7 +47,12 @@ function writeCheck()
       <td>&nbsp;</td>
      </tr>
      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
-
+	<tr>
+      <td>&nbsp;</td>
+      <td align="center">작성자</td>
+      <td><input type="text" readonly="readonly"  name="id" value="${sessionScope.member.id}" size="20"></td>
+      <td>&nbsp;</td>
+     </tr>
      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
      <tr>
       <td>&nbsp;</td>
