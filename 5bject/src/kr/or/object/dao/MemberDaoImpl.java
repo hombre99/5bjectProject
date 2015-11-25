@@ -1,6 +1,7 @@
 package kr.or.object.dao;
 
 import java.util.HashMap;
+
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -64,9 +65,8 @@ public class MemberDaoImpl implements MemberDao{
 		return session.selectList("memberMapper.selectMembers");
 	}
 	
-	// 20151118. KKH ADD - 아이디 찾기
+	// 20151124. KKH ADD - 아이디 찾기
 	@Override
-	// 잃어버린 아이디 찾기
 	public List findMemberId(HashMap map) {
 		return session.selectList("memberMapper.selectMemberId",map);
 	}
@@ -103,8 +103,4 @@ public class MemberDaoImpl implements MemberDao{
 	public int selectCountMembers() {
 		return session.selectOne("memberMapper.selectCountMembers");
 	}
-	
-	
-	
-	
 }

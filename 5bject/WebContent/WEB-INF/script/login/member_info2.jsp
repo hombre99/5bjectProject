@@ -1,3 +1,5 @@
+
+<!-- 20151125 ADD 추가 -->
 <%@ page contentType="text/html;charset=UTF-8"%>
 <%@ page import="java.util.Enumeration" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -35,12 +37,13 @@
             text-align: left;
             padding: 5px;
          }
-         /*margin change for Internet Explorer 20151125 130 to 250*/
          table{
-            margin-left: 250px;
+            margin-left: 70px;
+            font-family: HY나무M;
          }
       </style>
 </head>
+
 <body>
 <!-- table로 처리 -->
    <!-- header include로 처리 -->
@@ -49,13 +52,13 @@
    </header>
       <table>
       <!--***님의 회원정보 font color change 20151125 -->
-         <tr><td colspan="2" align="center"><h2><font color="lightblue">${memberInfo.id}의 회원정보</font></h2></td></tr>
-         <tr><td>ID </td><td> ${memberInfo.id}<br></td></tr>
-         <tr><td>NAME </td><td> ${memberInfo.name }<br></td></tr>
-         <tr><td>BIRTHDAY </td><td> ${memberInfo.month }  ${memberInfo.day } ${memberInfo.year }<br></td></tr>
-         <tr><td>GENDER </td><td> ${memberInfo.gender }<br></td></tr>
-         <tr><td> EMAIL </td><td> ${memberInfo.emailId }@${memberInfo.emailAddress }<br></td></tr>
-         <tr><td>PHONENUMBER </td><td> 0${memberInfo.phoneNumber}</td></tr>
+         <tr><td colspan="2" align="center"><h2><font color="lightblue">${sessionScope.memberInfo.id}의 회원정보</font></h2></td></tr>
+         <tr><td>ID </td><td> ${sessionScope.memberInfo.id}<br></td></tr>
+         <tr><td>NAME </td><td> ${sessionScope.memberInfo.name }<br></td></tr>
+         <tr><td>BIRTHDAY </td><td> ${sessionScope.memberInfo.month }  ${sessionScope.memberInfo.day } ${sessionScope.memberInfo.year }<br></td></tr>
+         <tr><td>GENDER </td><td> ${sessionScope.memberInfo.gender }<br></td></tr>
+         <tr><td> EMAIL </td><td> ${sessionScope.memberInfo.emailId }@${sessionScope.memberInfo.emailAddress }<br></td></tr>
+         <tr><td>PHONENUMBER </td><td> 0${sessionScope.memberInfo.phoneNumber}</td></tr>
          <tr><td colspan="2"></td></tr>
          <tr>
             <td colspan="2">

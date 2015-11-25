@@ -24,9 +24,9 @@
 					location.replace('/5bject/member/leave.do?id=${sessionScope.member.id}');					
 				}
 			});
-			/*request link for customer CHJ*/
+			/*2015 11 25일 width size change*/
 			$("#request_link").on("click",function(){
-				window.open('/5bject/member/request.do?requestId=${sessionScope.member.id}','ok','width=1000, height=600,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
+				window.open('/5bject/member/request.do?requestId=${sessionScope.member.id}','ok','width=1600, height=600');
 			});
 		});
 		</script>
@@ -40,7 +40,7 @@
 			}
 			/*table margin-left 70px change 20151124 CHJ*/
 			table{
-				margin-left: 70px;
+				margin-left: 100px;
 			}
 		</style>
 </head>
@@ -55,7 +55,6 @@
 			<tr><td colspan="2" align="center"><br><font size="5" face="impact" color="lightblue">${sessionScope.member.id}</font><font color="lightblue">의 회원정보</font><br></td></tr>
 			<tr><td colspan="2"> </td></tr>
 			<tr><td><b>ID</b></td><td> ${sessionScope.member.id}<br></td></tr>
-			<tr><td><b>PASSWORD</b></td><td> ${sessionScope.member.password }<br></td></tr>
 			<tr><td><b>NAME</b></td><td> ${sessionScope.member.name }<br></td></tr>
 			<tr><td><b>BIRTHDAY</b></td><td> ${sessionScope.member.month }  ${sessionScope.member.day} ${sessionScope.member.year }<br></td></tr>
 			<tr><td><b>GENDER</b></td><td> ${sessionScope.member.gender }<br></td></tr>

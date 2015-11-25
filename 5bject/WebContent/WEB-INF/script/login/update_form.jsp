@@ -45,7 +45,7 @@
 		<header>
 			<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 		</header>
-
+<!--  error위에 br추가했습니다. -->
 		<spring:hasBindErrors name="members" /> 
 			<form action="/5bject/member/update_form.do" method="post">
 				<table>
@@ -55,7 +55,6 @@
 							<br>
 							<font color="skyblue" face="impact" size="6">Edit your information</font>
 							<br>
-							<span class="error"><b>${sessionScope.error}</b></span>
 						</td>
 					</tr>
 					<tr>
@@ -66,8 +65,9 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="text" name="id"  value="${ sessionScope.member.id }" size="25" maxlength="25"  disabled="disabled" />
-							<input type="hidden" name="id"  value="${sessionScope.member.id }" size="25" maxlength="25" />
+							<input type="text" name="id"  value="${sessionScope.member.id}" size="25" maxlength="25"  disabled="disabled" />
+							<input type="hidden" name="id"  value="${sessionScope.member.id}" size="25" maxlength="25" />
+							<br>
 							<span class="error"><form:errors path = "members.id" /></span>
 						</td>
 						<td></td>
@@ -77,7 +77,8 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="text" name="password" value="${sessionScope.member.password }" placeholder="비밀번호를 입력하세요." size="25" maxlength="25" />
+							<input type="text" name="password" placeholder="비밀번호를 입력하세요." size="25" maxlength="25" autofocus="autofocus" required="required"/>
+							<br>
 							<span class="error"><form:errors path="members.password" delimiter=" - " /></span>
 						</td>
 						<td></td>
@@ -87,13 +88,15 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input type="text" name="name" id="name" value="${ sessionScope.member.name }" placeholder="이름을 입력하세요" autofocus="autofocus" />
+							<input type="text" name="name" id="name" value="${sessionScope.member.name }" placeholder="이름을 입력하세요"  />
+							<br>
 							<span class="error"><form:errors path = "members.name" delimiter=" - " /></span>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2"><font color="white">BLANK</font></td>
 					</tr>
+					<!-- 20151125 Change -->
 					<tr>
 						<td colspan="2"><b>생년월일</b></td>
 					</tr>
@@ -101,31 +104,32 @@
 						<td colspan="2">
 							<select name="month">
 								<option>선택하세요</option>
-								<option>January</option>
-								<option>Fabruary</option>
-								<option>March</option>
-								<option>April</option>
-								<option>May</option>
-								<option>June</option>
-								<option>July</option>
-								<option>August</option>
-								<option>October</option>
-								<option>November</option>
-								<option>December</option>
+								<option ${sessionScope.member.month=='January' ? 'selected=selected':' ' }>January</option>
+								<option ${sessionScope.member.month=='Fabruary' ? 'selected=selected':' ' }>Fabruary</option>
+								<option ${sessionScope.member.month=='March' ? 'selected=selected':' ' }>March</option>
+								<option ${sessionScope.member.month=='April' ? 'selected=selected':' ' }>April</option>
+								<option ${sessionScope.member.month=='May' ? 'selected=selected':' ' }>May</option>
+								<option ${sessionScope.member.month=='June' ? 'selected=selected':' ' }>June</option>
+								<option ${sessionScope.member.month=='July' ? 'selected=selected':' ' }>July</option>
+								<option ${sessionScope.member.month=='August' ? 'selected=selected':' ' }>August</option>
+								<option ${sessionScope.member.month=='October' ? 'selected=selected':' ' }> October</option>
+								<option ${sessionScope.member.month=='November' ? 'selected=selected':' ' }>November</option>
+								<option ${sessionScope.member.month=='December' ? 'selected=selected':' ' }>December</option>
 							</select>
 							<select name="day">
-								<option>선택하세요</option>
-									<c:forEach var="num" begin="1" end="31">
-										<option>${ num }</option>
+									<c:forEach var="num" begin="0" end="31">
+										<option   ${num==sessionScope.member.day? 'selected=selected':' ' }>${ num }</option>
 									</c:forEach>
 							</select>
 						 	<select name="year">
 								<c:forEach var="num" begin="1900" end="2015">
-										<option>${ num }</option>
+										<option  ${num==sessionScope.member.year ? 'selected=selected':' ' }>${ num }</option>
 								</c:forEach>
 							</select>
-				 		<span class="error"><form:errors path="members.year" delimiter=" - " /></span>
-						<span class="error"><form:errors path="members.day" delimiter=" - " /></span>
+						<br>
+						<!-- delimeter삭제 20151125 -->
+						<span class="error"><form:errors path="members.day" /></span>
+						<br>
 						<span class="error"><form:errors path="members.month" delimiter=" - " /></span>
 					</td>
 				</tr>
@@ -134,25 +138,29 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="text" name=emailId  value="${ sessionScope.member.emailId }" placeholder="email을 입력하세요" />@
+						<input type="text" name=emailId  value="${sessionScope.member.emailId}" placeholder="email을 입력하세요" />@
 						<select name="emailAddress">
-							<option value="gmail.com">gmail.com</option>
-							<option value="nate.com">nate.com</option>
-							<option value="hanmail.net">hanmail.net</option>
-							<option value="yahoo.com">yahoo.com</option>
-							<option value="naver.com">naver.com</option>
-							<option value="hotmail.com">hotmail.com</option>
-							<option value="daum.com">daum.com</option>
+							<option value="gmail.com" ${sessionScope.member.emailAddress=='gmail.com'? 'selected=selected':''}>gmail.com</option>
+							<option value="nate.com"  ${sessionScope.member.emailAddress=='nate.com'? 'selected=selected':''}>nate.com</option>
+							<option value="hanmail.net" ${sessionScope.member.emailAddress=='hanmail.net'? 'selected=selected':''}>hanmail.net</option>
+							<option value="yahoo.com"  ${sessionScope.member.emailAddress=='yahoo.com'? 'selected=selected':''}>yahoo.com</option>
+							<option value="naver.com"  ${sessionScope.member.emailAddress=='naver.com'? 'selected=selected':''}>naver.com</option>
+							<option value="hotmail.com"  ${sessionScope.member.emailAddress=='hotmail.com'? 'selected=selected':''}>hotmail.com</option>
+							<option value="daum.com"  ${sessionScope.member.emailAddress=='daum.com'? 'selected=selected':''}>daum.com</option>
 						</select>
+						<br>
 						<span class="error"><form:errors path = "members.emailId" delimiter=" - " /></span>
 					</td>
+				</tr>
+				
 				<tr>
 					<td colspan="2"><b>성별</b></td>
 				</tr>
 				<tr>
 					<td colspan="2">
-						<label>male:<input type="radio" name="gender" value="male" /></label>
-						<label>female:<input type="radio" name="gender" value="female" /></label>
+						<label>male:<input type="radio" name="gender" ${sessionScope.member.gender=='male'? 'checked=checked':''}/></label>
+						<label>female:<input type="radio" name="gender" ${sessionScope.member.gender=='female'? 'checked=checked':''} /></label>
+						<br>
 						<span class="error"><form:errors path = "members.gender" delimiter=" - " /></span>
 					</td>
 				</tr>
@@ -161,7 +169,8 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="number" name="phoneNumber"  value="${ sessionScope.member.phoneNumber }" placeholder="핸드폰 번호를 입력하세요" size="11" maxlength="11" />
+						<input type="number" name="phoneNumber"  value="${sessionScope.member.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" size="11" maxlength="11" />
+						<br>
 						<span class="error"><form:errors path="members.phoneNumber" delimiter=" - " /></span>
 					</td>
 					<td></td>

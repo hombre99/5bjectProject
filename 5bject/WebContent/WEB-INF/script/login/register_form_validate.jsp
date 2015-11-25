@@ -16,7 +16,7 @@
 			.error {
 				color: red;
 				face: impact;
-				font-size : 2;
+				font-size : 1;
 			}
 			header {
 				background-color: lightblue;
@@ -24,17 +24,10 @@
 				text-align: left;
 				padding: 10px;
 			}
-	
-/* 			footer {
-				background-color: lightblue;
-				color: white;
-				padding-top: 10px;
-				text-align: center;
-				height: 30px;
-				clear: both;
-			} */
+
+				/*설정 수정 20151125*/
 			table{
-				margin-left: 50px;
+				margin-left: 70px;
 			}
 		</style> 
 	</head>
@@ -113,7 +106,7 @@
 								<option>December</option>
 							</select>
 							<select name="day">
-								<c:forEach var="num" begin="1" end="31">
+								<c:forEach var="num" begin="0" end="31">
 									<option>${ num }</option>
 								</c:forEach>
 							</select>
@@ -123,9 +116,9 @@
 								</c:forEach>
 							</select>
 							<br>
-				 			<span class="error"><form:errors path="members.year" delimiter=" - "/></span>
-							<span class="error"><form:errors path="members.day" delimiter=" - "/></span>
-							<span class="error"><form:errors path="members.month" delimiter=" - "/></span>
+							<!-- error delimiter삭제 20151125 -->
+							<span class="error"><form:errors path="members.day" /></span>
+							<span class="error"><form:errors path="members.month"/></span>
 						</td>
 					</tr>
 					<tr>
@@ -155,7 +148,7 @@
 						<label>male:<input type="radio" name="gender" value="male" /></label>
 						<label>female:<input type="radio" name="gender" value="female" /></label>
 						<br>
-						<span class="error"><form:errors path = "members.gender" delimiter=" - "/></span>
+						<span class="error"><form:errors path = "members.gender"/></span>
 					</td>
 				</tr>
 				<tr>
@@ -163,9 +156,10 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="number" name="phoneNumber" value="${requestScope.members.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" size="11" maxlength="11" />
+						<!--  phone size ="30"으로  -->
+						<input type="number" name="phoneNumber" value="${requestScope.members.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" size="30" maxlength="11" />
 						<br>
-						<span class="error"><form:errors path="members.phoneNumber" delimiter=" - "/></span>
+						<span class="error"><form:errors path="members.phoneNumber"/></span>
 					</td>
 					<td></td>
 				</tr>

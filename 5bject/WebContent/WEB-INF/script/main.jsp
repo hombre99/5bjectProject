@@ -37,60 +37,67 @@
 							window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
+						/*width height 설정 수정 20151125*/
 						$("#register_link").on("click", function() {
-							window.open("/5bject/member/register.do" ,"ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,resizable=0");
+							window.open("/5bject/member/register.do" ,"ok", "width=500, height=900,toolbar=0,location=0,status=0,menubar=0,resizable=0");
 						});
 
-						$("#update_link").on("click",function(){
+						$("#update_link").on("click",function() {
 							window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
-						// language_link ADD. 20151116. CHJ
+						// language_link ADD. 20151125. CHJ
 						$("#language_link").on("click", function() {
-							window.open("/5bject/language/computer_language.do","ok","width=1100, height=850,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+							window.open("/5bject/language/computer_language.do","ok","width=1100, height=1000,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
-						// mypage_link, logout_link ADD. 20151116. KKH
+
+						//  20151125 same
 						$("#mypage_link").on("click", function() {
-							window.open("/5bject/member/mypage.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
-						});
-
-						$("#logout_link").on("click", function() {
-							if ( confirm("로그아웃하시겠습니까?") ) {
-								location.replace("/5bject/member/logout.do");
-							} 			
-						});
-
-						$("#memberList").on("click", function(){
-							window.open("/5bject/member/memberList.do?pageNo=${param.pageNo}");
+							window.open("/5bject/member/mypage.do", "ok", "width=600, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
 						// 20151120. ADD KKH - 포인터 발생
 						$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
 
+						// 20151120. ADD KKH - 포인터 발생
+						$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
+
+						$("#logout_link").on("click", function() {
+							if ( confirm("로그아웃하시겠습니까?") ) {
+								location.replace("/5bject/member/logout.do");
+							}
+						});
+
+						//20151125 width 900으로 change
+						$("#memberList").on("click", function() {
+							window.open("/5bject/member/memberList.do?pageNo=${param.pageNo}","ok","width=900, height=700");
+						});
+
 						/* chj 20151120 link ADD*/
 						$("#request_list").on("click", function() {
 							window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
 						});
-						
+
 						$("#gameInfo").on("click", function() {
-							window.open("/5bject/game/findAllWord.do?pageNo=${param.pageNo}");
+							window.open("/5bject/game/findAllWord.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
 						})
-					});					
+					});
 				</script>
 			</c:otherwise>
 		</c:choose>
 		<c:if test="${ sessionScope.id == null }">
-		<script type="text/javascript">
-			/*20151123 findId & Pwd ADD */
-			/* 20151125. MOD. 위치변경. JSJ. */
-			function findId() {
-				window.open("/5bject/member/findId.do", "ok", "width=450, height=400");
-			};
+			<script type="text/javascript">
+				/* 20151123 findId & Pwd ADD */
+				/* 20151125 width and height changed */
+				/* 20151125. MOD. 위치변경. JSJ. */
+				function findId() {
+					window.open("/5bject/member/findId.do", "ok", "width=650, height=300");
+				};
 
-			function findPwd() {
-				window.open("/5bject/member/findPwd.do", "ok", "width=450, height=300");
-			};
-		</script>
+				function findPwd() {
+					window.open("/5bject/member/findPwd.do", "ok", "width=650, height=300");
+				};
+			</script>
 		</c:if>
 
 		<!-- 여기서부터 손대지 마세여... -->
@@ -121,7 +128,7 @@
 			CCDATA.secureSandboxIndexPath = 'https://cdn-production.codecademy.com/assets/secure/index-c5bf1319f62cb07c26239e761a9ed5c9.html';
 			//]]>
 		</script>
-<!-- 여기까지 손대지 마세여... -->
+		<!-- 여기까지 손대지 마세여... -->
 
 		<style type="text/css">
 			header {
@@ -143,8 +150,8 @@
 				clear: both;
 				text-align: center;
 			}
-				/*css login 추가  CHJ*/
 
+			/* css login 추가  CHJ */
 			.login {
 				margin-left: 20px;
 			}
@@ -158,6 +165,7 @@
 				margin-top: 150px;
 				text-align: center;
 			}
+
 			/* 게임1용 CSS */
 			#td2 {
 				border: 1px solid black;
@@ -196,6 +204,9 @@
 			<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 		</header>
 
+		<board>
+			<jsp:include page="/WEB-INF/script/layout/board.jsp" />
+		</board>
 
 		<div class="content">
 			<c:choose>
@@ -203,10 +214,10 @@
 					<c:choose>
 						<c:when test="${ sessionScope.gameNum == 1 || sessionScope.gameNum == 2 }">
 							<div class="color-scheme--white learn-more grid-row margin-top--3" exclude="phone">
-								<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
+								<div class="grid-row grid-col-12 margin-top--1 margin-bottom--1 grid-col--center">
 									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
 									</div>
-									<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
+									<div class="grid-col-7 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
 										<div id="question"></div>
 										<div id="selectPannel"></div>
 										<div id="btnPannel">
@@ -219,7 +230,7 @@
 						</c:when>
 						<c:when test="${ sessionScope.gameNum == 3 }">
 							<div class="color-scheme--white learn-more grid-row margin-top--3" exclude="phone">
-								<div class="grid-row grid-col-10 margin-top--1 margin-bottom--1 grid-col--center">
+								<div class="grid-row grid-col-12 margin-top--1 margin-bottom--1 grid-col--center">
 									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
 										<div id="menu"></div>
 										<div class="grid-row grid-col-8 grid-row-6" id="display"></div>
@@ -260,9 +271,8 @@
 			</c:choose>
 			<c:remove var="difficulty" scope="session" />
 		</div>
-	
 		<div class="blank"></div>
-	
+
 		<!-- <article class="fit-full color-scheme#e6e6fa" -->
 		<article id="art" class="fit-full color-scheme--red">
 			<article class="fit-fixed">
@@ -280,7 +290,7 @@
 						class="grid-col-4 grid-col--no--padding grid-col--no-margin card card--link">
 						<img src="/5bject/image/member/newlink22.jpg" />
 					</div>
-	
+
 					<div class="login">         
 						<!-- Admin Info ADD. 20151116. KKH -->
 						<!-- TODO 관리자 계정명 바뀔 수 있음. -->
@@ -306,22 +316,23 @@
 								<form action ="/5bject/member/login.do" method="post">
 									<table>
 										<p></p>
-										<!-- 20151120. ADD 아이디/비밀번호 찾기 추가 -->
 										<tr><td colspan="2" align="center"><img src="/5bject/image/member/login.jpg" /></td></tr> 
 										<tr><td>&nbsp;아이디</td><td>&nbsp;<input type="text" name="id" placeholder="아이디 입력" /></td></tr> 
 										<tr><td>&nbsp;비밀번호</td><td>&nbsp;<input type="password" name="password" placeholder="비밀번호 입력" /></td></tr>
-										<tr><td colspan="3"><span class="error"><b>${sessionScope.error}</b></span></td></tr>   
+										<tr><td colspan="3"><span class="error"><b>${sessionScope.error}</b></span></td></tr>
 										<tr><td>&nbsp;&nbsp;<input type="submit" value="로그인" id="login" /></td><td>&nbsp;&nbsp;<img src="/5bject/image/member/register_form.jpg" id="register_link" /></td></tr>
-									</table>   
-
+										<!-- 20151120. ADD 아이디/비밀번호 찾기 추가 -->
+									</table>
+				
 									<table>
-										<tr><td colspan="3" align="center">&nbsp;&nbsp;<a href="javascript:findId()" class="findInfo">아이디</a>/<a href="javascript:findPwd()" class="findInfo">비밀번호 찾기</a></td></tr>         
+										<tr><td colspan="3" align="center">&nbsp;&nbsp;<a href ="javascript:findId()" class="findInfo">아이디</a>/<a href="javascript:findPwd()" class="findInfo">비밀번호 찾기</a></td></tr>
 									</table>
 								</form>
 							</c:otherwise>
 						</c:choose>
 					</div>
 				</div>
+
 				<div class="grid-row stories padding-top--3">
 					<div class="grid-col-12 grid-col--center grid-col--align-center">
 						<font face="impact" size="6" color="lightslategray">Develop Children's ability to think</font>
@@ -329,8 +340,11 @@
 				</div>
 			</article>
 		</article>
-		<footer>      
+
+		<footer>
 			<jsp:include page="/WEB-INF/script/layout/footer.jsp" />
-		</footer>   
+		</footer>
+
 	</body>
+
 </html>
