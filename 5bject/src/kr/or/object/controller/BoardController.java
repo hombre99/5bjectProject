@@ -55,12 +55,13 @@ public class BoardController {
 			board.setNotice(2);
 		}		
 		System.out.println(board.getTitle()  +"        ----------        "+board.getContent()+"        ----------        "+board.getId());
+		
 		service.insertWrite(board);		
 		
 		if(id.equals("object")){
 			return "/5bject/board/notice.do";
 		}else{
-			return "/WEB-INF/script/board/board.jsp";
+			return "/5bject/board/board.do";
 		}
 	}
 	
@@ -79,7 +80,7 @@ public class BoardController {
 		return "/WEB-INF/script/board/delete_success.jsp";
 	}
 	
-	@RequestMapping("/update_success.do")
+	@RequestMapping("/update.do")
 	public String Update(HttpSession session,@RequestParam Board board){
 		
 		String id = session.getId();
