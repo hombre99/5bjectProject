@@ -57,27 +57,26 @@
                   // 20151120. ADD KKH - 포인터 발생
                   $(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
 
+                  // 20151120. ADD KKH - 포인터 발생
+                  $(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
+
+						$("#logout_link").on("click", function() {
+
+							if ( confirm("로그아웃하시겠습니까?") ) {
+								location.replace("/5bject/member/logout.do");
+							} 			
+						});
 
                    //20151125 width 900으로 change
                   $("#memberList").on("click", function(){
                      window.open("/5bject/member/memberList.do?pageNo=${param.pageNo}","ok","width=900, height=700");
                   });
-                  
-                  // 20151120. ADD KKH - 포인터 발생
-                  $(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
 
-                  $("#logout_link").on("click", function() {
-
-                     if ( confirm("로그아웃하시겠습니까?") ) {
-                        location.replace("/5bject/member/logout.do");
-                     }          
-                  });
-
-                  /* chj 20151120 link ADD*/
-                  $("#request_list").on("click", function() {
-                     window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
-                  });
-               });               
+						/* chj 20151120 link ADD*/
+						$("#request_list").on("click", function() {
+							window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
+						});
+					});					
 
                /*20151125 width and height changed */
                function findId(){
@@ -85,11 +84,12 @@
                   };
 
                   function findPwd(){
-                     window.open("/5bject/member/findPwd.do","ok","width=650, height=300");
-                  };
-            </script>
-         </c:otherwise>
-      </c:choose>
+                      window.open("/5bject/member/findPwd.do","ok","width=650, height=300");
+                   };
+				</script>
+			</c:otherwise>
+		</c:choose>
+
       <!-- 여기서부터 손대지 마세여... -->
       <link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
       <link
@@ -324,8 +324,6 @@
       <footer>      
             <jsp:include page="/WEB-INF/script/layout/footer.jsp" />
       </footer>   
-
    </body>
-
 
 </html>

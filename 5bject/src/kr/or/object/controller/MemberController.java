@@ -45,7 +45,7 @@ public class MemberController {
 
 		System.out.printf("EmailAddress[ %s ] EmailId[ %s ]\n", member.getEmailAddress(), member.getEmailId());
 		service.insertMember(member);
-		// return "/WEB-INF/script/login/register_success.jsp";
+		
 		return "/member/register_success.do";
 	}
 
@@ -122,8 +122,15 @@ public class MemberController {
 			page = Integer.parseInt(pageNo);
 		} catch (NumberFormatException e) {
 		}
-
 		Map attributes = service.getMembersPaging(page);
+		List<Members> list2 = (List<Members>) attributes.get("list");
+
+		for(int i=0; i<list2.size(); i++){
+			if ( list2.get(i).getId().equals("objectclass")){
+				list2.remove(i);
+			}
+		}
+
 		model.addAllAttributes(attributes);
 		return "/WEB-INF/script/login/member_list.jsp";
 	}
@@ -133,6 +140,17 @@ public class MemberController {
 		service.removeMemberById(id);
 
 		return "/member/memberList.do";
+
+	}
+	/*
+	  20151125 Error  CHJADD
+	  return 값을 /WEB-INF/script/login/member_info2.jsp 로 바꿔줌
+	 *  */
+	@RequestMapping("/update_member.do")
+	public String memberUpdate(HttpSession session, @ModelAttribute Members member, Errors errors) {
+        service.updateMemberById(member);
+        session.setAttribute("memberInfo", member);      
+        return "/WEB-INF/script/login/member_info2.jsp";
 	}
 
 	// ADD. 2015118~20. CHJ -고객 문의 요청 Controller
@@ -185,20 +203,18 @@ public class MemberController {
 
 	// 20151120. ADD KKH - 잃어버린 ID찾기
 	@RequestMapping(value = "/find_memberId.do", method = RequestMethod.POST)
-	public String findMemberId(HttpServletRequest request, @RequestParam String emailId, @RequestParam String emailAddress,
-			@RequestParam long phoneNumber) {
-		// System.out.printf("eID[%s]eAdd[%s]pn[0%d]\n", emailId, emailAddress,
-		// phoneNumber);
+	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
+		//System.out.printf("eID[%s]eAdd[%s]pn[0%d]\n", emailId, emailAddress, phoneNumber);
+		
 		HashMap map = new HashMap();
 		map.put("emailId", emailId);
 		map.put("emailAddress", emailAddress);
-		map.put("phoneNumber", phoneNumber);
+		map.put("phoneNumber",phoneNumber);
 		List idList = service.findMemberId(map);
-		
 		if(idList.size()!=0){
 			request.setAttribute("memId", idList);
 		}
-		return "/WEB-INF/script/login/find_id_result.jsp";
+		return "/WEB-INF/script/login/find_id_result.jsp";  
 	}
 
 	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
@@ -206,13 +222,14 @@ public class MemberController {
 	public String findMemberPassword(HttpServletRequest request, @RequestParam String id, @RequestParam String emailId,
 			@RequestParam String emailAddress, @RequestParam long phoneNumber) {
 		HashMap<String, Object> map = new HashMap();
+
 		map.put("id", id);
 		map.put("emailId", emailId);
 		map.put("emailAddress", emailAddress);
 		map.put("phoneNumber", phoneNumber);
 		String password = service.findMemberPassword(map);
 		request.setAttribute("password", password);
-
+		
 		if (password != null) {
 			// 총 36개의 문자
 			System.out.println(id); // test
