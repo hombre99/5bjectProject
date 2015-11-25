@@ -79,7 +79,7 @@ public class BoardController {
 		return "/WEB-INF/script/board/delete_success.jsp";
 	}
 	
-	@RequestMapping("/update.do")
+	@RequestMapping("/update_success.do")
 	public String Update(HttpSession session,@RequestParam Board board){
 		
 		String id = session.getId();

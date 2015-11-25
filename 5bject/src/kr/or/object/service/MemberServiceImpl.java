@@ -59,7 +59,7 @@ public class MemberServiceImpl implements MemberService {
 		return dao.getMembers();
 	}
 
-	// 20151118. ADD KKH - 잃어버린 아이디 찾기
+	// 20151124. KKH ADD - 아이디 찾기
 	@Override
 	public List findMemberId(HashMap map) {
 		return dao.findMemberId(map);

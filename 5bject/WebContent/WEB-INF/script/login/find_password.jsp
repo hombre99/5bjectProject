@@ -6,22 +6,39 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 <script type="text/javascript">
-
    $(document).ready(function() {
       $("#close").on("click", function() {
          window.close();
       });
    });
+   
+   function checkForm(){
+	   if(document.member.id.value==""){
+		   alert("아이디를 입력해주세요.");
+		   return false;
+	   }else if(document.member.emailId.value=""){
+		   alert("이메일 아이디를 입력해주세요.");
+		   return false;
+	   }else if(document.member.emailAddress.value==""){
+		   alert("이메일 주소를 선택해 주세요.");
+		   return false;
+	   }else if(document.member.phoneNumber.value==""){
+		   alert("휴대전화 번호를 입력해 주세요.");
+		   return false;
+	   }
+   }
+
 </script>
 <style type="text/css">
 table {
-	margin-left: 70px;
+
+   margin-left: 70px;
 }
 </style>
 </head>
-<body>
 
-   <form action="/5bject/member/find_MemberPassword.do" method="post">
+<body>
+   <form action="/5bject/member/find_MemberPassword.do" name="member" method="post" onsubmit="return checkForm()">
       <table>
          <tr><td colspan="4"><img src="/5bject/image/member/failPassword.jpg" /></td></tr>
          <tr>

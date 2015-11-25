@@ -43,7 +43,10 @@
 		</header>
 
 		<spring:hasBindErrors name="members" /> 
+
+		<!-- 20151125 수정 -->
 		<!-- action값이 update_member로 수정 -->
+
 			<form action="/5bject/member/update_member.do" method="post">
 				<table>
 					<tr>
