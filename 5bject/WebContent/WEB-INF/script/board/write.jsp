@@ -29,7 +29,7 @@ function writeCheck()
 </head>
 <body>
 <table>
-<form name=writeform method=post action="write_success.do">
+<form name=writeform method=post action="/5bject/board/write_success.do">
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">

@@ -42,7 +42,7 @@ public class BoardController {
 	}
 	
 	
-	@RequestMapping("/write.do")
+	@RequestMapping("/write_success.do")
 	public String Write(HttpSession session , @RequestParam Board board){		
 		
 		String id = session.getId();		
