@@ -20,7 +20,7 @@
 </script>
 <style type="text/css">
 		table{
-		margin-left: 30px;
+		margin-left: 50px;
 	}
 		header{
 	background-color: lightblue;

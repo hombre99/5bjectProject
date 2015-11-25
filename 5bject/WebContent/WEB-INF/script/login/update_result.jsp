@@ -26,12 +26,11 @@
 	<table>
 		<tr><td colspan="2" align="center"><font color="lightblue" face="impact" size="6">Complete update</font></td></tr>
 		<tr><td colspan="2" align="center"><font color="lightblue">수정 완료되었습니다.</font></td></tr>
-		<tr><td><b>ID</b></td><td>${sessionScope.member.id }</td></tr>
-		<tr><td><b>PASSWORD</b></td><td> ${sessionScope.member.password }</td></tr>
+		<tr><td><b>ID</b></td><td>${sessionScope.member.id}</td></tr>
 		<tr><td><b>NAME</b></td><td>${sessionScope.member.name }</td></tr>
-		<tr><td><b>DATE</b></td><td>${sessionScope.member.month }월  ${sessionScope.member.day }일  ${sessionScope.member.id }년도</td></tr>
+		<tr><td><b>DATE</b></td><td>${sessionScope.member.month }월  ${sessionScope.member.day}일  ${sessionScope.member.year}년도</td></tr>
 		<tr><td><b>GENDER</b></td><td> ${sessionScope.member.gender }</td></tr>
-		<tr><td><b>EMAIL</b></td><td> ${sessionScope.member.emailId }@${sessionScope.member.emailAddress }</td></tr>
+		<tr><td><b>EMAIL</b></td><td> ${sessionScope.member.emailId }@${sessionScope.member.emailAddress}</td></tr>
 		<tr><td><b>PHONENUMBER</b></td><td> 0${sessionScope.member.phoneNumber }</td></tr>
 		<tr><td colspan="2"><input type="button" value="닫기" onclick="window.close();" /></td></tr>
 	</table>

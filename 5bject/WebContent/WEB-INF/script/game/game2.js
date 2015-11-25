@@ -342,10 +342,10 @@ $(document).ready(function() {
 	$("#link2").on("click", function() {
 		window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 	});
-
-	$("#register_link").on("click", function() {
-		window.open("/5bject/member/register.do" ,"ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,resizable=0");
-	});
+ //20151125 change
+    $("#register_link").on("click", function() {
+        window.open("/5bject/member/register.do" ,"ok", "width=600, height=900,toolbar=0,location=0,status=0,menubar=0,resizable=0");
+     });
 
 	$("#update_link").on("click",function(){
 		window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
@@ -375,6 +375,14 @@ $(document).ready(function() {
 
 	/* chj 20151120 link ADD*/
 	$("#request_list").on("click", function() {
-		window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
+		window.open("/5bject/member/request_list.do", "ok", "width=1000, height=700");
 	});
 });
+function findId(){
+    window.open("/5bject/member/findId.do","ok","width=650, height=300");
+ };
+ function findPwd(){
+    window.open("/5bject/member/findPwd.do","ok","width=650, height=300");
+ };
+
+

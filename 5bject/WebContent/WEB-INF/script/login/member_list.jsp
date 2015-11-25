@@ -62,7 +62,7 @@ menu {
 
 				<c:forEach items="${requestScope.list }" var="member">
 					<tr>
-						<td><a href="/5bject/member/memberInfo.do?id=${member.id }&pageNo=${requestScope.pagingBean.currentPage}">${member.id }</a>
+						<td><a href="/5bject/member/memberInfo.do?id=${member.id}&pageNo=${requestScope.pagingBean.currentPage}">${member.id }</a>
 
 						</td>
 						<td>${member.name }</td>
@@ -72,9 +72,9 @@ menu {
 						<td>${member.phoneNumber }</td>
 					
 				</c:forEach>
-				<!-- 20151124 3:30pm CHJ ADD -->
+				<!-- 20151125 2:30pm CHJ ADD -->
+			<tr><td colspan="6"><input type="button" value="닫기" id="close"></td></tr>
 			</table>
-			<tr><td colspan="3"><input type="button" value="닫기" id="close"></td></tr>
 		</c:otherwise>
 	</c:choose>
 	<p />

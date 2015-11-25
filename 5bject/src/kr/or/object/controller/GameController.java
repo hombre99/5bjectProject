@@ -106,7 +106,7 @@ public class GameController {
 		} else {
 			session.setAttribute("errMsg", "조회결과가 없습니다.");
 		}
-			
+		
 		return "/WEB-INF/script/game/find_gameword.jsp";
 	}
 	
