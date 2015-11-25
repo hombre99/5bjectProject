@@ -390,9 +390,9 @@ $(document).ready(function() {
 	});
 });
 function findId(){
-    window.open("/5bject/member/findId.do","ok","width=450, height=400");
+    window.open("/5bject/member/findId.do","ok","width=650, height=300");
  };
  function findPwd(){
-    window.open("/5bject/member/findPwd.do","ok","width=450, height=300");
+    window.open("/5bject/member/findPwd.do","ok","width=650, height=300");
  };
 
