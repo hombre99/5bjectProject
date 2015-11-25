@@ -185,9 +185,9 @@
       </style>
    </head>
    <body>
-      <header>
-         <jsp:include page="/WEB-INF/script/layout/header.jsp" />
-      </header>
+     <header>
+        <jsp:include page="/WEB-INF/script/layout/header.jsp" />
+     </header>      
 	<div class="content">
          <c:choose>
             <c:when test="${ (sessionScope.gameNum != null && sessionScope.difficulty != null) }">
