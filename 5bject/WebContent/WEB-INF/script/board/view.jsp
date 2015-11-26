@@ -123,16 +123,14 @@ table {
 			<tr>
 				<td>
 					<table width="100%" cellpadding="0" cellspacing="0" border="0">
-						<tr
-							style="background: url('/5bject/image/board/table_mid.gif') repeat-x; text-align: center;">
+						<tr style="background: url('/5bject/image/board/table_mid.gif') repeat-x; text-align: center;">
 							<td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
 							<td align="center"><b>${sessionScope.contectBoard.title}</b></td>
 							<td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
 						</tr>
 					</table>
 					<table width="100%" cellpadding="0" cellspacing="0" border="0">
-						<tr
-							style="background: url('/5bject/image/board/table_mid.gif') repeat-x; text-align: center;">
+						<tr style="background: url('/5bject/image/board/table_mid.gif') repeat-x; text-align: center;">
 							<td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
 							<td align="left">글쓴이 : ${sessionScope.contectBoard.id }</td>
 							<td align="center">등록일 : ${sessionScope.contectBoard.date}</td>
