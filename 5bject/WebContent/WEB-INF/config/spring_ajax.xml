@@ -89,7 +89,4 @@
 	<mvc:view-controller path="/board/delete.do" view-name="/WEB-INF/script/board/delete.jsp"/>
 	<!-- 공지사항 -->
 	<mvc:view-controller path="/board/notice.do" view-name="/WEB-INF/script/board/notice.jsp"/>
-	
-	
-	
 </beans>

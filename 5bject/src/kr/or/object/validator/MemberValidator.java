@@ -1,14 +1,10 @@
 package kr.or.object.validator;
 
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
-
 import kr.or.object.vo.Members;
 
 public class MemberValidator implements Validator {
-
-
 
    @Override
    public boolean supports(Class<?> clazz) {
@@ -54,11 +50,9 @@ public class MemberValidator implements Validator {
       if (member.getGender()==null){
          errors.rejectValue("gender", "gender", "성별을 선택하여 주세요.");
       }
-      // 20151116 ADD. CHJ
-      if (member.getPhoneNumber()<1000000000||member.getPhoneNumber()>2000000000){
-         errors.rejectValue("phoneNumber", "phone", "핸드폰 번호는 11글자입니다.");
-      }
-   }
-
-	
+      // 20151125 ADD. CHJ
+/*        if(member.getPhoneNumber().trim().length()<12||member.getPhoneNumber().trim().length>11){
+    		errors.rejectValue("phoneNumber","phone","핸드폰 번호를 정확하게 입력하여 주세요");
+        }*/
+   }	
 }
