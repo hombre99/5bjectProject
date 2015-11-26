@@ -10,10 +10,10 @@
 function replyCheck(){
 	
    var form = document.replyform;
-  if( !form.memo.value )
+  if( !form.content.value )
    {
     alert( "내용을 적어주세요" );
-    form.memo.focus();
+    form.content.focus();
     return;
    }
  
@@ -22,7 +22,7 @@ function replyCheck(){
  </script>
 </head>
 <body>
-<form name="replyform" method="post" action="/5bject/board/reply_success.do?writeNo=${board.writeNo}">
+<form name="replyform" method="post" action="/5bject/board/reply_success.do?writeNo=${sessionScope.contectBoard.writeNo}">
 <table>
   <tr>
    <td>
@@ -45,7 +45,7 @@ function replyCheck(){
      <tr>
       <td>&nbsp;</td>
       <td align="center">내용</td>
-      <td><input type="text" name="memo" maxlength="100" size="20" style="width:100%; height:360px"></td>
+      <td><input type="text" name="content" maxlength="100" size="20" style="width:100%; height:360px" value="${request.board.content }"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>

@@ -99,12 +99,13 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/reply_success.do")
-	public String Reply(HttpSession session,@RequestParam Board board, @RequestParam int writeNo){
+	public String Reply(HttpSession session,@ModelAttribute Board board){
+		
+		board.setTitle("reply");
 		
 		service.insertReply(board);
 		
-		String url = "/5bject/board/view.do?writeNo="+writeNo;
-		return url;
+		return "/board/view.do?writeNo="+board.getWriteNo();
 	}
 	
 	@RequestMapping("/view.do")
@@ -123,8 +124,8 @@ public class BoardController {
 		}
 		
 		Board contectBoard = service.getView(board.getWriteNo());
-/*		List<Board> replyList = service.getReplyList(board.getWriteNo());
-		session.setAttribute("replyList", replyList);*/
+		 List<Board> replyList = service.getReplyList(board.getWriteNo());
+		session.setAttribute("replyList", replyList);
 		session.setAttribute("contectBoard", contectBoard);	
 
 		if ( logger.isInfoEnabled() )
