@@ -16,10 +16,11 @@ function replyCheck(){
     form.content.focus();
     return;
    }
- 
+  
   form.submit();
- //window.close();
+  //setTimeout('self.close()', 1); 
   }
+
  </script>
 </head>
 <body>
@@ -53,7 +54,7 @@ function replyCheck(){
      <tr height="2" bgcolor="#82B5DF"><td colspan="5"></td></tr>
      <tr align="center">
       <td>&nbsp;</td>
-      <td colspan="2"><input type=button value="등록" OnClick="javascript:replyCheck();">
+      <td colspan="2"><input type="button" value="등록" OnClick="javascript:replyCheck();">
        <input type=button value="취소" OnClick="javascript:history.back(-1)">
       <td>&nbsp;</td>
      </tr>

@@ -54,17 +54,30 @@
 			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 2 and ref=0 order by write_date desc 
 	</select>
 	 
+	 <select id="selectBoardPaging" parameterType="hashmap" resultMap="board-resultmap">
+		select  write_no,title,member_id,write_date,hit
+			from (
+				select  write_no,title,member_id,write_date,hit, ceil(rownum/#{contentsPerPage}) page
+				from(
+					select  write_no,title,member_id,write_date,hit
+					from board
+					order by write_date
+				)
+			)
+			where page = #{pageNo}	
+	</select>
+	 
 	 <!-- 댓글 목록 셀렉트 -->
 	 <select id="boardReplySelect" resultMap="board-resultmap" resultType="board" parameterType="_int">
-			SELECT write_no,title,member_id,content,write_date,hit FROM BOARD WHERE ref = #{writeNo} order by write_date desc
+			SELECT write_no,title,member_id,content,write_date,hit FROM BOARD WHERE ref = #{writeNo} order by write_date asc
 	</select>
 	
 	<!-- 페이징 처리 관련 -->
 	<select id="selectCountNotice" resultType="_int">
-		select count(write_no) from members where notice=1 and ref=0
+		select count(write_no) from board where notice=1 and ref=0
 	</select>
 	
 	<select id="selectCountBoard" resultType="_int">
-		select count(write_no) from members where notice=2 and ref=0
+		select count(write_no) from board where notice=2 and ref=0
 	</select>
 </mapper>

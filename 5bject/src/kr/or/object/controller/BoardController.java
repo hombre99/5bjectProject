@@ -1,12 +1,14 @@
 package kr.or.object.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.object.service.BoardService;
 import kr.or.object.vo.Board;
+import kr.or.object.vo.Members;
 
 @Controller
 @RequestMapping("/board")
@@ -35,7 +38,8 @@ public class BoardController {
 	}
 	
 	//자유게시판
-	@RequestMapping("/board.do")
+	/*
+	 * @RequestMapping("/board.do")
 	public String Board(HttpSession session){
 		
 		List<Board> boardList = service.getContentBoardList();
@@ -44,7 +48,20 @@ public class BoardController {
 		
 		return "/WEB-INF/script/board/board.jsp";
 	}
-	
+	*/
+	@RequestMapping("/board.do")
+	public String Board(HttpSession session, @RequestParam(defaultValue = "1") String pageNo) {
+		int page = 1;
+		try {
+			page = Integer.parseInt(pageNo);
+		} catch (NumberFormatException e) {
+		}
+		Map attributes = service.getBoardPaging(page, 2);
+		List<Board> boardList = (List<Board>) attributes.get("boardList");
+
+		session.setAttribute("boardList", boardList);
+		return "/WEB-INF/script/board/board.jsp";
+	}
 	
 	@RequestMapping(value = "/write_success.do", method = RequestMethod.POST)
 	public String Write(HttpSession session , @ModelAttribute Board board){		

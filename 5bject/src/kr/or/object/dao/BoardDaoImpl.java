@@ -46,10 +46,15 @@ public class BoardDaoImpl implements BoardDao{
    //페이징 처리 관련
    @Override
    public int selectCountBoard(int notice) {	   
-	   
-	   return session.selectOne("boardMapper.selectCountboard");
+	  int result = 0 ;
+	   if(notice==1){
+		   result =  session.selectOne("boardMapper.selectCountNotice");
+	   }else if(notice==2){
+		   result =  session.selectOne("boardMapper.selectCountBoard");
+	   }
+	   return result;
    }
-
+   
    @Override
    public List<Board> getBoardsPaging(int pageNo) {
 	   HashMap map = new HashMap();
