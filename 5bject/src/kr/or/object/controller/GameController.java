@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -26,6 +27,8 @@ public class GameController {
 	@Autowired
 	private GameWordService gwService;
 	
+	private static Logger logger = Logger.getLogger(GameController.class);
+
 	@RequestMapping("/game.do")
 	public String game(@RequestParam int gameNum, @RequestParam int difficulty, HttpSession session){
 		
@@ -49,8 +52,10 @@ public class GameController {
 		GameScore gameScore = new GameScore(id, gameNum, easy, normal, hard);
 		if ( gameScore.getId().length() == 0 ) {
 			// not exist id
-			System.out.println("NOT EXIST ID");
-			return null;
+			if ( logger.isInfoEnabled() )
+				logger.info("NOT EXIST ID");
+
+			return "alert('아이디가 존재하지 않습니다.');";
 		} else {
 			List<GameScore> list = gsService.selectGameScore(gameScore.getId());
 			
@@ -86,7 +91,6 @@ public class GameController {
 				gsService.insertGameScore(gameScore);
 			}
 		}
-		// return "/game/game.do?gameNum=" + gameScore.getGameNum() + "&difficulty=" + difficulty;
 		return null;
 	}
 	

@@ -23,10 +23,7 @@
 				input.setAttribute("onclick", "window.location.href='/5bject/board/write.do'");
 				$(td).append(input);
 				$("#btnTr").append(td);
-			}
-			
-			
-			
+			}		
 		});
 
 
@@ -85,7 +82,7 @@
 				<td align="center">&nbsp;</td>
 				<td>${board.writeNo}</td>
 				<td id="boardTitle">
-						<a href="/5bject/board/view.do?idx=${board.writeNo}">
+						<a href="/5bject/board/view.do?writeNo=${board.writeNo}&hit=${board.hit}&id=${board.id}&sessionId=${sessionScope.member.id}">
 						${board.title}
 					</a>
 				</td>

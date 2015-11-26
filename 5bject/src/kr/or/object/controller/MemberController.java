@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,21 +39,30 @@ public class MemberController {
 
 	@Autowired
 	private GameScoreService gameService;
+	
+	private static Logger logger = Logger.getLogger(MemberController.class);
 
 	@RequestMapping(value = "/register_form_validate.do", method = RequestMethod.POST)
 	@Transactional(rollbackFor={Exception.class})
 	public String registerValidate(HttpServletRequest request, @ModelAttribute Members member, Errors errors) {
 		MemberValidator validate = new MemberValidator();
 		validate.validate(member, errors);
-			if (errors.hasErrors()) {
-				request.setAttribute("members", member);
-				return "/WEB-INF/script/login/register_form_validate.jsp";
-			}
-		service.insertMember(member);		
+
+		if (errors.hasErrors()) {
+			request.setAttribute("members", member);
+			return "/WEB-INF/script/login/register_form_validate.jsp";
+		}
+
+		if ( logger.isInfoEnabled() )
+			logger.info("EmailId[ " + member.getEmailId() + " ] EmailAddress[ " + member.getEmailAddress() + " ]");
+
+		service.insertMember(member);
+		
 		gameService.insertMember(member.getId());
+
 		return "/member/register_success.do";
 	}
-	
+
 	//20151125 CHJ ID 중복검사 
 	@RequestMapping("/idDuplicatedCheck.do")
 	@ResponseBody
@@ -182,7 +192,10 @@ public class MemberController {
 			if (upImage != null) {
 				// 파일에 시간을 같이 넣어 회원들 요청을 매칭하여 관리
 				String downFileName = date + "_" + upImage.getOriginalFilename();
-				System.out.println(downFileName);
+
+				if ( logger.isInfoEnabled() )
+					logger.info("downFileName : " + downFileName);
+
 				// c:\\java\\request에 회원들이 요청하는 파일이 도착하는 경로 설정
 				File destFile = new File("c:\\Java\\request", downFileName);
 				upImage.transferTo(destFile);
@@ -208,7 +221,10 @@ public class MemberController {
 		}
 		Map attributes = service.getRequestList(page);
 		model.addAllAttributes(attributes);
-		System.out.println(attributes);
+		
+		if ( logger.isInfoEnabled() )
+			logger.info("attributes : " + attributes);
+
 		return "/WEB-INF/script/login/request_list.jsp";
 
 	}
@@ -216,7 +232,8 @@ public class MemberController {
 	// 20151120. ADD KKH - 잃어버린 ID찾기
 	@RequestMapping(value = "/find_memberId.do", method = RequestMethod.POST)
 	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam String phoneNumber){
-		//System.out.printf("eID[%s]eAdd[%s]pn[0%d]\n", emailId, emailAddress, phoneNumber);
+		if ( logger.isInfoEnabled() )
+			logger.info("eID[" + emailId + "]eAdd[" + emailAddress + "]pn[" + phoneNumber + "]");
 		
 		HashMap map = new HashMap();
 		map.put("emailId", emailId);
@@ -244,15 +261,21 @@ public class MemberController {
 		
 		if (password != null) {
 			// 총 36개의 문자
-			System.out.println(id); // test
+			if ( logger.isInfoEnabled() )
+				logger.info("ID : " + id);
+
 			String[] str = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
 					"s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
 			String newPassword = "";
+
 			for (int i = 0; i < 7; i++) {
 				int j = (int) (Math.random() * 36);
 				newPassword = newPassword + str[j];
 			}
-			System.out.println(newPassword); // test
+
+			if ( logger.isInfoEnabled() )
+				logger.info("newPassword : " + newPassword);
+
 			map.put("newPassword", newPassword);
 			service.updateMemberPassword(map);
 			request.setAttribute("newPassword", newPassword);

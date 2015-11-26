@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,9 +18,10 @@ import kr.or.object.vo.Board;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
-	
 	@Autowired
 	private BoardService service;
+	
+	private Logger logger = Logger.getLogger(BoardController.class);
 	
 	//공지사항 
 	@RequestMapping("/notice.do")
@@ -67,7 +69,7 @@ public class BoardController {
 	@RequestMapping("/delete.do")
 	public String Delete(HttpSession session,@RequestParam int idx , @RequestParam String boardId){		
 		
-		service.delete(idx);
+		service.delete(idx);		
 		
 		if(boardId.equals("object")){
 			return "/board/notice.do";
@@ -96,30 +98,42 @@ public class BoardController {
 		}		
 	}
 	
-	@RequestMapping("/reply.do")
-	public String Reply(HttpSession session,@RequestParam Board board){
+	@RequestMapping("/reply_success.do")
+	public String Reply(HttpSession session,@ModelAttribute Board board){
+		
+		board.setTitle("reply");
 		
 		service.insertReply(board);
 		
-		return "/WEB-INF/script/board/reply_success.jsp";
+		return "/board/view.do?writeNo="+board.getWriteNo();
 	}
 	
 	@RequestMapping("/view.do")
-	public String View(HttpSession session,@RequestParam int idx){
+	public String View(HttpSession session,@ModelAttribute Board board , String sessionId){
 		
-		Board contectBoard = service.getView(idx);
-		List<Board> replyList = service.getReplyList(idx);
-		session.setAttribute("contectBoard", contectBoard);	
-		session.setAttribute("replyList", replyList);
-		return "/WEB-INF/script/board/view.jsp";
-	}	
-	
-	@RequestMapping("/updateHit.do")
-	public String updateHit(@ModelAttribute Board board){
+		int hit = board.getHit();
+		
+		hit++;
+		board.setHit(hit);	
 		service.updateHit(board);
+
+		if(sessionId.equals(board.getId())){
+			session.setAttribute("writer", "writer");
+		}else{
+			session.setAttribute("writer","nonWriter");
+		}
+		
+		Board contectBoard = service.getView(board.getWriteNo());
+		 List<Board> replyList = service.getReplyList(board.getWriteNo());
+		session.setAttribute("replyList", replyList);
+		session.setAttribute("contectBoard", contectBoard);	
+
+		if ( logger.isInfoEnabled() )
+			logger.info("board.getWriteNo() : " + board.getWriteNo());
+
 		return "/WEB-INF/script/board/view.jsp";
-	}
-	
+	}		
+
 	public void getMax(){
 		service.getMax();
 	}	

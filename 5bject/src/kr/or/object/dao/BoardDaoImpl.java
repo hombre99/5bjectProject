@@ -22,29 +22,42 @@ public class BoardDaoImpl implements BoardDao{
    
    // 글 전체 목록 보기
    public List<Board> getContentBoardList() {
-      List<Board> boardList = session.selectList("boardMapper.boardBoardSelect");
-      return boardList;
+	  List<Board> boardList = session.selectList("boardMapper.boardBoardSelect");
+      
+	  return boardList;
    }
    
    public List<Board> getContentNoticeList(){
 	     List<Board> noticeList = session.selectList("boardMapper.boardNoticeSelect");
+	     
 	     return noticeList;
    }
    
    //댓글 목록 불러오기
    @Override
    public List<Board> getReplyList(int writeNo) {
-	   List<Board> replyList = session.selectList("", writeNo);   
+	   List<Board> replyList = session.selectList("boardMapper.boardReplySelect", writeNo);   
 	   return replyList;
    }
    
-   // 총 글 갯수
+   //페이징 처리 관련
+   @Override
+   public int selectCountBoards() {
+	
+	   return 0;
+   }
+
+   @Override
+   public List<Board> getBoardsPaging(int pageNo) {
+	
+	   return null;
+   }
+
+// 총 글 갯수
    public int getMax() {
       int max = session.selectList("boardMapper.boardAllSelect").size();
       return max;
    }
-
-
 
 // 게시글 쓰기
    public void insertWrite(Board board) {
@@ -53,9 +66,9 @@ public class BoardDaoImpl implements BoardDao{
    
    // 댓글 쓰기
    public void insertReply(Board board) {
-      session.update("boardMapper.updateReply",board);
-   }   
-
+	   System.out.println(board.getWriteNo()+"---------"+board.getId()+"---------"+board.getTitle()+"---------"+board.getContent()+"---------"+board.getNotice());
+      session.update("boardMapper.boardInsertReply",board);
+  }   
 
    // 글제목으로 글보기
    public Board getView(int idx) {
