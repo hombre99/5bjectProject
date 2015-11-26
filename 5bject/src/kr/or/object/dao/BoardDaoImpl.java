@@ -40,7 +40,20 @@ public class BoardDaoImpl implements BoardDao{
 	   return replyList;
    }
    
-   // 총 글 갯수
+   //페이징 처리 관련
+   @Override
+   public int selectCountBoards() {
+	
+	   return 0;
+   }
+
+   @Override
+   public List<Board> getBoardsPaging(int pageNo) {
+	
+	   return null;
+   }
+
+// 총 글 갯수
    public int getMax() {
       int max = session.selectList("boardMapper.boardAllSelect").size();
       return max;
