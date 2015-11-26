@@ -11,6 +11,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,6 +37,8 @@ public class MemberController {
 
 	@Autowired
 	private GameScoreService gameService;
+	
+	private static Logger logger = Logger.getLogger(MemberController.class);
 
 	@RequestMapping(value = "/register_form_validate.do", method = RequestMethod.POST)
 	@Transactional(rollbackFor={Exception.class})
@@ -48,7 +51,8 @@ public class MemberController {
 			return "/WEB-INF/script/login/register_form_validate.jsp";
 		}
 
-		System.out.printf("EmailAddress[ %s ] EmailId[ %s ]\n", member.getEmailAddress(), member.getEmailId());
+		logger.info("EmailId[ " + member.getEmailId() + " ] EmailAddress[ " + member.getEmailAddress() + " ]");
+
 		service.insertMember(member);
 		
 		gameService.insertMember(member.getId());

@@ -143,8 +143,8 @@
 					<c:choose>
 						<c:when test="${ sessionScope.gameNum == 1 || sessionScope.gameNum == 2 }">
 							<div class="color-scheme--white learn-more grid-row margin-top--3" exclude="phone">
-								<div class="grid-row grid-col-12 margin-top--1 margin-bottom--1 grid-col--center">
-									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
+								<div class="grid-row grid-col-11 grid-col--center grid-col--align-center">
+									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--align-center" id="gamePannel">
 									</div>
 									<div class="grid-col-7 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
 										<div id="question"></div>
@@ -159,12 +159,13 @@
 						</c:when>
 						<c:when test="${ sessionScope.gameNum == 3 }">
 							<div class="color-scheme--white learn-more grid-row margin-top--3" exclude="phone">
-								<div class="grid-row grid-col-12 margin-top--1 margin-bottom--1 grid-col--center">
-									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--no--padding" id="gamePannel">
-										<div id="menu"></div>
-										<div class="grid-row grid-col-8 grid-row-6" id="display"></div>
+								<div class="grid-row grid-col-11 grid-col--center grid-col--align-center">
+									<div class="grid-row grid-col-6 grid-col--right" id="display">
+										<div class="grid--no--padding grid-col-5 grid-col--right"></div>
+										<div class="grid--no--padding grid-col-5 grid-col--right"></div>
+										<div class="grid-col-5 grid-col--right" id="display2"></div>
 									</div>
-									<div class="grid-col-5 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
+									<div class="grid-col-3 grid-col--right" id="answerPannel">
 										<div id="score"></div>
 										<div id="input"></div>
 									</div>

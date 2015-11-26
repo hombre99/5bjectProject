@@ -74,8 +74,8 @@ $(document).ready(function(){
 		inputBtn.setAttribute("id", "inputBtn");
 		inputBtn.setAttribute("value", "입력");
 	
-		display.append(inputWord);
-		display.append(inputBtn);
+		$("#display2").append(inputWord);
+		$("#display2").append(inputBtn);
 	
 		$(inputWord).focus();
 
@@ -247,7 +247,8 @@ $(document).ready(function(){
 			}
 			$(gameTable).append(tr);
 		}	
-		display.append(gameTable);
+		// display.append(gameTable);
+		display.children().eq(0).after(gameTable);
 	}
 
 	/* 메인페이지 클릭이벤트 등록 */
