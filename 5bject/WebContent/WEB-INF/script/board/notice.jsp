@@ -5,7 +5,32 @@
 <head>
 <meta charset="UTF-8">
 <title>NOTICE</title>
+<script type="text/javascript" src="/5bject/jquery.do"></script>
+<script type="text/javascript">
+		
+		$(document).ready(function(){
+			var loginId = '${ sessionScope.member.id }';
+			
+			if(loginId == "object"){
+				var td = document.createElement("td");
+				td.setAttribute("id", "btnTd");
+				td.setAttribute("colspan", "7");
+				var input = document.createElement("input");
+				input.setAttribute("type", "button");
+				input.setAttribute("id", "btnTd");
+				input.setAttribute("value", "글쓰기");
+				input.setAttribute("onclick", "window.location.href='/5bject/board/write.do'");
+				$(td).append(input);
+				$("#btnTr").append(td);
+			}
+			
+		});
+
+
+
+</script>
 		<style type="text/css">
+		
 			header {
 				background-color: lightblue;
 				color: white;
@@ -28,6 +53,11 @@
 			#boardDiv{
 			height: 800px;
 			}
+			
+			#btnTr{
+				align:center;
+			}
+
 			</style>
 </head>
 <body>
@@ -62,10 +92,8 @@
 				<td align="center">&nbsp;</td>                                                                                                                                                                                                                 
 			<tr>
 			</c:forEach>
-			<tr align="center">
-  			 <td colspan="7">
-   				<input type=button value="글쓰기" OnClick="window.location.href='/5bject/board/write.do'">
-   			</td>
+			<tr id="btnTr">
+				
   			</tr>
 		</table>
 	</div>
