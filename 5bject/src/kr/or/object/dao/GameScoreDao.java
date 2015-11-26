@@ -11,5 +11,7 @@ public interface GameScoreDao {
 
 	void updateGameScore(GameScore gameScore);
 	
+	void removeGameScore(String id);
+	
 	List selectGameScore(String id);
 }

@@ -27,6 +27,10 @@
 		UPDATE	GAMESCORE SET GAME_NUM = #{ gameNum }, EASY = #{ easy }, NORMAL = #{ normal }, HARD = #{ hard }
 		WHERE	MEMBER_ID = #{ id }
 	</update>
+	
+	<delete id="deleteGameScore">
+		DELETE	FROM GAMESCORE WHERE MEMBER_ID = #{ id }
+	</delete>
 
 	<select id="selectGameScoreById" resultMap="gameScore_resultMap">
 		<include refid="gamescore_select" />
