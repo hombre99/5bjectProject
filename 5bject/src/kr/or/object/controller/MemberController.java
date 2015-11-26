@@ -158,9 +158,10 @@ public class MemberController {
 	}
 
 	@RequestMapping("/memberRemove.do")
+	@Transactional(rollbackFor={Exception.class})
 	public String remove(HttpSession session, @RequestParam String id) {
 		service.removeMemberById(id);
-
+		gameService.removeGameScore(id);
 		return "/member/memberList.do";
 
 	}
