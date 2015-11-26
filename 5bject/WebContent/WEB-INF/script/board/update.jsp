@@ -42,7 +42,7 @@ function writeCheck()
      <tr>
       <td>&nbsp;</td>
       <td align="center">제목</td>
-      <td><input name="title" size="100" maxlength="100" value="${requestScope.board.title }"></td>
+      <td><input type="text" name="title" size="100" maxlength="100" value="${sessionScope.contectBoard.title}"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
@@ -63,7 +63,7 @@ function writeCheck()
      <tr>
       <td>&nbsp;</td>
       <td align="center">내용</td>
-      <td><input name="content" value="${requestScope.board.content}" size="20" style="width:100%; height:360px"></td>
+      <td><input type="text" name="content" value="${sessionScope.contectBoard.content}" size="20" style="width:100%; height:360px"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
