@@ -153,6 +153,32 @@ $(document).ready(function(){
 				gameTime--;
 			} , 1000);
 	
+		$("#inputBtn").on("click", function() {
+			var inputTxtValue = document.getElementById("inputWord");
+			var scoreTd = document.getElementById("scoreTd1");
+
+			for ( var i = 0; i < gameDifficulty; i++ ) {
+				var inputTd = document.getElementById("GameTd" + i);
+				var inputText = document.getElementById("GameTd" + i).innerText;
+
+				if ( inputText == inputTxtValue.value ) {
+					if ( inputTd.hasChildNodes() ) {
+						inputTd.removeChild(inputTd.firstChild);
+						scoreTd.innerHTML = eval(scoreTd.innerText) + 10;							
+						answerCount--;
+						break;
+					}
+				}
+			}
+
+			$(inputTxtValue).val("").focus();
+
+			if ( answerCount == 0 ) {
+				// 점수계산 : (맞춘갯수 * 10) + 남은시간
+				totalScore = eval(scoreTd.innerText) + gameTime;
+			}
+		});
+
 		// 엔터 입력시 정답 체크 로직
 		$("input#inputWord").on("keypress", function() {
 			if ( event.keyCode == 13 ) {
