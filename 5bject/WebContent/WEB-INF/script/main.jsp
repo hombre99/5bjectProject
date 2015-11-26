@@ -126,7 +126,7 @@
 		</script>
 		<!-- 여기까지 손대지 마세여... -->
 
-		<link rel="stylesheet" type="text/css" href="stylesheet/main.css" />
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/main.css" />
 	</head>
 	<body>
 		<header>
