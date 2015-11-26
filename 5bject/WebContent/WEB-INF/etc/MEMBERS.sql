@@ -30,7 +30,7 @@ create table members(
 	-- 참조하는 값이 삭제된 경우 자식테이블의 row도 같이 삭제.
 	--references department
 	 )
-  	insert into members values('aaaaa1','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
+  	insert into members values('aaaaa1','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com','01033910602');
   	insert into members values('aaaaa2','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
   	insert into members values('aaaaa3','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
   	insert into members values('aaaaa4','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
@@ -41,7 +41,7 @@ create table members(
   	insert into members values('aaaaa9','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
   	insert into members values('cccccc41','123456','kunhoe','March', 11, 2000, 'male', 'ranibow','gmail.com',01111111112);
   	insert into members values('object','class','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
-  	insert into members values('objectclass','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('objectclass','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com','01033910602');
 
 	
  )
