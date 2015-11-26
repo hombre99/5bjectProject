@@ -7,11 +7,11 @@
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 <script type="text/javascript">
 	$(document).ready( function() {
-
+				
 				var loginId = '${ sessionScope.member.id }'; //로그인ID	
 				var boardId = '${ sessionScope.contectBoard.id }'; //작성자 ID
-				var board = '${sessionScope.contectBoard.writeNo}'				
-				
+				var board = '${sessionScope.contectBoard.writeNo}';	 // 글 번호		
+								
 				if (loginId==boardId) {
 					var td = document.createElement("td");
 					var input = document.createElement("input");
@@ -27,11 +27,11 @@
 					input.setAttribute("value", "삭제");
 					input.onclick = function(){
 						var confirm = window.confirm("정말 삭제 하시겠습니까?");
-						if(confirm){	
-							window.location.href="/5bject/board/delete.do?idx="+board+"&boardId="+boardId;
-						}else{
-							this.close;
-						}
+							if(confirm){	
+								window.location.href="/5bject/board/delete.do?idx="+board+"&boardId="+boardId;
+							}else{
+								this.close;
+							}
 					}
 					$(td).append(input);
 					$("#btnTr").append(td);
@@ -40,15 +40,19 @@
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
 					input.setAttribute("value", "목록으로");
-					input.setAttribute("Onclick", "javascript:history.back(-1)");
+					input.setAttribute("Onclick", "window.location.href='/5bject/board/notice.do'");
 					$(td).append(input);
 					$("#btnTr").append(td);
+					
+					
+					
+					$().append();
 				} else {
 					var td = document.createElement("td");
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
 					input.setAttribute("value", "목록으로");
-					input.setAttribute("Onclick",	"javascript:history.back(-1)");
+					input.setAttribute("Onclick",	"window.location.href='/5bject/board/notice.do'");
 					$(td).append(input);
 					$("#btnTr").append(td);
 				}
@@ -92,23 +96,19 @@ table {
 					<table width="100%" cellpadding="0" cellspacing="0" border="0">
 						<tr
 							style="background: url('/5bject/image/board/table_mid.gif') repeat-x; text-align: center;">
-							<td width="6"><img src="/5bject/image/board/table_left.gif"
-								width="6" height="30" /></td>
+							<td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
 							<td align="center"><b>${sessionScope.contectBoard.title}</b></td>
-							<td width="6"><img src="/5bject/image/board/table_right.gif"
-								width="6" height="30" /></td>
+							<td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
 						</tr>
 					</table>
 					<table width="100%" cellpadding="0" cellspacing="0" border="0">
 						<tr
 							style="background: url('/5bject/image/board/table_mid.gif') repeat-x; text-align: center;">
-							<td width="6"><img src="/5bject/image/board/table_left.gif"
-								width="6" height="30" /></td>
+							<td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
 							<td align="left">글쓴이 : ${sessionScope.contectBoard.id }</td>
 							<td align="center">등록일 : ${sessionScope.contectBoard.date}</td>
 							<td align="right">조회 수 : ${sessionScope.contectBoard.hit}</td>
-							<td width="6"><img src="/5bject/image/board/table_right.gif"
-								width="6" height="30" /></td>
+							<td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
 						</tr>
 					</table>
 					<table>
@@ -139,12 +139,12 @@ table {
 
 					</table>
 					<div align="center">
-		<table>
-			<tr align="center" id="btnTr">
+						<table>
+							<tr align="center" id="btnTr">
 
-			</tr>
-		</table>
-	</div>
+							</tr>
+						</table>
+					</div>
 				</td>
 			</tr>
 		</table>

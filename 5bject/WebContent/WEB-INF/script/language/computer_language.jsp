@@ -10,94 +10,102 @@
 </script>
 <style type="text/css">
 #wrap {
-   width: 1000px;
+   width: 1200px;
    height: 930px;
-   margin-left: 50px;
    background: lightgrey;
 }
 
 #header {
-   width: 900px;
+   width: 1200px;
    height: 130px;
-   margin-left: 50px;
+   img-align: center;
    margin-bottom: 20px;
-   background: lightblue;
+   background: white;
 }
 
 #middle{
-   width: 1000px;
+   width: 1200px;
    float: left;
-   background: palegoldenrod;
+   background: powderblue;
 }
 
 #sidebar {
-   width: 200px;
+   width: 300px;
    height: 500px;
    text-align: center;
    float:left;
    margin-left: 40px;
    margin-right: 20px;
-   background: beige;
+   background-color: white;
+
 }
 
 #content {
-   width: 700px;
+   width: 800px;
    height: 500px;
    float: left;
-   background: beige;
+   background-color: white;
 }
   /*추가하는 부분 20151124 화요일 CHJ*/
 #middle2 {
-   width: 1000px;
+   width: 1200px;
    margin-top: 10px;
    margin-botton: 10px;
    height: 100px;
    float: left;
-   background: palegoldenrod;
+   background: powderblue;
 }
   /*추가하는 부분 20151125 화요일 CHJ*/
 #content2 {
-   width: 200px;
+   width: 300px;
    margin-right: 20px;
    margin-left: 40px;
    height: 100px;
    float: left;
-   background: beige;
+   background-color: white;
+
 }
   /*추가하는 부분 20151125 수요일 CHJ*/
 #content3{
-   width: 700px;
+   width: 800px;
    height: 100px;
    float: left;
-   background: beige;
+   background-color: white;
+
 }
 
 #footer {
-   width: 900px;
-   height: 100px;
-   margin-left: 50px;
+   width: 1200px;
+   height: 100px;  
    margin-top: 10px;
    background: lightblue;
    color: white;
    float: left;
    text-align: center;
 }
+.table1{
+margin-top:70px;
+margin-left:20px;
+text-align: center;
+}
+
 </style>
 </head>
 <body>
 
    <div id="wrap">
-      <jsp:include page="/WEB-INF/script/layout/header.jsp" />
+      &nbsp;<jsp:include page="/WEB-INF/script/layout/header.jsp" />
       <div id="header">
-         <img src="/5bject/image/member/programming.jpg">
+   <!--       <img src="/5bject/image/member/programming.jpg"> -->
       </div>
             
       <div id="middle">
          <div id="sidebar">
             <form action="/5bject/language/select_language.do" method="GET">
-               <table>
+               <table id ="table1">
                   <tr>
-                     <td><b>언어를 선택하여 주세요</b><br> 
+                	<!-- 20151126 p태그 추가 -->
+                     <td><p><b>언어를 선택하여 주세요</b><br> 
                      <select name="name">
                            <option value="language">언어선택</option>
                            <option value="java">Java</option>
@@ -118,7 +126,7 @@
          <div id="content">
             <c:choose>
                <c:when test="${sessionScope.name==null}">
-                  <img src="/5bject/image/member/click.jpg">
+                <!--   <img src="/5bject/image/member/click.jpg"> -->
                </c:when>
                <c:otherwise>
                   <table>

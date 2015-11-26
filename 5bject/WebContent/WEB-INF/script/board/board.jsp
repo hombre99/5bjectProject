@@ -35,6 +35,9 @@
 <header>
 			<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 </header>
+<board>
+			<jsp:include page="/WEB-INF/script/layout/board.jsp" />
+</board>
 <c:choose>
 	<c:when test="${fn:length(sessionScope.boardList)==0 }">
 		<div id=boardDiv>

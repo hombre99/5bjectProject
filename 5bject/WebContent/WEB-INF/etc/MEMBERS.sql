@@ -9,7 +9,7 @@
 성별	    member_gender varchar(12) not null,
 이메일1  	member_email_id varchar(25) not null,
 이메일2  	member_email_address varchar(25) not null,
-핸드폰 	member_phone number(11) 
+핸드폰 	member_phone varchar(11) not null
 
 FK컬럼은 참조 테이블의 PK컬럼의 값을 참조한다. 
 drop table members;
@@ -24,13 +24,13 @@ create table members(
 	member_gender varchar(12) not null,
   	member_email_id varchar(25) not null,
   	member_email_address varchar(25) not null,
-  	member_phone number(11) 
+  	member_phone varchar(11) not null 
   	);
 	--references department on delete set null  : 삭제된 경우에 컬럼값에 null 설정.
 	-- 참조하는 값이 삭제된 경우 자식테이블의 row도 같이 삭제.
 	--references department
 	 )
-  	insert into members values('aaaaa1','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
+  	insert into members values('aaaaa1','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com','01033910602');
   	insert into members values('aaaaa2','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
   	insert into members values('aaaaa3','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
   	insert into members values('aaaaa4','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
@@ -41,7 +41,7 @@ create table members(
   	insert into members values('aaaaa9','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
   	insert into members values('cccccc41','123456','kunhoe','March', 11, 2000, 'male', 'ranibow','gmail.com',01111111112);
   	insert into members values('object','class','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
-  	insert into members values('objectclass','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('objectclass','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com','01033910602');
 
 	
  )

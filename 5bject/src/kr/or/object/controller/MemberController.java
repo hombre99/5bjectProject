@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.object.service.GameScoreService;
@@ -42,12 +43,12 @@ public class MemberController {
 
 	@RequestMapping(value = "/register_form_validate.do", method = RequestMethod.POST)
 	@Transactional(rollbackFor={Exception.class})
-	public String registerValidate(@ModelAttribute Members member, Errors errors) {
+	public String registerValidate(HttpServletRequest request, @ModelAttribute Members member, Errors errors) {
 		MemberValidator validate = new MemberValidator();
 		validate.validate(member, errors);
 
-		System.out.printf("Total Error Count [ %d ]\n", errors.getErrorCount());
 		if (errors.hasErrors()) {
+			request.setAttribute("members", member);
 			return "/WEB-INF/script/login/register_form_validate.jsp";
 		}
 
@@ -59,7 +60,14 @@ public class MemberController {
 		
 		return "/member/register_success.do";
 	}
-
+	//20151125 CHJ ID 중복검사 
+	@RequestMapping("/idDuplicatedCheck.do")
+	@ResponseBody
+	public String idDuplicatedCheck(@RequestParam String id){
+		Members member = service.findMemberById(id);
+		return String.valueOf(member!=null);
+	}
+	
 	@RequestMapping("/login.do")
 	public String login(HttpSession session, @RequestParam String id, @RequestParam String password) {
 		Members login = service.findMemberById(id);
@@ -214,7 +222,7 @@ public class MemberController {
 
 	// 20151120. ADD KKH - 잃어버린 ID찾기
 	@RequestMapping(value = "/find_memberId.do", method = RequestMethod.POST)
-	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
+	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam String phoneNumber){
 		//System.out.printf("eID[%s]eAdd[%s]pn[0%d]\n", emailId, emailAddress, phoneNumber);
 		
 		HashMap map = new HashMap();
@@ -231,7 +239,7 @@ public class MemberController {
 	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
 	@RequestMapping(value = "/find_MemberPassword.do", method = RequestMethod.POST)
 	public String findMemberPassword(HttpServletRequest request, @RequestParam String id, @RequestParam String emailId,
-			@RequestParam String emailAddress, @RequestParam long phoneNumber) {
+			@RequestParam String emailAddress, @RequestParam String phoneNumber) {
 		HashMap<String, Object> map = new HashMap();
 
 		map.put("id", id);

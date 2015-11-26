@@ -12,6 +12,7 @@
    MINVALUE 0.
    drop sequence s_write_no
 
+   drop table board;
    
 	create table BOARD(	
 		write_no number(6) primary key,	

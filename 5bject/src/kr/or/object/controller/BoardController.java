@@ -105,15 +105,24 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/view.do")
-	public String View(HttpSession session,@RequestParam int idx){
+	public String View(HttpSession session,@ModelAttribute Board board){
 		
-		Board contectBoard = service.getView(idx);
+		int hit = board.getHit();
 		
+		hit++;
+		
+		board.setHit(hit);
+		
+		service.updateHit(board);
+		
+		Board contectBoard = service.getView(board.getWriteNo());
+/*		List<Board> replyList = service.getReplyList(board.getWriteNo());
+		session.setAttribute("replyList", replyList);*/
 		session.setAttribute("contectBoard", contectBoard);	
-		
+		System.out.println(board.getWriteNo());
 		return "/WEB-INF/script/board/view.jsp";
-	}	
-	
+	}		
+
 	public void getMax(){
 		service.getMax();
 	}	
