@@ -85,7 +85,7 @@
 				<td align="center">&nbsp;</td>
 				<td>${board.writeNo}</td>
 				<td id="boardTitle">
-						<a href="/5bject/board/view.do?idx=${board.writeNo}">
+						<a href="/5bject/board/view.do?writeNo=${board.writeNo}&hit=${board.hit}">
 						${board.title}
 					</a>
 				</td>
