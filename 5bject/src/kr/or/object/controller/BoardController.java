@@ -69,7 +69,7 @@ public class BoardController {
 	@RequestMapping("/delete.do")
 	public String Delete(HttpSession session,@RequestParam int idx , @RequestParam String boardId){		
 		
-		service.delete(idx);
+		service.delete(idx);		
 		
 		if(boardId.equals("object")){
 			return "/board/notice.do";

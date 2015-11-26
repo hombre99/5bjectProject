@@ -29,7 +29,7 @@
 					input.onclick = function(){
 						var confirm = window.confirm("정말 삭제 하시겠습니까?");
 							if(confirm){	
-								window.location.href="/5bject/board/delete.do?idx="+board+"&boardId="+boardId;
+								window.location.href="/5bject/board/delete.do?idx="+board+"&boardId=${sessionScope.member.id}";
 							}else{
 								this.close;
 							}
@@ -168,7 +168,7 @@ table {
 					<c:when test="${sessionScope.replyList }==null">
 					</c:when>
 					<c:otherwise>
-					<c:forEach items="${sessionScope.replyList}" var="reply" >
+					<c:forEach items='${sessionScope.replyList}' var="reply" >
 						<tr align="center">
 							<td>
 								<img src= "/5bject/image/board/reply_icon.gif">
