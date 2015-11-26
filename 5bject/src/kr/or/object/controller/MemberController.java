@@ -210,7 +210,7 @@ public class MemberController {
 
 	// 20151120. ADD KKH - 잃어버린 ID찾기
 	@RequestMapping(value = "/find_memberId.do", method = RequestMethod.POST)
-	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
+	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam String phoneNumber){
 		//System.out.printf("eID[%s]eAdd[%s]pn[0%d]\n", emailId, emailAddress, phoneNumber);
 		
 		HashMap map = new HashMap();
@@ -227,7 +227,7 @@ public class MemberController {
 	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
 	@RequestMapping(value = "/find_MemberPassword.do", method = RequestMethod.POST)
 	public String findMemberPassword(HttpServletRequest request, @RequestParam String id, @RequestParam String emailId,
-			@RequestParam String emailAddress, @RequestParam long phoneNumber) {
+			@RequestParam String emailAddress, @RequestParam String phoneNumber) {
 		HashMap<String, Object> map = new HashMap();
 
 		map.put("id", id);

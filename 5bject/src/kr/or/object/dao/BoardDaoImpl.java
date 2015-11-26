@@ -30,14 +30,23 @@ public class BoardDaoImpl implements BoardDao{
 	     List<Board> noticeList = session.selectList("boardMapper.boardNoticeSelect");
 	     return noticeList;
    }
-
+   
+   //댓글 목록 불러오기
+   @Override
+   public List<Board> getReplyList(int writeNo) {
+	   List<Board> replyList = session.selectList("", writeNo);   
+	   return replyList;
+   }
+   
    // 총 글 갯수
    public int getMax() {
       int max = session.selectList("boardMapper.boardAllSelect").size();
       return max;
    }
 
-   // 게시글 쓰기
+
+
+// 게시글 쓰기
    public void insertWrite(Board board) {
       session.insert("boardMapper.boardInsert",board);
    }

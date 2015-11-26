@@ -31,7 +31,7 @@
 		<tr><td><b>DATE</b></td><td>${sessionScope.member.month }월  ${sessionScope.member.day}일  ${sessionScope.member.year}년도</td></tr>
 		<tr><td><b>GENDER</b></td><td> ${sessionScope.member.gender }</td></tr>
 		<tr><td><b>EMAIL</b></td><td> ${sessionScope.member.emailId }@${sessionScope.member.emailAddress}</td></tr>
-		<tr><td><b>PHONENUMBER</b></td><td> 0${sessionScope.member.phoneNumber }</td></tr>
+		<tr><td><b>PHONENUMBER</b></td><td> ${sessionScope.member.phoneNumber }</td></tr>
 		<tr><td colspan="2"><input type="button" value="닫기" onclick="window.close();" /></td></tr>
 	</table>
 	</body>

@@ -157,7 +157,7 @@
 				<tr>
 					<td>
 						<!--  phone size ="30"으로  -->
-						<input type="number" name="phoneNumber" value="${requestScope.members.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" size="30" maxlength="11" />
+						<input type="text" name="phoneNumber" value="${requestScope.members.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" size="30" maxlength="11" />
 						<br>
 						<span class="error"><form:errors path="members.phoneNumber"/></span>
 					</td>

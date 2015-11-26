@@ -55,7 +55,7 @@
          <tr><td>BIRTHDAY </td><td> ${memberInfo.month }  ${memberInfo.day } ${memberInfo.year }<br></td></tr>
          <tr><td>GENDER </td><td> ${memberInfo.gender }<br></td></tr>
          <tr><td> EMAIL </td><td> ${memberInfo.emailId }@${memberInfo.emailAddress }<br></td></tr>
-         <tr><td>PHONENUMBER </td><td> 0${memberInfo.phoneNumber}</td></tr>
+         <tr><td>PHONENUMBER </td><td> ${memberInfo.phoneNumber}</td></tr>
          <tr><td colspan="2"></td></tr>
          <tr>
             <td colspan="2">

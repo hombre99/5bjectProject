@@ -14,14 +14,15 @@ public class Members implements Serializable {
 	private String gender;
 	private String emailId;
 	private String emailAddress;
-	private long phoneNumber;
+	private String phoneNumber;
 	
 	private static final long serialVersionUID = 1L;
+	
 	public Members() {
 	}
 	
 	public Members(String id, String password, String name, String month, int day, int year,
-								String gender, String emailId, String emailAddress, long phoneNumber) {
+								String gender, String emailId, String emailAddress, String phoneNumber) {
 		super();
 		this.id = id;
 		this.password = password;
@@ -36,7 +37,7 @@ public class Members implements Serializable {
 	}
 
 	// 20151118. ADD	KKH - 아이디 찾기 
-	public Members(String emailId, String emailAddress, long phoneNumber) {
+	public Members(String emailId, String emailAddress, String phoneNumber) {
 		super();
 		this.emailId = emailId;
 		this.emailAddress = emailAddress;
@@ -115,11 +116,11 @@ public class Members implements Serializable {
 		this.emailAddress = emailAddress;
 	}
 
-	public long getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(long phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
@@ -142,7 +143,7 @@ public class Members implements Serializable {
 		result = prime * result + ((month == null) ? 0 : month.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
-		result = prime * result + (int) (phoneNumber ^ (phoneNumber >>> 32));
+		result = prime * result + ((phoneNumber == null) ? 0 : phoneNumber.hashCode());
 		result = prime * result + year;
 		return result;
 	}
@@ -193,11 +194,15 @@ public class Members implements Serializable {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (phoneNumber != other.phoneNumber)
+		if (phoneNumber == null) {
+			if (other.phoneNumber != null)
+				return false;
+		} else if (!phoneNumber.equals(other.phoneNumber))
 			return false;
 		if (year != other.year)
 			return false;
 		return true;
 	}
+
 
 }

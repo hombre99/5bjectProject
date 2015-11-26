@@ -108,9 +108,9 @@ public class BoardController {
 	public String View(HttpSession session,@RequestParam int idx){
 		
 		Board contectBoard = service.getView(idx);
-		
+		List<Board> replyList = service.getReplyList(idx);
 		session.setAttribute("contectBoard", contectBoard);	
-		
+		session.setAttribute("replyList", replyList);
 		return "/WEB-INF/script/board/view.jsp";
 	}	
 	
