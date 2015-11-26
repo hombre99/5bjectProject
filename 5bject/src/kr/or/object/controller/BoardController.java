@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,9 +18,10 @@ import kr.or.object.vo.Board;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
-	
 	@Autowired
 	private BoardService service;
+	
+	private Logger logger = Logger.getLogger(BoardController.class);
 	
 	//공지사항 
 	@RequestMapping("/notice.do")
@@ -119,7 +121,10 @@ public class BoardController {
 /*		List<Board> replyList = service.getReplyList(board.getWriteNo());
 		session.setAttribute("replyList", replyList);*/
 		session.setAttribute("contectBoard", contectBoard);	
-		System.out.println(board.getWriteNo());
+
+		if ( logger.isInfoEnabled() )
+			logger.info("board.getWriteNo() : " + board.getWriteNo());
+
 		return "/WEB-INF/script/board/view.jsp";
 	}		
 
