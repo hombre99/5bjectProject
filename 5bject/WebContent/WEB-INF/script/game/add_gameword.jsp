@@ -14,8 +14,12 @@
 				return false;
 			}
 		</script>
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/menu.css" />
 	</head>
 	<body>
+		<menu>
+			<jsp:include page="/WEB-INF/script/layout/game_menu.jsp" />
+		</menu>
 		<h2>게임 단어 추가</h2>
 		<form action="/5bject/game/addWord.do" onsubmit="return check();">
 			<table>

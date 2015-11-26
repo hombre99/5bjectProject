@@ -28,8 +28,8 @@ function writeCheck()
  </script>
 </head>
 <body>
-<table>
 <form name="writeform" method="post" action="/5bject/board/write_success.do">
+<table>
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -47,7 +47,12 @@ function writeCheck()
       <td>&nbsp;</td>
      </tr>
      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
-
+	<tr>
+      <td>&nbsp;</td>
+      <td align="center">작성자</td>
+      <td><input type="text" readonly="readonly"  name="id" value="${sessionScope.member.id}" size="20"></td>
+      <td>&nbsp;</td>
+     </tr>
      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
      <tr>
       <td>&nbsp;</td>
@@ -66,7 +71,7 @@ function writeCheck()
     </table>
    </td>
   </tr>
-  </form>
  </table>
+  </form>
 </body>
 </html>

@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.object.util.PagingBean;
 import kr.or.object.vo.GameWord;
 
 @Repository("gameWordDao")
@@ -25,12 +26,21 @@ public class GameWordDaoImpl implements GameWordDao {
 	}
 
 	@Override
-	public List<GameWord> findAllWord() {
-		return session.selectList("gamewordMapper.selectAllGameWord");
+	public List<GameWord> findAllWord(int pageNo) {
+		HashMap map = new HashMap();
+		
+		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
+		map.put("pageNo", pageNo);
+		return session.selectList("gamewordMapper.selectAllGameWord", map);
 	}
 	
 	@Override
 	public List<GameWord> findPlayingWord(HashMap map) {
 		return session.selectList("gamewordMapper.selectPlayingGameWord", map);
+	}
+
+	@Override
+	public int totalWordCount() {
+		return session.selectOne("gamewordMapper.selectWordCount");
 	}
 }

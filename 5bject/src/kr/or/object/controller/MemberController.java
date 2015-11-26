@@ -1,19 +1,20 @@
 package kr.or.object.controller;
 
-import java.util.List;
-import java.util.Map;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
-
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,8 +22,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.or.object.service.GameScoreService;
 import kr.or.object.service.MemberService;
-import kr.or.object.util.PagingBean;
 import kr.or.object.validator.MemberValidator;
 import kr.or.object.vo.Members;
 import kr.or.object.vo.Upload;
@@ -33,7 +34,11 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 
+	@Autowired
+	private GameScoreService gameService;
+
 	@RequestMapping(value = "/register_form_validate.do", method = RequestMethod.POST)
+	@Transactional(rollbackFor={Exception.class})
 	public String registerValidate(@ModelAttribute Members member, Errors errors) {
 		MemberValidator validate = new MemberValidator();
 		validate.validate(member, errors);
@@ -45,6 +50,8 @@ public class MemberController {
 
 		System.out.printf("EmailAddress[ %s ] EmailId[ %s ]\n", member.getEmailAddress(), member.getEmailId());
 		service.insertMember(member);
+		
+		gameService.insertMember(member.getId());
 		
 		return "/member/register_success.do";
 	}

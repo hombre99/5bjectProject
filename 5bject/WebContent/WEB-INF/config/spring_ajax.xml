@@ -74,10 +74,8 @@
 	<mvc:view-controller path="/game/game1js.do" view-name="/WEB-INF/script/game/game1.js" />
 	<mvc:view-controller path="/game/game2js.do" view-name="/WEB-INF/script/game/game2.js" />
 	<mvc:view-controller path="/game/game3js.do" view-name="/WEB-INF/script/game/game3.js" />
-	<mvc:view-controller path="/5bject/game/game_menu.do" view-name="" />
 	<mvc:view-controller path="/game/add/word.do" view-name="/WEB-INF/script/game/add_gameword.jsp" />
 	<mvc:view-controller path="/game/find/word.do" view-name="/WEB-INF/script/game/find_gameword_form.jsp" />
-	<mvc:view-controller path="/game/find/allWord.do" view-name="/WEB-INF/script/game/find_gameword.jsp" />
 
 	<!-- game1-2 정답 오답 처리 팝업 -->
 	<mvc:view-controller path="/game/game_correctPop.do" view-name="/WEB-INF/script/game/correct.jsp" />
@@ -87,11 +85,6 @@
 	<mvc:view-controller path="/board/board.do" view-name="/WEB-INF/script/board/board.jsp"/>
 	<mvc:view-controller path="/board/view.do" view-name="/WEB-INF/script/board/view.jsp"/>
 	<mvc:view-controller path="/board/write.do" view-name="/WEB-INF/script/board/write.jsp"/>
-	<mvc:view-controller path="/board/update.do" view-name="/WEB-INF/script/board/updatd.jsp"/>
+	<mvc:view-controller path="/board/update.do" view-name="/WEB-INF/script/board/update.jsp"/>
 	<mvc:view-controller path="/board/delete.do" view-name="/WEB-INF/script/board/delete.jsp"/>
-	<!-- 공지사항 -->
-	<mvc:view-controller path="/board/notice.do" view-name="/WEB-INF/script/board/notice.jsp"/>
-	
-	
-	
 </beans>

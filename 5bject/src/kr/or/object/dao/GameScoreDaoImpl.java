@@ -15,6 +15,11 @@ public class GameScoreDaoImpl implements GameScoreDao {
 	private SqlSessionTemplate session;
 
 	@Override
+	public void insertMember(String id) {
+		session.insert("gamescoreMapper.insertMember", id);
+	};
+
+	@Override
 	public void insertGameScore(GameScore gameScore) {
 		session.insert("gamescoreMapper.insertGameScore", gameScore);
 	}

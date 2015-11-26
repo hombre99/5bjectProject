@@ -35,6 +35,9 @@
 <header>
 			<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 </header>
+<board>
+			<jsp:include page="/WEB-INF/script/layout/board.jsp" />
+</board>
 <c:choose>
 	<c:when test="${fn:length(sessionScope.boardList)==0 }">
 		<div id=boardDiv>
@@ -43,8 +46,8 @@
 		</div>
 	</c:when>
 <c:otherwise>
-<h1>자유 게시판</h1>
-		<div id=boardDiv><table width="100%" cellpadding="0" cellspacing="0" border="0">
+		<div id=boardDiv><table width="70%" cellpadding="0" cellspacing="0" border="0">
+		<tr><td colspan="7" align="center"><h1>자유게시판</h1></td></tr>
   				<tr height="5"><td width="5"></td></tr>
 				<tr style="background:url('/5bject/image/board/table_mid.gif') repeat-x; text-align:center;">
 				    <td width="5"><img src="/5bject/image/board/table_left.gif" width="5" height="30" /></td>
@@ -87,7 +90,7 @@
 			</tr>
 			</c:forEach>
 			<tr align="center">
-  			 <td>
+  			 <td colspan="7">
    				<input type=button value="글쓰기" OnClick="window.location.href='/5bject/board/write.do'">
    			</td>
   			</tr>
