@@ -117,6 +117,15 @@ public class BoardController {
 		
 		service.updateHit(board);
 		
+		String sessionId = session.getId();
+		String boardId = board.getId();
+		
+		if(sessionId.equals(boardId)){
+			session.setAttribute("writer", "writer");
+		}else{
+			session.setAttribute("writer","nonWriter");
+		}
+		
 		Board contectBoard = service.getView(board.getWriteNo());
 /*		List<Board> replyList = service.getReplyList(board.getWriteNo());
 		session.setAttribute("replyList", replyList);*/
