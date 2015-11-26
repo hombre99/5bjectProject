@@ -96,7 +96,7 @@ text-align: center;
    <div id="wrap">
       &nbsp;<jsp:include page="/WEB-INF/script/layout/header.jsp" />
       <div id="header">
-   <!--       <img src="/5bject/image/member/programming.jpg"> -->
+          <img src="/5bject/image/member/programming.jpg">
       </div>
             
       <div id="middle">
@@ -126,7 +126,7 @@ text-align: center;
          <div id="content">
             <c:choose>
                <c:when test="${sessionScope.name==null}">
-                <!--   <img src="/5bject/image/member/click.jpg"> -->
+                   <img src="/5bject/image/member/click.jpg"> 
                </c:when>
                <c:otherwise>
                   <table>
