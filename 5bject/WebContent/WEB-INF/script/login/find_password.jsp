@@ -65,7 +65,7 @@ table {
          </tr>
          <tr>
             <td>핸드폰 번호</td>
-            <td colspan="3"><input type="number" name="phoneNumber"
+            <td colspan="3"><input type="text" name="phoneNumber"
                id="phoneNumber" placeholder="핸드폰 번호를 입력"></td>
          </tr>
          <tr>
