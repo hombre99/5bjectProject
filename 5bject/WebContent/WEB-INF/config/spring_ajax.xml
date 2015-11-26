@@ -87,4 +87,7 @@
 	<mvc:view-controller path="/board/write.do" view-name="/WEB-INF/script/board/write.jsp"/>
 	<mvc:view-controller path="/board/update.do" view-name="/WEB-INF/script/board/update.jsp"/>
 	<mvc:view-controller path="/board/delete.do" view-name="/WEB-INF/script/board/delete.jsp"/>
+	<mvc:view-controller path="/board/reply.do" view-name="/WEB-INF/script/board/reply.jsp"/>
+
+
 </beans>

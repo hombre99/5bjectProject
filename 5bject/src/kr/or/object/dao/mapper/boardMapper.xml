@@ -53,5 +53,9 @@
 	<select id="boardBoardSelect" resultMap="board-resultmap" resultType="board">
 			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 2
 	</select>
-	  
+	 
+	 <!-- 댓글 목록 셀렉트 -->
+	 <select id="boardReplySelect" resultMap="board-resultmap" resultType="board" parameterType="_int">
+			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE ref = #{writeNo}
+	</select>
 </mapper>

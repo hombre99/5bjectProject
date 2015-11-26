@@ -8,8 +8,8 @@
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 <script type="text/javascript">
 		
-		$(document).ready(function(){
-			
+		$(document).ready(function(){			
+
 			var loginId = '${ sessionScope.member.id }';
 			
 			if(loginId == "object"){
@@ -84,8 +84,8 @@
 			<tr>
 				<td align="center">&nbsp;</td>
 				<td>${board.writeNo}</td>
-				<td>
-						<a href="/5bject/board/view.do?idx=${board.writeNo}">
+				<td id="boardTitle">
+						<a href="/5bject/board/view.do?writeNo=${board.writeNo}&hit=${board.hit}">
 						${board.title}
 					</a>
 				</td>

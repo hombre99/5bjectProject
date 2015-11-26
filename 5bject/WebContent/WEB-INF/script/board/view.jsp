@@ -8,7 +8,6 @@
 <script type="text/javascript">
 	$(document).ready( function() {
 				
-				var hit = '${sessionScope.contentBoard.hit}';	// 조회수 증가
 				var loginId = '${ sessionScope.member.id }'; //로그인ID	
 				var boardId = '${ sessionScope.contectBoard.id }'; //작성자 ID
 				var board = '${sessionScope.contectBoard.writeNo}';	 // 글 번호		
@@ -28,11 +27,11 @@
 					input.setAttribute("value", "삭제");
 					input.onclick = function(){
 						var confirm = window.confirm("정말 삭제 하시겠습니까?");
-						if(confirm){	
-							window.location.href="/5bject/board/delete.do?idx="+board+"&boardId="+boardId;
-						}else{
-							this.close;
-						}
+							if(confirm){	
+								window.location.href="/5bject/board/delete.do?idx="+board+"&boardId="+boardId;
+							}else{
+								this.close;
+							}
 					}
 					$(td).append(input);
 					$("#btnTr").append(td);
@@ -41,7 +40,7 @@
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
 					input.setAttribute("value", "목록으로");
-					input.setAttribute("Onclick", "javascript:history.back(-1)");
+					input.setAttribute("Onclick", "window.location.href='/5bject/board/notice.do'");
 					$(td).append(input);
 					$("#btnTr").append(td);
 					
@@ -53,7 +52,7 @@
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
 					input.setAttribute("value", "목록으로");
-					input.setAttribute("Onclick",	"javascript:history.back(-1)");
+					input.setAttribute("Onclick",	"window.location.href='/5bject/board/notice.do'");
 					$(td).append(input);
 					$("#btnTr").append(td);
 				}

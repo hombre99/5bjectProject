@@ -11,6 +11,8 @@ public interface BoardDao {
    
    List<Board> getContentNoticeList();
    
+   List<Board> getReplyList(int writeNo);
+   
    int getMax();
    
    void insertWrite(Board board);

@@ -10,6 +10,8 @@ public interface BoardService {
 	List<Board> getContentBoardList();
 	
 	List<Board> getContentNoticeList();
+	
+	List<Board> getReplyList(int writeNo);
    
    int getMax();
    
