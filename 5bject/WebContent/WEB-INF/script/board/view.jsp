@@ -1,4 +1,5 @@
 <%@page contentType="text/html;charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,31 +11,7 @@
 				
 				var writer = '${sessionScope.writer}'
 				var board = '${sessionScope.contectBoard.writeNo}';	 // 글 번호		
-				var replyList = '${sessionScope.replyList}';
-				
-				if(replyList!=null){
-					for(var i = 0 ; i < replyList.length; i++){
-						var tr = document.createElement("tr");
-						tr.setAttribute("align","center");
-						var td = document.createElement("td");
-						var img = document.createElement("img");
-						img.setAttribute("src", "/5bject/image/board/reply_icon.gif");
-						$(td).append(img);
-						var td = document.createElement("td");
-						td.setAttribute("value", '${sessionScope.replyList.id}');
-						$(tr).append(td);
-						var td = document.createElement("td");
-						td.setAttribute("colspan", "3");
-						var textarea = document.createElement("textarea");
-						textarea.setAttribute("readonly", "readonly");
-						textarea.setAttribute("cols", "100");
-						textarea.setAttribute("rows", "1");
-						textarea.setAttribute("value", '${sessionScope}')
-						$(td).append(textarea);				
-						$(tr).append(td);
-						$("#replyTr").append(tr);
-					}
-				}	
+				var replyList = '${sessionScope.replyList}';	
 				
 				if (writer=="writer") {
 					var td = document.createElement("td");
@@ -187,6 +164,25 @@ table {
 							<td colspan="5"></td>
 						</tr>	
 					</table>
+					<c:choose>
+					<c:when test="${sessionScope.replyList }==null">
+					</c:when>
+					<c:otherwise>
+					<c:forEach items='${sessionScope.replyList}' var=reply >
+						<tr align="center">
+							<td>
+								<img src= "/5bject/image/board/reply_icon.gif">
+							</td>	
+							<td> ${sessionScope.reply.id} </td>
+							<td colspan="3">
+								<textarea readonly="readonly" cols="100" rows="1" >
+									${sessionScope.reply.content }	
+								</textarea>
+							</td>
+							<td> ${sessionScope.reply.date }</td>
+						</c:forEach>
+						</c:otherwise>
+					</c:choose>
 					<div align="center">
 						<table>
 							<tr align="center" id="btnTr">
