@@ -15,6 +15,22 @@
 			function page_back(){
 				history.go(-1);
 			}
+			function checkKor(){
+				var regType=/^[가-힣+]*$/;
+				if (!regType.test(document.getElementById('name').value)){
+					alert('이름은 한국말로 정확하게 입력하여주세요.\n 외국인도 한글로 입력해주세요'); 
+				}
+			}
+			function noSpaceForm(obj) { // 공백사용못하게
+			    var str_space = /\s/;  // 공백체크
+			    if(str_space.exec(obj.value)) { //공백 체크
+			        alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다.");
+			        obj.focus();
+			        obj.value = obj.value.replace(' ',''); // 공백제거
+			        return false;
+			    }
+			 // onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"
+			}
 		</script>
 		<style type="text/css">
 		/* css 설정 */
@@ -77,7 +93,7 @@
 					</tr>
 					<tr>
 						<td>
-							<input type="text" name="password" placeholder="비밀번호를 입력하세요." size="25" maxlength="25" autofocus="autofocus" required="required"/>
+							<input type="text" name="password" placeholder="비밀번호를 입력하세요." size="25" maxlength="25" autofocus="autofocus" required="required" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"/>
 							<br>
 							<span class="error"><form:errors path="members.password" delimiter=" - " /></span>
 						</td>
@@ -88,7 +104,7 @@
 					</tr>
 					<tr>
 						<td colspan="2">
-							<input type="text" name="name" id="name" value="${sessionScope.member.name }" placeholder="이름을 입력하세요"  />
+							<input type="text" name="name" id="name" value="${sessionScope.member.name }" placeholder="이름을 입력하세요" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this); checkKor();" />
 							<br>
 							<span class="error"><form:errors path = "members.name" delimiter=" - " /></span>
 						</td>
@@ -138,7 +154,7 @@
 				</tr>
 				<tr>
 					<td colspan="2">
-						<input type="text" name=emailId  value="${sessionScope.member.emailId}" placeholder="email을 입력하세요" />@
+						<input type="text" name=emailId  value="${sessionScope.member.emailId}" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" placeholder="email을 입력하세요" />@
 						<select name="emailAddress">
 							<option value="gmail.com" ${sessionScope.member.emailAddress=='gmail.com'? 'selected=selected':''}>gmail.com</option>
 							<option value="nate.com"  ${sessionScope.member.emailAddress=='nate.com'? 'selected=selected':''}>nate.com</option>
@@ -169,7 +185,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="text" name="phoneNumber"  value="${sessionScope.member.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" size="11" maxlength="11" />
+						<input type="text" name="phoneNumber"  value="${sessionScope.member.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" size="30" maxlength="11" />
 						<br>
 						<span class="error"><form:errors path="members.phoneNumber" delimiter=" - " /></span>
 					</td>
