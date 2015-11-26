@@ -2,6 +2,7 @@ package kr.or.object.service;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import kr.or.object.vo.Board;
 
@@ -26,5 +27,8 @@ public interface BoardService {
    void delete(int idx);
    
    void update(Board board);   
+   
+   //게시판 페이징 처리 관련
+   Map getBoardPaging(int pageNo, int notice);
    
 }

@@ -29,7 +29,7 @@ public interface BoardDao {
    void insertReply(Board board);
    
    //게시판 조회시 paging처리 관련
-   int selectCountBoards();
+   int selectCountBoard(int notice);
    
 	List<Board> getBoardsPaging(int pageNo);
 	
