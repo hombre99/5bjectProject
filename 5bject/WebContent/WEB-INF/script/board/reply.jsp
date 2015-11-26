@@ -25,7 +25,7 @@ function replyCheck()
  </script>
 </head>
 <body>
-<form name="writeform" method="post" action="/5bject/board/write_success.do">
+<form name="replyform" method="post" action="/5bject/board/reply_success.do">
 <table>
   <tr>
    <td>
@@ -48,7 +48,7 @@ function replyCheck()
      <tr>
       <td>&nbsp;</td>
       <td align="center">내용</td>
-      <td><input name="content" value="${requestScope.board.content}" size="20" style="width:100%; height:360px"></td>
+      <td><input type="text" name="memo" maxlength="100" size="20" style="width:100%; height:360px"></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
