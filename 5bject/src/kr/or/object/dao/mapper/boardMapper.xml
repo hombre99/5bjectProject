@@ -36,7 +36,7 @@
 	
 	<!--  게시글 삭제 -->
 	<delete id="boardDelete" parameterType="_int">
-			DELETE FROM board WHERE wirte_no=#{writeNo}
+			DELETE FROM board WHERE write_no=#{writeNo}
 	</delete>
 	
 	<!--  글 내용 셀렉트 -->

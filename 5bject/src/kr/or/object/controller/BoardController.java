@@ -24,8 +24,11 @@ public class BoardController {
 	//공지사항 
 	@RequestMapping("/notice.do")
 	public String NoticeList(HttpSession session){
-		
+		System.out.println("aaaaaaaaa");
 		List<Board> noticeList = service.getContentNoticeList();
+		for ( int i = 0; i < noticeList.size(); i++ ) {
+			System.out.println(i+" Title : " + noticeList.get(i).getTitle());
+		}
 		
 		session.setAttribute("noticeList", noticeList);
 		
@@ -59,40 +62,47 @@ public class BoardController {
 		service.insertWrite(board);		
 		
 		if(id.equals("object")){
-			return "/5bject/board/notice.do";
+			return "/board/notice.do";
 		}else{
-			return "/5bject/board/board.do";
+			return "/board/board.do";
 		}
 	}
 	
 	@RequestMapping("/delete.do")
-	public String Delete(HttpSession session,@RequestParam Board board){
+	public String Delete(HttpSession session,@RequestParam int idx , @RequestParam String boardId){		
 		
-		String id = session.getId();
+		System.out.println(idx);
+		System.out.println(boardId);		
 		
-		Board boardId = service.getView(board.getWriteNo());
+		service.delete(idx);
 		
-		if(id.equals(boardId.getId())){
-			service.delete(board.getWriteNo());
+		if(boardId.equals("object")){
+			return "/board/notice.do";
 		}else{
-			session.setAttribute("error", "작성자가 아닙니다.");
-		}		
-		return "/WEB-INF/script/board/delete_success.jsp";
+			return "/board/board.do";
+		}			
 	}
 	
-	@RequestMapping("/update.do")
-	public String Update(HttpSession session,@RequestParam Board board){
+	@RequestMapping(value = "/update_success.do", method = RequestMethod.POST)
+	public String Update(HttpSession session , @ModelAttribute Board board){
 		
-		String id = session.getId();
-		Board boardId = service.getView(board.getWriteNo());
+		String id = board.getId();
 		
-		if(id.equals(boardId.getId())){
-			service.update(board);
+		if(id.equals("object")){
+			board.setNotice(1);
 		}else{
-			session.setAttribute("error", "작성자가 아닙니다.");
-		}		
+			board.setNotice(2);
+		}
 		
-		return "/WEB-INF/script/board/update_success.jsp";
+		service.update(board);
+		
+		System.out.println(board);
+		
+		if(id.equals("object")){
+			return "/board/notice.do";
+		}else{
+			return "/board/board.do";
+		}		
 	}
 	
 	@RequestMapping("/reply.do")

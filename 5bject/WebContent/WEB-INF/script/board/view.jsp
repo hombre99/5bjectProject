@@ -8,18 +8,16 @@
 <script type="text/javascript">
 	$(document).ready( function() {
 
-			/* 	var loginId = '${ sessionScope.member.id }'; //로그인ID	
-				var boardId = '${ sessionScope.contectBoard.id }'; //작성자 ID */
-
-				var loginId = 1;
-				var boardId = 1;
+				var loginId = '${ sessionScope.member.id }'; //로그인ID	
+				var boardId = '${ sessionScope.contectBoard.id }'; //작성자 ID
+				var board = '${sessionScope.contectBoard.writeNo}'				
 				
 				if (loginId==boardId) {
 					var td = document.createElement("td");
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
 					input.setAttribute("value", "수정");
-					input.setAttribute("Onclick", "window.location.href='/5bject/board/update.do'");
+					input.setAttribute("onclick", "window.location.href='/5bject/board/update.do'");
 					$(td).append(input);
 					$("#btnTr").append(td);
 
@@ -30,7 +28,7 @@
 					input.onclick = function(){
 						var confirm = window.confirm("정말 삭제 하시겠습니까?");
 						if(confirm){	
-							window.location.href="/5bject/board/delete.do";
+							window.location.href="/5bject/board/delete.do?idx="+board+"&boardId="+boardId;
 						}else{
 							this.close;
 						}
