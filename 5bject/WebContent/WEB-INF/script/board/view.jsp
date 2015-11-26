@@ -8,7 +8,6 @@
 <script type="text/javascript">
 	$(document).ready( function() {
 				
-				var hit = '${sessionScope.contentBoard.hit}';	// 조회수 증가
 				var loginId = '${ sessionScope.member.id }'; //로그인ID	
 				var boardId = '${ sessionScope.contectBoard.id }'; //작성자 ID
 				var board = '${sessionScope.contectBoard.writeNo}';	 // 글 번호		
