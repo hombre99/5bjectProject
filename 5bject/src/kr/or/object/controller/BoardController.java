@@ -124,9 +124,15 @@ public class BoardController {
 		}
 		
 		Board contectBoard = service.getView(board.getWriteNo());
+		session.setAttribute("contectBoard", contectBoard);	
+		
+		
 		 List<Board> replyList = service.getReplyList(board.getWriteNo());
 		session.setAttribute("replyList", replyList);
-		session.setAttribute("contectBoard", contectBoard);	
+		
+		System.out.println(replyList);
+		
+		
 
 		if ( logger.isInfoEnabled() )
 			logger.info("board.getWriteNo() : " + board.getWriteNo());

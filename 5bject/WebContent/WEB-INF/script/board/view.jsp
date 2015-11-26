@@ -162,6 +162,7 @@ table {
 							<td colspan="5"></td>
 						</tr>	
 					</table>
+					
 					<c:choose>
 					<c:when test="${sessionScope.replyList }==null">
 					</c:when>
@@ -171,13 +172,13 @@ table {
 							<td>
 								<img src= "/5bject/image/board/reply_icon.gif">
 							</td>	
-							<td> ${sessionScope.reply.id} </td>
+							<td> ${reply.id} </td>
 							<td colspan="3">
 								<textarea readonly="readonly" cols="100" rows="1" >
-									${sessionScope.reply.content }	
+									${reply.content}	
 								</textarea>
 							</td>
-							<td> ${sessionScope.reply.date }</td>
+							<td> ${reply.date}</td>
 						</c:forEach>
 						</c:otherwise>
 					</c:choose>
