@@ -21,7 +21,8 @@
 			});
 			$("#leave").on("click",function(){
 				if(confirm("정말 탈퇴하시겠습니까?")){
-					location.replace('/5bject/member/leave.do?id=${sessionScope.member.id}');					
+					opener.location.replace('/5bject/member/leave.do?id=${sessionScope.member.id}');					
+					window.close();
 				}
 			});
 			/*2015 11 25일 width size change*/

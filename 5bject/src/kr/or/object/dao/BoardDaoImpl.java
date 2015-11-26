@@ -45,19 +45,19 @@ public class BoardDaoImpl implements BoardDao{
    
    //페이징 처리 관련
    @Override
-   public int selectCountBoards() {
-	
-	   return 0;
+   public int selectCountBoard(int notice) {	   
+	   
+	   return session.selectOne("boardMapper.selectCountboard");
    }
 
    @Override
    public List<Board> getBoardsPaging(int pageNo) {
 	   HashMap map = new HashMap();
 		
-		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
+		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE_BOARD);
 		map.put("pageNo", pageNo);
 		
-		List<Board> list = session.selectList("memberMapper.selectMemberPaging",map);
+		List<Board> list = session.selectList("boardMapper.selectBoardPaging",map);
 	   return list;
    }
 

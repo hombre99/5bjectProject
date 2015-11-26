@@ -29,6 +29,11 @@ public class GameScoreServiceImpl implements GameScoreService {
 	}
 
 	@Override
+	public void removeGameScore(String id) {
+		dao.removeGameScore(id);
+	}
+
+	@Override
 	public List<GameScore> selectGameScore(String id) {
 		return dao.selectGameScore(id);
 	}

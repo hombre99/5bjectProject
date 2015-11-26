@@ -11,5 +11,7 @@ public interface GameScoreService {
 	
 	void updateGameScore(GameScore gameScore);
 	
+	void removeGameScore(String id);
+	
 	List<GameScore> selectGameScore(String id);
 }
