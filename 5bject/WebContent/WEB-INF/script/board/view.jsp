@@ -8,11 +8,21 @@
 <script type="text/javascript">
 	$(document).ready( function() {
 				
-				var loginId = '${ sessionScope.member.id }'; //로그인ID	
-				var boardId = '${ sessionScope.contectBoard.id }'; //작성자 ID
+				var writer = '${sessionScope.writer}'
 				var board = '${sessionScope.contectBoard.writeNo}';	 // 글 번호		
-								
-				if (loginId==boardId) {
+				var replyList = '${sessionScope.replyList}';
+				
+				if(replyList!=null){
+					var td = document.createElement("td");
+					var textarea = document.createElement("textarea");
+					textarea.setAttribute("readonly", "readonly");
+					textarea.setAttribute("cols", "100");
+					textarea.setAttribute("rows", "1");
+					$(td).append(textarea);
+					$("#replyTr").append(td);				
+				}	
+				
+				if (writer=="writer") {
 					var td = document.createElement("td");
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
@@ -35,24 +45,52 @@
 					}
 					$(td).append(input);
 					$("#btnTr").append(td);
-
+					
+					var td = document.createElement("td");
+					var input = document.createElement("input");
+					input.setAttribute("type", "button");
+					input.setAttribute("value", "덧글달기");
+					input.onclick = function(){
+						window.open("/5bject/board/reply.do", "pop", "width=800, height=800, top=50, left=150");
+					}
+					$(td).append(input);
+					$("#btnTr").append(td);
+					
 					var td = document.createElement("td");
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
 					input.setAttribute("value", "목록으로");
-					input.setAttribute("Onclick", "window.location.href='/5bject/board/notice.do'");
+					//input.setAttribute("Onclick", "window.location.href='/5bject/board/notice.do'");
+					input.onclick = function(){
+						var notice = '${sessionScope.contectBoard.notice}';
+						if(notice==1){
+							window.location.href='/5bject/board/notice.do';
+						}else if(notice==2){
+							window.location.href='/5bject/board/board.do';
+						}else{
+							alert("비정상적인 접근입니다");
+							window.location.href='/5bject/main.do';
+						}
+					}
 					$(td).append(input);
 					$("#btnTr").append(td);
 					
-					
-					
-					$().append();
 				} else {
 					var td = document.createElement("td");
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
 					input.setAttribute("value", "목록으로");
-					input.setAttribute("Onclick",	"window.location.href='/5bject/board/notice.do'");
+					input.onclick = function(){
+						var notice = '${sessionScope.contectBoard.notice}';
+						if(notice==1){
+							window.location.href='/5bject/board/notice.do';
+						}else if(notice==2){
+							window.location.href='/5bject/board/board.do';
+						}else{
+							alert("비정상적인 접근입니다");
+							window.location.href='/5bject/board/main.do';
+						}
+					}
 					$(td).append(input);
 					$("#btnTr").append(td);
 				}
@@ -128,15 +166,15 @@ table {
 									rows="20">${sessionScope.contectBoard.content}</textarea></td>
 							<td>&nbsp;</td>
 						</tr>
-						<!--      <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
-     <tr height="2" bgcolor="#82B5DF"><td colspan="5"></td></tr> -->
-						<!-- <tr align="center">
-      <td>&nbsp;</td>
-      <td colspan="2"><input type="button" value="수정" click="/WEB-INF/script/board/update.jsp">
-       <input type=button value="취소" OnClick="javascript:history.back(-1)">
-      <td>&nbsp;</td>
-     </tr> -->
-
+							<tr height="2" bgcolor="#dddddd">
+							<td colspan="5"></td>
+						</tr>
+						<tr height="2" bgcolor="#dddddd">
+							<td colspan="5"></td>
+						</tr>
+						<tr id="replyTr">
+						
+						</tr>		
 					</table>
 					<div align="center">
 						<table>
