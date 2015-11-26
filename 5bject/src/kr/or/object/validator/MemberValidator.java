@@ -17,15 +17,15 @@ public class MemberValidator implements Validator {
          errors.reject("notsupport", "적절하지 않은 객체입니다.");
       }
 
-      Members member = (Members)target;   
-      if (member.getId().trim().isEmpty()){
+      Members member = (Members)target;  
+       if (member.getId().trim().isEmpty()){
          errors.rejectValue("id", "required", new Object[]{"고객 아이디는"}, "아이디는 필수 입니다.");
       }else{
     	  if(member.getId().trim().length()<8){
     		  errors.rejectValue("id", "idLength", new Object[]{"고객아이디는"}, "8글자 이상되어야합니다.");
     	  }
       } 
-      if (member.getPassword().trim().isEmpty() ) {
+      if (member.getPassword().trim().isEmpty()) {
          errors.rejectValue("password", "required", new Object[]{"고객 password"}, "password를 입력해주세요.");
       }      
       //20151124 ADD
@@ -50,15 +50,14 @@ public class MemberValidator implements Validator {
       if (member.getGender()==null){
          errors.rejectValue("gender", "gender", "성별을 선택하여 주세요.");
       }
-      
-/*      int phoneNumber = -1;
-      try{
-      phoneNumber = Integer.parseInt(member.getPhoneNumber());
-      }catch(Exception e){
-    	  errors.rejectValue("phoneNumber", "phoneNumber","숫자를 입력하세요.");
-      }
-    	  if(member.getPhoneNumber().trim().length()<9){         
-              errors.rejectValue("phoneNumber","phone","핸드폰번호는 10~11숫자를 입력하셔야합니다.");
-           }   	  */
-      }
+
+       
+      if(member.getPhoneNumber().trim().length()<9){    	  
+    	  errors.rejectValue("phoneNumber","phone","핸드폰번호는 10~11숫자를 입력하셔야합니다.");	  
+      }try{
+			Integer.parseInt(member.getPhoneNumber());
+		} catch (Exception e) {
+			 errors.rejectValue("phoneNumber","phone_1","핸드폰 번호는 숫자로 입력하세요.");
+		}
+   }
    }

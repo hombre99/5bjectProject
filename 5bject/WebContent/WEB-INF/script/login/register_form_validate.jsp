@@ -9,6 +9,7 @@
 <head>
 <meta charset=" UTF-8">
 <title>Sign Up form</title>
+
 <script type="text/javascript" src="/5bject/jquery.do">	</script>
 <script type="text/javascript">
 	$(document).ready(function(){	
@@ -18,9 +19,8 @@
 				return false;
 			}
 			return true;
-		});
-		
-		$("#id").on("keyup", function(){
+		});				
+		$("#id").on("change", function(){
 			$.ajax({
 				url:"/5bject/member/idDuplicatedCheck.do",
 				type: "POST",
@@ -38,6 +38,32 @@
 			});
 		});
 	});
+	//20151126 아이디 영문과 숫자처리
+	function checkEngNum(){
+		var regType =/^[a-z0-9+]*$/;
+		if (!regType.test(document.getElementById('id').value)){
+			alert('아이디에는 영문과 숫자만 입력가능합니다'); 
+		}
+	};
+	function checkKor(){
+		var regType=/^[가-힣+]*$/;
+		if (!regType.test(document.getElementById('name').value)){
+			alert('이름은 한국말로 정확하게 입력하여주세요.\n 외국인도 한글로 입력해주세요'); 
+		}
+	}
+
+	//20151126 공백처리 정규식을 처리
+	function noSpaceForm(obj) { // 공백사용못하게
+	    var str_space = /\s/;  // 공백체크
+	    if(str_space.exec(obj.value)) { //공백 체크
+	        alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다.");
+	        obj.focus();
+	        obj.value = obj.value.replace(' ',''); // 공백제거
+	        return false;
+	    }
+	 // onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"
+	}
+
 </script>
 <style type="text/css">
 	/* css 설정 */
@@ -82,8 +108,8 @@
 			</tr>
 			<tr>
 			<!-- errorMessage를 사용합니다 -->
-				<td><input type="text" name="id" id="id" value="${ requestScope.members.id}" placeholder="사용할 아이디를 입력하세요."
-					size="25" maxlength="25" /> <br><span class="error" id="idErrorMessage"><form:errors path="members.id" /></span></td>
+				<td><input type="text" name="id" id="id" value="${requestScope.members.id}"  placeholder="사용할 아이디를 입력하세요."
+					size="25" maxlength="25"  onkeyup="noSpaceForm(this); checkEngNum();" onchange="noSpaceForm(this);" /> <br><span class="error" id="idErrorMessage"><form:errors path="members.id" /></span></td>
 				<td></td>
 			</tr>
 			<tr>
@@ -92,7 +118,7 @@
 			<tr>
 				<td><input type="password" name="password"
 					value="${ requestScope.members.password }"
-					placeholder="비밀번호를 입력하세요." size="25" maxlength="25" /> <br> <span
+					placeholder="비밀번호를 입력하세요." size="25" maxlength="25"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" /> <br> <span
 					class="error"><form:errors path="members.password"
 							delimiter=" - " /></span></td>
 				<td></td>
@@ -103,7 +129,7 @@
 			<tr>
 				<td colspan="2"><input type="text" name="name" id="name"
 					value="${requestScope.members.name}" placeholder="이름을 입력하세요"
-					autofocus="autofocus" /> <br> <span class="error"><form:errors
+					autofocus="autofocus"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this); checkKor();" /> <br> <span class="error"><form:errors
 							path="members.name" delimiter=" - " /></span></td>
 			</tr>
 			<tr>
@@ -143,7 +169,7 @@
 			</tr>
 			<tr>
 				<td colspan="2"><input type="text" name=emailId
-					value="${requestScope.members.emailId}" placeholder="email을 입력하세요" />@
+					value="${requestScope.members.emailId}" placeholder="email을 입력하세요"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" />@
 					<select name="emailAddress">
 						<option value="선택하세요">선택하세요</option>
 						<option value="gmail.com" ${requestScope.members.emailAddress=='gmail.com'? 'selected=selected':''}>gmail.com</option>
@@ -159,9 +185,10 @@
 				<td colspan="2"><b>성별</b></td>
 			</tr>
 			<tr>
-				<td colspan="2"><label>male:<input type="radio"
-						name="gender" value="male" ${requestScope.members.gender=='male'? 'checked=checked':''}/></label> <label>female:<input
-						type="radio" name="gender" value="female" ${requestScope.members.gender=='male'? 'checked=checked':''} /></label> <br> <span
+			<!-- value="male" female 되어있는것 삭제 20151126 CHJ -->
+				<td colspan="2">
+						<label>male:<input type="radio" name="gender" value="male" ${requestScope.members.gender =='male'? 'checked=checked':' '}/></label>
+						<label>female:<input type="radio" name="gender" value="female" ${requestScope.members.gender=='female'? 'checked=checked':' '} /></label> <br> <span
 					class="error"><form:errors path="members.gender" /></span></td>
 			</tr>
 			<tr>
@@ -170,7 +197,7 @@
 			<tr>
 				<td>
 					<!--  phone size ="30"으로  --> 
-					<input type="text" name="phoneNumber" value="${requestScope.members.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" size="30" maxlength="11" /> <br>
+					<input type="text" name="phoneNumber" value="${requestScope.members.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" size="30" maxlength="11" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" /> <br>
 					<span class="error"><form:errors path="members.phoneNumber" /></span>
 				</td>
 				<td></td>

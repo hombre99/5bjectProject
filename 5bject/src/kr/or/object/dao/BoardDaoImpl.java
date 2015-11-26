@@ -2,13 +2,16 @@ package kr.or.object.dao;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.object.util.PagingBean;
 import kr.or.object.vo.Board;
+import kr.or.object.vo.Members;
 
 @Repository("boardDao")
 public class BoardDaoImpl implements BoardDao{
@@ -22,12 +25,14 @@ public class BoardDaoImpl implements BoardDao{
    
    // 글 전체 목록 보기
    public List<Board> getContentBoardList() {
-      List<Board> boardList = session.selectList("boardMapper.boardBoardSelect");
-      return boardList;
+	  List<Board> boardList = session.selectList("boardMapper.boardBoardSelect");
+      
+	  return boardList;
    }
    
    public List<Board> getContentNoticeList(){
 	     List<Board> noticeList = session.selectList("boardMapper.boardNoticeSelect");
+	     
 	     return noticeList;
    }
    
@@ -38,13 +43,29 @@ public class BoardDaoImpl implements BoardDao{
 	   return replyList;
    }
    
-   // 총 글 갯수
+   //페이징 처리 관련
+   @Override
+   public int selectCountBoards() {
+	
+	   return 0;
+   }
+
+   @Override
+   public List<Board> getBoardsPaging(int pageNo) {
+	   HashMap map = new HashMap();
+		
+		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
+		map.put("pageNo", pageNo);
+		
+		List<Board> list = session.selectList("memberMapper.selectMemberPaging",map);
+	   return list;
+   }
+
+// 총 글 갯수
    public int getMax() {
       int max = session.selectList("boardMapper.boardAllSelect").size();
       return max;
    }
-
-
 
 // 게시글 쓰기
    public void insertWrite(Board board) {
@@ -53,9 +74,9 @@ public class BoardDaoImpl implements BoardDao{
    
    // 댓글 쓰기
    public void insertReply(Board board) {
-      session.update("boardMapper.updateReply",board);
-   }   
-
+	   System.out.println(board.getWriteNo()+"---------"+board.getId()+"---------"+board.getTitle()+"---------"+board.getContent()+"---------"+board.getNotice());
+      session.update("boardMapper.boardInsertReply",board);
+  }   
 
    // 글제목으로 글보기
    public Board getView(int idx) {

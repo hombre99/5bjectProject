@@ -46,16 +46,16 @@
 	
 	<!-- 공지사항 내용 셀렉트 -->
 	<select id="boardNoticeSelect" resultMap="board-resultmap" resultType="board">
-			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 1
+			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 1 and ref=0 order by write_date desc
 	</select>
 	
 	<!-- 게시글 목록 셀렉트 -->
 	<select id="boardBoardSelect" resultMap="board-resultmap" resultType="board">
-			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 2
+			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 2 and ref=0 order by write_date desc 
 	</select>
 	 
 	 <!-- 댓글 목록 셀렉트 -->
 	 <select id="boardReplySelect" resultMap="board-resultmap" resultType="board" parameterType="_int">
-			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE ref = #{writeNo}
+			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE ref = #{writeNo} order by write_date desc
 	</select>
 </mapper>
