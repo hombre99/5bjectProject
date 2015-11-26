@@ -34,7 +34,7 @@ public class BoardDaoImpl implements BoardDao{
    //댓글 목록 불러오기
    @Override
    public List<Board> getReplyList(int writeNo) {
-	   List<Board> replyList = session.selectList("", writeNo);   
+	   List<Board> replyList = session.selectList("boardMapper.boardReplySelect", writeNo);   
 	   return replyList;
    }
    
