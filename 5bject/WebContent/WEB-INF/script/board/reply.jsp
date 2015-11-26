@@ -18,7 +18,7 @@ function replyCheck(){
    }
  
   form.submit();
-  window.close();
+ //window.close();
   }
  </script>
 </head>

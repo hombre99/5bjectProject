@@ -174,9 +174,8 @@ table {
 							</td>	
 							<td> ${reply.id} </td>
 							<td colspan="3">
-								<textarea readonly="readonly" cols="100" rows="1" >
-									${reply.content}	
-								</textarea>
+								<input type="text" readonly="readonly" size="100" value="${reply.content}" >
+						
 							</td>
 							<td> ${reply.date}</td>
 						</c:forEach>
