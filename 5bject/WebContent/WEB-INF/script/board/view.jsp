@@ -27,11 +27,11 @@
 					input.setAttribute("value", "삭제");
 					input.onclick = function(){
 						var confirm = window.confirm("정말 삭제 하시겠습니까?");
-						if(confirm){	
-							window.location.href="/5bject/board/delete.do?idx="+board+"&boardId="+boardId;
-						}else{
-							this.close;
-						}
+							if(confirm){	
+								window.location.href="/5bject/board/delete.do?idx="+board+"&boardId="+boardId;
+							}else{
+								this.close;
+							}
 					}
 					$(td).append(input);
 					$("#btnTr").append(td);
@@ -40,7 +40,7 @@
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
 					input.setAttribute("value", "목록으로");
-					input.setAttribute("Onclick", "javascript:history.back(-1)");
+					input.setAttribute("Onclick", "window.location.href='/5bject/board/notice.do'");
 					$(td).append(input);
 					$("#btnTr").append(td);
 					
@@ -52,7 +52,7 @@
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
 					input.setAttribute("value", "목록으로");
-					input.setAttribute("Onclick",	"javascript:history.back(-1)");
+					input.setAttribute("Onclick",	"window.location.href='/5bject/board/notice.do'");
 					$(td).append(input);
 					$("#btnTr").append(td);
 				}
