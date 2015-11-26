@@ -10,8 +10,8 @@
 
 <script type="text/javascript">  // 자바 스크립트 시작
 
-function replyCheck()
-  {
+function replyCheck(){
+	
    var form = document.replyform;
   if( !form.memo.value )
    {

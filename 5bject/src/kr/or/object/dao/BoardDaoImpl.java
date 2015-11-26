@@ -22,12 +22,14 @@ public class BoardDaoImpl implements BoardDao{
    
    // 글 전체 목록 보기
    public List<Board> getContentBoardList() {
-      List<Board> boardList = session.selectList("boardMapper.boardBoardSelect");
-      return boardList;
+	  List<Board> boardList = session.selectList("boardMapper.boardBoardSelect");
+      
+	  return boardList;
    }
    
    public List<Board> getContentNoticeList(){
 	     List<Board> noticeList = session.selectList("boardMapper.boardNoticeSelect");
+	     
 	     return noticeList;
    }
    
