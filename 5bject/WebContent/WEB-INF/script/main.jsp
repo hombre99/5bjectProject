@@ -94,6 +94,7 @@
 				};
 			</script>
 		</c:if>
+
 		<!-- 여기서부터 손대지 마세여... -->
 		<link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
 		<link
@@ -124,74 +125,7 @@
 		</script>
 		<!-- 여기까지 손대지 마세여... -->
 
-		<style type="text/css">
-			header {
-				background-color: lightblue;
-				color: white;
-				text-align: left;
-				padding: 5px;
-			}
-
-			.blank {
-				background-color: aliceblue;
-				padding: 20px;
-			}
-
-			footer {
-				background-color: lightblue;
-				color: white;
-				height: 100px;
-				clear: both;
-				text-align: center;
-			}
-
-			/* css login 추가  CHJ */
-			.login {
-				margin-left: 20px;
-			}
-
-			.error {
-				color: red;
-			}
-
-			.class {
-				margin-left: 150px;
-				margin-top: 150px;
-				text-align: center;
-			}
-
-			/* 게임1용 CSS */
-			#td2 {
-				border: 1px solid black;
-				padding: 0px;
-				height: 200px;
-				width: 300px;
-				position: relative;
-				text-align: center;
-			}
-
-			#td3 {
-				border: 1px solid black;
-				padding: 0px;
-				height: 130px;
-				width: 170px;
-				text-align: center;
-			}
-
-			#td4 {
-				border: 1px solid black;
-				padding: 0px;
-				height: 100px;
-				width: 150px;
-				position: relative;
-				text-align: center;
-			}
-
-			#gamePannel {
-				width: 600px;
-				border-collapse: collapse;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/main.css" />
 	</head>
 	<body>
 		<header>

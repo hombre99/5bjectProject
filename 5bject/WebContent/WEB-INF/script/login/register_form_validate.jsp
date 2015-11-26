@@ -182,7 +182,5 @@
 		</table>
 		<p>
 	</form>
-
-	<footer> </footer>
-</body>
+	</body>
 </html>

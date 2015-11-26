@@ -15,6 +15,10 @@
 		SELECT	MEMBER_ID, GAME_NUM, EASY, NORMAL, HARD FROM GAMESCORE
 	</sql>
 	
+	<insert id="insertMember">
+		INSERT	INTO GAMESCORE (MEMBER_ID) VALUES (#{ id })
+	</insert>
+
 	<insert id="insertGameScore" parameterType="gameScore">
 		INSERT	INTO GAMESCORE VALUES (#{ id }, #{ gameNum }, #{ easy }, #{ normal }, #{ hard })
 	</insert>

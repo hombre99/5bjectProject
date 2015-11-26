@@ -26,7 +26,7 @@ public class BoardController {
 	public String NoticeList(HttpSession session){
 		
 		List<Board> noticeList = service.getContentNoticeList();
-		
+
 		session.setAttribute("noticeList", noticeList);
 		
 		return "/WEB-INF/script/board/notice.jsp";
@@ -54,45 +54,46 @@ public class BoardController {
 		}else{
 			board.setNotice(2);
 		}		
-		System.out.println(board.getTitle()  +"        ----------        "+board.getContent()+"        ----------        "+board.getId());
 		
 		service.insertWrite(board);		
 		
 		if(id.equals("object")){
-			return "/5bject/board/notice.do";
+			return "/board/notice.do";
 		}else{
-			return "/5bject/board/board.do";
+			return "/board/board.do";
 		}
 	}
 	
 	@RequestMapping("/delete.do")
-	public String Delete(HttpSession session,@RequestParam Board board){
+	public String Delete(HttpSession session,@RequestParam int idx , @RequestParam String boardId){		
 		
-		String id = session.getId();
+		service.delete(idx);
 		
-		Board boardId = service.getView(board.getWriteNo());
-		
-		if(id.equals(boardId.getId())){
-			service.delete(board.getWriteNo());
+		if(boardId.equals("object")){
+			return "/board/notice.do";
 		}else{
-			session.setAttribute("error", "작성자가 아닙니다.");
-		}		
-		return "/WEB-INF/script/board/delete_success.jsp";
+			return "/board/board.do";
+		}			
 	}
 	
-	@RequestMapping("/update.do")
-	public String Update(HttpSession session,@RequestParam Board board){
+	@RequestMapping(value = "/update_success.do", method = RequestMethod.POST)
+	public String Update(HttpSession session , @ModelAttribute Board board){
 		
-		String id = session.getId();
-		Board boardId = service.getView(board.getWriteNo());
+		String id = board.getId();
 		
-		if(id.equals(boardId.getId())){
-			service.update(board);
+		if(id.equals("object")){
+			board.setNotice(1);
 		}else{
-			session.setAttribute("error", "작성자가 아닙니다.");
-		}		
+			board.setNotice(2);
+		}
 		
-		return "/WEB-INF/script/board/update_success.jsp";
+		service.update(board);		
+		
+		if(id.equals("object")){
+			return "/board/notice.do";
+		}else{
+			return "/board/board.do";
+		}		
 	}
 	
 	@RequestMapping("/reply.do")
@@ -113,8 +114,13 @@ public class BoardController {
 		return "/WEB-INF/script/board/view.jsp";
 	}	
 	
+	@RequestMapping("/updateHit.do")
+	public String updateHit(@ModelAttribute Board board){
+		service.updateHit(board);
+		return "/WEB-INF/script/board/view.jsp";
+	}
+	
 	public void getMax(){
 		service.getMax();
-		System.out.println(service.getMax());
 	}	
 }

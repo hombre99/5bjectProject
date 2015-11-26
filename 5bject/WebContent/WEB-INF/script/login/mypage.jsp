@@ -59,7 +59,7 @@
 			<tr><td><b>BIRTHDAY</b></td><td> ${sessionScope.member.month }  ${sessionScope.member.day} ${sessionScope.member.year }<br></td></tr>
 			<tr><td><b>GENDER</b></td><td> ${sessionScope.member.gender }<br></td></tr>
 			<tr><td><b>EMAIL</b></td><td> ${sessionScope.member.emailId }@${sessionScope.member.emailAddress }<br></td></tr>
-			<tr><td><b>PHONENUMBER</b></td><td> 0${sessionScope.member.phoneNumber}</td></tr>
+			<tr><td><b>PHONENUMBER</b></td><td> ${sessionScope.member.phoneNumber}</td></tr>
 			<tr><td colspan="2"></td></tr>
 			<tr>
 				<td colspan="2">

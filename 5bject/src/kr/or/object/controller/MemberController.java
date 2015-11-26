@@ -1,19 +1,20 @@
 package kr.or.object.controller;
 
-import java.util.List;
-import java.util.Map;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
-
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,8 +23,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.or.object.service.GameScoreService;
 import kr.or.object.service.MemberService;
-import kr.or.object.util.PagingBean;
 import kr.or.object.validator.MemberValidator;
 import kr.or.object.vo.Members;
 import kr.or.object.vo.Upload;
@@ -34,7 +35,11 @@ public class MemberController {
 	@Autowired
 	private MemberService service;
 
+	@Autowired
+	private GameScoreService gameService;
+
 	@RequestMapping(value = "/register_form_validate.do", method = RequestMethod.POST)
+	@Transactional(rollbackFor={Exception.class})
 	public String registerValidate(HttpServletRequest request, @ModelAttribute Members member, Errors errors) {
 		MemberValidator validate = new MemberValidator();
 		validate.validate(member, errors);
@@ -43,8 +48,8 @@ public class MemberController {
 			request.setAttribute("members", member);
 			return "/WEB-INF/script/login/register_form_validate.jsp";
 		}
-
-		service.insertMember(member);
+		service.insertMember(member);		
+		gameService.insertMember(member.getId());
 		return "/member/register_success.do";
 	}
 	//20151125 CHJ ID 중복검사 
@@ -209,7 +214,7 @@ public class MemberController {
 
 	// 20151120. ADD KKH - 잃어버린 ID찾기
 	@RequestMapping(value = "/find_memberId.do", method = RequestMethod.POST)
-	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam long phoneNumber){
+	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam String phoneNumber){
 		//System.out.printf("eID[%s]eAdd[%s]pn[0%d]\n", emailId, emailAddress, phoneNumber);
 		
 		HashMap map = new HashMap();
@@ -226,7 +231,7 @@ public class MemberController {
 	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
 	@RequestMapping(value = "/find_MemberPassword.do", method = RequestMethod.POST)
 	public String findMemberPassword(HttpServletRequest request, @RequestParam String id, @RequestParam String emailId,
-			@RequestParam String emailAddress, @RequestParam long phoneNumber) {
+			@RequestParam String emailAddress, @RequestParam String phoneNumber) {
 		HashMap<String, Object> map = new HashMap();
 
 		map.put("id", id);

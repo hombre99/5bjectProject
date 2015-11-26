@@ -169,7 +169,7 @@
 				</tr>
 				<tr>
 					<td>
-						<input type="number" name="phoneNumber"  value="${sessionScope.member.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" size="11" maxlength="11" />
+						<input type="text" name="phoneNumber"  value="${sessionScope.member.phoneNumber}" placeholder="핸드폰 번호를 입력하세요" size="11" maxlength="11" />
 						<br>
 						<span class="error"><form:errors path="members.phoneNumber" delimiter=" - " /></span>
 					</td>

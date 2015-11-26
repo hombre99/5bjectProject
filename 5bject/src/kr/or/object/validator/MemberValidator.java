@@ -12,7 +12,7 @@ public class MemberValidator implements Validator {
    }
 
    @Override
-   public void validate(Object target, Errors errors) {
+   public void validate(Object target, Errors errors){
       if ( !supports(target.getClass()) ) {
          errors.reject("notsupport", "적절하지 않은 객체입니다.");
       }
@@ -21,10 +21,11 @@ public class MemberValidator implements Validator {
       Members member = (Members)target;   
       if (member.getId().trim().isEmpty()){
          errors.rejectValue("id", "required", new Object[]{"고객 아이디는"}, "아이디는 필수 입니다.");
-      }      
-      if(member.getId().trim().length()<8){
-         errors.rejectValue("id", "idLength", new Object[]{"고객아이디는"}, "8글자 이상되어야합니다.");
-      }
+      }else{
+    	  if(member.getId().trim().length()<8){
+    		  errors.rejectValue("id", "idLength", new Object[]{"고객아이디는"}, "8글자 이상되어야합니다.");
+    	  }
+      } 
       if (member.getPassword().trim().isEmpty() ) {
          errors.rejectValue("password", "required", new Object[]{"고객 password"}, "password를 입력해주세요.");
       }      
@@ -50,9 +51,14 @@ public class MemberValidator implements Validator {
       if (member.getGender()==null){
          errors.rejectValue("gender", "gender", "성별을 선택하여 주세요.");
       }
-      // 20151125 ADD. CHJ
-/*        if(member.getPhoneNumber().trim().length()<12||member.getPhoneNumber().trim().length>11){
-    		errors.rejectValue("phoneNumber","phone","핸드폰 번호를 정확하게 입력하여 주세요");
-        }*/
-   }	
+
+      // 20151116 ADD. CHJ
+     /* if(member.getPhoneNumber()==0){
+    	  errors.rejectValue("phoneNumber", "required", new Object[]{"핸드폰 번호"},"핸드폰번호를 입력해주세요");
+      }else{
+      if (member.getPhoneNumber()<1000000000||member.getPhoneNumber()>2000000000){
+         errors.rejectValue("phoneNumber", "phone", "핸드폰 번호는 11글자입니다.");
+      }
+   } */
+   }
 }

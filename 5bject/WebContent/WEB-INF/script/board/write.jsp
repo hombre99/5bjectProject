@@ -28,8 +28,8 @@ function writeCheck()
  </script>
 </head>
 <body>
-<table>
 <form name="writeform" method="post" action="/5bject/board/write_success.do">
+<table>
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -71,7 +71,7 @@ function writeCheck()
     </table>
    </td>
   </tr>
-  </form>
  </table>
+  </form>
 </body>
 </html>

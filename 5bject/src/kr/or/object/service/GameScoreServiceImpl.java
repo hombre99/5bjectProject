@@ -14,6 +14,11 @@ public class GameScoreServiceImpl implements GameScoreService {
 	private GameScoreDao dao;
 
 	@Override
+	public void insertMember(String id) {
+		dao.insertMember(id);
+	};
+
+	@Override
 	public void insertGameScore(GameScore gameScore) {
 		dao.insertGameScore(gameScore);
 	}
