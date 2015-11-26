@@ -108,7 +108,7 @@ public class BoardController {
 	}
 	
 	@RequestMapping("/view.do")
-	public String View(HttpSession session,@ModelAttribute Board board){
+	public String View(HttpSession session,@ModelAttribute Board board , String sessionId){
 		
 		int hit = board.getHit();
 		
@@ -116,10 +116,7 @@ public class BoardController {
 		board.setHit(hit);	
 		service.updateHit(board);
 
-		String sessionId = session.getId();
-		String boardId = board.getId();
-		
-		if(sessionId.equals(boardId)){
+		if(sessionId.equals(board.getId())){
 			session.setAttribute("writer", "writer");
 		}else{
 			session.setAttribute("writer","nonWriter");
