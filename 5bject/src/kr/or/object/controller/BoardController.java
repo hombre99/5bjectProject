@@ -24,12 +24,9 @@ public class BoardController {
 	//공지사항 
 	@RequestMapping("/notice.do")
 	public String NoticeList(HttpSession session){
-		System.out.println("aaaaaaaaa");
-		List<Board> noticeList = service.getContentNoticeList();
-		for ( int i = 0; i < noticeList.size(); i++ ) {
-			System.out.println(i+" Title : " + noticeList.get(i).getTitle());
-		}
 		
+		List<Board> noticeList = service.getContentNoticeList();
+
 		session.setAttribute("noticeList", noticeList);
 		
 		return "/WEB-INF/script/board/notice.jsp";
@@ -57,7 +54,6 @@ public class BoardController {
 		}else{
 			board.setNotice(2);
 		}		
-		System.out.println(board.getTitle()  +"        ----------        "+board.getContent()+"        ----------        "+board.getId());
 		
 		service.insertWrite(board);		
 		
@@ -70,9 +66,6 @@ public class BoardController {
 	
 	@RequestMapping("/delete.do")
 	public String Delete(HttpSession session,@RequestParam int idx , @RequestParam String boardId){		
-		
-		System.out.println(idx);
-		System.out.println(boardId);		
 		
 		service.delete(idx);
 		
@@ -94,9 +87,7 @@ public class BoardController {
 			board.setNotice(2);
 		}
 		
-		service.update(board);
-		
-		System.out.println(board);
+		service.update(board);		
 		
 		if(id.equals("object")){
 			return "/board/notice.do";
@@ -125,6 +116,5 @@ public class BoardController {
 	
 	public void getMax(){
 		service.getMax();
-		System.out.println(service.getMax());
 	}	
 }
