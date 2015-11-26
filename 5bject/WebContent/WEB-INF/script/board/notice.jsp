@@ -9,6 +9,7 @@
 <script type="text/javascript">
 		
 		$(document).ready(function(){
+			
 			var loginId = '${ sessionScope.member.id }';
 			
 			if(loginId == "object"){
@@ -23,6 +24,8 @@
 				$(td).append(input);
 				$("#btnTr").append(td);
 			}
+			
+			
 			
 		});
 

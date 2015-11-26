@@ -7,11 +7,12 @@
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 <script type="text/javascript">
 	$(document).ready( function() {
-
+				
+				var hit = '${sessionScope.contentBoard.hit}';	// 조회수 증가
 				var loginId = '${ sessionScope.member.id }'; //로그인ID	
 				var boardId = '${ sessionScope.contectBoard.id }'; //작성자 ID
-				var board = '${sessionScope.contectBoard.writeNo}'				
-				
+				var board = '${sessionScope.contectBoard.writeNo}';	 // 글 번호		
+								
 				if (loginId==boardId) {
 					var td = document.createElement("td");
 					var input = document.createElement("input");
