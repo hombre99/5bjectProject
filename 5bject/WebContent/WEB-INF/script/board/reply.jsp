@@ -8,11 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<%
-	int idx = Integer.parseInt(request.getParameter("idx"));
-	int pg = Integer.parseInt(request.getParameter("pg"));
-	Board board = dao.getView(idx);
-%> 
 <script type="text/javascript">  // 자바 스크립트 시작
 
 function replyCheck()

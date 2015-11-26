@@ -43,6 +43,10 @@
 					input.setAttribute("Onclick", "javascript:history.back(-1)");
 					$(td).append(input);
 					$("#btnTr").append(td);
+					
+					
+					
+					$().append();
 				} else {
 					var td = document.createElement("td");
 					var input = document.createElement("input");
@@ -92,23 +96,19 @@ table {
 					<table width="100%" cellpadding="0" cellspacing="0" border="0">
 						<tr
 							style="background: url('/5bject/image/board/table_mid.gif') repeat-x; text-align: center;">
-							<td width="6"><img src="/5bject/image/board/table_left.gif"
-								width="6" height="30" /></td>
+							<td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
 							<td align="center"><b>${sessionScope.contectBoard.title}</b></td>
-							<td width="6"><img src="/5bject/image/board/table_right.gif"
-								width="6" height="30" /></td>
+							<td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
 						</tr>
 					</table>
 					<table width="100%" cellpadding="0" cellspacing="0" border="0">
 						<tr
 							style="background: url('/5bject/image/board/table_mid.gif') repeat-x; text-align: center;">
-							<td width="6"><img src="/5bject/image/board/table_left.gif"
-								width="6" height="30" /></td>
+							<td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
 							<td align="left">글쓴이 : ${sessionScope.contectBoard.id }</td>
 							<td align="center">등록일 : ${sessionScope.contectBoard.date}</td>
 							<td align="right">조회 수 : ${sessionScope.contectBoard.hit}</td>
-							<td width="6"><img src="/5bject/image/board/table_right.gif"
-								width="6" height="30" /></td>
+							<td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
 						</tr>
 					</table>
 					<table>
@@ -139,12 +139,12 @@ table {
 
 					</table>
 					<div align="center">
-		<table>
-			<tr align="center" id="btnTr">
+						<table>
+							<tr align="center" id="btnTr">
 
-			</tr>
-		</table>
-	</div>
+							</tr>
+						</table>
+					</div>
 				</td>
 			</tr>
 		</table>
