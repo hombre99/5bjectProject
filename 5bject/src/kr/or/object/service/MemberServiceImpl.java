@@ -91,8 +91,4 @@ public class MemberServiceImpl implements MemberService {
 	public int getCountMember(){
 		return dao.selectCountMembers();
 	}
-
-	
-	
-
 }
