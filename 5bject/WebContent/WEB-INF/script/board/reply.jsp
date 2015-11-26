@@ -48,7 +48,7 @@ function replyCheck()
 </head>
 <body>
 <table>
-<form name=replyform method=post action="reply_ok.jsp?idx=<%=idx%>&pg=<%=pg%>">
+<form name=replyform method=post action="reply_ok.jsp?">
   <tr>
    <td>
     <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -62,7 +62,7 @@ function replyCheck()
      <tr>
       <td>&nbsp;</td>
       <td align="center">제목</td>
-      <td><input name="title" size="50" maxlength="100" value = "<%=board.getTitle()%>"></td>
+      <td><input name="title" size="50" maxlength="100" value = ""></td>
       <td>&nbsp;</td>
      </tr>
      <tr height="1" bgcolor="#dddddd"><td colspan="4"></td></tr>
