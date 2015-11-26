@@ -105,7 +105,7 @@ public class BoardController {
 		
 		service.insertReply(board);
 		
-		return "/board/view.do?writeNo="+board.getWriteNo();
+		return "/board/view.do?writeNo="+board.getWriteNo()+"&sessionId="+board.getId();
 	}
 	
 	@RequestMapping("/view.do")
