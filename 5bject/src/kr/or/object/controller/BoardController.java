@@ -130,9 +130,6 @@ public class BoardController {
 		 List<Board> replyList = service.getReplyList(board.getWriteNo());
 		session.setAttribute("replyList", replyList);
 		
-		System.out.println(replyList);
-		
-		
 
 		if ( logger.isInfoEnabled() )
 			logger.info("board.getWriteNo() : " + board.getWriteNo());
