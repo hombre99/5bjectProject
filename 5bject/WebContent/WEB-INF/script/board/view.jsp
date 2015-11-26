@@ -7,7 +7,7 @@
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 <script type="text/javascript">
 	$(document).ready( function() {
-
+				
 				var loginId = '${ sessionScope.member.id }'; //로그인ID	
 				var boardId = '${ sessionScope.contectBoard.id }'; //작성자 ID
 				var board = '${sessionScope.contectBoard.writeNo}'				

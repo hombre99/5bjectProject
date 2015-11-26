@@ -114,6 +114,11 @@ public class BoardController {
 		return "/WEB-INF/script/board/view.jsp";
 	}	
 	
+	@RequestMapping("/updateHit.do")
+	public void updateHit(@RequestParam Board board){
+		service.updateHit(board);
+	}
+	
 	public void getMax(){
 		service.getMax();
 	}	
