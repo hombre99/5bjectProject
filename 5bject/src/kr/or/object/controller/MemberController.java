@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,15 +44,15 @@ public class MemberController {
 	public String registerValidate(HttpServletRequest request, @ModelAttribute Members member, Errors errors) {
 		MemberValidator validate = new MemberValidator();
 		validate.validate(member, errors);
-
-		if (errors.hasErrors()) {
-			request.setAttribute("members", member);
-			return "/WEB-INF/script/login/register_form_validate.jsp";
-		}
+			if (errors.hasErrors()) {
+				request.setAttribute("members", member);
+				return "/WEB-INF/script/login/register_form_validate.jsp";
+			}
 		service.insertMember(member);		
 		gameService.insertMember(member.getId());
 		return "/member/register_success.do";
 	}
+	
 	//20151125 CHJ ID 중복검사 
 	@RequestMapping("/idDuplicatedCheck.do")
 	@ResponseBody
