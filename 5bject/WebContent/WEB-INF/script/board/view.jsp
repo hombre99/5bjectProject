@@ -13,13 +13,27 @@
 				var replyList = '${sessionScope.replyList}';
 				
 				if(replyList!=null){
-					var td = document.createElement("td");
-					var textarea = document.createElement("textarea");
-					textarea.setAttribute("readonly", "readonly");
-					textarea.setAttribute("cols", "100");
-					textarea.setAttribute("rows", "1");
-					$(td).append(textarea);
-					$("#replyTr").append(td);				
+					for(var i = 0 ; i < replyList.length; i++){
+						var tr = document.createElement("tr");
+						tr.setAttribute("align","center");
+						var td = document.createElement("td");
+						var img = document.createElement("img");
+						img.setAttribute("src", "/5bject/image/board/reply_icon.gif");
+						$(td).append(img);
+						var td = document.createElement("td");
+						td.setAttribute("value", '${sessionScope.replyList.id}');
+						$(tr).append(td);
+						var td = document.createElement("td");
+						td.setAttribute("colspan", "3");
+						var textarea = document.createElement("textarea");
+						textarea.setAttribute("readonly", "readonly");
+						textarea.setAttribute("cols", "100");
+						textarea.setAttribute("rows", "1");
+						textarea.setAttribute("value", '${sessionScope}')
+						$(td).append(textarea);				
+						$(tr).append(td);
+						$("#replyTr").append(tr);
+					}
 				}	
 				
 				if (writer=="writer") {
@@ -149,7 +163,7 @@ table {
 							<td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
 						</tr>
 					</table>
-					<table>
+					<table id="replyTr">
 						<tr>
 						<tr height="2" bgcolor="#dddddd">
 							<td colspan="5"></td>
@@ -171,10 +185,7 @@ table {
 						</tr>
 						<tr height="2" bgcolor="#dddddd">
 							<td colspan="5"></td>
-						</tr>
-						<tr id="replyTr">
-						
-						</tr>		
+						</tr>	
 					</table>
 					<div align="center">
 						<table>

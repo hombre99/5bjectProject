@@ -25,7 +25,7 @@ function replyCheck(){
  </script>
 </head>
 <body>
-<form name="replyform" method="post" action="/5bject/board/reply_success.do">
+<form name="replyform" method="post" action="/5bject/board/reply_success.do?writeNo=${board.writeNo}">
 <table>
   <tr>
    <td>

@@ -96,12 +96,13 @@ public class BoardController {
 		}		
 	}
 	
-	@RequestMapping("/reply.do")
-	public String Reply(HttpSession session,@RequestParam Board board){
+	@RequestMapping("/reply_success.do")
+	public String Reply(HttpSession session,@RequestParam Board board, @RequestParam int writeNo){
 		
 		service.insertReply(board);
 		
-		return "/WEB-INF/script/board/reply_success.jsp";
+		String url = "/5bject/board/view.do?writeNo="+writeNo;
+		return url;
 	}
 	
 	@RequestMapping("/view.do")
@@ -110,11 +111,9 @@ public class BoardController {
 		int hit = board.getHit();
 		
 		hit++;
-		
-		board.setHit(hit);
-		
+		board.setHit(hit);	
 		service.updateHit(board);
-		
+
 		String sessionId = session.getId();
 		String boardId = board.getId();
 		

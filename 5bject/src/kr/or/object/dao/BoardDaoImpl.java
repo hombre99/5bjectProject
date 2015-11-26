@@ -46,8 +46,6 @@ public class BoardDaoImpl implements BoardDao{
       return max;
    }
 
-
-
 // 게시글 쓰기
    public void insertWrite(Board board) {
       session.insert("boardMapper.boardInsert",board);
