@@ -168,7 +168,7 @@ table {
 					<c:when test="${sessionScope.replyList }==null">
 					</c:when>
 					<c:otherwise>
-					<c:forEach items='${sessionScope.replyList}' var=reply >
+					<c:forEach items="${sessionScope.replyList}" var="reply" >
 						<tr align="center">
 							<td>
 								<img src= "/5bject/image/board/reply_icon.gif">
