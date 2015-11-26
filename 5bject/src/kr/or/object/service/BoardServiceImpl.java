@@ -23,8 +23,14 @@ public class BoardServiceImpl implements BoardService{
 	   List<Board> noticeList = dao.getContentNoticeList();
 	   return noticeList;
    }
-
+   
    @Override
+   public List<Board> getReplyList(int writeNo) {
+	   List<Board> replyList = dao.getReplyList(writeNo);
+	   return replyList;
+   }
+
+@Override
    public int getMax() {
       return dao.getMax();
    }
