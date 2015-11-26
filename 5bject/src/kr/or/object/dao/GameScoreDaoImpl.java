@@ -1,6 +1,5 @@
 package kr.or.object.dao;
 
-import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -27,6 +26,11 @@ public class GameScoreDaoImpl implements GameScoreDao {
 	@Override
 	public void updateGameScore(GameScore gameScore) {
 		session.update("gamescoreMapper.updateGameScore", gameScore);
+	}
+	
+	@Override
+	public void removeGameScore(String id) {
+		session.delete("gamescoreMapper.deleteGameScore", id);
 	}
 
 	@Override

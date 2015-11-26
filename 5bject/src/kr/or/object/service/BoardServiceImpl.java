@@ -1,11 +1,14 @@
 package kr.or.object.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.object.dao.BoardDao;
+import kr.or.object.util.PagingBean;
 import kr.or.object.vo.Board;
 
 @Service("boardService")
@@ -65,4 +68,17 @@ public class BoardServiceImpl implements BoardService{
       dao.update(board);      
    }
 
+   @Override
+   public Map getBoardPaging(int pageNo, int notice) {
+	   HashMap map = new HashMap();
+		map.put("list", dao.getBoardsPaging(pageNo));
+		PagingBean pagingBean = new PagingBean(dao.selectCountBoard(notice),pageNo);
+		map.put("pagingBean", pagingBean);
+		return map;
+   }
+
+   public int getCountBoard(int notice){
+		return dao.selectCountBoard(notice);
+	}
+   
 }

@@ -2,13 +2,16 @@ package kr.or.object.dao;
 
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.object.util.PagingBean;
 import kr.or.object.vo.Board;
+import kr.or.object.vo.Members;
 
 @Repository("boardDao")
 public class BoardDaoImpl implements BoardDao{
@@ -42,15 +45,20 @@ public class BoardDaoImpl implements BoardDao{
    
    //페이징 처리 관련
    @Override
-   public int selectCountBoards() {
-	
-	   return 0;
+   public int selectCountBoard(int notice) {	   
+	   
+	   return session.selectOne("boardMapper.selectCountboard");
    }
 
    @Override
    public List<Board> getBoardsPaging(int pageNo) {
-	
-	   return null;
+	   HashMap map = new HashMap();
+		
+		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE_BOARD);
+		map.put("pageNo", pageNo);
+		
+		List<Board> list = session.selectList("boardMapper.selectBoardPaging",map);
+	   return list;
    }
 
 // 총 글 갯수

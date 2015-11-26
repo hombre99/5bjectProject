@@ -18,6 +18,7 @@ function replyCheck(){
    }
  
   form.submit();
+  window.close();
   }
  </script>
 </head>
