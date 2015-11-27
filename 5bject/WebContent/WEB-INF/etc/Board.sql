@@ -20,7 +20,7 @@
 		CONSTRAINT member_id
 		REFERENCES MEMBERS(MEMBER_ID)
 		ON DELETE CASCADE, 
-		title varchar2(50) not null,
+		title varchar2(100) not null,
 		content varchar2(2000) not null,
 		write_date date not null,
 		notice number(2) not null,
