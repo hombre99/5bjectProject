@@ -41,11 +41,12 @@
 	</script>
 	<script type="text/javascript">	
 	//아이디 영문과 숫자처리 20151126
-	function checkEngNum(){
+	function checkEngNum(obj){
 		var regType =/^[a-z0-9+]*$/;
-		if (!regType.test(document.getElementById('id').value)){
+		if (!regType.test(obj.value)){
 			alert('영문과 숫자만 입력가능합니다'); 
-			document.getElementById("id").value="";
+			obj.focus();
+			obj.value="";
 		}
 	};	
 	//이름에 한글만 처리하도록 지정
@@ -56,7 +57,7 @@
 			//이름 삭제 20151127
 			document.getElementById('name').value="";
 		}
-	}
+	};
 	//공백을 사용하지 못하게 지정
 	function noSpaceForm(obj) { // 공백사용못하게
 	    var str_space = /\s/;  // 공백체크
@@ -64,9 +65,8 @@
 	        alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다.");
 	        obj.focus();
 	        obj.value = obj.value.replace(' ',''); // 공백제거
-	        return false;
 	    }
-	}
+	};
 </script>
 <!--  css 설정  -->
 <style type="text/css">
@@ -104,7 +104,7 @@
 			</tr>
 			<tr>		
 				<td>
-					<input type="text" name="id" id="id" value="${requestScope.members.id}"  placeholder="사용할 아이디를 입력하세요." size="25" maxlength="25"  onkeyup="noSpaceForm(this); checkEngNum();" onchange="noSpaceForm(this); " />
+					<input type="text" name="id" id="id" value="${requestScope.members.id}"  placeholder="사용할 아이디를 입력하세요." size="25" maxlength="25"  onkeyup="noSpaceForm(this); checkEngNum(this);" onchange="noSpaceForm(this); " />
 					<br><span class="error" id="idErrorMessage"><form:errors path="members.id" /></span>
 				</td>
 				<td></td>
@@ -164,7 +164,7 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-				<input type="text" name=emailId value="${requestScope.members.emailId}" placeholder="email을 입력하세요"  onkeyup="noSpaceForm(this); checkEngNum();" onchange="noSpaceForm(this);" />@
+				<input type="text" name=emailId value="${requestScope.members.emailId}" placeholder="email을 입력하세요"  onkeyup="noSpaceForm(this); checkEngNum(this);" onchange="noSpaceForm(this);" />
 					<select name="emailAddress">
 						<option value="선택하세요">선택하세요</option>
 						<option value="gmail.com" ${requestScope.members.emailAddress=='gmail.com'? 'selected=selected':''}>gmail.com</option>
