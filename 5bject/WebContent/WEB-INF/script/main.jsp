@@ -124,7 +124,7 @@
 							location.reload();
 						}
 					});
-				}
+				};
 			</script>
 		</c:if>
 
