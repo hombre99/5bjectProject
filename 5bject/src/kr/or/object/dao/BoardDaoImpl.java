@@ -52,6 +52,7 @@ public class BoardDaoImpl implements BoardDao{
 	   }else if(notice==2){
 		   result =  session.selectOne("boardMapper.selectCountBoard");
 	   }
+	   System.out.println("게시글의 갯수는 "+result);
 	   return result;
    }
    
@@ -59,7 +60,7 @@ public class BoardDaoImpl implements BoardDao{
    public List<Board> getBoardsPaging(int pageNo, int notice) {
 	   HashMap map = new HashMap();
 	   List<Board> list =null;
-		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE_BOARD);
+		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
 		map.put("pageNo", pageNo);
 		 if(notice==1){
 	    list = session.selectList("boardMapper.selectNoticePaging",map);
