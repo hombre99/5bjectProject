@@ -13,7 +13,6 @@
 			<div id="header">
 				<img src="/5bject/image/member/programming.jpg">
 			</div>
-
 			<div id="middle">
 				<div id="sidebar">
 					<form action="/5bject/language/select_language.do" method="GET">
@@ -40,8 +39,7 @@
 							<tr><td><input type="submit" value="선택"></td></tr>                  
 						</table>
 					</form>   
-				</div>
-	
+				</div>	
 				<div id="content">
 					<c:choose>
 						<c:when test="${sessionScope.name==null}">
@@ -62,7 +60,6 @@
 					</c:choose>
 				</div>
 			</div>
-
 			<!-- 추가하는 부분 20151124 화요일 CHJ -->
 			<div id="middle2">
 				<div id="content2">
@@ -75,7 +72,6 @@
 					알고리즘을 배우는 이유는 같은 행동을 할때라도 어떤 방법으로 하느냐에 따라 조금 더 쉽고 빠르게 할 수 있기 때문입니다.</font>
 				</div>
 			</div>
-
 			<div id="footer">
 				<jsp:include page="/WEB-INF/script/layout/footer.jsp" />
 			</div>

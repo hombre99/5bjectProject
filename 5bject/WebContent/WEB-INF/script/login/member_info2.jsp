@@ -12,23 +12,22 @@
 <meta charset=" UTF-8">
 <title>Member Info</title>
 <script type="text/javascript" src="/5bject/jquery.do"></script>
-      <script type="text/javascript">
-      $(document).ready(function() {
-    	  $("#close").on("click",function(){
-    		  location.replace('/5bject/member/memberList.do');
-			});
-    	  
-    	  $("#delete").on("click",function(){
-    		  if(confirm("정말 삭제하시겠습니까?")){
-					location.replace('/5bject/member/memberRemove.do?id=${memberInfo.id}');
-				}
-			});
-    	  $("#update").on("click", function() {
-				window.open('/5bject/member/memberUpdate.do','ok', 'width=500, height=700,toolbar=0,location=0,status=0,menubar=0,resizable=0');
-			});
-    	  
-      });
-      </script>
+<script type="text/javascript">
+   $(document).ready(function() {
+ 	  $("#close").on("click",function(){
+ 		  location.replace('/5bject/member/memberList.do');
+		});
+ 	  
+ 	  $("#delete").on("click",function(){
+ 		  if(confirm("정말 삭제하시겠습니까?")){
+		location.replace('/5bject/member/memberRemove.do?id=${memberInfo.id}');
+			}
+		});
+ 	  $("#update").on("click", function() {
+		window.open('/5bject/member/memberUpdate.do','ok', 'width=500, height=700,toolbar=0,location=0,status=0,menubar=0,resizable=0');
+		});
+   });
+</script>
       <!-- css header, table 처리 -->
       <style type="text/css">
          header{
@@ -39,7 +38,6 @@
          }
          table{
             margin-left: 70px;
-            font-family: HY나무M;
          }
       </style>
 </head>
@@ -53,12 +51,12 @@
       <table>
       <!--***님의 회원정보 font color change 20151125 -->
          <tr><td colspan="2" align="center"><h2><font color="lightblue">${sessionScope.memberInfo.id}의 회원정보</font></h2></td></tr>
-         <tr><td>ID </td><td> ${sessionScope.memberInfo.id}<br></td></tr>
-         <tr><td>NAME </td><td> ${sessionScope.memberInfo.name }<br></td></tr>
-         <tr><td>BIRTHDAY </td><td> ${sessionScope.memberInfo.month }  ${sessionScope.memberInfo.day } ${sessionScope.memberInfo.year }<br></td></tr>
-         <tr><td>GENDER </td><td> ${sessionScope.memberInfo.gender }<br></td></tr>
-         <tr><td> EMAIL </td><td> ${sessionScope.memberInfo.emailId }@${sessionScope.memberInfo.emailAddress }<br></td></tr>
-         <tr><td>PHONENUMBER </td><td> ${sessionScope.memberInfo.phoneNumber}</td></tr>
+         <tr><td>Id </td><td> ${sessionScope.memberInfo.id}<br></td></tr>
+         <tr><td>Name </td><td> ${sessionScope.memberInfo.name }<br></td></tr>
+         <tr><td>Birthday </td><td>${sessionScope.memberInfo.year }년 ${sessionScope.memberInfo.month }월  ${sessionScope.memberInfo.day }일<br></td></tr>
+         <tr><td>Gender </td><td> ${sessionScope.memberInfo.gender }<br></td></tr>
+         <tr><td> Email </td><td> ${sessionScope.memberInfo.emailId }@${sessionScope.memberInfo.emailAddress }<br></td></tr>
+         <tr><td>Phone-number </td><td> ${sessionScope.memberInfo.phoneNumber}</td></tr>
          <tr><td colspan="2"></td></tr>
          <tr>
             <td colspan="2">

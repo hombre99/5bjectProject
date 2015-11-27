@@ -21,7 +21,8 @@ public class MemberDaoImpl implements MemberDao{
 		this.session = session;
 	}
 	@Override
-	//chj add 20151120
+	
+	//고객문의요청 페이징 처리 
 	public List<Upload> getRequests(int pageNo) {
 		HashMap map= new HashMap();
 		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
@@ -29,63 +30,64 @@ public class MemberDaoImpl implements MemberDao{
 		List<Upload> list= session.selectList("memberMapper.selectRequests",map);
 		return list;
 	}
-	//chj add 20151123
+
+	//고객문의요청 페이징 처리시 필요한 값처리
 	@Override
 	public int selectCountRequests() {
 		return session.selectOne("memberMapper.selectCountRequests");
 	}
-	//chj add 20151120
+	//고객문의 요청 받기
 	@Override
 	public int insertRequest(Upload upload) {
 		return session.insert("memberMapper.insertRequest",upload);
 	}
-
+	// 고객받기
 	@Override
 	public int insertMember(Members member) {
 		return session.insert("memberMapper.insertMember", member);
 	}
-
+	//고객정보 업데이트
 	@Override
 	public int updateMemberById(Members member) {
 		return session.update("memberMapper.updateMemberById", member);
 	}
-
+	//아이디 값을 받아 고객정보 보기
 	@Override
 	public Members getMemberById(String id) {
 		return session.selectOne("memberMapper.selectMemberById", id);
 	}
-
+	//고객정보 지우기.
 	@Override
 	public int removeMemberById(String id) {
 		return session.delete("memberMapper.removeMemberById", id);
 	}
-
+	//아이디 전체값 조회.
 	@Override
 	public List<Members> getMembers() {
 		return session.selectList("memberMapper.selectMembers");
 	}
 	
-	// 20151124. KKH ADD - 아이디 찾기
+
 	@Override
 	public List findMemberId(HashMap map) {
 		return session.selectList("memberMapper.selectMemberId",map);
 	}
 	
-	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
+
 	@Override
 	public String findMemberPassword(HashMap map) {
 		// TODO Auto-generated method stub
 		return session.selectOne("memberMapper.selectMemberPassword",map);
 	}
 	
-	// 20151120. ADD KKH - 임시비밀번호로 바꿔주기
+
 	@Override
 	public int updateMemberPassword(HashMap map) {
 		// TODO Auto-generated method stub
 		return session.update("memberMapper.updateMemberPassword",map);
 	}
 	
-	//20151123. ADD KKH - 고객목록 페이징 처리
+
 	@Override
 	public List<Members> getMembersPaging(int pageNo) {
 		HashMap map = new HashMap();
@@ -97,8 +99,7 @@ public class MemberDaoImpl implements MemberDao{
 		
 		return list;
 	}
-	
-	// 20151123. KKH ADD - 아이디 조회시 paging 처리관련
+
 	@Override
 	public int selectCountMembers() {
 		return session.selectOne("memberMapper.selectCountMembers");

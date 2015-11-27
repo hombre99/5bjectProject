@@ -36,7 +36,7 @@
    background-color: white;
 }
 
-/*추가하는 부분 20151124 화요일 CHJ*/
+
 #middle2 {
    width: 1200px;
    margin-top: 10px;
@@ -46,7 +46,7 @@
    background: powderblue;
 }
 
-/*추가하는 부분 20151125 화요일 CHJ*/
+
 #content2 {
    width: 300px;
    margin-right: 20px;
@@ -57,13 +57,12 @@
 
 }
 
-/*추가하는 부분 20151125 수요일 CHJ*/
+
 #content3{
    width: 800px;
    height: 100px;
    float: left;
    background-color: white;
-
 }
 
 #footer {
