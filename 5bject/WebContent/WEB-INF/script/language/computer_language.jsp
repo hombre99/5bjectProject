@@ -9,90 +9,87 @@
    
 </script>
 <style type="text/css">
-#wrap {
-   width: 1200px;
-   height: 930px;
-   background: lightgrey;
-}
+	#wrap {
+	   width: 1200px;
+	   height: 930px;
+	   background: lightgrey;
+	}
+	
+	#header {
+	   width: 1200px;
+	   height: 130px;
+	   img-align: center;
+	   margin-bottom: 20px;
+	   background: white;
+	}
+	
+	#middle{
+	   width: 1200px;
+	   float: left;
+	   background: powderblue;
+	}
+	
+	#sidebar {
+	   width: 300px;
+	   height: 500px;
+	   text-align: center;
+	   float:left;
+	   margin-left: 35px;
+	   margin-right: 20px;
+	   background-color: white;
+	}
+	
+	#content {
+	   width: 800px;
+	   height: 500px;
+	   float: left;
+	   background-color: white;
+	}
 
-#header {
-   width: 1200px;
-   height: 130px;
-   img-align: center;
-   margin-bottom: 20px;
-   background: white;
-}
+	#middle2 {
+	   width: 1200px;
+	   margin-top: 10px;
+	   margin-botton: 10px;
+	   height: 100px;
+	   float: left;
+	   background: powderblue;
+	}
 
-#middle{
-   width: 1200px;
-   float: left;
-   background: powderblue;
-}
+	#content2 {
+	   width: 300px;
+	   margin-right: 20px;
+	   margin-left: 35px;
+	   height: 100px;
+	   float: left;
+	   background-color: white;
+	
+	}
 
-#sidebar {
-   width: 300px;
-   height: 500px;
-   text-align: center;
-   float:left;
-   margin-left: 40px;
-   margin-right: 20px;
-   background-color: white;
-
-}
-
-#content {
-   width: 800px;
-   height: 500px;
-   float: left;
-   background-color: white;
-}
-  /*추가하는 부분 20151124 화요일 CHJ*/
-#middle2 {
-   width: 1200px;
-   margin-top: 10px;
-   margin-botton: 10px;
-   height: 100px;
-   float: left;
-   background: powderblue;
-}
-  /*추가하는 부분 20151125 화요일 CHJ*/
-#content2 {
-   width: 300px;
-   margin-right: 20px;
-   margin-left: 40px;
-   height: 100px;
-   float: left;
-   background-color: white;
-
-}
-  /*추가하는 부분 20151125 수요일 CHJ*/
-#content3{
-   width: 800px;
-   height: 100px;
-   float: left;
-   background-color: white;
-
-}
-
-#footer {
-   width: 1200px;
-   height: 100px;  
-   margin-top: 10px;
-   background: lightblue;
-   color: white;
-   float: left;
-   text-align: center;
-}
-.table1{
-margin-top:70px;
-margin-left:20px;
-text-align: center;
-}
-
+	#content3{
+	   width: 800px;
+	   height: 100px;
+	   float: left;
+	   background-color: white;
+	
+	}
+	
+	#footer {
+	   width: 1200px;
+	   height: 100px;  
+	   margin-top: 10px;
+	   background: lightblue;
+	   color: white;
+	   float: left;
+	   text-align: center;
+	}
+	.table1{
+	margin-top:70px;
+	margin-left:20px;
+	text-align: center;
+	}	
 </style>
 </head>
 <body>
-
    <div id="wrap">
       &nbsp;<jsp:include page="/WEB-INF/script/layout/header.jsp" />
       <div id="header">
@@ -105,7 +102,7 @@ text-align: center;
                <table id ="table1">
                   <tr>
                 	<!-- 20151126 p태그 추가 -->
-                     <td><p><b>언어를 선택하여 주세요</b><br> 
+                     <td><p><b>언어를 선택하여 주세요</b> 
                      <select name="name">
                            <option value="language">언어선택</option>
                            <option value="java">Java</option>
@@ -143,11 +140,11 @@ text-align: center;
             </c:choose>
          </div>
       </div>
-      <!-- 추가하는 부분 20151124 화요일 CHJ -->
+     
       <div id="middle2">
 	      	<div id="content2">
       			<br>
-		      	<font size="3"><b>알고리즘이란 <br> 무엇일까요?</b></font>
+		      	<font size="3">&nbsp;&nbsp;&nbsp;<b>알고리즘이란  무엇일까요?</b></font>
 	      	</div>
 	      	<div id ="content3">
 	     		<br>
@@ -155,6 +152,7 @@ text-align: center;
 			      		알고리즘을 배우는 이유는 같은 행동을 할때라도 어떤 방법으로 하느냐에 따라 조금 더 쉽고 빠르게 할 수 있기 때문입니다.</font>
       		</div>
       </div>
+      
       <div id="footer">
          <jsp:include page="/WEB-INF/script/layout/footer.jsp" />
       </div>

@@ -48,18 +48,16 @@
       <jsp:include page="/WEB-INF/script/layout/header.jsp" />
    </header>
       <table>
-      <!--***님의 회원정보 font color change 20151125 -->
          <tr><td colspan="2" align="center"><h2><font color="lightblue">${memberInfo.id}의 회원정보</font></h2></td></tr>
-         <tr><td>ID </td><td> ${memberInfo.id}<br></td></tr>
-         <tr><td>NAME </td><td> ${memberInfo.name }<br></td></tr>
-         <tr><td>BIRTHDAY </td><td> ${memberInfo.month }  ${memberInfo.day } ${memberInfo.year }<br></td></tr>
-         <tr><td>GENDER </td><td> ${memberInfo.gender }<br></td></tr>
-         <tr><td> EMAIL </td><td> ${memberInfo.emailId }@${memberInfo.emailAddress }<br></td></tr>
-         <tr><td>PHONENUMBER </td><td> ${memberInfo.phoneNumber}</td></tr>
+         <tr><td>Id </td><td> ${memberInfo.id}<br></td></tr>
+         <tr><td>Name </td><td> ${memberInfo.name }<br></td></tr>
+         <tr><td>Birthday </td><td>  ${memberInfo.year }년 ${memberInfo.month }월 ${memberInfo.day}일<br></td></tr>
+         <tr><td>Gender </td><td> ${memberInfo.gender }<br></td></tr>
+         <tr><td> Email </td><td> ${memberInfo.emailId }@${memberInfo.emailAddress }<br></td></tr>
+         <tr><td>Phone-number </td><td> ${memberInfo.phoneNumber}</td></tr>
          <tr><td colspan="2"></td></tr>
          <tr>
-            <td colspan="2">
-              
+            <td colspan="2">              
                <input type="button" value="회원정보수정" id="update">
                <input type="button" value="회원삭제" id="delete">
                <input type="button"  value="회원목록" id="close">

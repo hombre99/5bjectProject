@@ -6,11 +6,10 @@
 <meta charset=" UTF-8">
 <title>Insert title here</title>
  <script type="text/javascript" src="/5bject/jquery.do"></script>
-   <script type="text/javascript">
+ <script type="text/javascript">
    $(document).ready(function(){
       $("#login").on("click", function(){
-         window.close();
-         
+         window.close();  
       });
    });
    function page_back(){
@@ -39,8 +38,7 @@
             <c:when test="${ (requestScope.memId != null) }">
                <img src="/5bject/image/member/successId.jpg" />
                <br>
-               <font color="lightblue" size="3">찾으신 고객님의 아이디는 <c:forEach items="${requestScope.memId }" var="list"> ${list} </c:forEach>
-               입니다.</font>
+               <font color="lightblue" size="3">찾으신 고객님의 아이디는 <c:forEach items="${requestScope.memId }" var="list"> ${list} </c:forEach> 입니다.</font>
             </c:when>
             <c:otherwise>
                <br>

@@ -38,21 +38,26 @@
 			});
 		});
 	});
-	//20151126 아이디 영문과 숫자처리
+	</script>
+	<script type="text/javascript">	
+	//아이디 영문과 숫자처리 20151126
 	function checkEngNum(){
 		var regType =/^[a-z0-9+]*$/;
 		if (!regType.test(document.getElementById('id').value)){
-			alert('아이디에는 영문과 숫자만 입력가능합니다'); 
+			alert('영문과 숫자만 입력가능합니다'); 
+			document.getElementById("id").value="";
 		}
-	};
+	};	
+	//이름에 한글만 처리하도록 지정
 	function checkKor(){
 		var regType=/^[가-힣+]*$/;
 		if (!regType.test(document.getElementById('name').value)){
 			alert('이름은 한국말로 정확하게 입력하여주세요.\n 외국인도 한글로 입력해주세요'); 
+			//이름 삭제 20151127
+			document.getElementById('name').value="";
 		}
 	}
-
-	//20151126 공백처리 정규식을 처리
+	//공백을 사용하지 못하게 지정
 	function noSpaceForm(obj) { // 공백사용못하게
 	    var str_space = /\s/;  // 공백체크
 	    if(str_space.exec(obj.value)) { //공백 체크
@@ -61,12 +66,10 @@
 	        obj.value = obj.value.replace(' ',''); // 공백제거
 	        return false;
 	    }
-	 // onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"
 	}
-
 </script>
+<!--  css 설정  -->
 <style type="text/css">
-	/* css 설정 */
 	.error {
 		color: red;
 		face: impact;
@@ -80,7 +83,6 @@
 		padding: 10px;
 	}
 	
-	/*설정 수정 20151125*/
 	table {
 		margin-left: 70px;
 	}
@@ -94,43 +96,35 @@
 	<!--  ADD id ="regForm 20151125-->
 	<form action="/5bject/member/register_form_validate.do" method="post" id="regForm">
 		<table>
+			<tr><td colspan="2" align="center"><h1><font color="skyblue">Sign Up</font></h1></td></tr>
+			<tr><td colspan="2" align="center"><font color="skyblue">회원가입</font></td></tr>	
+					
 			<tr>
-				<td colspan="2" align="center">
-					<h1><font color="skyblue">Sign Up</font></h1>
+				<td colspan="2"><b>ID</b></td>
+			</tr>
+			<tr>		
+				<td>
+					<input type="text" name="id" id="id" value="${requestScope.members.id}"  placeholder="사용할 아이디를 입력하세요." size="25" maxlength="25"  onkeyup="noSpaceForm(this); checkEngNum();" onchange="noSpaceForm(this); " />
+					<br><span class="error" id="idErrorMessage"><form:errors path="members.id" /></span>
 				</td>
-			</tr>
-			<tr>
-				<td colspan="2" align="center"><font color="skyblue">회원가입</font></td>
-			</tr>
-			<tr>
-				<td colspan="2"><b>ID</b>
-				</td>
-			</tr>
-			<tr>
-			<!-- errorMessage를 사용합니다 -->
-				<td><input type="text" name="id" id="id" value="${requestScope.members.id}"  placeholder="사용할 아이디를 입력하세요."
-					size="25" maxlength="25"  onkeyup="noSpaceForm(this); checkEngNum();" onchange="noSpaceForm(this);" /> <br><span class="error" id="idErrorMessage"><form:errors path="members.id" /></span></td>
 				<td></td>
 			</tr>
 			<tr>
 				<td colspan="2"><b>Password</b></td>
 			</tr>
 			<tr>
-				<td><input type="password" name="password"
-					value="${ requestScope.members.password }"
-					placeholder="비밀번호를 입력하세요." size="25" maxlength="25"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" /> <br> <span
-					class="error"><form:errors path="members.password"
-							delimiter=" - " /></span></td>
+				<td>
+					<input type="password" name="password" value="${ requestScope.members.password }" placeholder="비밀번호를 입력하세요." size="25" maxlength="25"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" />
+					 <br> <span class="error"><form:errors path="members.password" delimiter=" - " /></span>
+				</td>
 				<td></td>
 			</tr>
 			<tr>
 				<td colspan="2"><b>Name</b></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="text" name="name" id="name"
-					value="${requestScope.members.name}" placeholder="이름을 입력하세요"
-					autofocus="autofocus"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this); checkKor();" /> <br> <span class="error"><form:errors
-							path="members.name" delimiter=" - " /></span></td>
+				<td colspan="2"><input type="text" name="name" id="name" value="${requestScope.members.name}" placeholder="이름을 입력하세요" autofocus="autofocus"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this); checkKor();" /> 
+					<br> <span class="error"><form:errors path="members.name" delimiter=" - " /></span></td>
 			</tr>
 			<tr>
 				<td colspan="2"><font color="white">BLANK</font></td>
@@ -160,16 +154,17 @@
 						<c:forEach var="num" begin="1900" end="2015">
 							<option ${num==requestScope.members.day? 'selected=selected':' ' }>${ num }</option>
 						</c:forEach>
-				</select> <br> <!-- error delimiter삭제 20151125 --> <span class="error"><form:errors
-							path="members.day" /></span> <span class="error"><form:errors
-							path="members.month" /></span></td>
+				</select> 
+					<br> 
+					<span class="error"><form:errors path="members.day" /></span> 
+					<span class="error"><form:errors path="members.month" /></span></td>
 			</tr>
 			<tr>
 				<td colspan="2"><b>이메일</b></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="text" name=emailId
-					value="${requestScope.members.emailId}" placeholder="email을 입력하세요"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" />@
+				<td colspan="2">
+				<input type="text" name=emailId value="${requestScope.members.emailId}" placeholder="email을 입력하세요"  onkeyup="noSpaceForm(this); checkEngNum();" onchange="noSpaceForm(this);" />@
 					<select name="emailAddress">
 						<option value="선택하세요">선택하세요</option>
 						<option value="gmail.com" ${requestScope.members.emailAddress=='gmail.com'? 'selected=selected':''}>gmail.com</option>
@@ -179,8 +174,8 @@
 						<option value="naver.com" ${requestScope.members.emailAddress=='naver.com'? 'selected=selected':''}>naver.com</option>
 						<option value="hotmail.com" ${requestScope.members.emailAddress=='hotmail.com'? 'selected=selected':''}>hotmail.com</option>
 						<option value="daum.com" ${requestScope.members.emailAddress=='daum.com'? 'selected=selected':''}>daum.com</option>
-				</select> <br> <span class="error"><form:errors
-							path="members.emailId" delimiter=" - " /></span></td>
+				</select>
+						 <br> <span class="error"><form:errors path="members.emailId" delimiter=" - " /></span></td>
 			<tr>
 				<td colspan="2"><b>성별</b></td>
 			</tr>
@@ -188,8 +183,8 @@
 			<!-- value="male" female 되어있는것 삭제 20151126 CHJ -->
 				<td colspan="2">
 						<label>male:<input type="radio" name="gender" value="male" ${requestScope.members.gender =='male'? 'checked=checked':' '}/></label>
-						<label>female:<input type="radio" name="gender" value="female" ${requestScope.members.gender=='female'? 'checked=checked':' '} /></label> <br> <span
-					class="error"><form:errors path="members.gender" /></span></td>
+						<label>female:<input type="radio" name="gender" value="female" ${requestScope.members.gender=='female'? 'checked=checked':' '} /></label>
+						 <br><span class="error"><form:errors path="members.gender" /></span></td>
 			</tr>
 			<tr>
 				<td colspan="2"><b>Phone Number</b> (ex:01012341234)</td>

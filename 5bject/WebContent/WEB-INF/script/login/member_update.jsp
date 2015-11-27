@@ -20,8 +20,17 @@
 				var regType=/^[가-힣+]*$/;
 				if (!regType.test(document.getElementById('name').value)){
 					alert('이름은 한국말로 정확하게 입력하여주세요.\n 외국인도 한글로 입력해주세요'); 
+					//이름 삭제 20151127
+					document.getElementById('name').value="";
 				}
 			}
+			function checkEngNum(){
+				var regType =/^[a-z0-9+]*$/;
+				if (!regType.test(document.getElementById('id').value)){
+					alert('영문과 숫자만 입력가능합니다'); 
+					document.getElementById("id").value="";
+				}
+			};	
 			function noSpaceForm(obj) { // 공백사용못하게
 			    var str_space = /\s/;  // 공백체크
 			    if(str_space.exec(obj.value)) { //공백 체크
@@ -30,7 +39,6 @@
 			        obj.value = obj.value.replace(' ',''); // 공백제거
 			        return false;
 			    }
-			 // onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"
 			}
 		</script>
 		<style type="text/css">
@@ -65,17 +73,10 @@
 
 			<form action="/5bject/member/update_member.do" method="post">
 				<table>
-					<tr>
-						<td colspan="2" align="center">
-							<h2><font color="skyblue">Edit your information</font></h2>
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2" align="center"><font color="skyblue">회원정보수정</font></td>
-					</tr>
-					<tr>
-						<td colspan="2"><b>ID</b></td>
-					</tr>
+					<tr><td colspan="2" align="center"><h2><font color="skyblue">Edit your information</font></h2></td></tr>
+					<tr><td colspan="2" align="center"><font color="skyblue">회원정보수정</font></td></tr>
+					
+					<tr><td colspan="2"><b>ID</b></td></tr>
 					<tr>
 						<td>
 							<input type="text" name="id"  value="${ sessionScope.memberInfo.id }" size="25" maxlength="25"  disabled="disabled" />
@@ -83,9 +84,8 @@
 						</td>
 						<td></td>
 					</tr>
-					<tr>
-						<td colspan="2"><b>Password</b></td>
-					</tr>
+					
+					<tr><td colspan="2"><b>Password</b></td></tr>
 					<tr>
 						<td>
 							<input type="hidden" name="password" value="${sessionScope.memberInfo.id}" placeholder="비밀번호를 입력하세요." onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"  size="25" maxlength="25"/>
@@ -94,9 +94,8 @@
 						</td>
 						<td></td>
 					</tr>
-					<tr>
-						<td colspan="2"><b>Name</b></td>
-					</tr>
+					
+					<tr><td colspan="2"><b>Name</b></td></tr>
 					<tr>
 						<td colspan="2">
 							<input type="text" name="name" id="name" value="${ sessionScope.memberInfo.name }" placeholder="이름을 입력하세요"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this); checkKor();"  autofocus="autofocus"/>
@@ -107,10 +106,7 @@
 						<td colspan="2"><font color="white">BLANK</font></td>
 					</tr>
 					
-					<!--  생년월일,이메일,성별 전체 수정  20151125-->
-						<tr>
-						<td colspan="2"><b>생년월일</b></td>
-					</tr>
+					<tr><td colspan="2"><b>생년월일</b></td></tr>
 					<tr>
 						<td colspan="2">
 							<select name="month">
@@ -144,12 +140,11 @@
 						<span class="error"><form:errors path="members.month" /></span>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="2"><b>이메일</b></td>
-				</tr>
+				
+				<tr><td colspan="2"><b>이메일</b></td></tr>
 				<tr>
 					<td colspan="2">
-						<input type="text" name=emailId  value="${sessionScope.member.emailId}" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" placeholder="email을 입력하세요" />@
+						<input type="text" name=emailId  value="${sessionScope.member.emailId}" onkeyup="noSpaceForm(this); checkEngNum();" onchange="noSpaceForm(this);" placeholder="email을 입력하세요" />@
 						<select name="emailAddress">
 							<option value="gmail.com" ${sessionScope.member.emailAddress=='gmail.com'? 'selected=selected':''}>gmail.com</option>
 							<option value="nate.com"  ${sessionScope.member.emailAddress=='nate.com'? 'selected=selected':''}>nate.com</option>
@@ -163,9 +158,8 @@
 						<span class="error"><form:errors path = "members.emailId" delimiter=" - " /></span>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="2"><b>성별</b></td>
-				</tr>
+				
+				<tr><td colspan="2"><b>성별</b></td></tr>
 				<tr>
 					<td colspan="2">
 						<label>male:<input type="radio" name="gender" ${sessionScope.member.gender=='male'? 'checked=checked':''} /></label>
@@ -173,9 +167,8 @@
 						<span class="error"><form:errors path = "members.gender" delimiter=" - " /></span>
 					</td>
 				</tr>
-				<tr>
-					<td colspan="2"><b>Phone Number</b> (ex:01012341234)</td>
-				</tr>
+				
+				<tr><td colspan="2"><b>Phone Number</b> (ex:01012341234)</td></tr>
 				<tr>
 					<td>
 						<input type="number" name="phoneNumber"  value="${sessionScope.memberInfo.phoneNumber }" placeholder="핸드폰 번호를 입력하세요" onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" size="11" maxlength="20" />
@@ -184,6 +177,7 @@
 					</td>
 					<td></td>
 				</tr>
+				
 				<tr>
 					<td colspan="2"><input type="submit" value="수정하기" />&nbsp;<input type="button" onclick="page_back();" value="뒤로가기"></td>
 					<td></td>

@@ -18,50 +18,48 @@
 	}
 </script>
 <style type="text/css">
-#table1{
-	background-color: white;
-	width: 300px;
-	margin-top: 20px;
-	border:1px;
-}
-
-a {
-	text-decoration: none !important;
-	color: white;
-}
-
-menu {
-	background-color: powderblue;
-	color: white;
-	padding: 10px;
-	font-weight: bold;
-}
+	
+	#table{
+		background-color: white;
+		margin-top: 20px;
+	}
+	a {
+		text-decoration: none !important;
+		color: white;
+	}
+	
+	menu {
+		background-color: powderblue;
+		color: white;
+		padding: 10px;
+		font-weight: bold;
+	}
 </style>
 </head>
 <body>
 	<menu>
 		<jsp:include page="/WEB-INF/script/layout/menu.jsp" />
 	</menu>
+	
 	<c:choose>
 		<c:when test="${fn:length(requestScope.list)==0 }">		
-			<table id="table1">
-				<tr>
-					<td colspan="2" align="center"><h2>고객문의요청</h2></td>
-				</tr>
+			<table style="width: 800px" border="1">
+				<tr><td colspan="2" align="center"><h2>고객문의요청</h2></td></tr>
 				<tr><td colspan="2" align="center">문의한 고객이 없습니다.</td></tr>
 			</table>
 		</c:when>
+		
 		<c:otherwise>
-			<table id="table2">
+			<table style="width: 800px" border="1">
 				<tr>
 					<td></td>
 					<td colspan="2" align="center"><h2>고객문의요청</h2></td>
 				</tr>
 				<tr>
-					<td><b>고객문의날짜</b></td>
-					<td><b>고객아이디</b></td>
-					<td><b>고객 이메일주소</b></td>
-					<td><b>고객문의사항</b></td>
+					<th><b>고객문의날짜</b></th>
+					<th><b>고객아이디</b></th>
+					<th><b>고객 이메일주소</b></th>
+					<th><b>고객문의사항</b></th>
 				</tr>
 				<c:forEach items="${requestScope.list}" var="upload">
 					<tr>
@@ -80,9 +78,7 @@ menu {
 	<p />
 	<!-- Paging 처리 -->
 	<!-- 
-1. 이전 페이지 그룹으로 이동 처리
-  이전페이지 그룹이 있으면 링크처리 없으면 <- 모양만 나오도록 처리.
- -->
+1. 이전 페이지 그룹으로 이동 처리 이전페이지 그룹이 있으면 링크처리 없으면 <- 모양만 나오도록 처리.-->
 
 		<c:choose>
 			<c:when test="${requestScope.pagingBean.previousPageGroup}">
@@ -94,9 +90,7 @@ menu {
 			 	 	◀
 		 	</c:otherwise>
 		</c:choose>
-		<!-- Page Group 내의 page들 링크 처리
-		- PageGroup의 시작/끝페이지 번호 - 반복문 처리
-	 -->
+		<!-- Page Group 내의 page들 링크 처리- PageGroup의 시작/끝페이지 번호 - 반복문 처리 -->
 		<c:forEach begin="${requestScope.pagingBean.startPageOfPageGroup }"
 			end="${requestScope.pagingBean.endPageOfPageGroup }" var="page">
 			
@@ -110,9 +104,7 @@ menu {
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
-		<!-- 3. 다음 페이지 그룹 링크
-	    다음 페이지 그룹이 있으면 링크 처리 없으면 그냥 화살표만 나오도록 처리.
-	 -->
+		<!-- 3. 다음 페이지 그룹 링크 다음 페이지 그룹이 있으면 링크 처리 없으면 그냥 화살표만 나오도록 처리.-->
 		<c:choose>
 			<c:when test="${requestScope.pagingBean.nextPageGroup}">
 				<a href="/5bject/member/request_list.do?pageNo=${requestScope.pagingBean.endPageOfPageGroup+1}">

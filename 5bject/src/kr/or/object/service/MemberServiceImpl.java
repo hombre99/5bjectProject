@@ -25,7 +25,7 @@ public class MemberServiceImpl implements MemberService {
 		dao.insertRequest(upload);
 	}
 	
-	//20151120 service 추가 chj
+	//고객문의요청 리스트 조회 및 페이징 처리
 	@Override
 	public Map getRequestList(int pageNo){
 		HashMap map = new HashMap();
@@ -34,50 +34,50 @@ public class MemberServiceImpl implements MemberService {
 		map.put("pagingBean", pagingBean);
 		return map;
 	}
-	
+	//고객아이디를 찾는 컨트롤러
 	@Override
 	public Members findMemberById(String id) {
 		return dao.getMemberById(id);
 	}
-
+	//고객등록시 필요한 컨트롤러
 	@Override
 	public void insertMember(Members member) {
 		dao.insertMember(member);
 	}
-
+	//고객 업데이트시 필요한 컨트롤러
 	@Override
 	public void updateMemberById(Members newMember) {
 		dao.updateMemberById(newMember);
 	}
-
+	//고객 제거시 필요한 컨틀로러
 	@Override
 	public void removeMemberById(String id) {
 		dao.removeMemberById(id);
 	}
-	
+	//고객들의 정보 조회시 필요한 컨트롤러
 	public List<Members> getMembers() {
 		return dao.getMembers();
 	}
 
-	// 20151124. KKH ADD - 아이디 찾기
+	//고객 아이디 찾기
 	@Override
 	public List findMemberId(HashMap map) {
 		return dao.findMemberId(map);
 	}
 
-	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
+	//잃어버린 비밀번호 찾기
 	@Override
 	public String findMemberPassword(HashMap map) {
 		return dao.findMemberPassword(map);
 	}
 	
-	// 20151120 ADD KKH - 임시비밀번호로 바꿔주기
+	// 임시비밀번호로 바꿔주기
 	@Override
 	public void updateMemberPassword(HashMap map) {
 		dao.updateMemberPassword(map);
 	}
 
-	//20151123 ADD KKH - 고객목록 관련 페이징 처리
+	// 고객목록 관련 페이징 처리
 	@Override
 	public Map getMembersPaging(int pageNo) {
 		HashMap map = new HashMap();
@@ -87,7 +87,7 @@ public class MemberServiceImpl implements MemberService {
 		return map;
 	}
 	
-	// 20151123 추가
+	//고객정보 페이징 처리시 필요한 
 	public int getCountMember(){
 		return dao.selectCountMembers();
 	}

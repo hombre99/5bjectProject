@@ -7,8 +7,6 @@
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 
 <script type="text/javascript">
-
-
    $(document).ready(function() {
       $("#close").on("click", function() {
 
@@ -27,14 +25,13 @@
 		   alert("휴대전화 번호를 입력해 주세요.");
 		   return false;
 	   }
-   }
-   
+   } 
 </script>
 <style type="text/css">
-table {
-
-	margin-left: 70px;
-}
+	table {
+	
+		margin-left: 70px;
+	}
 </style>
 </head>
 <body>
@@ -67,7 +64,6 @@ table {
             <td></td>
             <td colspan="2" align="center"><input type="submit" value="아이디 찾기"> &nbsp;<input type="button" id="close" value="닫기"></td>
             <td></td>
-            <!-- onsubmit 했을시 emailId 체크 emailAddress체크 phoneNumber체크 null일때 alert창-->
          </tr>
       </table>
    </form>

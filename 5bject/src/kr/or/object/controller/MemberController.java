@@ -41,7 +41,8 @@ public class MemberController {
 	private GameScoreService gameService;
 	
 	private static Logger logger = Logger.getLogger(MemberController.class);
-
+	
+	//회원가입시-게임시  필요한 컨트롤러 
 	@RequestMapping(value = "/register_form_validate.do", method = RequestMethod.POST)
 	@Transactional(rollbackFor={Exception.class})
 	public String registerValidate(HttpServletRequest request, @ModelAttribute Members member, Errors errors) {
@@ -53,24 +54,23 @@ public class MemberController {
 			return "/WEB-INF/script/login/register_form_validate.jsp";
 		}
 
-		if ( logger.isInfoEnabled() )
+		if (logger.isInfoEnabled() )
 			logger.info("EmailId[ " + member.getEmailId() + " ] EmailAddress[ " + member.getEmailAddress() + " ]");
 
-		service.insertMember(member);
-		
+		service.insertMember(member);		
 		gameService.insertMember(member.getId());
 
 		return "/member/register_success.do";
 	}
 
-	//20151125 CHJ ID 중복검사 
+	//아이디 중복검사 - Ajax랑 연동.
 	@RequestMapping("/idDuplicatedCheck.do")
 	@ResponseBody
 	public String idDuplicatedCheck(@RequestParam String id){
 		Members member = service.findMemberById(id);
 		return String.valueOf(member!=null);
 	}
-	
+	//로그인시 필요한 컨트롤러
 	@RequestMapping("/login.do")
 	public String login(HttpSession session, @RequestParam String id, @RequestParam String password) {
 		Members login = service.findMemberById(id);
@@ -91,7 +91,7 @@ public class MemberController {
 		return "/WEB-INF/script/main.jsp";
 	}
 
-	// ADD. 20151116. KKH - 20151124 CHJ validator ADD
+	//고객이 자신의 정보 업데이트시 필요한 컨드롤러
 	@RequestMapping(value="/update_form.do", method = RequestMethod.POST)
 	public String update(HttpSession session, @ModelAttribute Members member, Errors errors) {	
 		MemberValidator validate = new MemberValidator();
@@ -106,7 +106,7 @@ public class MemberController {
 			
 	}
 	
-	/*20151125 Error  CHJ ADD */
+	//관리자가 회원들의 정보 업데이트시 필요한 컨트롤러
 	@RequestMapping(value="/update_member.do", method = RequestMethod.POST)
 	public String memberUpdate(HttpSession session, @ModelAttribute Members member) {
 			service.updateMemberById(member);
@@ -114,21 +114,22 @@ public class MemberController {
 			return "/WEB-INF/script/login/member_info2.jsp";
 	}
 
-	// ADD. 20151116. KKH
+	// 로그아웃시 필요한 컨트롤러
 	@RequestMapping("/logout.do")
 	public String logout(HttpSession session) {
 		session.invalidate(); 
 		return "/WEB-INF/script/main.jsp";
 	}
 
-	// ADD. 20151116. KKH
+	// 로그아웃시 필요한 컨트롤러
 	@RequestMapping("/leave.do")
 	public String leave(HttpSession session, @RequestParam String id) {
 		service.removeMemberById(id);
 		session.invalidate();
 		return "/WEB-INF/script/main.jsp";
 	}
-
+	
+	//관리자가 회원의 이름을 클릭시 고객정보가 보이도록 하는 컨트롤러
 	@RequestMapping("/memberInfo.do")
 	public String memberInfo(HttpSession session, @RequestParam String id) {
 		Members member = service.findMemberById(id);
@@ -136,7 +137,7 @@ public class MemberController {
 		return "/WEB-INF/script/login/member_info.jsp";
 	}
 
-	// 20151123. ADD KKH
+	//관리자가 회원정보 조회시 필요한 컨트롤러 
 	@RequestMapping("/memberList.do")
 	public String list(@RequestParam(defaultValue = "1") String pageNo, ModelMap model) {
 		int page = 1;
@@ -152,7 +153,6 @@ public class MemberController {
 				list2.remove(i);
 			}
 		}
-
 		model.addAllAttributes(attributes);
 		return "/WEB-INF/script/login/member_list.jsp";
 	}
@@ -165,10 +165,7 @@ public class MemberController {
 		return "/member/memberList.do";
 
 	}
-	/*
-	  20151125 Error  CHJADD
-	  return 값을 /WEB-INF/script/login/member_info2.jsp 로 바꿔줌
-	 *  */
+	//관리자가 고객정보를 업데이트
 	@RequestMapping("/update_member.do")
 	public String memberUpdate(HttpSession session, @ModelAttribute Members member, Errors errors) {
         service.updateMemberById(member);
@@ -176,8 +173,8 @@ public class MemberController {
         return "/WEB-INF/script/login/member_info2.jsp";
 	}
 
-	// ADD. 2015118~20. CHJ -고객 문의 요청 Controller
-	@RequestMapping("request_member.do")
+	//고객이 관리자에게 문의 요청하는 컨트롤러
+	@RequestMapping("/request_member.do")
 	public String RequestUpload(@RequestParam String requestId, @RequestParam String requestInfo,
 			@RequestParam MultipartFile upImage, HttpServletRequest request) throws IOException {
 		// 한글처리
@@ -211,17 +208,17 @@ public class MemberController {
 		return url;
 	}
 
-	// 20151120 chj select upload ADD
-	@RequestMapping("request_list.do")
+	//  관리자가 고객문의요청 리스트를 조회하는 컨트롤러 
+	@RequestMapping("/request_list.do")
 	public String requestList(@RequestParam(defaultValue = "1") String pageNo, ModelMap model) {
-
 		int page = 1;
-		try {
-			page = Integer.parseInt(pageNo);
-		} catch (NumberFormatException e) {
-		}
-		Map attributes = service.getRequestList(page);
-		model.addAllAttributes(attributes);
+		
+			try {
+				page = Integer.parseInt(pageNo);
+			}catch (NumberFormatException e) {
+			}
+			Map attributes = service.getRequestList(page);
+			model.addAllAttributes(attributes);
 		
 		if ( logger.isInfoEnabled() )
 			logger.info("attributes : " + attributes);
@@ -230,7 +227,7 @@ public class MemberController {
 
 	}
 
-	// 20151120. ADD KKH - 잃어버린 ID찾기
+	// 잃어버린 아이디를 찾는 컨트롤러
 	@RequestMapping(value = "/find_memberId.do", method = RequestMethod.POST)
 	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam String phoneNumber){
 		if ( logger.isInfoEnabled() )
@@ -247,7 +244,7 @@ public class MemberController {
 		return "/WEB-INF/script/login/find_id_result.jsp";  
 	}
 
-	// 20151120. ADD KKH - 잃어버린 비밀번호 찾기
+	// 잃어버린 비밀번호 찾는 컨트롤러 
 	@RequestMapping(value = "/find_MemberPassword.do", method = RequestMethod.POST)
 	public String findMemberPassword(HttpServletRequest request, @RequestParam String id, @RequestParam String emailId,
 			@RequestParam String emailAddress, @RequestParam String phoneNumber) {

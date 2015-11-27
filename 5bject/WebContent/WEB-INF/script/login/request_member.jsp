@@ -18,6 +18,7 @@
 			history.go(-1);
 		}
 </script>
+
 <style type="text/css">
 		table{
 		margin-left: 50px;
@@ -37,6 +38,7 @@
 	<header>
 		<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 	</header>
+	
 	<p></p>
 	<form action="/5bject/member/request_member.do" method="post" enctype="multipart/form-data" onsubmit="return request_click()">
 		<table>
