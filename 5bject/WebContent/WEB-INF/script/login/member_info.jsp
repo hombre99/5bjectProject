@@ -29,6 +29,9 @@
       </script>
       <!-- css header, table 처리 -->
       <style type="text/css">
+      	 table tr td.main{
+      	 	font-weight: bold;
+      	 }
          header{
             background-color: lightblue;
             color: white;
@@ -49,12 +52,12 @@
    </header>
       <table>
          <tr><td colspan="2" align="center"><h2><font color="lightblue">${memberInfo.id}의 회원정보</font></h2></td></tr>
-         <tr><td>Id </td><td> ${memberInfo.id}<br></td></tr>
-         <tr><td>Name </td><td> ${memberInfo.name }<br></td></tr>
-         <tr><td>Birthday </td><td>  ${memberInfo.year }년 ${memberInfo.month }월 ${memberInfo.day}일<br></td></tr>
-         <tr><td>Gender </td><td> ${memberInfo.gender }<br></td></tr>
-         <tr><td> Email </td><td> ${memberInfo.emailId }@${memberInfo.emailAddress }<br></td></tr>
-         <tr><td>Phone-number </td><td> ${memberInfo.phoneNumber}</td></tr>
+         <tr><td class="main">Id </td><td> ${memberInfo.id}<br></td></tr>
+         <tr><td class="main">Name </td><td> ${memberInfo.name }<br></td></tr>
+         <tr><td class="main">Birthday </td><td>  ${memberInfo.year }년 ${memberInfo.month }월 ${memberInfo.day}일<br></td></tr>
+         <tr><td class="main">Gender </td><td> ${memberInfo.gender }<br></td></tr>
+         <tr><td class="main"> Email </td><td> ${memberInfo.emailId }@${memberInfo.emailAddress }<br></td></tr>
+         <tr><td class="main">Phone-number </td><td> ${memberInfo.phoneNumber}</td></tr>
          <tr><td colspan="2"></td></tr>
          <tr>
             <td colspan="2">              

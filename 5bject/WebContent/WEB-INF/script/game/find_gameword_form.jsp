@@ -11,11 +11,12 @@
 		<menu>
 			<jsp:include page="/WEB-INF/script/layout/game_menu.jsp" />
 		</menu>
-		<h2>등록된 특정단어 찾기</h2>
+		
 		<form action="/5bject/game/findWord.do">
-			<table>
+			<table style="width: 500px" border="1">
+				<tr><td colspan="3" align="center"><h2><font face="HY견고딕" color="lightblue">등록된 특정단어 찾기</font></h2></td></tr>
 				<tr>
-					<td>
+					<td colspan="3" align="center">
 						<input type="text" name="word" />
 					</td>
 				</tr>

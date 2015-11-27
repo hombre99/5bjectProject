@@ -18,19 +18,19 @@
 	}
 </script>
 <style type="text/css">
-	
+	table tr th{
+		background-color: #f1f2f2;
+		font-weight: bold;
+	}
 	#table{
-		background-color: white;
 		margin-top: 20px;
 	}
 	a {
 		text-decoration: none !important;
 		color: white;
-	}
-	
+	}	
 	menu {
 		background-color: powderblue;
-		color: white;
 		padding: 10px;
 		font-weight: bold;
 	}
@@ -38,13 +38,13 @@
 </head>
 <body>
 	<menu>
-		<jsp:include page="/WEB-INF/script/layout/menu.jsp" />
+		&nbsp;&nbsp;<jsp:include page="/WEB-INF/script/layout/menu.jsp" />
 	</menu>
 	
 	<c:choose>
 		<c:when test="${fn:length(requestScope.list)==0 }">		
 			<table style="width: 800px" border="1">
-				<tr><td colspan="2" align="center"><h2>고객문의요청</h2></td></tr>
+				<tr><td colspan="2" align="center"><h2><font face="HY견고딕" color="lightblue">고객문의요청</font></h2></td></tr>
 				<tr><td colspan="2" align="center">문의한 고객이 없습니다.</td></tr>
 			</table>
 		</c:when>
@@ -52,8 +52,7 @@
 		<c:otherwise>
 			<table style="width: 800px" border="1">
 				<tr>
-					<td></td>
-					<td colspan="2" align="center"><h2>고객문의요청</h2></td>
+					<td colspan="4" align="center"><h2><font face="HY견고딕" color="lightblue">고객문의요청</font></h2></td>
 				</tr>
 				<tr>
 					<th><b>고객문의날짜</b></th>

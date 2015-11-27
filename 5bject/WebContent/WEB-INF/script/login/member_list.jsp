@@ -20,21 +20,31 @@
 </script>
 
 <style type="text/css">
+	table tr td.id{
+		background-color:darkgray;
+	}
+	table tr th{
+		background-color: #f1f2f2;
+		font-weight: bold;
+	}
 	a {
 		text-decoration: none !important;
-	}
-	
+		color: white;
+	}	
 	menu {
 		background-color: powderblue;
 		color: white;
 		padding: 10px;
 		font-weight: bold;
 	}
+		#table{
+		margin-top: 20px;
+	}
 </style>
 </head>
 <body>
 	<menu>
-		<jsp:include page="/WEB-INF/script/layout/menu.jsp" />
+		&nbsp;&nbsp;<jsp:include page="/WEB-INF/script/layout/menu.jsp" />
 	</menu>
 	<c:choose>
 
@@ -50,7 +60,7 @@
 		<c:otherwise>
 			<table style="width: 800px" border="1">
 				<tr>
-					<td colspan="6" align="center"><h2>회원목록</h2></td>
+					<td colspan="6" align="center"><h2><font face="HY견고딕" color="lightblue">회원목록</font></h2></td>
 				</tr>
 				<tr>
 					<th>회원 ID</th>
@@ -63,8 +73,7 @@
 
 				<c:forEach items="${requestScope.list }" var="member">					
 					<tr>
-						<td><a href="/5bject/member/memberInfo.do?id=${member.id }&pageNo=${requestScope.pagingBean.currentPage}">${member.id }</a>
-						</td>
+						<td class="id"><a href="/5bject/member/memberInfo.do?id=${member.id }&pageNo=${requestScope.pagingBean.currentPage}">${member.id }</a></td>
 						<td>${member.name }</td>
 						<td>${member.month }/${member.day }/${member.year }</td>
 						<td>${member.gender }</td>

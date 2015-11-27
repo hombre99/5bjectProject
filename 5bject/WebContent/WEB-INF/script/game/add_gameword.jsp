@@ -20,9 +20,10 @@
 		<menu>
 			<jsp:include page="/WEB-INF/script/layout/game_menu.jsp" />
 		</menu>
-		<h2>게임 단어 추가</h2>
+
 		<form action="/5bject/game/addWord.do" onsubmit="return check();">
-			<table>
+			<table style="width:500px"border="1">
+				<tr><td colspan="3" align="center"><h2><font face="HY견고딕" color="lightblue">게임 단어 추가</font></h2></td></tr>
 				<tr>
 					<th>게임번호</th>
 					<th>난이도</th>

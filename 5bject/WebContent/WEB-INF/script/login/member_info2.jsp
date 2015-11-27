@@ -30,6 +30,9 @@
 </script>
       <!-- css header, table 처리 -->
       <style type="text/css">
+       	 table tr td.main{
+      	 	font-weight: bold;
+      	 }
          header{
             background-color: lightblue;
             color: white;
@@ -51,12 +54,12 @@
       <table>
       <!--***님의 회원정보 font color change 20151125 -->
          <tr><td colspan="2" align="center"><h2><font color="lightblue">${sessionScope.memberInfo.id}의 회원정보</font></h2></td></tr>
-         <tr><td>Id </td><td> ${sessionScope.memberInfo.id}<br></td></tr>
-         <tr><td>Name </td><td> ${sessionScope.memberInfo.name }<br></td></tr>
-         <tr><td>Birthday </td><td>${sessionScope.memberInfo.year }년 ${sessionScope.memberInfo.month }월  ${sessionScope.memberInfo.day }일<br></td></tr>
-         <tr><td>Gender </td><td> ${sessionScope.memberInfo.gender }<br></td></tr>
-         <tr><td> Email </td><td> ${sessionScope.memberInfo.emailId }@${sessionScope.memberInfo.emailAddress }<br></td></tr>
-         <tr><td>Phone-number </td><td> ${sessionScope.memberInfo.phoneNumber}</td></tr>
+     	 <tr><td class="main">Id </td><td> ${sessionScope.memberInfo.id}<br></td></tr>
+         <tr><td class="main">Name </td><td> ${sessionScope.memberInfo.name }<br></td></tr>
+         <tr><td class="main">Birthday </td><td>${sessionScope.memberInfo.year }년 ${sessionScope.memberInfo.month }월  ${sessionScope.memberInfo.day }일<br></td></tr>
+         <tr><td class="main">Gender </td><td> ${sessionScope.memberInfo.gender }<br></td></tr>
+         <tr><td class="main"> Email </td><td> ${sessionScope.memberInfo.emailId }@${sessionScope.memberInfo.emailAddress }<br></td></tr>
+         <tr><td class="main">Phone-number </td><td> ${sessionScope.memberInfo.phoneNumber}</td></tr>
          <tr><td colspan="2"></td></tr>
          <tr>
             <td colspan="2">
