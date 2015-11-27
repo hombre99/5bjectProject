@@ -167,8 +167,8 @@
 				<tr><td colspan="2"><b>성별</b></td></tr>
 				<tr>
 					<td colspan="2">
-						<label>male:<input type="radio" name="gender" ${sessionScope.member.gender=='male'? 'checked=checked':''}/></label>
-						<label>female:<input type="radio" name="gender" ${sessionScope.member.gender=='female'? 'checked=checked':''} /></label>
+						<label>male:<input type="radio" name="gender" value="male" ${sessionScope.member.gender=='male'? 'checked=checked':''}/></label>
+						<label>female:<input type="radio" name="gender" value="female" ${sessionScope.member.gender=='female'? 'checked=checked':''} /></label>
 						<br>
 						<span class="error"><form:errors path = "members.gender" delimiter=" - " /></span>
 					</td>

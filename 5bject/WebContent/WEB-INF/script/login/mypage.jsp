@@ -39,7 +39,7 @@
 				text-align: left;
 				padding: 5px;
 			}
-			/*table margin-left 70px change 20151124 CHJ*/
+
 			table{
 				margin-left: 100px;
 			}
@@ -51,16 +51,16 @@
 	<header>
 		<jsp:include page="/WEB-INF/script/layout/header.jsp" />
 	</header>
-	<!-- 20151124 CHJ table update -->
+
 		<table>
 			<tr><td colspan="2" align="center"><br><font size="5" face="impact" color="lightblue">${sessionScope.member.id}</font><font color="lightblue">의 회원정보</font><br></td></tr>
 			<tr><td colspan="2"> </td></tr>
-			<tr><td><b>ID</b></td><td> ${sessionScope.member.id}<br></td></tr>
-			<tr><td><b>NAME</b></td><td> ${sessionScope.member.name }<br></td></tr>
-			<tr><td><b>BIRTHDAY</b></td><td> ${sessionScope.member.month }  ${sessionScope.member.day} ${sessionScope.member.year }<br></td></tr>
-			<tr><td><b>GENDER</b></td><td> ${sessionScope.member.gender }<br></td></tr>
-			<tr><td><b>EMAIL</b></td><td> ${sessionScope.member.emailId }@${sessionScope.member.emailAddress }<br></td></tr>
-			<tr><td><b>PHONENUMBER</b></td><td> ${sessionScope.member.phoneNumber}</td></tr>
+			<tr><td><b>Id</b></td><td> ${sessionScope.member.id}<br></td></tr>
+			<tr><td><b>Name</b></td><td> ${sessionScope.member.name }<br></td></tr>
+			<tr><td><b>Birhday</b></td><td>  ${sessionScope.member.year }년 ${sessionScope.member.month }월  ${sessionScope.member.day}일 <br></td></tr>
+			<tr><td><b>Gender</b></td><td> ${sessionScope.member.gender }<br></td></tr>
+			<tr><td><b>Email</b></td><td> ${sessionScope.member.emailId }@${sessionScope.member.emailAddress }<br></td></tr>
+			<tr><td><b>Phone-number</b></td><td> ${sessionScope.member.phoneNumber}</td></tr>
 			<tr><td colspan="2"></td></tr>
 			<tr>
 				<td colspan="2">
