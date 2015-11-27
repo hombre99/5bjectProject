@@ -52,18 +52,22 @@
 			}
 			#boardListDiv{
 			height: 800px;
+			align:center;
 			}
 			
 			#btnTr{
 				align:center;
 			}
-			
 			.boardDiv{
 				background-color: #f1f2f2;
 				padding: 20px;
 			}
-
-
+			#pagingDiv{
+				align:center;
+			}
+			td,tr,div {
+				align:center;
+			}
 			</style>
 </head>
 <body>
@@ -91,7 +95,7 @@
 			</tr>
 			<c:forEach items="${requestScope.boardList}"  var="board">
 			<tr>
-				<td align="center">&nbsp;</td>
+				<td >&nbsp;</td>
 				<td>${board.writeNo}</td>
 				<!-- 넘어가는 글 ... 으로 변환 -->
 				<!-- style="text-overflow:ellipsis; overflow:hidden; width:140px;" -->
@@ -105,14 +109,14 @@
 				<td>${board.id}</td>
 				<td>${board.date}</td>
 				<td>${board.hit}</td>        
-				<td align="center">&nbsp;</td>                                                                                                                                                                                                                 
+				<td >&nbsp;</td>                                                                                                                                                                                                                 
 			<tr>
 			</c:forEach>
 			<tr id="btnTr">
 				
   			</tr>
 		</table>
-		<div align="center">
+		<div id="pagingDiv">
 		<!-- Paging처리 -->
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.previousPageGroup }">
@@ -148,8 +152,7 @@
 
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.nextPageGroup }">
-			<a
-				href="/5bject/board/notice.do?pageNo=${requestScope.pagingBean.endPageOfPageGroup+1}">
+			<a href="/5bject/board/notice.do?pageNo=${requestScope.pagingBean.endPageOfPageGroup+1}">
 				▶ </a>
 		</c:when>
 		<c:otherwise>▶</c:otherwise>

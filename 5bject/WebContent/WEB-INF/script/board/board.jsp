@@ -142,8 +142,7 @@ $(document).ready(function(){
 
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.nextPageGroup }">
-			<a
-				href="/5bject/board/board.do?pageNo=${requestScope.pagingBean.endPageOfPageGroup+1}">
+			<a href="/5bject/board/board.do?pageNo=${requestScope.pagingBean.endPageOfPageGroup+1}">
 				▶ </a>
 		</c:when>
 		<c:otherwise>▶</c:otherwise>
