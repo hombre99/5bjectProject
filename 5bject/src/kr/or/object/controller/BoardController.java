@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.or.object.service.BoardService;
 import kr.or.object.vo.Board;
-import kr.or.object.vo.Members;
 
 @Controller
 @RequestMapping("/board")
@@ -28,12 +27,17 @@ public class BoardController {
 	
 	//공지사항 
 	@RequestMapping("/notice.do")
-	public String NoticeList(HttpSession session){
-		
-		List<Board> noticeList = service.getContentNoticeList();
+	public String NoticeList(HttpSession session,  @RequestParam(defaultValue = "1") String pageNo, ModelMap model){	
+		int page = 1;
+		try {
+			page = Integer.parseInt(pageNo);
+		} catch (NumberFormatException e) {
+		}
+		Map attributes = service.getBoardPaging(page, 1);
+		//List<Board> noticeList = service.getContentNoticeList();
 
-		session.setAttribute("noticeList", noticeList);
-		
+		//session.setAttribute("noticeList", noticeList);
+		model.addAllAttributes(attributes);
 		return "/WEB-INF/script/board/notice.jsp";
 	}
 	
@@ -50,16 +54,17 @@ public class BoardController {
 	}
 	*/
 	@RequestMapping("/board.do")
-	public String Board(HttpSession session, @RequestParam(defaultValue = "1") String pageNo) {
+	public String Board(HttpSession session, @RequestParam(defaultValue = "1") String pageNo, ModelMap model) {
 		int page = 1;
 		try {
 			page = Integer.parseInt(pageNo);
 		} catch (NumberFormatException e) {
 		}
 		Map attributes = service.getBoardPaging(page, 2);
-		List<Board> boardList = (List<Board>) attributes.get("boardList");
+		//List<Board> boardList = (List<Board>) attributes.get("boardList");
 
-		session.setAttribute("boardList", boardList);
+		//session.setAttribute("boardList", boardList);
+		model.addAllAttributes(attributes);
 		return "/WEB-INF/script/board/board.jsp";
 	}
 	

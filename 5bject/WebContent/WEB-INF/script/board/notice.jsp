@@ -86,7 +86,7 @@
    					<td width="58">조회수</td>
    					<td width="7"><img src="/5bject/image/board/table_right.gif" width="5" height="30" /></td>
 			</tr>
-			<c:forEach items="${sessionScope.noticeList}"  var="board">
+			<c:forEach items="${requestScope.boardList}"  var="board">
 			<tr>
 				<td align="center">&nbsp;</td>
 				<td>${board.writeNo}</td>
@@ -105,6 +105,49 @@
 				
   			</tr>
 		</table>
+		<div align="center">
+		<!-- Paging처리 -->
+	<c:choose>
+		<c:when test="${requestScope.pagingBean.previousPageGroup }">
+
+			<a href="/5bject/board/notice.do?pageNo=${requestScope.pagingBean.startPageOfPageGroup-1 }">
+
+				◀ </a>
+		</c:when>
+		<c:otherwise>
+		◀
+	</c:otherwise>
+	</c:choose>
+
+	<!-- Page Group 내의 page들 링크 처리
+	- PageGroup의 시작/끝페이지 번호 - 반복문 처리
+ -->
+	<c:forEach begin="${requestScope.pagingBean.startPageOfPageGroup }"
+		end="${requestScope.pagingBean.endPageOfPageGroup }" var="page">
+		<c:choose>
+			<c:when test="${page == requestScope.pagingBean.currentPage }">
+			[${page}]
+		</c:when>
+			<c:otherwise>
+				<a href="/5bject/board/notice.do?pageNo=${page }"> ${page }
+				</a>
+			</c:otherwise>
+		</c:choose>
+	&nbsp;&nbsp;
+</c:forEach>
+	<!-- 3. 다음 페이지 그룹 링크
+    다음 페이지 그룹이 있으면 링크 처리 없으면 그냥 화살표만 나오도록 처리.
+ -->
+
+	<c:choose>
+		<c:when test="${requestScope.pagingBean.nextPageGroup }">
+			<a
+				href="/5bject/board/notice.do?pageNo=${requestScope.pagingBean.endPageOfPageGroup+1}">
+				▶ </a>
+		</c:when>
+		<c:otherwise>▶</c:otherwise>
+	</c:choose>
+	</div>
 	</div>
 		<footer>		
 			<jsp:include page="/WEB-INF/script/layout/footer.jsp" />

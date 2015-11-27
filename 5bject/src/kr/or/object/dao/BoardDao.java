@@ -31,6 +31,6 @@ public interface BoardDao {
    //게시판 조회시 paging처리 관련
    int selectCountBoard(int notice);
    
-	List<Board> getBoardsPaging(int pageNo);
+	List<Board> getBoardsPaging(int pageNo, int notice);
 	
 }

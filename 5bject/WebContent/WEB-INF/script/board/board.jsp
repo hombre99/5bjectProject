@@ -86,7 +86,7 @@ $(document).ready(function(){
    					<td width="58">조회수</td>
    					<td width="7"><img src="/5bject/image/board/table_right.gif" width="5" height="30" /></td>
 			</tr>
-			<c:forEach items="${sessionScope.boardList}"  var="board">
+			<c:forEach items="${requestScope.boardList}"  var="board">
 			<tr>
 				<td align="center">&nbsp;</td>
 				<td>${board.writeNo}</td>

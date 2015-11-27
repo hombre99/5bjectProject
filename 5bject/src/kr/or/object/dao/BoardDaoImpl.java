@@ -56,13 +56,16 @@ public class BoardDaoImpl implements BoardDao{
    }
    
    @Override
-   public List<Board> getBoardsPaging(int pageNo) {
+   public List<Board> getBoardsPaging(int pageNo, int notice) {
 	   HashMap map = new HashMap();
-		
+	   List<Board> list =null;
 		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE_BOARD);
 		map.put("pageNo", pageNo);
-		
-		List<Board> list = session.selectList("boardMapper.selectBoardPaging",map);
+		 if(notice==1){
+	    list = session.selectList("boardMapper.selectNoticePaging",map);
+		 }else if(notice==2){
+		list = session.selectList("boardMapper.selectBoardPaging",map);
+		 }
 	   return list;
    }
 

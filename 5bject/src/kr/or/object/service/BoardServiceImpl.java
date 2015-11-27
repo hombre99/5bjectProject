@@ -71,7 +71,7 @@ public class BoardServiceImpl implements BoardService{
    @Override
    public Map getBoardPaging(int pageNo, int notice) {
 	   HashMap map = new HashMap();
-		map.put("boardList", dao.getBoardsPaging(pageNo));
+		map.put("boardList", dao.getBoardsPaging(pageNo, notice));
 		PagingBean pagingBean = new PagingBean(dao.selectCountBoard(notice),pageNo);
 		map.put("pagingBean", pagingBean);
 		return map;

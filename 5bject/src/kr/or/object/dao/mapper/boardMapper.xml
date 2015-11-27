@@ -48,6 +48,18 @@
 	<select id="boardNoticeSelect" resultMap="board-resultmap" resultType="board">
 			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 1 and ref=0 order by write_date desc
 	</select>
+	<select id="selectNoticePaging" parameterType="hashmap" resultMap="board-resultmap">
+		select  write_no,title,member_id,write_date,hit
+			from (
+				select  write_no,title,member_id,write_date,hit, ceil(rownum/#{contentsPerPage}) page
+				from(
+					select  write_no,title,member_id,write_date,hit
+					from board where notice=1 and ref=0
+					order by write_date desc
+				)
+			)
+			where page = #{pageNo}	
+	</select>
 	
 	<!-- 게시글 목록 셀렉트 -->
 	<select id="boardBoardSelect" resultMap="board-resultmap" resultType="board">
@@ -60,8 +72,8 @@
 				select  write_no,title,member_id,write_date,hit, ceil(rownum/#{contentsPerPage}) page
 				from(
 					select  write_no,title,member_id,write_date,hit
-					from board
-					order by write_date
+					from board where notice=2 and ref=0
+					order by write_date desc
 				)
 			)
 			where page = #{pageNo}	
