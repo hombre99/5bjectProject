@@ -46,35 +46,37 @@ public class BoardDaoImpl implements BoardDao{
    //페이징 처리 관련
    @Override
    public int selectCountBoard(int notice) {	   
-	   
-	   return session.selectOne("boardMapper.selectCountboard");
+	  int result = 0 ;
+	   if(notice==1){
+		   result =  session.selectOne("boardMapper.selectCountNotice");
+	   }else if(notice==2){
+		   result =  session.selectOne("boardMapper.selectCountBoard");
+	   }
+	   System.out.println("게시글의 갯수는 "+result);
+	   return result;
    }
-
+   
    @Override
-   public List<Board> getBoardsPaging(int pageNo) {
+   public List<Board> getBoardsPaging(int pageNo, int notice) {
 	   HashMap map = new HashMap();
-		
-		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE_BOARD);
+	   List<Board> list =null;
+		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
 		map.put("pageNo", pageNo);
-		
-		List<Board> list = session.selectList("boardMapper.selectBoardPaging",map);
+		 if(notice==1){
+	    list = session.selectList("boardMapper.selectNoticePaging",map);
+		 }else if(notice==2){
+		list = session.selectList("boardMapper.selectBoardPaging",map);
+		 }
 	   return list;
    }
 
-// 총 글 갯수
-   public int getMax() {
-      int max = session.selectList("boardMapper.boardAllSelect").size();
-      return max;
-   }
-
-// 게시글 쓰기
+   // 게시글 쓰기
    public void insertWrite(Board board) {
       session.insert("boardMapper.boardInsert",board);
    }
    
    // 댓글 쓰기
    public void insertReply(Board board) {
-	   System.out.println(board.getWriteNo()+"---------"+board.getId()+"---------"+board.getTitle()+"---------"+board.getContent()+"---------"+board.getNotice());
       session.update("boardMapper.boardInsertReply",board);
   }   
 

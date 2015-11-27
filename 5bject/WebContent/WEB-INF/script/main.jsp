@@ -48,7 +48,13 @@
 
 						// width, height change. 20151126. CHJ
 						$("#language_link").on("click", function() {
-							window.open("/5bject/language/computer_language.do","ok","width=1220, height=930,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							// 웹 브라우저 체크
+							var agent = navigator.userAgent.toLowerCase();
+
+							if (agent.indexOf("chrome") != -1)
+								window.open("/5bject/language/computer_language.do","ok","width=1220, height=950,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							else
+								window.open("/5bject/language/computer_language.do","ok","width=1220, height=930,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
 						//  20151125 same

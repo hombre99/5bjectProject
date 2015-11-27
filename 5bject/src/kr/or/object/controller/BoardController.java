@@ -1,12 +1,14 @@
 package kr.or.object.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,17 +27,23 @@ public class BoardController {
 	
 	//공지사항 
 	@RequestMapping("/notice.do")
-	public String NoticeList(HttpSession session){
-		
-		List<Board> noticeList = service.getContentNoticeList();
+	public String NoticeList(HttpSession session,  @RequestParam(defaultValue = "1") String pageNo, ModelMap model){	
+		int page = 1;
+		try {
+			page = Integer.parseInt(pageNo);
+		} catch (NumberFormatException e) {
+		}
+		Map attributes = service.getBoardPaging(page, 1);
+		//List<Board> noticeList = service.getContentNoticeList();
 
-		session.setAttribute("noticeList", noticeList);
-		
+		//session.setAttribute("noticeList", noticeList);
+		model.addAllAttributes(attributes);
 		return "/WEB-INF/script/board/notice.jsp";
 	}
 	
 	//자유게시판
-	@RequestMapping("/board.do")
+	/*
+	 * @RequestMapping("/board.do")
 	public String Board(HttpSession session){
 		
 		List<Board> boardList = service.getContentBoardList();
@@ -44,22 +52,36 @@ public class BoardController {
 		
 		return "/WEB-INF/script/board/board.jsp";
 	}
-	
+	*/
+	@RequestMapping("/board.do")
+	public String Board(HttpSession session, @RequestParam(defaultValue = "1") String pageNo, ModelMap model) {
+		int page = 1;
+		try {
+			page = Integer.parseInt(pageNo);
+		} catch (NumberFormatException e) {
+		}
+		Map attributes = service.getBoardPaging(page, 2);
+		//List<Board> boardList = (List<Board>) attributes.get("boardList");
+
+		//session.setAttribute("boardList", boardList);
+		model.addAllAttributes(attributes);
+		return "/WEB-INF/script/board/board.jsp";
+	}
 	
 	@RequestMapping(value = "/write_success.do", method = RequestMethod.POST)
 	public String Write(HttpSession session , @ModelAttribute Board board){		
 		
 		String id = board.getId();		
 		
-		if(id.equals("object")){
+		if(id.equals("objectclass")){
 			board.setNotice(1);
 		}else{
 			board.setNotice(2);
-		}		
+		}			
 		
 		service.insertWrite(board);		
 		
-		if(id.equals("object")){
+		if(id.equals("objectclass")){
 			return "/board/notice.do";
 		}else{
 			return "/board/board.do";
@@ -71,7 +93,7 @@ public class BoardController {
 		
 		service.delete(idx);		
 		
-		if(boardId.equals("object")){
+		if(boardId.equals("objectclass")){
 			return "/board/notice.do";
 		}else{
 			return "/board/board.do";
@@ -83,7 +105,7 @@ public class BoardController {
 		
 		String id = board.getId();
 		
-		if(id.equals("object")){
+		if(id.equals("objectclass")){
 			board.setNotice(1);
 		}else{
 			board.setNotice(2);
@@ -91,7 +113,7 @@ public class BoardController {
 		
 		service.update(board);		
 		
-		if(id.equals("object")){
+		if(id.equals("objectclass")){
 			return "/board/notice.do";
 		}else{
 			return "/board/board.do";
@@ -130,17 +152,10 @@ public class BoardController {
 		 List<Board> replyList = service.getReplyList(board.getWriteNo());
 		session.setAttribute("replyList", replyList);
 		
-		System.out.println(replyList);
-		
-		
 
 		if ( logger.isInfoEnabled() )
 			logger.info("board.getWriteNo() : " + board.getWriteNo());
 
 		return "/WEB-INF/script/board/view.jsp";
-	}		
-
-	public void getMax(){
-		service.getMax();
-	}	
+	}
 }

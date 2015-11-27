@@ -32,12 +32,7 @@ public class BoardServiceImpl implements BoardService{
 	   List<Board> replyList = dao.getReplyList(writeNo);
 	   return replyList;
    }
-
-@Override
-   public int getMax() {
-      return dao.getMax();
-   }
-
+   
    @Override
    public void insertWrite(Board board) {
       dao.insertWrite(board);      
@@ -71,7 +66,7 @@ public class BoardServiceImpl implements BoardService{
    @Override
    public Map getBoardPaging(int pageNo, int notice) {
 	   HashMap map = new HashMap();
-		map.put("list", dao.getBoardsPaging(pageNo));
+		map.put("boardList", dao.getBoardsPaging(pageNo, notice));
 		PagingBean pagingBean = new PagingBean(dao.selectCountBoard(notice),pageNo);
 		map.put("pagingBean", pagingBean);
 		return map;

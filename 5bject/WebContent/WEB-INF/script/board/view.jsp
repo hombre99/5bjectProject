@@ -161,27 +161,27 @@ table {
 						<tr height="2" bgcolor="#dddddd">
 							<td colspan="5"></td>
 						</tr>	
-					</table>
+				
 					
 					<c:choose>
 					<c:when test="${sessionScope.replyList }==null">
 					</c:when>
 					<c:otherwise>
 					<c:forEach items='${sessionScope.replyList}' var="reply" >
-						<tr align="center">
+						<tr align="left">
 							<td>
-								<img src= "/5bject/image/board/reply_icon.gif">
+								<img src="/5bject/image/board/reply_icon.gif" >
 							</td>	
 							<td> ${reply.id} </td>
 							<td colspan="3">
-								<textarea readonly="readonly" cols="100" rows="1" >
-									${reply.content}	
-								</textarea>
+								<input type="text" readonly="readonly" size="100" value="${reply.content}" >
+						
 							</td>
 							<td> ${reply.date}</td>
 						</c:forEach>
 						</c:otherwise>
 					</c:choose>
+						</table>
 					<div align="center">
 						<table>
 							<tr align="center" id="btnTr">

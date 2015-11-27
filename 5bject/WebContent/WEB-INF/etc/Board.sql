@@ -32,7 +32,13 @@ INSERT INTO board (write_no, member_id, title, content, write_date,notice,hit)
 VALUES (s_write_no.nextval, 'object', '안녕하세요', '오늘의 공지사항은 없습니다.', sysdate,1, 5)
 
 INSERT INTO board (write_no, member_id, title, content, write_date,notice,ref,hit) 
+			VALUES (s_write_no.nextval, 'object', 'reply', '댓글1', sysdate , 2, 1, 0)
+
+INSERT INTO board (write_no, member_id, title, content, write_date,notice,ref,hit) 
 VALUES (s_write_no.nextval, 'object', 'RE', '공지사항이 왜 없냐 ㅡㅡ', sysdate,1,1, 5)
+
+INSERT INTO board (write_no, member_id, title, content, write_date,notice,ref,hit) 
+VALUES (s_write_no.nextval, 'object', 'test', 'fuck', sysdate,2, 0,0)
 
 UPDATE BOARD SET title='하이욤',content='공지 없어',write_date=sysdate where write_no = 1
 
