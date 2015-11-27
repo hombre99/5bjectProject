@@ -70,6 +70,7 @@
 								location.replace("/5bject/member/logout.do");
 							}
 						});
+
 						//20151125 width 900으로 change
 						$("#memberList").on("click", function() {
 							window.open("/5bject/member/memberList.do?pageNo=${param.pageNo}","ok","width=900, height=700");
@@ -83,6 +84,15 @@
 						$("#gameInfo").on("click", function() {
 							window.open("/5bject/game/findAllWord.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
 						})
+
+						// 20151127. ADD. JSJ.
+						$("#login").on("click", login);
+
+						$("input#loginPassword").on("keypress", function() {
+							if ( event.keyCode == 13 ) {
+								login();
+							}
+						});
 					});
 				</script>
 			</c:otherwise>
@@ -95,9 +105,26 @@
 				function findId() {
 					window.open("/5bject/member/findId.do", "ok", "width=650, height=300");
 				};
+
 				function findPwd() {
 					window.open("/5bject/member/findPwd.do", "ok", "width=650, height=300");
 				};
+
+				function login() {
+					$.ajax({
+						"url" : "/5bject/member/login.do",
+						"data" : {"id":$("input#loginId").val(), "password":$("input#loginPassword").val()},
+						"type" : "POST",
+						// "dataType" : "json",
+						"success" : function(success_url) {
+							location.replace(success_url);
+						},
+						"error" : function(request, status, error) {
+							alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+							location.reload();
+						}
+					});
+				}
 			</script>
 		</c:if>
 
@@ -248,21 +275,20 @@
 								<input type="button" id="logout_link" value="로그아웃" />
 							</c:when>
 							<c:otherwise>
-								<form action ="/5bject/member/login.do" method="post">
-									<table>
-										<p></p>
-										<tr><td colspan="2" align="center"><img src="/5bject/image/member/login.jpg" /></td></tr> 
-										<tr><td>&nbsp;아이디</td><td>&nbsp;<input type="text" name="id" placeholder="아이디 입력" /></td></tr> 
-										<tr><td>&nbsp;비밀번호</td><td>&nbsp;<input type="password" name="password" placeholder="비밀번호 입력" /></td></tr>
-										<tr><td colspan="3"><span class="error"><b>${sessionScope.error}</b></span></td></tr>
-										<tr><td>&nbsp;&nbsp;<input type="submit" value="로그인" id="login" /></td><td>&nbsp;&nbsp;<img src="/5bject/image/member/register_form.jpg" id="register_link" /></td></tr>
-										<!-- 20151120. ADD 아이디/비밀번호 찾기 추가 -->
-									</table>
-				
-									<table>
-										<tr><td colspan="3" align="center">&nbsp;&nbsp;<a href ="javascript:findId()" class="findInfo">아이디</a>/<a href="javascript:findPwd()" class="findInfo">비밀번호 찾기</a></td></tr>
-									</table>
-								</form>
+								<!-- 20151127. JSJ. 로그인 로직 AJAX로 변경 -->
+								<table>
+									<p></p>
+									<tr><td colspan="2" align="center"><img src="/5bject/image/member/login.jpg" /></td></tr> 
+									<tr><td>&nbsp;아이디</td><td>&nbsp;<input type="text" name="id" id="loginId" placeholder="아이디 입력" /></td></tr> 
+									<tr><td>&nbsp;비밀번호</td><td>&nbsp;<input type="password" name="password" id="loginPassword" placeholder="비밀번호 입력" /></td></tr>
+									<tr><td colspan="3"><span class="error"><b>${sessionScope.error}</b></span></td></tr>
+									<tr><td>&nbsp;&nbsp;<input type="button" value="로그인" id="login" /></td><td>&nbsp;&nbsp;<img src="/5bject/image/member/register_form.jpg" id="register_link" /></td></tr>
+								</table>
+
+								<!-- 20151120. ADD 아이디/비밀번호 찾기 추가 -->
+								<table>
+									<tr><td colspan="3" align="center">&nbsp;&nbsp;<a href ="javascript:findId()" class="findInfo">아이디</a>/<a href="javascript:findPwd()" class="findInfo">비밀번호 찾기</a></td></tr>
+								</table>
 							</c:otherwise>
 						</c:choose>
 					</div>
