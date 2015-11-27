@@ -32,12 +32,7 @@ public class BoardServiceImpl implements BoardService{
 	   List<Board> replyList = dao.getReplyList(writeNo);
 	   return replyList;
    }
-
-@Override
-   public int getMax() {
-      return dao.getMax();
-   }
-
+   
    @Override
    public void insertWrite(Board board) {
       dao.insertWrite(board);      

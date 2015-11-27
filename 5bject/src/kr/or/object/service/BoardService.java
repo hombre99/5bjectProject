@@ -12,9 +12,7 @@ public interface BoardService {
 	
 	List<Board> getContentNoticeList();
 	
-	List<Board> getReplyList(int writeNo);
-   
-   int getMax();
+	List<Board> getReplyList(int writeNo);   
    
    void insertWrite(Board board);
    
