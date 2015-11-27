@@ -68,7 +68,7 @@ public class BoardController {
 		
 		String id = board.getId();		
 		
-		if(id.equals("object")){
+		if(id.equals("objectclass")){
 			board.setNotice(1);
 		}else{
 			board.setNotice(2);
@@ -76,7 +76,7 @@ public class BoardController {
 		
 		service.insertWrite(board);		
 		
-		if(id.equals("object")){
+		if(id.equals("objectclass")){
 			return "/board/notice.do";
 		}else{
 			return "/board/board.do";
@@ -88,7 +88,7 @@ public class BoardController {
 		
 		service.delete(idx);		
 		
-		if(boardId.equals("object")){
+		if(boardId.equals("objectclass")){
 			return "/board/notice.do";
 		}else{
 			return "/board/board.do";
@@ -100,7 +100,7 @@ public class BoardController {
 		
 		String id = board.getId();
 		
-		if(id.equals("object")){
+		if(id.equals("objectclass")){
 			board.setNotice(1);
 		}else{
 			board.setNotice(2);
@@ -108,7 +108,7 @@ public class BoardController {
 		
 		service.update(board);		
 		
-		if(id.equals("object")){
+		if(id.equals("objectclass")){
 			return "/board/notice.do";
 		}else{
 			return "/board/board.do";

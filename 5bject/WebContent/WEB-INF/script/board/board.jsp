@@ -55,6 +55,11 @@ $(document).ready(function(){
 			#btnTr{
 				align:center;
 			}
+			
+			.boardDiv{
+				background-color: powderblue;
+				padding: 20px;
+			}
 
 			</style>
 </head>
@@ -62,6 +67,11 @@ $(document).ready(function(){
 <header>
 			<jsp:include page="/WEB-INF/script/layout/header.jsp"/>
 </header>
+<div class="boardDiv">
+<board>
+			<jsp:include page="/WEB-INF/script/layout/board.jsp" />
+</board>
+</div>
 <div id="boardDiv">
 		<table width="70%" cellpadding="0" cellspacing="0" border="0">
 				<tr><td colspan="7" align="center"><h1>자유게시판</h1></td></tr>

@@ -79,7 +79,6 @@ public class BoardDaoImpl implements BoardDao{
    
    // 댓글 쓰기
    public void insertReply(Board board) {
-	   System.out.println(board.getWriteNo()+"---------"+board.getId()+"---------"+board.getTitle()+"---------"+board.getContent()+"---------"+board.getNotice());
       session.update("boardMapper.boardInsertReply",board);
   }   
 

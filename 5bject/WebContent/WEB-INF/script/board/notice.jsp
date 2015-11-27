@@ -12,7 +12,7 @@
 
 			var loginId = '${ sessionScope.member.id }';
 			
-			if(loginId == "object"){
+			if(loginId == "objectclass"){
 				var td = document.createElement("td");
 				td.setAttribute("id", "btnTd");
 				td.setAttribute("colspan", "7");
