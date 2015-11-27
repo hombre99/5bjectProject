@@ -15,11 +15,12 @@
 			function page_back(){
 				history.go(-1);
 			}
-			function checkEngNum(){
+			function checkEngNum(obj){
 				var regType =/^[a-z0-9+]*$/;
-				if (!regType.test(document.getElementById('id').value)){
+				if (!regType.test(obj.value)){
 					alert('영문과 숫자만 입력가능합니다'); 
-					document.getElementById("id").value="";
+					obj.focus();
+					obj.value="";
 				}
 			};	
 			function checkKor(){
@@ -29,17 +30,16 @@
 					//이름 삭제 20151127
 					document.getElementById('name').value="";
 				}
-			}
+			};
 			function noSpaceForm(obj) { // 공백사용못하게
 			    var str_space = /\s/;  // 공백체크
 			    if(str_space.exec(obj.value)) { //공백 체크
 			        alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다.");
 			        obj.focus();
 			        obj.value = obj.value.replace(' ',''); // 공백제거
-			        return false;
 			    }
 			 // onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"
-			}
+			};
 		</script>
 		<style type="text/css">
 		/* css 설정 */
@@ -149,7 +149,7 @@
 				<tr><td colspan="2"><b>이메일</b></td></tr>
 				<tr>
 					<td colspan="2">
-						<input type="text" name=emailId  value="${sessionScope.member.emailId}" onkeyup="noSpaceForm(this); checkEngNum();" onchange="noSpaceForm(this);" placeholder="email을 입력하세요" />@
+						<input type="text" name=emailId  value="${sessionScope.member.emailId}" onkeyup="noSpaceForm(this); checkEngNum(this);" onchange="noSpaceForm(this);" placeholder="email을 입력하세요" />@
 						<select name="emailAddress">
 							<option value="gmail.com" ${sessionScope.member.emailAddress=='gmail.com'? 'selected=selected':''}>gmail.com</option>
 							<option value="nate.com"  ${sessionScope.member.emailAddress=='nate.com'? 'selected=selected':''}>nate.com</option>
