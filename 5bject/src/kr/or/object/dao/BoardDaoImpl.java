@@ -70,13 +70,13 @@ public class BoardDaoImpl implements BoardDao{
 	   return list;
    }
 
-// 총 글 갯수
+   // 총 글 갯수
    public int getMax() {
       int max = session.selectList("boardMapper.boardAllSelect").size();
       return max;
    }
 
-// 게시글 쓰기
+   // 게시글 쓰기
    public void insertWrite(Board board) {
       session.insert("boardMapper.boardInsert",board);
    }
