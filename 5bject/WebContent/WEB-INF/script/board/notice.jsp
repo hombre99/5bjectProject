@@ -47,12 +47,13 @@
 			}
 			
 			table{
-			margin-left: 250px;
-			text-align: center;
+				margin-left: 250px;
+				text-align: center;
 			}
+			
 			#boardListDiv{
-			height: 800px;
-			align:center;
+				height: 800px;
+				text-align: center;
 			}
 			
 			#btnTr{
@@ -62,12 +63,14 @@
 				background-color: #f1f2f2;
 				padding: 20px;
 			}
-			#pagingDiv{
-				align:center;
+			
+			.pasingDiv{
+				margin:auto;
 			}
-			td,tr,div {
+			
+/* 			td,tr,div {
 				align:center;
-			}
+			} */
 			</style>
 </head>
 <body>
@@ -116,7 +119,7 @@
 				
   			</tr>
 		</table>
-		<div id="pagingDiv">
+		<div class="pasingDiv">
 		<!-- Paging처리 -->
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.previousPageGroup }">
