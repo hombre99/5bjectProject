@@ -76,7 +76,6 @@
 </board>
 </div>
 <div id="boardListDiv">
-
 		<!-- style="table-layout: fixed; 테이블에 넘어가는글 전환 적용시키기 -->
 		<table width="70%" cellpadding="0" cellspacing="0" border="0">
 				<tr><td colspan="7" align="center"><h1>공지사항</h1></td></tr>
