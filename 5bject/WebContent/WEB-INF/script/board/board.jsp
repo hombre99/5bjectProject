@@ -9,10 +9,11 @@
 <script type="text/javascript">
 		
 $(document).ready(function(){			
-
+	
+	
 	var loginId = '${ sessionScope.member.id }';
 	
-	if(loginId == "object"){
+	if(loginId != ""){
 		var td = document.createElement("td");
 		td.setAttribute("id", "btnTd");
 		td.setAttribute("colspan", "7");
@@ -57,7 +58,7 @@ $(document).ready(function(){
 			}
 			
 			.boardDiv{
-				background-color: powderblue;
+				background-color: #f1f2f2;
 				padding: 20px;
 			}
 
@@ -101,7 +102,7 @@ $(document).ready(function(){
 			<tr>
 			</c:forEach>
 			<tr id="btnTr">
-				
+			
   			</tr>
 		</table>
 		<div align="center">

@@ -57,6 +57,10 @@
 			#btnTr{
 				align:center;
 			}
+			
+			.boardDiv{
+				background-color: #f1f2f2;
+				padding: 20px;
 
 			</style>
 </head>
@@ -64,6 +68,11 @@
 <header>
 			<jsp:include page="/WEB-INF/script/layout/header.jsp"/>
 </header>
+<div class="boardDiv">
+<board>
+			<jsp:include page="/WEB-INF/script/layout/board.jsp" />
+</board>
+</div>
 <div id="boardDiv">
 		<table width="70%" cellpadding="0" cellspacing="0" border="0">
 				<tr><td colspan="7" align="center"><h1>공지사항</h1></td></tr>

@@ -74,6 +74,8 @@ public class BoardController {
 			board.setNotice(2);
 		}		
 		
+		System.out.println(board);
+		
 		service.insertWrite(board);		
 		
 		if(id.equals("objectclass")){
