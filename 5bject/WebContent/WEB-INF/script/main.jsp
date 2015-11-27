@@ -282,7 +282,7 @@
 									<tr><td>&nbsp;아이디</td><td>&nbsp;<input type="text" name="id" id="loginId" placeholder="아이디 입력" /></td></tr> 
 									<tr><td>&nbsp;비밀번호</td><td>&nbsp;<input type="password" name="password" id="loginPassword" placeholder="비밀번호 입력" /></td></tr>
 									<tr><td colspan="3"><span class="error"><b>${sessionScope.error}</b></span></td></tr>
-									<tr><td>&nbsp;&nbsp;<input type="button" value="로그인" id="login" /></td><td>&nbsp;&nbsp;<img src="/5bject/image/member/register_form.jpg" id="register_link" /></td></tr>
+									<tr><td>&nbsp;&nbsp;<img src="/5bject/image/member/login_button.jpg" id="login"/></td><td>&nbsp;&nbsp;<img src="/5bject/image/member/register_form.jpg" id="register_link" /></td></tr>
 								</table>
 
 								<!-- 20151120. ADD 아이디/비밀번호 찾기 추가 -->
