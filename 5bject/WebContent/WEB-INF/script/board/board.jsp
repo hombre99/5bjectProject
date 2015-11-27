@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,7 +97,7 @@ $(document).ready(function(){
 				<td>${board.writeNo}</td>
 				<td id="boardTitle">
 					<a href="/5bject/board/view.do?writeNo=${board.writeNo}&hit=${board.hit}&id=${board.id}&sessionId=${sessionScope.member.id}">
-						${board.title}
+						${fn:length(board.title)>15?fn:substring(board.title,0,15).concat("....."):board.title}
 					</a>
 				</td>
 				<td>${board.id}</td>
