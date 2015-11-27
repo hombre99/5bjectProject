@@ -77,9 +77,7 @@ public class BoardController {
 			board.setNotice(1);
 		}else{
 			board.setNotice(2);
-		}		
-		
-		System.out.println(board);
+		}			
 		
 		service.insertWrite(board);		
 		
@@ -159,9 +157,5 @@ public class BoardController {
 			logger.info("board.getWriteNo() : " + board.getWriteNo());
 
 		return "/WEB-INF/script/board/view.jsp";
-	}		
-
-	public void getMax(){
-		service.getMax();
-	}	
+	}
 }
