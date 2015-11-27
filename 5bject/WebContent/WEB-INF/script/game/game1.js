@@ -240,38 +240,60 @@ $(document).ready(function() {
 		window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 	});
 
+	/*width height 설정 수정 20151125*/
 	$("#register_link").on("click", function() {
-		window.open("/5bject/member/register.do" ,"ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,resizable=0");
+		window.open("/5bject/member/register.do" ,"ok", "width=500, height=900,toolbar=0,location=0,status=0,menubar=0,resizable=0");
 	});
 
-	$("#update_link").on("click",function(){
+	$("#update_link").on("click",function() {
 		window.open("/5bject/member/update.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 	});
 
-	// language_link ADD. 20151116. CHJ
+	// width, height change. 20151126. CHJ
 	$("#language_link").on("click", function() {
-		window.open("/5bject/language/computer_language.do","ok","width=1100, height=850,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");	
+		// 웹 브라우저 체크
+		var agent = navigator.userAgent.toLowerCase();
+
+		if (agent.indexOf("chrome") != -1)
+			window.open("/5bject/language/computer_language.do","ok","width=1220, height=950,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+		else
+			window.open("/5bject/language/computer_language.do","ok","width=1220, height=930,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 	});
-	// mypage_link, logout_link ADD. 20151116. KKH
+
+	//  20151125 same
 	$("#mypage_link").on("click", function() {
-		window.open("/5bject/member/mypage.do", "ok", "width=500, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
-	});
-
-	$("#logout_link").on("click", function() {
-		if ( confirm("로그아웃하시겠습니까?") ) {
-			location.replace("/5bject/member/logout.do");
-		} 			
-	});
-
-	$("#memberList").on("click", function(){
-		window.open("/5bject/member/memberList.do?pageNo=${param.pageNo}");
+		window.open("/5bject/member/mypage.do", "ok", "width=600, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 	});
 
 	// 20151120. ADD KKH - 포인터 발생
 	$(".findInfo").css("cursor", "pointer").css("text-decoration", "none !important");
 
+	$("#logout_link").on("click", function() {
+		if ( confirm("로그아웃하시겠습니까?") ) {
+			location.replace("/5bject/member/logout.do");
+		}
+	});
+
+	//20151125 width 900으로 change
+	$("#memberList").on("click", function() {
+		window.open("/5bject/member/memberList.do?pageNo=${param.pageNo}","ok","width=900, height=700");
+	});
+
 	/* chj 20151120 link ADD*/
 	$("#request_list").on("click", function() {
 		window.open("/5bject/member/request_list.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
+	});
+
+	$("#gameInfo").on("click", function() {
+		window.open("/5bject/game/findAllWord.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
+	})
+
+	// 20151127. ADD. JSJ.
+	$("#login").on("click", login);
+
+	$("input#loginPassword").on("keypress", function() {
+		if ( event.keyCode == 13 ) {
+			login();
+		}
 	});
 });
