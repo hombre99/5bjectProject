@@ -16,7 +16,7 @@
 	   if(document.member.id.value==""){
 		   alert("아이디를 입력해주세요.");
 		   return false;
-	   }else if(document.member.emailId.value=""){
+	   }else if(document.member.emailId.value==""){
 		   alert("이메일 아이디를 입력해주세요.");
 		   return false;
 	   }else if(document.member.emailAddress.value==""){
@@ -48,8 +48,7 @@ table {
          </tr>
          <tr>
             <td>이메일</td>
-            <td><input type="text" name="emailId" id="emailId"
-               placeholder="email을 입력하세요" /></td>
+            <td><input type="text" name="emailId" id="emailId" placeholder="email을 입력하세요" /></td>
             <td>@</td>
             <td><select name="emailAddress" id="emailAddress">
                   <option value="선택하세요">선택하세요</option>

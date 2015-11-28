@@ -273,14 +273,15 @@ public class MemberController {
 	// 잃어버린 비밀번호 찾는 컨트롤러 
 	@RequestMapping(value = "/find_MemberPassword.do", method = RequestMethod.POST)
 	public String findMemberPassword(HttpServletRequest request, @RequestParam String id, @RequestParam String emailId,
-			@RequestParam String emailAddress, @RequestParam String phoneNumber) {
-		HashMap<String, Object> map = new HashMap();
+			@RequestParam String emailAddress, @RequestParam String phoneNumber){
+		HashMap map = new HashMap();
 
 		map.put("id", id);
 		map.put("emailId", emailId);
 		map.put("emailAddress", emailAddress);
 		map.put("phoneNumber", phoneNumber);
 		String password = service.findMemberPassword(map);
+
 		request.setAttribute("password", password);
 		
 		if (password != null) {
