@@ -12,9 +12,6 @@
 <title>NOTICE</title>
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 <script type="text/javascript">
-var date = new Date();	
-var today = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
-//var time = date.toLocaleTimeString();		
 $(document).ready(function(){			
 	
 	var loginId = '${ sessionScope.member.id }';
