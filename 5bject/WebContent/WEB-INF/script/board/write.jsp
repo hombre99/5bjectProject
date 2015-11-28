@@ -1,77 +1,131 @@
 <%@page contentType = "text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script type="text/javascript">  // 자바 스크립트 시작
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script type="text/javascript" src="/5bject/jquery.do"></script>
+		<script type="text/javascript">  // 자바 스크립트 시작
+			$(document).ready(function() {
+				var id = '${ sessionScope.member.id }';
+				var notice = 2;
+				var ref = 0;
 
-function writeCheck()
-  {
-   var form = document.writeform; 
-  if( !form.title.value )
-   {
-    alert( "제목을 적어주세요" );
-    form.title.focus();
-    return;
-   }
- 
-  if( !form.content.value )
-   {
-    alert( "내용을 적어주세요" );
-    form.memo.focus();
-    return;
-   }
- 
-  form.submit();
-  }
- </script>
-</head>
-<body>
-<form name="writeform" method="post" action="/5bject/board/write_success.do">
-<table>
-  <tr>
-   <td>
-    <table width="100%" cellpadding="0" cellspacing="0" border="0">
-     <tr style="background:url('/5bject/image/board/table_mid.gif') repeat-x; text-align:center;">
-      <td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
-      <td>글쓰기</td>
-      <td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
-     </tr>
-    </table>
-   <table>
-     <tr>
-      <td>&nbsp;</td>
-      <td align="center">제목</td>
-      <td><input name="title" size="100" maxlength="100" value="${requestScope.board.title }"></td>
-      <td>&nbsp;</td>
-     </tr>
-     <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
-	<tr>
-      <td>&nbsp;</td>
-      <td align="center">작성자</td>
-      <td><input type="text" readonly="readonly"  name="id" value="${sessionScope.member.id}" size="20"></td>
-      <td>&nbsp;</td>
-     </tr>
-     <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
-     <tr>
-      <td>&nbsp;</td>
-      <td align="center">내용</td>
-      <td><input name="content" value="${requestScope.board.content}" size="20" style="width:100%; height:360px"></td>
-      <td>&nbsp;</td>
-     </tr>
-     <tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
-     <tr height="2" bgcolor="#82B5DF"><td colspan="5"></td></tr>
-     <tr align="center">
-      <td>&nbsp;</td>
-      <td colspan="2"><input type=button value="등록" OnClick="javascript:writeCheck();">
-       <input type=button value="취소" OnClick="javascript:history.back(-1)">
-      <td>&nbsp;</td>
-     </tr>
-    </table>
-   </td>
-  </tr>
- </table>
-  </form>
-</body>
+				$("input#noticeChk").on("click", function() {
+					if ( this.checked )
+						notice = 1;
+					else
+						notice = 2;
+				});
+
+				$("input#writeOKBtn").on("click", function() {
+					var title = $("input#titleText").val();
+					var content = $("textarea#contentText").val();
+
+					if ( !title ) {
+						alert("제목을 입력하세요.");
+						$("input#titleText").focus();
+						return;
+					}
+
+					if ( !content ) {
+						alert("내용을 입력하세요.");
+						$("textarea#contentText").focus();
+						return;
+					}
+
+					$.ajax({
+						"url" : "/5bject/board/write_success.do",
+						"data" : {"id" : id, "title" : title, "content" : content, "notice" : notice, "ref" : ref},
+						"type" : "POST",
+						"success" : function(success_url) {
+							location.replace(success_url);
+						},
+						"error" : function(request, status, error) {
+							alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+							location.reload();
+						}
+					});
+				});
+			});
+		</script>
+		<style type="text/css">
+			header {
+				background-color: lightblue;
+				
+				color: white;
+				text-align: left;
+				padding: 5px;
+			}
+
+			footer {
+				background-color: lightblue;
+				color: white;
+				height: 100px;
+				clear: both;
+				text-align: center;
+			}
+
+			#contentText {
+				size: 20;
+				width: 100%;
+				height: 360px;
+			}
+		</style>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<td>
+					<table width="100%" cellpadding="0" cellspacing="0" border="0">
+						<tr style="background:url('/5bject/image/board/table_mid.gif') repeat-x; text-align:center;">
+							<td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
+							<td>글쓰기</td>
+							<td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
+						</tr>
+					</table>
+					<table border="1">
+						<tr>
+							<td>&nbsp;</td>
+							<td align="center">제목</td>
+							<td><input type="text" id="titleText" name="title" size="100" maxlength="100" /></td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td align="center">작성자</td>
+							<td>
+								<input type="text" readonly="readonly" id="id" name="id" value="${sessionScope.member.id}" size="20" />
+								<c:if test="${ sessionScope.member.id == 'objectclass' }">
+									<label><input type="checkbox" id="noticeChk" name="notice" />공지사항</label>
+								</c:if>
+							</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
+						<tr>
+							<td>&nbsp;</td>
+							<td align="center">내용</td>
+							<td>
+								<textarea id="contentText" name="content"></textarea>
+							</td>
+							<td>&nbsp;</td>
+						</tr>
+						<tr height="2" bgcolor="#dddddd"><td colspan="5"></td></tr>
+						<tr height="2" bgcolor="#82B5DF"><td colspan="5"></td></tr>
+						<tr align="center">
+							<td>&nbsp;</td>
+							<td colspan="2">
+								<input type=button id="writeOKBtn" value="등록" />
+								<input type=button value="취소" OnClick="javascript:history.back(-1)" />
+							</td>
+							<td>&nbsp;</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</table>
+	</body>
 </html>
