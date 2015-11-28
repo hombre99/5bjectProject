@@ -16,10 +16,10 @@
 			<div id="middle">
 				<div id="sidebar">
 					<form action="/5bject/language/select_language.do" method="GET">
-						<table id ="table1">
+						<table class="table1">
+							<tr><td colspan="2" align="center"><b>언어를 선택하여 주세요</b></td><tr> 
 							<tr>
-								<!-- 20151126 p태그 추가 -->
-								<td><p /><b>언어를 선택하여 주세요</b><br> 
+								<td colspan="2" align="center">		
 									<select name="name">
 										<option value="language">언어선택</option>
 										<option value="java">Java</option>
@@ -32,14 +32,12 @@
 										<option value="scala">Scala</option>
 									</select>
 								</td>
-									<!--
-									<td><input type="submit" value="선택"></td>
-									-->
 							</tr>
-							<tr><td><input type="submit" value="선택"></td></tr>                  
+							<tr><td colspan="2" align="center"><input type="submit" value="선택"></td></tr>                  
 						</table>
 					</form>   
 				</div>	
+				
 				<div id="content">
 					<c:choose>
 						<c:when test="${sessionScope.name==null}">
@@ -47,8 +45,8 @@
 						</c:when>
 						<c:otherwise>
 							<table>
-								<tr><td colspan="2" align ="center">프로그래밍 언어란 컴퓨터와의 대화에 사용되는 일종의 대화수단 입니다.</td></tr>
-								<tr><td colspan="2" align="center">선택한<b>${sessionScope.language.name}</b> 프로그래밍 언어에 대해 소개해 드리겠습니다.<p></td></tr>
+								<tr><td colspan="2" align ="center"><br>프로그래밍 언어란 컴퓨터와의 대화에 사용되는 일종의 대화수단 입니다.</td></tr>
+								<tr><td colspan="2" align="center"><br>선택한<b>${sessionScope.language.name}</b> 프로그래밍 언어에 대해 소개해 드리겠습니다.<p></td></tr>
 								<tr><td><b>선택한 언어의 정의:</b></td></tr>
 								<tr><td>${sessionScope.language.definition}<p></td></tr>
 								<tr><td><b>언어와 관련된 정보:</b></td></tr>
