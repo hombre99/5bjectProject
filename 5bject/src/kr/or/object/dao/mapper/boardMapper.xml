@@ -111,7 +111,8 @@
 		SELECT	<include refid="selectBoard-sql" />
 		FROM	(SELECT	<include refid="selectBoard-sql" /> , CEIL(ROWNUM / #{ contentsPerPage }) PAGE
 				FROM (SELECT <include refid="selectBoard-sql" />
-						FROM BOARD WHERE NOTICE = #{ noticeFlag } AND REF = 0 ORDER BY WRITE_DATE DESC
+						FROM BOARD WHERE NOTICE = #{ noticeFlag } AND REF = 0
+						ORDER BY WRITE_NO DESC, WRITE_DATE DESC
 				)
 		) WHERE PAGE = #{ pageNo }
 	</select>

@@ -4,9 +4,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+function incorrectPop(){
+
+	parent.window.close();
+}
+</script>
 </head>
 <body>
-<a href=""></a>
-<img src="/5bject/image/game/incorrect.jpg" width=370px, height=130px>
+<img src="/5bject/image/game/incorrect.jpg" width=370px, height=130px, onclick="incorrectPop()">
 </body>
 </html>

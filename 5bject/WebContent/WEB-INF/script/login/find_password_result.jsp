@@ -5,6 +5,12 @@
 <head>
 <meta charset=" UTF-8">
 <title>Insert title here</title>
+ <script type="text/javascript" src="/5bject/jquery.do"></script>
+ <script type="text/javascript">
+   function page_back(){
+      history.go(-1);
+   }
+</script>
 <style type="text/css">
 	header {
 	   background-color: lightblue;
