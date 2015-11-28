@@ -16,6 +16,13 @@
 	function page_back(){
 		history.go(-1);
 	}
+	function delete1(){
+		if(confirm("정말 삭제하시겠습니까?")){
+			return true;
+		}else{
+			return false;
+		}
+	}
 </script>
 <link rel="stylesheet" type="text/css" href="/5bject/stylesheet/menu.css" />
 </head>
@@ -36,13 +43,14 @@
 		<c:otherwise>
 			<table style="width: 800px" border="1">
 				<tr>
-					<td colspan="4" align="center"><h2><font face="HY견고딕" color="lightblue">고객문의요청</font></h2></td>
+					<td colspan="5" align="center"><h2><font face="HY견고딕" color="lightblue">고객문의요청</font></h2></td>
 				</tr>
 				<tr>
 					<th><b>고객문의날짜</b></th>
 					<th><b>고객아이디</b></th>
 					<th><b>고객 이메일주소</b></th>
 					<th><b>고객문의사항</b></th>
+					<th><b>문의삭제</b></th>					
 				</tr>
 				<c:forEach items="${requestScope.list}" var="upload">
 					<tr>
@@ -50,10 +58,11 @@
 						<td>${upload.id}</td>
 						<td>${upload.members.emailId}@${upload.members.emailAddress}</td>
 						<td>${upload.requestInfo}</td>
+						<td align="center"><a href="/5bject/member/request_remove.do?date=${upload.date}&pageNo=${requestScope.pagingBean.currentPage}" onclick="return delete1()"><b>삭제</b></a></td>
 					</tr>
 				</c:forEach>
 				<tr>
-					<td colspan="4"><input type="button" value="닫기" id="close">&nbsp;<input type="button" onclick="page_back();" value="뒤로가기"></td>
+					<td colspan="5"><input type="button" value="닫기" id="close">&nbsp;<input type="button" onclick="page_back();" value="뒤로가기"></td>
 				</tr>
 			</table>
 		</c:otherwise>

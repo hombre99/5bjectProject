@@ -24,6 +24,9 @@ public interface MemberService {
 	//고객을 제거시 필요
 	void removeMemberById(String id);
 	
+	//고객문의목록 삭제시 필요 
+	void removeRequestByDate(String date);
+	
 	//고객 정보 조회시 필요
 	List<Members> getMembers();
 
