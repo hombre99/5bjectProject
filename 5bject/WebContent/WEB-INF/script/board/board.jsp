@@ -15,7 +15,6 @@
 var date = new Date();	
 var today = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
 //var time = date.toLocaleTimeString();		
-alert(today);
 $(document).ready(function(){			
 	
 	var loginId = '${ sessionScope.member.id }';
