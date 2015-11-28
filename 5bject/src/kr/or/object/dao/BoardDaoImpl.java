@@ -83,7 +83,6 @@ public class BoardDaoImpl implements BoardDao{
    public Board getView(int idx) {
       return session.selectOne("boardMapper.boardContentSelect",idx);
    }
-
    
    // 조회수 증가
    public void updateHit(Board board) {
@@ -95,6 +94,7 @@ public class BoardDaoImpl implements BoardDao{
       session.delete("boardMapper.boardDelete",idx);
       
    }
+   
    // 게시 글 수정
    public void update(Board board) {
       session.update("boardMapper.boardModify",board);
