@@ -28,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.or.object.service.GameScoreService;
 import kr.or.object.service.MemberService;
 import kr.or.object.validator.MemberValidator;
+import kr.or.object.vo.GameScore;
 import kr.or.object.vo.Members;
 import kr.or.object.vo.Upload;
 
@@ -45,6 +46,7 @@ public class MemberController {
 	//회원가입시-게임시  필요한 컨트롤러 
 	@RequestMapping(value = "/register_form_validate.do", method = RequestMethod.POST)
 	@Transactional(rollbackFor={Exception.class})
+	
 	public String registerValidate(HttpServletRequest request, @ModelAttribute Members member, Errors errors) {
 		MemberValidator validate = new MemberValidator();
 		validate.validate(member, errors);
@@ -99,11 +101,12 @@ public class MemberController {
 	@ResponseBody
 	public String login(HttpSession session, @RequestParam String id, @RequestParam String password) {
 		Members login = service.findMemberById(id);
-		
+		List<GameScore> score =  gameService.selectGameScore(id);
 		if ( login != null ) {
 			if ( id.equals(login.getId()) && password.equals(login.getPassword()) ) {
 				session.setAttribute("id", id);
 				session.setAttribute("member", login);
+				session.setAttribute("score", score);
 			} else {
 				String error = "아이디 또는 비밀번호를 정확하게 입력하여 주세요.";
 				session.setAttribute("error", error);
@@ -188,8 +191,16 @@ public class MemberController {
 		service.removeMemberById(id);
 		gameService.removeGameScore(id);
 		return "/member/memberList.do";
-
 	}
+	
+	//관리자가 고객문의요청을 삭제하는 컨트롤러
+	@RequestMapping("/request_remove.do")
+	@Transactional(rollbackFor={Exception.class})
+	public String remove(@RequestParam String date){
+		service.removeRequestByDate(date);		
+		return "/member/request_list.do";
+	}
+	
 	//관리자가 고객정보를 업데이트
 	@RequestMapping("/update_member.do")
 	public String memberUpdate(HttpSession session, @ModelAttribute Members member, Errors errors) {
