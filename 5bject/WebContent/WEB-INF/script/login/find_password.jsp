@@ -16,7 +16,7 @@
 	   if(document.member.id.value==""){
 		   alert("아이디를 입력해주세요.");
 		   return false;
-	   }else if(document.member.emailId.value=""){
+	   }else if(document.member.emailId.value==""){
 		   alert("이메일 아이디를 입력해주세요.");
 		   return false;
 	   }else if(document.member.emailAddress.value==""){
