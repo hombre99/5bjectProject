@@ -52,7 +52,6 @@ public class BoardDaoImpl implements BoardDao{
 	   }else if(notice==2){
 		   result =  session.selectOne("boardMapper.selectCountBoard");
 	   }
-	   System.out.println("게시글의 갯수는 "+result);
 	   return result;
    }
    

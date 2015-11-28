@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,12 +48,13 @@
 			}
 			
 			table{
-			margin-left: 250px;
-			text-align: center;
+				margin-left: 250px;
+				text-align: center;
 			}
-			#boardListDiv{
-			height: 800px;
-			align:center;
+			
+			.boardListDiv{
+				height: 800px;
+				text-align: center;
 			}
 			
 			#btnTr{
@@ -62,12 +64,14 @@
 				background-color: #f1f2f2;
 				padding: 20px;
 			}
-			#pagingDiv{
-				align:center;
+			
+			.pasingDiv{
+				margin:auto;
 			}
-			td,tr,div {
+			
+/* 			td,tr,div {
 				align:center;
-			}
+			} */
 			</style>
 </head>
 <body>
@@ -79,8 +83,7 @@
 			<jsp:include page="/WEB-INF/script/layout/board.jsp" />
 </board>
 </div>
-<div id="boardListDiv">
-
+<div class="boardListDiv">
 		<!-- style="table-layout: fixed; 테이블에 넘어가는글 전환 적용시키기 -->
 		<table width="70%" cellpadding="0" cellspacing="0" border="0">
 				<tr><td colspan="7" align="center"><h1>공지사항</h1></td></tr>
@@ -102,9 +105,7 @@
 				<!-- style="text-overflow:ellipsis; overflow:hidden; width:140px;" -->
 				<td id="boardTitle">
 						<a href="/5bject/board/view.do?writeNo=${board.writeNo}&hit=${board.hit}&id=${board.id}&sessionId=${sessionScope.member.id}">
-					<nobr>
-						${board.title}
-					</nobr>
+						${fn:length(board.title)>15?fn:substring(board.title,0,15).concat("....."):board.title}
 					</a>
 				</td>
 				<td>${board.id}</td>
@@ -117,7 +118,7 @@
 				
   			</tr>
 		</table>
-		<div id="pagingDiv">
+		<div class="pasingDiv">
 		<!-- Paging처리 -->
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.previousPageGroup }">
