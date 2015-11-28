@@ -236,13 +236,14 @@ public class MemberController {
 	//  관리자가 고객문의요청 리스트를 조회하는 컨트롤러 
 	@RequestMapping("/request_list.do")
 	public String requestList(@RequestParam(defaultValue = "1") String pageNo, ModelMap model) {
-		int page = 1;
-		
+		int page = 1;		
 			try {
 				page = Integer.parseInt(pageNo);
 			}catch (NumberFormatException e) {
 			}
+			 
 			Map attributes = service.getRequestList(page);
+			List<Upload> list = (List<Upload>)attributes.get("list");
 			model.addAllAttributes(attributes);
 		
 		if ( logger.isInfoEnabled() )

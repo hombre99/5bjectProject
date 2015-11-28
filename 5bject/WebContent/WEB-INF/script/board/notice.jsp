@@ -123,7 +123,7 @@
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.previousPageGroup }">
 
-			<a href="/5bject/board/notice.do?pageNo=${requestScope.pagingBean.startPageOfPageGroup-1 }">
+			<a href="/5bject/board/boardInfo.do?boardInfo=1&pageNo=${requestScope.pagingBean.startPageOfPageGroup-1 }">
 
 				◀ </a>
 		</c:when>
@@ -142,7 +142,7 @@
 			[${page}]
 		</c:when>
 			<c:otherwise>
-				<a href="/5bject/board/notice.do?pageNo=${page }"> ${page }
+				<a href="/5bject/board/boardInfo.do?boardInfo=1&pageNo=${page }"> ${page }
 				</a>
 			</c:otherwise>
 		</c:choose>
@@ -154,7 +154,7 @@
 
 	<c:choose>
 		<c:when test="${requestScope.pagingBean.nextPageGroup }">
-			<a href="/5bject/board/notice.do?pageNo=${requestScope.pagingBean.endPageOfPageGroup+1}">
+			<a href="/5bject/board/boardInfo.do?boardInfo=1&pageNo=${requestScope.pagingBean.endPageOfPageGroup+1}">
 				▶ </a>
 		</c:when>
 		<c:otherwise>▶</c:otherwise>

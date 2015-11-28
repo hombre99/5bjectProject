@@ -112,7 +112,7 @@ $(document).ready(function(){
 		<div align="center">
 		<!-- Paging처리 -->
 		<c:if test="${ requestScope.pagingBean.previousPageGroup }">
-			<a href="/5bject/board/board.do?pageNo=${requestScope.pagingBean.startPageOfPageGroup - 1 }">
+			<a href="/5bject/board/boardInfo.do?boardInfo=2&pageNo=${requestScope.pagingBean.startPageOfPageGroup - 1 }">
 			◀ </a>
 		</c:if>
 
@@ -126,7 +126,7 @@ $(document).ready(function(){
 			[${page}]
 			</c:when>
 			<c:otherwise>
-				<a href="/5bject/board/board.do?pageNo=${page }">
+				<a href="/5bject/board/boardInfo.do?boardInfo=2&pageNo=${page }">
 					${page }
 				</a>
 			</c:otherwise>
@@ -138,7 +138,7 @@ $(document).ready(function(){
  	-->
 
 	<c:if test="${ requestScope.pagingBean.nextPageGroup }">
-		<a href="/5bject/board/board.do?pageNo=${ requestScope.pagingBean.endPageOfPageGroup + 1 }">
+		<a href="/5bject/board/boardInfo.do?boardInfo=2&pageNo=${ requestScope.pagingBean.endPageOfPageGroup + 1 }">
 			▶ 
 		</a>
 	</c:if>
