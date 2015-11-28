@@ -29,6 +29,10 @@
 			$("#request_link").on("click",function(){
 				window.open('/5bject/member/request.do?requestId=${sessionScope.member.id}','ok','width=1600, height=600');
 			});
+			
+			$("#score_link").on("click",function(){
+				window.open('/5bject/member/memberScore.do?id=${sessionScope.member.id}','ok','width=1600, height=600');
+			});
 		});
 		</script>
 		<!-- css header, table 처리 -->
@@ -66,6 +70,7 @@
 				<td colspan="2">
 					<!-- 고객문의요청 페이지 추가 -->
 					<input type="button" id="update_link" value="회원정보수정">
+					<input type= "button" id="score_link" value="게임점수조회">
 					<input type="button" id="request_link" value="고객문의요청">
 					<input type="button" value="회원탈퇴" id="leave">
 					<input type="button"  value="닫기" id="close">

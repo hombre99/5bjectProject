@@ -36,4 +36,5 @@
 		<include refid="gamescore_select" />
 		WHERE	MEMBER_ID = #{ id }
 	</select>
+	
 </mapper>
