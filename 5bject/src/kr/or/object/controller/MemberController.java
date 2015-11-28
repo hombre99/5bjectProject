@@ -280,10 +280,8 @@ public class MemberController {
 		map.put("emailId", emailId);
 		map.put("emailAddress", emailAddress);
 		map.put("phoneNumber", phoneNumber);
-		System.out.println(map);
 		String password = service.findMemberPassword(map);
-		System.out.println(map);
-		System.out.println(password);
+
 		request.setAttribute("password", password);
 		
 		if (password != null) {
