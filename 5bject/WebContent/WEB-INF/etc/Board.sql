@@ -43,16 +43,7 @@ VALUES (s_write_no.nextval, 'object', 'test', 'fuck', sysdate,2, 0,0)
 UPDATE BOARD SET title='하이욤',content='공지 없어',write_date=sysdate where write_no = 1
 
 UPDATE BOARD SET title='하이욤',content='공지 없어',write_date=sysdate where write_no = 1
-
 SELECT write_no, member_id, title, content, write_date,notice,ref,hit FROM BOARD WHERE write_no=1
-
 SELECT write_no,title,member_id,write_date,hit FROM BOARD
-
 select * from BOARD
-
 drop table BOARD
-
-
-
-
-select * from board where notice=2;
