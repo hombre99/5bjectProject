@@ -191,12 +191,12 @@
 						</c:when>
 						<c:when test="${ sessionScope.gameNum == 3 }">
 							<div class="color-scheme--white learn-more grid-row margin-top--3" exclude="phone">
-								<div class="grid-row grid-col-11 grid-col--center grid-col--align-center">
-									<div class="grid-row grid-col-6 grid-col--right" id="display">
+								<div class="grid-row grid-col-11 grid-col--center grid-col--align-center">				
+									<div class="grid-row grid-col-6 grid-col--right" id="display">								
 										<div class="grid--no--padding grid-col-5 grid-col--right"></div>
-										<div class="grid--no--padding grid-col-5 grid-col--right"></div>
+										<div class="grid--no--padding grid-col-5 grid-col--right"></div>								
 										<div class="grid-col-5 grid-col--right" id="display2"></div>
-									</div>
+									</div>									
 									<div class="grid-col-3 grid-col--right" id="answerPannel">
 										<div id="score"></div>
 										<div id="input"></div>

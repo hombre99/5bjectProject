@@ -12,42 +12,20 @@
 		$("#close").on("click", function() {
 			window.close();
 		});
-	});
-	
+	});	
 	function page_back(){
 		history.go(-1);
 	}
 </script>
-
-<style type="text/css">
-	table tr td.id{
-		background-color:darkgray;
-	}
-	table tr th{
-		background-color: #f1f2f2;
-		font-weight: bold;
-	}
-	a {
-		text-decoration: none !important;
-		color: white;
-	}	
-	menu {
-		background-color: powderblue;
-		color: white;
-		padding: 10px;
-		font-weight: bold;
-	}
-		#table{
-		margin-top: 20px;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/menu.css" />
 </head>
 <body>
+
 	<menu>
 		&nbsp;&nbsp;<jsp:include page="/WEB-INF/script/layout/menu.jsp" />
 	</menu>
+	
 	<c:choose>
-
 		<c:when test="${fn:length(requestScope.list)==0 }">
 			<tr>
 				<td align="center"><h2>회원목록</h2></td>

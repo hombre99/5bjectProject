@@ -17,26 +17,10 @@
 		history.go(-1);
 	}
 </script>
-<style type="text/css">
-	table tr th{
-		background-color: #f1f2f2;
-		font-weight: bold;
-	}
-	#table{
-		margin-top: 20px;
-	}
-	a {
-		text-decoration: none !important;
-		color: white;
-	}	
-	menu {
-		background-color: powderblue;
-		padding: 10px;
-		font-weight: bold;
-	}
-</style>
+<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/menu.css" />
 </head>
 <body>
+
 	<menu>
 		&nbsp;&nbsp;<jsp:include page="/WEB-INF/script/layout/menu.jsp" />
 	</menu>
