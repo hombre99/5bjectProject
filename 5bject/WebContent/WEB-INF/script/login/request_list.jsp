@@ -76,9 +76,8 @@
 	</c:choose>
 	<p />
 	<!-- Paging 처리 -->
-	<!-- 
-1. 이전 페이지 그룹으로 이동 처리 이전페이지 그룹이 있으면 링크처리 없으면 <- 모양만 나오도록 처리.-->
-
+	<!--  1. 이전 페이지 그룹으로 이동 처리 이전페이지 그룹이 있으면 링크처리 없으면 <- 모양만 나오도록 처리.-->
+	
 		<c:choose>
 			<c:when test="${requestScope.pagingBean.previousPageGroup}">
 				<a href="/5bject/member/request_list.do?pageNo=${requestScope.pagingBean.startPageOfPageGroup-1}">

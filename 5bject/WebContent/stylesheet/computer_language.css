@@ -46,7 +46,6 @@
    background: powderblue;
 }
 
-
 #content2 {
    width: 300px;
    margin-right: 20px;
@@ -54,9 +53,7 @@
    height: 100px;
    float: left;
    background-color: white;
-
 }
-
 
 #content3{
    width: 800px;
@@ -75,8 +72,8 @@
    text-align: center;
 }
 
-.table1 {
-	margin-top:70px;
-	margin-left:20px;
+ table.table1{
+	margin-top:170px;
+	margin-left:60px;
 	text-align: center;
 }
