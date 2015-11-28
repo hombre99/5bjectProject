@@ -107,7 +107,14 @@ $(document).ready(function(){
 						${fn:length(board.title)>15?fn:substring(board.title,0,15).concat("....."):board.title}
 					</a>
 				</td>
-				<td>${board.id}</td>
+				<c:choose>
+					<c:when test="${board.id}=='objectclass'">
+						<td><b>"관리자"</b></td>
+					</c:when>
+					<c:otherwise>
+						<td>${board.id}</td>
+					</c:otherwise>
+				</c:choose>
 					 <%
 						Date aaa = (Date)((Board)pageContext.findAttribute("board")).getDate();
 						SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
