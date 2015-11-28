@@ -274,13 +274,14 @@ public class MemberController {
 	@RequestMapping(value = "/find_MemberPassword.do", method = RequestMethod.POST)
 	public String findMemberPassword(HttpServletRequest request, @RequestParam String id, @RequestParam String emailId,
 			@RequestParam String emailAddress, @RequestParam String phoneNumber) {
-		HashMap<String, Object> map = new HashMap();
+		HashMap map = new HashMap();
 
 		map.put("id", id);
 		map.put("emailId", emailId);
 		map.put("emailAddress", emailAddress);
 		map.put("phoneNumber", phoneNumber);
 		String password = service.findMemberPassword(map);
+		System.out.println(password);
 		request.setAttribute("password", password);
 		
 		if (password != null) {

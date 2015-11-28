@@ -134,7 +134,7 @@
 			href="https://cdn-production.codecademy.com/assets/rebrand/core-51a92b73616bc4ee9446ad082ee0ce7e.css"
 			media="screen" rel="stylesheet" type="text/css" />
 		<link
-			href="https://cdn-production.codecademy.com/ass;[']ets/rebrand/controllers/home/show-17141dd9781a3ee228fefc2b7da9d7d3.css"
+			href="https://cdn-production.codecademy.com/assets/rebrand/controllers/home/show-17141dd9781a3ee228fefc2b7da9d7d3.css"
 			media="screen" rel="stylesheet" type="text/css" />
 		<link
 			href="https://cdn-production.codecademy.com/assets/webpack/vendor.bundle-59164de1b85d70aee596322a1c89ef69.css"
