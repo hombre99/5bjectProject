@@ -1,6 +1,10 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="kr.or.object.vo.Board"%>
+<%@page import="java.util.Date"%>
 <%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +12,10 @@
 <title>NOTICE</title>
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 <script type="text/javascript">
-		
+var date = new Date();	
+var today = date.getFullYear()+"-"+(date.getMonth()+1)+"-"+date.getDate();
+//var time = date.toLocaleTimeString();		
+alert(today);
 $(document).ready(function(){			
 	
 	var loginId = '${ sessionScope.member.id }';
@@ -101,7 +108,17 @@ $(document).ready(function(){
 					</a>
 				</td>
 				<td>${board.id}</td>
-				<td>${board.date}</td>
+					 <%
+						Date aaa = (Date)((Board)pageContext.findAttribute("board")).getDate();
+						SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+						if(sdf.format(aaa).equals(sdf.format(new Date()))){
+					%>
+						<td><fmt:formatDate value="${board.date}" pattern="HH:mm:ss" /></td>
+					<%
+						}else{
+					%>
+						<td><fmt:formatDate value="${board.date}" pattern="yyyy-MM-dd" /></td>
+					<%}%>
 				<td>${board.hit}</td>        
 				<td align="center">&nbsp;</td>                                                                                                                                                                                                                 
 			</tr>
