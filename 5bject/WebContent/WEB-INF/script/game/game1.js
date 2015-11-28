@@ -68,7 +68,6 @@ $(document).ready(function() {
 	$("#" + id2).append(startImg);
 
 	answerLoc = startLoc;
-	alert("answerLoc=" + answerLoc);
 	//난이도 별 보기 및 선택답패널 생성로직
 	var table = document.createElement("table");
 	$("#selectPannel").append(table);
