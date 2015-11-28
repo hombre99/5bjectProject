@@ -67,6 +67,10 @@
 	<delete id="removeMemberById" parameterType="string">
 		DELETE	FROM MEMBERS WHERE MEMBER_ID = #{id}
 	</delete>
+	<!-- 20151128 고객목록에서 date값으로 삭제하기.-->
+	<delete id="removeRequestByDate" parameterType="string">
+		delete from request_member where request_date = #{date} and request_id =#{id}
+	</delete>
 	
 	<update id="updateMemberById" parameterType="members">
 		UPDATE	MEMBERS SET MEMBER_PASSWORD = #{password}, MEMBER_NAME = #{name}, MEMBER_MONTH = #{month}, MEMBER_DAY = #{day}, MEMBER_YEAR = #{year}, 
@@ -98,6 +102,7 @@
 	<select id="selectCountRequests" resultType="_int">
 		select count(request_id) from request_member
 	</select>
+	
 	<!-- 아이디 찾는 SQL문 추가 -->
 	<select id = "selectMemberId" parameterType="hashmap" resultType="string">
 		SELECT MEMBER_ID FROM MEMBERS 
@@ -128,6 +133,7 @@
 			)
 			where page = #{pageNo}	
 	</select>
+	
 	<!-- 고객목록 페이징 처리 -->
 	<select id="selectCountMembers" resultType="_int">
 		select count(member_id) from members

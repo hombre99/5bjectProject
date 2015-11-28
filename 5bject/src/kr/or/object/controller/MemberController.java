@@ -188,8 +188,16 @@ public class MemberController {
 		service.removeMemberById(id);
 		gameService.removeGameScore(id);
 		return "/member/memberList.do";
-
 	}
+	
+	//관리자가 고객문의요청을 삭제하는 컨트롤러
+	@RequestMapping("/request_remove.do")
+	@Transactional(rollbackFor={Exception.class})
+	public String remove(@RequestParam String date){
+		service.removeRequestByDate(date);		
+		return "/member/request_list.do";
+	}
+	
 	//관리자가 고객정보를 업데이트
 	@RequestMapping("/update_member.do")
 	public String memberUpdate(HttpSession session, @ModelAttribute Members member, Errors errors) {

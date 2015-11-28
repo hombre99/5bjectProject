@@ -62,19 +62,22 @@ public class MemberDaoImpl implements MemberDao{
 	public int removeMemberById(String id) {
 		return session.delete("memberMapper.removeMemberById", id);
 	}
+	//고객문의요청 리시트에서 문의한거 삭제하기.
+	@Override
+	public int removeRequestByDate(String date) {
+		return session.delete("memberMapper.removeRequestByDate",date);
+	}
 	//아이디 전체값 조회.
 	@Override
 	public List<Members> getMembers() {
 		return session.selectList("memberMapper.selectMembers");
 	}
 	
-
 	@Override
 	public List findMemberId(HashMap map) {
 		return session.selectList("memberMapper.selectMemberId",map);
 	}
 	
-
 	@Override
 	public String findMemberPassword(HashMap map) {
 		// TODO Auto-generated method stub
