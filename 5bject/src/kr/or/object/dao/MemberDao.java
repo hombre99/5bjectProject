@@ -25,6 +25,9 @@ public interface MemberDao {
 	//아이디 값을 받아서 제거.
 	int removeMemberById(String id);
 	
+	//고객문의목록 데이트값 받아서 제거 20151128
+	int removeRequestByDate(String date);
+	
 	//전체 멤버 조회시 필요
 	List<Members> getMembers();
 	

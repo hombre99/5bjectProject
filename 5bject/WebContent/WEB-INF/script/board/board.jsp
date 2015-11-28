@@ -86,7 +86,7 @@ $(document).ready(function(){
 			    <td width="5"><img src="/5bject/image/board/table_left.gif" width="5" height="30" /></td>
   				<td width="73">번호</td>
    				<td width="379">제목</td>
-   				<td width="90">글쓴이</td>
+   				<td width="90">작성자</td>
    				<td width="164">등록일</td>
    				<td width="58">조회수</td>
    				<td width="7"><img src="/5bject/image/board/table_right.gif" width="5" height="30" /></td>
@@ -106,10 +106,8 @@ $(document).ready(function(){
 				<td align="center">&nbsp;</td>                                                                                                                                                                                                                 
 			</tr>
 			</c:forEach>
-			<tr id="btnTr">
-  			</tr>
-		</table>
-		<div align="center">
+			<tr>
+				<td colspan="5">
 		<!-- Paging처리 -->
 		<c:if test="${ requestScope.pagingBean.previousPageGroup }">
 			<a href="/5bject/board/boardInfo.do?boardInfo=2&pageNo=${requestScope.pagingBean.startPageOfPageGroup - 1 }">
@@ -127,7 +125,7 @@ $(document).ready(function(){
 			</c:when>
 			<c:otherwise>
 				<a href="/5bject/board/boardInfo.do?boardInfo=2&pageNo=${page }">
-					${page }
+					${page}
 				</a>
 			</c:otherwise>
 		</c:choose>
@@ -142,6 +140,12 @@ $(document).ready(function(){
 			▶ 
 		</a>
 	</c:if>
+				</td>
+				<td id="btnTr" align="right">
+  				</td>
+  			</tr>
+		</table>
+		<div align="center">
 	</div>
 		</div>
 	

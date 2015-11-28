@@ -54,16 +54,24 @@ public class MemberServiceImpl implements MemberService {
 	public void removeMemberById(String id) {
 		dao.removeMemberById(id);
 	}
+	
+	//고객문의요청 리스트 삭제하기 위한 컨트롤러
+	@Override
+	public void removeRequestByDate(String date) {
+		dao.removeRequestByDate(date);
+	}
+	
 	//고객들의 정보 조회시 필요한 컨트롤러
 	public List<Members> getMembers() {
 		return dao.getMembers();
 	}
-
+	
 	//고객 아이디 찾기
 	@Override
 	public List findMemberId(HashMap map) {
 		return dao.findMemberId(map);
 	}
+
 
 	//잃어버린 비밀번호 찾기
 	@Override

@@ -191,8 +191,16 @@ public class MemberController {
 		service.removeMemberById(id);
 		gameService.removeGameScore(id);
 		return "/member/memberList.do";
-
 	}
+	
+	//관리자가 고객문의요청을 삭제하는 컨트롤러
+	@RequestMapping("/request_remove.do")
+	@Transactional(rollbackFor={Exception.class})
+	public String remove(@RequestParam String date){
+		service.removeRequestByDate(date);		
+		return "/member/request_list.do";
+	}
+	
 	//관리자가 고객정보를 업데이트
 	@RequestMapping("/update_member.do")
 	public String memberUpdate(HttpSession session, @ModelAttribute Members member, Errors errors) {
@@ -276,16 +284,15 @@ public class MemberController {
 	// 잃어버린 비밀번호 찾는 컨트롤러 
 	@RequestMapping(value = "/find_MemberPassword.do", method = RequestMethod.POST)
 	public String findMemberPassword(HttpServletRequest request, @RequestParam String id, @RequestParam String emailId,
-			@RequestParam String emailAddress, @RequestParam String phoneNumber) {
+			@RequestParam String emailAddress, @RequestParam String phoneNumber){
 		HashMap map = new HashMap();
 
 		map.put("id", id);
 		map.put("emailId", emailId);
 		map.put("emailAddress", emailAddress);
 		map.put("phoneNumber", phoneNumber);
-		System.out.println(map);
 		String password = service.findMemberPassword(map);
-		System.out.println(password);
+
 		request.setAttribute("password", password);
 		
 		if (password != null) {
