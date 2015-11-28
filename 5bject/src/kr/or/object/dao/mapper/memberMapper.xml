@@ -69,7 +69,7 @@
 	</delete>
 	<!-- 20151128 고객목록에서 date값으로 삭제하기.-->
 	<delete id="removeRequestByDate" parameterType="string">
-		delete from request_member where request_date = #{date} and request_id =#{id}
+		delete from request_member where request_date = #{date}
 	</delete>
 	
 	<update id="updateMemberById" parameterType="members">
