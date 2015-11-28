@@ -1,7 +1,5 @@
 package kr.or.object.dao;
 
-import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -11,92 +9,71 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.object.util.PagingBean;
 import kr.or.object.vo.Board;
-import kr.or.object.vo.Members;
 
 @Repository("boardDao")
 public class BoardDaoImpl implements BoardDao{
+	private SqlSessionTemplate session;
 
-   private SqlSessionTemplate session;
+	@Autowired
+	public BoardDaoImpl(SqlSessionTemplate session){
+		this.session = session;
+	}
 
-   @Autowired
-   public BoardDaoImpl(SqlSessionTemplate session){
-      this.session = session;
-   }
-   
-   // 글 전체 목록 보기
-   public List<Board> getContentBoardList() {
-	  List<Board> boardList = session.selectList("boardMapper.boardBoardSelect");
-      
-	  return boardList;
-   }
-   
-   public List<Board> getContentNoticeList(){
-	     List<Board> noticeList = session.selectList("boardMapper.boardNoticeSelect");
-	     
-	     return noticeList;
-   }
-   
-   //댓글 목록 불러오기
-   @Override
-   public List<Board> getReplyList(int writeNo) {
-	   List<Board> replyList = session.selectList("boardMapper.boardReplySelect", writeNo);   
-	   return replyList;
-   }
-   
-   //페이징 처리 관련
-   @Override
-   public int selectCountBoard(int notice) {	   
-	  int result = 0 ;
-	   if(notice==1){
-		   result =  session.selectOne("boardMapper.selectCountNotice");
-	   }else if(notice==2){
-		   result =  session.selectOne("boardMapper.selectCountBoard");
-	   }
-	   return result;
-   }
-   
-   @Override
-   public List<Board> getBoardsPaging(int pageNo, int notice) {
-	   HashMap map = new HashMap();
-	   List<Board> list =null;
+	// 글 전체 목록 보기
+	public List<Board> getContentBoardList(int notice) {
+		return session.selectList("boardMapper.selectBoard", notice);
+	}
+
+	//댓글 목록 불러오기
+	@Override
+	public List<Board> getReplyList(int writeNo) {
+		return session.selectList("boardMapper.boardReplySelect", writeNo);
+	}
+
+	//페이징 처리 관련
+	@Override
+	public int selectCountBoard(int notice) {	   
+		return session.selectOne("boardMapper.selectCount", notice);
+	}
+
+	@Override
+	public List<Board> getBoardsPaging(int pageNo, int notice) {
+		HashMap map = new HashMap();
 		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
 		map.put("pageNo", pageNo);
-		 if(notice==1){
-	    list = session.selectList("boardMapper.selectNoticePaging",map);
-		 }else if(notice==2){
-		list = session.selectList("boardMapper.selectBoardPaging",map);
-		 }
-	   return list;
-   }
+		// 20151127. JSJ. ADD
+		map.put("noticeFlag", notice);
 
-   // 게시글 쓰기
-   public void insertWrite(Board board) {
-      session.insert("boardMapper.boardInsert",board);
-   }
-   
-   // 댓글 쓰기
-   public void insertReply(Board board) {
-      session.update("boardMapper.boardInsertReply",board);
-  }   
+		return session.selectList("boardMapper.selectPagingBoard", map);
+	}
 
-   // 글제목으로 글보기
-   public Board getView(int idx) {
-      return session.selectOne("boardMapper.boardContentSelect",idx);
-   }
-   
-   // 조회수 증가
-   public void updateHit(Board board) {
-      session.update("boardMapper.boardHitUpdate",board);      
-   }
+	// 게시글 쓰기
+	public void insertWrite(Board board) {
+		session.insert("boardMapper.boardInsert",board);
+	}
 
-   // 게시 글 삭제
-   public void delete(int idx) {
-      session.delete("boardMapper.boardDelete",idx);
-      
-   }
-   
-   // 게시 글 수정
-   public void update(Board board) {
-      session.update("boardMapper.boardModify",board);
-   }
+	// 댓글 쓰기
+	public void insertReply(Board board) {
+		session.update("boardMapper.boardInsertReply",board);
+	}   
+
+	// 글제목으로 글보기
+	public Board getView(int idx) {
+		return session.selectOne("boardMapper.boardContentSelect",idx);
+	}
+
+	// 조회수 증가
+	public void updateHit(Board board) {
+		session.update("boardMapper.boardHitUpdate",board);      
+	}
+
+	// 게시 글 삭제
+	public void delete(int idx) {
+		session.delete("boardMapper.boardDelete",idx);
+	}
+
+	// 게시 글 수정
+	public void update(Board board) {
+		session.update("boardMapper.boardModify",board);
+	}
 }

@@ -111,15 +111,10 @@ $(document).ready(function(){
 		</table>
 		<div align="center">
 		<!-- Paging처리 -->
-		<c:choose>
-			<c:when test="${requestScope.pagingBean.previousPageGroup }">
-				<a href="/5bject/board/board.do?pageNo=${requestScope.pagingBean.startPageOfPageGroup-1 }">
-				◀ </a>
-			</c:when>
-			<c:otherwise>
-			◀
-			</c:otherwise>
-		</c:choose>
+		<c:if test="${ requestScope.pagingBean.previousPageGroup }">
+			<a href="/5bject/board/board.do?pageNo=${requestScope.pagingBean.startPageOfPageGroup - 1 }">
+			◀ </a>
+		</c:if>
 
 	<!-- Page Group 내의 page들 링크 처리
 	- PageGroup의 시작/끝페이지 번호 - 반복문 처리
@@ -131,7 +126,8 @@ $(document).ready(function(){
 			[${page}]
 			</c:when>
 			<c:otherwise>
-				<a href="/5bject/board/board.do?pageNo=${page }"> ${page }
+				<a href="/5bject/board/board.do?pageNo=${page }">
+					${page }
 				</a>
 			</c:otherwise>
 		</c:choose>
@@ -141,13 +137,11 @@ $(document).ready(function(){
     다음 페이지 그룹이 있으면 링크 처리 없으면 그냥 화살표만 나오도록 처리.
  	-->
 
-	<c:choose>
-		<c:when test="${requestScope.pagingBean.nextPageGroup }">
-			<a href="/5bject/board/board.do?pageNo=${requestScope.pagingBean.endPageOfPageGroup+1}">
-				▶ </a>
-		</c:when>
-		<c:otherwise>▶</c:otherwise>
-	</c:choose>
+	<c:if test="${ requestScope.pagingBean.nextPageGroup }">
+		<a href="/5bject/board/board.do?pageNo=${ requestScope.pagingBean.endPageOfPageGroup + 1 }">
+			▶ 
+		</a>
+	</c:if>
 	</div>
 		</div>
 	
