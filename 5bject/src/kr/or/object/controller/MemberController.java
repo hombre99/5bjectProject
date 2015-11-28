@@ -243,7 +243,7 @@ public class MemberController {
 			}
 			 
 			Map attributes = service.getRequestList(page);
-			List<Upload> list = (List<Upload>) attributes.get("list");
+			List<Upload> list = (List<Upload>)attributes.get("list");
 			model.addAllAttributes(attributes);
 		
 		if ( logger.isInfoEnabled() )

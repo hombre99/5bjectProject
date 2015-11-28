@@ -87,9 +87,10 @@
 
 	<!-- customer request list -->
 	<select id="selectRequests" parameterType="hashmap" resultMap="select-request-resultmap">
-		select <include refid ="request-sql2"/> from (select <include refid ="request-sql2"/> 
-		, ceil(rownum/#{contentsPerPage}) page
-			from (select <include refid ="request-sql"/> from request_member r, members m order by r.request_date asc)
+		select <include refid ="request-sql2"/>
+		 from (select <include refid ="request-sql2"/>, ceil(rownum/#{contentsPerPage}) page
+			from (select <include refid ="request-sql"/>
+				 from request_member r, members m where r.request_id = m.member_id order by r.request_date asc)
 		)where page= #{pageNo}
 	</select>
 	
