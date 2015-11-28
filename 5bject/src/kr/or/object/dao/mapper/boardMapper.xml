@@ -1,54 +1,68 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="boardMapper">
-  <resultMap type="board" id="board-resultmap">
-  	<id property = "writeNo" column="write_no"/>
-  	<result property="id" column="member_id"/>
-  	<result property="title" column="title"/>
-  	<result property="content" column="content"/>
-  	<result property="date" column="write_date"/>
-  	<result property="notice" column="notice"/>
-  	<result property="ref" column="ref"/>
-  	<result property="hit" column="hit"/> 
-  </resultMap>
+	<resultMap type="board" id="board-resultMap">
+		<id property = "writeNo" column="write_no"/>
+		<result property="id" column="member_id"/>
+		<result property="title" column="title"/>
+		<result property="content" column="content"/>
+		<result property="date" column="write_date"/>
+		<result property="notice" column="notice"/>
+		<result property="ref" column="ref"/>
+		<result property="hit" column="hit"/> 
+	</resultMap>
+  
+	<sql id="selectBoard-sql">
+		WRITE_NO, TITLE, MEMBER_ID, WRITE_DATE, HIT
+	</sql>
   	
   	<!-- 게시글 입력 -->
 	<insert id="boardInsert" parameterType="board">
-			INSERT INTO board (write_no, member_id, title, content, write_date,notice,hit) 
-			VALUES (s_write_no.nextval, #{id}, #{title}, #{content}, sysdate , #{notice}, #{hit})
+		INSERT INTO board (write_no, member_id, title, content, write_date,notice,hit) 
+		VALUES (s_write_no.nextval, #{id}, #{title}, #{content}, sysdate , #{notice}, #{hit})
 	</insert>
 	
 	<!-- 댓글 입력 -->
+	<!--
 	<update id="boardInsertReply" parameterType="board">
-			INSERT INTO board (write_no, member_id, title, content, write_date,notice,ref,hit) 
-			VALUES (s_write_no.nextval, #{id}, #{title}, #{content}, sysdate , #{notice}, #{writeNo}, #{hit})
+		INSERT INTO board (write_no, member_id, title, content, write_date,notice,ref,hit) 
+		VALUES (s_write_no.nextval, #{id}, #{title}, #{content}, sysdate , #{notice}, #{writeNo}, #{hit})
 	</update>
+	-->
+	<insert id="boardInsertReply" parameterType="board">
+		INSERT	INTO BOARD
+		VALUES (s_write_no.nextval, #{ id }, #{ title }, #{ content }, sysdate , #{ notice }, #{ ref }, #{ hit })
+	</insert>
 	
 	<!-- 게시글 수정 -->
 	<update id="boardModify" parameterType="board">
-			UPDATE board SET title= #{title},content=#{content},write_date=sysdate where write_no=#{writeNo}
+		UPDATE board SET title= #{title},content=#{content},write_date=sysdate where write_no=#{writeNo}
 	</update>
 	
 	<!-- 조회수 업데이트 -->
 	<update id="boardHitUpdate">
-			UPDATE board SET hit=#{hit} where write_no = #{writeNo}
+		UPDATE board SET hit=#{hit} where write_no = #{writeNo}
 	</update>
 	
 	<!--  게시글 삭제 -->
 	<delete id="boardDelete" parameterType="_int">
-			DELETE FROM board WHERE write_no=#{writeNo}
+		DELETE FROM board WHERE write_no=#{writeNo}
 	</delete>
 	
 	<!--  글 내용 셀렉트 -->
-	<select id="boardContentSelect" resultMap="board-resultmap" resultType="board">
-			SELECT write_no, member_id, title, content, write_date,notice,ref,hit FROM BOARD WHERE write_no= #{writeNo}
+	<select id="boardContentSelect" resultMap="board-resultMap" resultType="board">
+		SELECT write_no, member_id, title, content, write_date,notice,ref,hit FROM BOARD WHERE write_no= #{writeNo}
 	</select>
 	
 	<!-- 공지사항 내용 셀렉트 -->
-	<select id="boardNoticeSelect" resultMap="board-resultmap" resultType="board">
-			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 1 and ref=0 order by write_date desc
+	<!--
+	<select id="boardNoticeSelect" resultMap="board-resultMap" resultType="board">
+			SELECT write_no,title,member_id,write_date,hit FROM BOARD HERE notice = 1 and ref=0 order by write_date desc
 	</select>
-	<select id="selectNoticePaging" parameterType="hashmap" resultMap="board-resultmap">
+	-->
+	
+	<!--
+	<select id="selectNoticePaging" parameterType="hashmap" resultMap="board-resultMap">
 		select  write_no,title,member_id,write_date,hit
 			from (
 				select  write_no,title,member_id,write_date,hit, ceil(rownum/#{contentsPerPage}) page
@@ -60,13 +74,25 @@
 			)
 			where page = #{pageNo}	
 	</select>
+	-->
 	
 	<!-- 게시글 목록 셀렉트 -->
-	<select id="boardBoardSelect" resultMap="board-resultmap" resultType="board">
+	<!--
+	<select id="boardBoardSelect" resultMap="board-resultMap" resultType="board">
 			SELECT write_no,title,member_id,write_date,hit FROM BOARD WHERE notice = 2 and ref=0 order by write_date desc 
 	</select>
+	-->
+	
+	<!-- 20151127. JSJ. ADD. -->
+	<select id="selectBoard" resultMap="board-resultMap" resultType="board">
+		SELECT	<include refid="selectBoard-sql" />
+		FROM	BOARD
+		WHERE	NOTICE = #{ notice } AND REF = 0
+		ORDER BY WRITE_DATE DESC
+	</select>
 	 
-	 <select id="selectBoardPaging" parameterType="hashmap" resultMap="board-resultmap">
+	 <!--
+	 <select id="selectBoardPaging" parameterType="hashmap" resultMap="board-resultMap">
 		select  write_no,title,member_id,write_date,hit
 			from (
 				select  write_no,title,member_id,write_date,hit, ceil(rownum/#{contentsPerPage}) page
@@ -78,18 +104,37 @@
 			)
 			where page = #{pageNo}	
 	</select>
+	-->
 	 
+	 <!-- 20151127. JSJ ADD. -->
+	<select id="selectPagingBoard" parameterType="hashmap" resultMap="board-resultMap">
+		SELECT	<include refid="selectBoard-sql" />
+		FROM	(SELECT	<include refid="selectBoard-sql" /> , CEIL(ROWNUM / #{ contentsPerPage }) PAGE
+				FROM (SELECT <include refid="selectBoard-sql" />
+						FROM BOARD WHERE NOTICE = #{ noticeFlag } AND REF = 0 ORDER BY WRITE_DATE DESC
+				)
+		) WHERE PAGE = #{ pageNo }
+	</select>
+
 	 <!-- 댓글 목록 셀렉트 -->
-	 <select id="boardReplySelect" resultMap="board-resultmap" resultType="board" parameterType="_int">
-			SELECT write_no,title,member_id,content,write_date,hit FROM BOARD WHERE ref = #{writeNo} order by write_date asc
+	<select id="boardReplySelect" resultMap="board-resultMap" resultType="board" parameterType="_int">
+		SELECT write_no,title,member_id,content,write_date,hit
+		FROM BOARD WHERE ref = #{writeNo} order by write_date asc
 	</select>
 	
 	<!-- 페이징 처리 관련 -->
+	<!--
 	<select id="selectCountNotice" resultType="_int">
 		select count(write_no) from board where notice=1 and ref=0
 	</select>
 	
 	<select id="selectCountBoard" resultType="_int">
 		select count(write_no) from board where notice=2 and ref=0
+	</select>
+	-->
+	
+	<!-- 20151127. JSJ. ADD. -->
+	<select id="selectCount" resultType="_int">
+		SELECT	COUNT(WRITE_NO) FROM BOARD WHERE NOTICE = #{ noticeFlag } AND REF = 0
 	</select>
 </mapper>

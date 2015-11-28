@@ -37,6 +37,7 @@
 					$(td).append(input);
 					$("#btnTr").append(td);
 					
+					/*
 					var td = document.createElement("td");
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
@@ -46,6 +47,7 @@
 					}
 					$(td).append(input);
 					$("#btnTr").append(td);
+					*/
 					
 					var td = document.createElement("td");
 					var input = document.createElement("input");
@@ -54,6 +56,7 @@
 					//input.setAttribute("Onclick", "window.location.href='/5bject/board/notice.do'");
 					input.onclick = function(){
 						var notice = '${sessionScope.contectBoard.notice}';
+						/*
 						if(notice==1){
 							window.location.href='/5bject/board/notice.do';
 						}else if(notice==2){
@@ -62,6 +65,12 @@
 							alert("비정상적인 접근입니다");
 							window.location.href='/5bject/main.do';
 						}
+						*/
+
+						if ( notice )
+							location.replace("/5bject/board/boardInfo.do?boardInfo=" + notice);
+						else
+							location.replace("/5bject/main.do");
 					}
 					$(td).append(input);
 					$("#btnTr").append(td);
@@ -73,6 +82,7 @@
 					input.setAttribute("value", "목록으로");
 					input.onclick = function(){
 						var notice = '${sessionScope.contectBoard.notice}';
+						/*
 						if(notice==1){
 							window.location.href='/5bject/board/notice.do';
 						}else if(notice==2){
@@ -81,12 +91,51 @@
 							alert("비정상적인 접근입니다");
 							window.location.href='/5bject/board/main.do';
 						}
+						*/
+
+						if ( notice )
+							location.replace("/5bject/board/boardInfo.do?boardInfo=" + notice);
+						else
+							location.replace("/5bject/main.do");
 					}
 					$(td).append(input);
 					$("#btnTr").append(td);
 				}
 				
+				$("input#addReplyBtn").on("click", addReply);
+
+				$("input#replyText").on("keypress", function() {
+					if ( event.keyCode == 13 ) {
+						addReply();
+					}
+				});
 			});
+</script>
+<script type="text/javascript">
+	function addReply() {
+		var id = '${ sessionScope.member.id }';
+		var title = "reply";
+		var content = $("input#replyText").val();
+		var hit = '${ sessionScope.contectBoard.hit }';
+		var notice = '${ sessionScope.contectBoard.notice }';
+		var writeNo = '${ sessionScope.contectBoard.writeNo }';
+		$.ajax({
+			"url" : "/5bject/board/addReply.do",
+			"data" : {"id" : id,
+				"title" : title,
+				"content" : content,
+				"notice" : notice,
+				"writeNo" : writeNo},
+			"type" : "POST",
+			"success" : function() {
+				location.replace("/5bject/board/view.do?writeNo=" + writeNo + "&hit=" + hit + "&id=" + id + "&sessionId=" + id);
+			},
+			"error" : function(request, status, error) {
+				alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				location.reload();
+			}
+		});
+	};
 </script>
 <style type="text/css">
 header {
@@ -178,10 +227,30 @@ table {
 						
 							</td>
 							<td> ${reply.date}</td>
+						</tr>
 						</c:forEach>
 						</c:otherwise>
 					</c:choose>
+					<!-- 댓글 등록 폼 -->
+					<c:if test="${ sessionScope.member.id != null }">
+						<table>
+							<tr>
+								<td>
+									<img src="/5bject/image/board/reply_icon.gif" />
+								</td>
+								<td>
+									${ sessionScope.member.id }
+								</td>
+								<td>
+									<input type="text" id="replyText" size="100" />
+								</td>
+								<td>
+									<input type="button" id="addReplyBtn" value="등록" />
+								</td>
+							</tr>
 						</table>
+					</c:if>
+					</table>
 					<div align="center">
 						<table>
 							<tr align="center" id="btnTr">
