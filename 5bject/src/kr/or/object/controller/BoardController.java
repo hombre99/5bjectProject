@@ -76,22 +76,21 @@ public class BoardController {
 		}			
 	}
 
-	@RequestMapping(value = "/update_success.do", method = RequestMethod.POST)
-	public String Update(HttpSession session , @ModelAttribute Board board){
-		int boardInfo = 2;
+	// 20151130. JSJ. AJAX ADD.
+	@RequestMapping(value="/update_success.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String update(@RequestParam int writeNo, @RequestParam String id, @RequestParam String title,
+						@RequestParam String content, @RequestParam int notice, @RequestParam int ref) {
+		Board board = new Board(id, title, content, notice, ref);
+		board.setWriteNo(writeNo);
 
-		if(board.getId().equals("objectclass")){
-			board.setNotice(1);
-			boardInfo = 1;
-		}else{
-			board.setNotice(2);
-		}
-
-		service.update(board);		
-
-		return "/board/boardInfo.do?boardInfo=" + boardInfo;
+		if ( logger.isInfoEnabled() )
+			logger.info("boardupdate : " + board);
+		
+		service.update(board);
+		return "/5bject/board/boardInfo.do?boardInfo=" + notice;
 	}
-
+	
 	@RequestMapping(value="/addReply.do", method=RequestMethod.POST)
 	@ResponseBody
 	public void addReply(@RequestParam String id, @RequestParam String title, @RequestParam String content,
@@ -116,20 +115,22 @@ public class BoardController {
 	@RequestMapping("/view.do")
 	public String View(HttpSession session,@RequestParam int writeNo){
 		Board contectBoard = service.getView(writeNo);
-		
+		String loginId = "";
 		int hit = contectBoard.getHit();
 		hit++;
 		contectBoard.setHit(hit);	
 		service.updateHit(contectBoard);
-		
-		Members members = (Members) session.getAttribute("member");
-		String loginId = members.getId();
-		
-
-		if(loginId.equals(contectBoard.getId())){
-			session.setAttribute("writer", "writer");
+		if(session.getAttribute("writer")!=null){
+		session.removeAttribute("writer");
 		}
 		
+		Members members = (Members) session.getAttribute("member");
+		if(members!=null){
+			loginId = members.getId();
+			if(loginId.equals(contectBoard.getId())){
+				session.setAttribute("writer", "writer");
+			}
+		}
 		session.setAttribute("contectBoard", contectBoard);	
 
 		List<Board> replyList = service.getReplyList(contectBoard.getWriteNo());
