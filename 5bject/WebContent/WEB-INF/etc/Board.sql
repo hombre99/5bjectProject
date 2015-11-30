@@ -15,7 +15,7 @@
    drop table board;
    
 	create table BOARD(	
-		write_no number(6) primary key,	
+		write_no number(10) primary key,	
 		member_id varchar2(50)
 		CONSTRAINT member_id
 		REFERENCES MEMBERS(MEMBER_ID)
@@ -24,7 +24,8 @@
 		content varchar2(2000) not null,
 		write_date date not null,
 		notice number(2) not null,
-		ref number(6) default 0, 
+		ref number(10) default 0, 
+		reply number(5) default 0,
 		hit number(6) default 0
 	);
 

@@ -54,9 +54,13 @@ public class BoardDaoImpl implements BoardDao{
 
 	// 댓글 쓰기
 	public void insertReply(Board board) {
-		session.update("boardMapper.boardInsertReply",board);
+		session.insert("boardMapper.boardInsertReply",board);
 	}   
-
+	
+	public void updateReply(Board board){
+		session.update("updateBoardReply", board);
+	}
+	
 	// 글제목으로 글보기
 	public Board getView(int idx) {
 		return session.selectOne("boardMapper.boardContentSelect",idx);

@@ -9,11 +9,12 @@
 		<result property="date" column="write_date"/>
 		<result property="notice" column="notice"/>
 		<result property="ref" column="ref"/>
+		<result property="reply" column="reply"/>
 		<result property="hit" column="hit"/> 
 	</resultMap>
   
 	<sql id="selectBoard-sql">
-		WRITE_NO, TITLE, MEMBER_ID, WRITE_DATE, HIT
+		WRITE_NO, TITLE, MEMBER_ID, WRITE_DATE, REPLY, HIT
 	</sql>
   	
   	<!-- 게시글 입력 -->
@@ -31,12 +32,17 @@
 	-->
 	<insert id="boardInsertReply" parameterType="board">
 		INSERT	INTO BOARD
-		VALUES (s_write_no.nextval, #{ id }, #{ title }, #{ content }, sysdate , #{ notice }, #{ ref }, #{ hit })
+		VALUES (s_write_no.nextval, #{ id }, #{ title }, #{ content }, sysdate , #{ notice }, #{ ref }, #{reply} ,#{hit} )
 	</insert>
+	
+	<!-- 댓글 수 수정 -->
+	<update id="updateBoardReply" parameterType="board">
+		update board set reply=#{reply} where write_no=#{writeNo}	
+	</update>
 	
 	<!-- 게시글 수정 -->
 	<update id="boardModify" parameterType="board">
-		UPDATE board SET title= #{title},content=#{content},write_date=sysdate where write_no=#{writeNo}
+		UPDATE board SET title= #{title},content=#{content},write_date=sysdate,reply=#{reply} where write_no=#{writeNo}
 	</update>
 	
 	<!-- 조회수 업데이트 -->
@@ -51,7 +57,7 @@
 	
 	<!--  글 내용 셀렉트 -->
 	<select id="boardContentSelect" resultMap="board-resultMap" resultType="board">
-		SELECT write_no, member_id, title, content, write_date,notice,ref,hit FROM BOARD WHERE write_no= #{writeNo}
+		SELECT write_no, member_id, title, content, write_date, notice, ref, reply, hit FROM BOARD WHERE write_no= #{writeNo}
 	</select>
 	
 	<!-- 공지사항 내용 셀렉트 -->

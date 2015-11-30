@@ -96,20 +96,15 @@ public class BoardController {
 	public void addReply(@RequestParam String id, @RequestParam String title, @RequestParam String content,
         				@RequestParam int notice, @RequestParam int writeNo) {
 		Board board = new Board(id, title, content, notice, writeNo);
+		Board original = service.getView(board.getRef());
+		int replyCount = original.getReply();
+		replyCount++;
+		original.setReply(replyCount);
+			
 		if ( logger.isInfoEnabled() ) {
 			logger.info("board : " + board);
 		}
-		service.insertReply(board);
-	}
-
-	@RequestMapping("/reply_success.do")
-	public String Reply(HttpSession session,@ModelAttribute Board board){
-
-		board.setTitle("reply");
-	
-		service.insertReply(board);
-
-		return "/board/view.do?writeNo="+board.getWriteNo()+"&sessionId="+board.getId();
+		service.insertReply(board, original);
 	}
 
 	@RequestMapping("/view.do")

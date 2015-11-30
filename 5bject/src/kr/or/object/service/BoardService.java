@@ -12,7 +12,7 @@ public interface BoardService {
 
 	void insertWrite(Board board);
 
-	void insertReply(Board board);
+	void insertReply(Board board, Board original);
 
 	Board getView(int idx);
 
