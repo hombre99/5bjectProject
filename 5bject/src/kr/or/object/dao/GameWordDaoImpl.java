@@ -21,8 +21,8 @@ public class GameWordDaoImpl implements GameWordDao {
 	}
 
 	@Override
-	public GameWord findWord(String word) {
-		return session.selectOne("gamewordMapper.selectGameWordByWord", word);
+	public List<GameWord> findWord(String word) {
+		return session.selectList("gamewordMapper.selectGameWordByWord", word);
 	}
 
 	@Override
