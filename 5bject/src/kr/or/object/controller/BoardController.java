@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.object.service.BoardService;
 import kr.or.object.vo.Board;
+import kr.or.object.vo.Members;
 
 @Controller
 @RequestMapping("/board")
@@ -113,25 +114,29 @@ public class BoardController {
 	}
 
 	@RequestMapping("/view.do")
-	public String View(HttpSession session,@ModelAttribute Board board , String sessionId){
-		int hit = board.getHit();
-
+	public String View(HttpSession session,@RequestParam int writeNo){
+		Board contectBoard = service.getView(writeNo);
+		
+		int hit = contectBoard.getHit();
 		hit++;
-		board.setHit(hit);	
-		service.updateHit(board);
+		contectBoard.setHit(hit);	
+		service.updateHit(contectBoard);
+		
+		Members members = (Members) session.getAttribute("member");
+		String loginId = members.getId();
+		
 
-		if(sessionId.equals(board.getId())){
+		if(loginId.equals(contectBoard.getId())){
 			session.setAttribute("writer", "writer");
 		}
-
-		Board contectBoard = service.getView(board.getWriteNo());
+		
 		session.setAttribute("contectBoard", contectBoard);	
 
-		List<Board> replyList = service.getReplyList(board.getWriteNo());
+		List<Board> replyList = service.getReplyList(contectBoard.getWriteNo());
 		session.setAttribute("replyList", replyList);
 
 		if ( logger.isInfoEnabled() )
-			logger.info("board.getWriteNo() : " + board.getWriteNo());
+			logger.info("board.getWriteNo() : " + contectBoard.getWriteNo());
 
 		return "/WEB-INF/script/board/view.jsp";
 	}
