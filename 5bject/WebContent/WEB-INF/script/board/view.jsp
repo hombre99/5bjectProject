@@ -187,7 +187,7 @@
 							</c:if>
 						</table>
 						<div align="center">
-							<table border="1">
+							<table border="0">
 								<tr align="center" id="btnTr"></tr>
 							</table>
 						</div>
