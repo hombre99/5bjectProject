@@ -119,7 +119,7 @@
 		</div>
 
 		<div id="boardDiv">
-			<table class="boardTable">
+			<table class="boardTable" >
 				<tr>
 					<td>
 						<table class="boardTable" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -169,7 +169,7 @@
 											<td colspan="3">
 												<input type="text" readonly="readonly" size="100" value="${reply.content}" />
 											</td>
-											<td> ${reply.date}</td>
+											<td><fmt:formatDate value="${reply.date }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
 										</tr>
 									</c:forEach>
 								</c:otherwise>
