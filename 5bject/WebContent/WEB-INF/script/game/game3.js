@@ -103,7 +103,6 @@ $(document).ready(function(){
 
 			$(scoreTable).append(tr);
 		}
-
 		$("div#score").append(scoreTable);
 	
 		var timer = setInterval( function() {
@@ -248,7 +247,7 @@ $(document).ready(function(){
 			$(gameTable).append(tr);
 		}	
 		// display.append(gameTable);
-		display.children().eq(0).after(gameTable);
+		display.children().eq(0).before(gameTable);
 	}
 
 	/* 메인페이지 클릭이벤트 등록 */
