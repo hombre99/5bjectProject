@@ -5,6 +5,14 @@
 <head>
 <meta charset=" UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="/5bject/jquery.do"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#close").on("click", function() {
+			window.close();
+		});
+	});
+</script>
 </head>
 <body>
 	<h2>게임점수 조회</h2>
@@ -13,7 +21,7 @@
 
 		<c:choose>
 			<c:when test="${list.gameNum==-1 }">
-	 		게임 정보가 없습니다.
+	 		게임 정보가 없습니다.<br>
 	 		</c:when>
 		</c:choose>
 
@@ -65,7 +73,7 @@
 			</c:when>
 		</c:choose>
 	</c:forEach>
-
+<input type="button" value="닫기" id="close">
 
 
 </body>

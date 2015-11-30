@@ -17,7 +17,7 @@
 		INSERT	INTO GAMEWORD VALUES(#{ gameNum }, #{ difficulty }, #{ word })
 	</insert>
 	
-	<select id="selectGameWordByWord" resultMap="gameWord-resultMap">
+	<select id="selectGameWordByWord" parameterType="hashmap" resultMap="gameWord-resultMap">
 		<include refid="selectGameWord-sql" />
 		FROM 	GAMEWORD
 		WHERE	WORD = #{ word }
