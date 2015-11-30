@@ -28,6 +28,7 @@ $(document).ready(function(){
 		answerCount = gameDifficulty;
 	}
 
+	// 게임단어 받는 배열
 	var words = new Array();
 	
 	$.ajax({
