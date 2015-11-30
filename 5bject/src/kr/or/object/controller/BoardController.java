@@ -49,20 +49,18 @@ public class BoardController {
 		return "/WEB-INF/script" + filePath + ".jsp";
 	}
 
-	@RequestMapping(value = "/write_success.do", method = RequestMethod.POST)
-	public String Write(HttpSession session , @ModelAttribute Board board){		
-		int boardInfo = 2;
-
-		if(board.getId().equals("objectclass")){
-			board.setNotice(1);
-			boardInfo = 1;
-		}else{
-			board.setNotice(2);
-		}			
-
-		service.insertWrite(board);		
-
-		return "/board/boardInfo.do?boardInfo=" + boardInfo;
+	// 20151128. JSJ. AJAX ADD.
+	@RequestMapping(value="/write_success.do", method=RequestMethod.POST)
+	@ResponseBody
+	public String Write(@RequestParam String id, @RequestParam String title, @RequestParam String content,
+					@RequestParam int notice, @RequestParam int ref) {
+		Board board = new Board(id, title, content, notice, ref);
+		
+		if ( logger.isInfoEnabled() )
+			logger.info("board : " + board);
+		
+		service.insertWrite(board);
+		return "/5bject/board/boardInfo.do?boardInfo=" + notice;
 	}
 
 	@RequestMapping("/delete.do")
