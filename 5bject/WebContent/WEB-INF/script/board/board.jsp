@@ -70,6 +70,13 @@
 						<td id="boardTitle">
 							<a href="/5bject/board/view.do?writeNo=${ board.writeNo }">
 								${ fn:length(board.title) > 15 ? fn:substring(board.title,0,15).concat(".....") : board.title }
+								<c:choose>
+									<c:when test="${ board.reply==0 }">
+									</c:when>
+									<c:otherwise>
+										[${board.reply }]
+									</c:otherwise>
+								</c:choose>
 							</a>
 						</td>
 						<c:choose>

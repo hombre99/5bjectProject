@@ -31,8 +31,9 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public void insertReply(Board board) {
-		dao.insertReply(board);      
+	public void insertReply(Board board, Board original) {
+		dao.insertReply(board);		
+		dao.updateReply(original);
 	}
 
 	@Override

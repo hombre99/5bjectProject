@@ -33,6 +33,7 @@
 			<c:otherwise>
 				<script type="text/javascript">
 					$(document).ready(function() {
+						$("#loginId").focus();
 						$("#link2").on("click", function() {
 							window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
@@ -127,7 +128,6 @@
 				};
 			</script>
 		</c:if>
-
 		<!-- 여기서부터 손대지 마세여... -->
 		<link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
 		<link
@@ -190,19 +190,21 @@
 							</div>
 						</c:when>
 						<c:when test="${ sessionScope.gameNum == 3 }">
-							<div class="color-scheme--white learn-more grid-row margin-top--3" exclude="phone">
-								<div class="grid-row grid-col-11 grid-col--center grid-col--align-center">				
-									<div class="grid-row grid-col-6 grid-col--right" id="display">								
-										<div class="grid--no--padding grid-col-5 grid-col--right"></div>
-										<div class="grid--no--padding grid-col-5 grid-col--right"></div>								
-										<div class="grid-col-5 grid-col--right" id="display2"></div>
-									</div>									
-									<div class="grid-col-3 grid-col--right" id="answerPannel">
+							<!-- 20151130 game3 -->
+ 							<div class="color-scheme--white learn-more grid-row margin-top--3">
+								<div class="background">	
+									<div class="typingHeader"><img src="/5bject/image/game/game3/typing.jpg"/>
+										<br> 코딩할 때 연관되어 있는 단어들 입니다. 
+									</div>
+									<div class="left" id="display">
+										<div id="display2"></div>
+									</div>		 						 
+									<div class="right">
 										<div id="score"></div>
 										<div id="input"></div>
-									</div>
+									</div>				
 								</div>
-							</div>
+							</div> 
 						</c:when>
 					</c:choose>
 				</c:when>

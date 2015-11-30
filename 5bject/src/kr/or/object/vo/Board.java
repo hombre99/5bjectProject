@@ -11,6 +11,7 @@ public class Board implements Serializable{
 	private Date date;
 	private int notice;
 	private int hit;
+	private int reply;
 	private int ref;
 
 	public Board() {
@@ -25,7 +26,8 @@ public class Board implements Serializable{
 		this.ref = ref;
 	}
 
-	public Board(int writeNo, String id, String title, String content, Date date, int notice, int hit, int ref) {
+	public Board(int writeNo, String id, String title, String content, Date date, int notice, int hit, int reply,
+			int ref) {
 		super();
 		this.writeNo = writeNo;
 		this.id = id;
@@ -34,6 +36,7 @@ public class Board implements Serializable{
 		this.date = date;
 		this.notice = notice;
 		this.hit = hit;
+		this.reply = reply;
 		this.ref = ref;
 	}
 
@@ -101,10 +104,12 @@ public class Board implements Serializable{
 		this.ref = ref;
 	}
 
-	@Override
-	public String toString() {
-		return "Board [writeNo=" + writeNo + ", id=" + id + ", title=" + title + ", content=" + content + ", date="
-				+ date + ", notice=" + notice + ", hit=" + hit + ", ref=" + ref + "]";
+	public int getReply() {
+		return reply;
+	}
+
+	public void setReply(int reply) {
+		this.reply = reply;
 	}
 
 	@Override
@@ -117,6 +122,7 @@ public class Board implements Serializable{
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + notice;
 		result = prime * result + ref;
+		result = prime * result + reply;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + writeNo;
 		return result;
@@ -152,6 +158,8 @@ public class Board implements Serializable{
 			return false;
 		if (ref != other.ref)
 			return false;
+		if (reply != other.reply)
+			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -161,4 +169,12 @@ public class Board implements Serializable{
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Board [writeNo=" + writeNo + ", id=" + id + ", title=" + title + ", content=" + content + ", date="
+				+ date + ", notice=" + notice + ", hit=" + hit + ", reply=" + reply + ", ref=" + ref + "]";
+	}
+
+	
 }

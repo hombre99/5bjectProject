@@ -96,7 +96,7 @@
 						"writeNo" : writeNo},
 					"type" : "POST",
 					"success" : function() {
-						location.replace("/5bject/board/view.do?writeNo=" + writeNo + "&hit=" + hit + "&id=" + id + "&sessionId=" + id);
+						location.replace("/5bject/board/view.do?writeNo=" + writeNo);
 					},
 					"error" : function(request, status, error) {
 						alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
