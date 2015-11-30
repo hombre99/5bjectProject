@@ -5,9 +5,23 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>FIND_GAMEWORD</title>
+<script type="text/javascript" src="/5bject/jquery.do"></script>
+<script type="text/javascript">
+	var id = '${ sessionScope.member.id }';
+</script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		if ( id != "objectclass" ) {
+			alert("관리자 페이지입니다.");
+			history.go(-1);
+		}
+	});
+</script>		
 		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/menu.css" />
 	</head>
 	<body>
+	<c:if test="${ sessionScope.member.id == 'objectclass' }">
 		<menu>
 			<jsp:include page="/WEB-INF/script/layout/game_menu.jsp" />
 		</menu>
@@ -67,5 +81,6 @@
 				</c:otherwise>
 			</c:choose>
 		</table>
+		</c:if>
 	</body>
 </html>

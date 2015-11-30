@@ -10,8 +10,17 @@
 <meta charset=" UTF-8">
 <title>Member Info</title>
 <script type="text/javascript" src="/5bject/jquery.do"></script>
-      <script type="text/javascript">
+<script type="text/javascript">
+	var id = '${ sessionScope.member.id }';
+</script>
+<script type="text/javascript">
       $(document).ready(function() {
+    	  
+    	  if ( id != "objectclass" ) {
+  			alert("관리자 페이지입니다.");
+  			history.go(-1);
+  			}
+    	  
     	  $("#close").on("click",function(){
     		  location.replace('/5bject/member/memberList.do');
 			});
@@ -45,6 +54,7 @@
       </style>
 </head>
 <body>
+<c:if test="${ sessionScope.member.id == 'objectclass' }">
 <!-- table로 처리 -->
    <!-- header include로 처리 -->
    <header>
@@ -69,5 +79,6 @@
       </table>         
    <footer>
    </footer>
+   </c:if>
 </body>
 </html>
