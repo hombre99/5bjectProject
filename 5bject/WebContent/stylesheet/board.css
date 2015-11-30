@@ -13,7 +13,7 @@ footer {
 	text-align: center;
 }
 
-table {
+#boardTable {
 	margin-left: 250px;
 	text-align: center;
 }
@@ -33,4 +33,10 @@ table {
 
 a {
 	text-decoration: none !important;
+}
+
+#contentText {
+	size: 20;
+	width: 100%;
+	height: 360px;
 }
