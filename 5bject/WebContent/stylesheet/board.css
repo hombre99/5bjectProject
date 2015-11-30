@@ -1,0 +1,36 @@
+header {
+	background-color: lightblue;
+	color: white;
+	text-align: left;
+	padding: 5px;
+}
+
+footer {
+	background-color: lightblue;
+	color: white;
+	height: 100px;
+	clear: both;
+	text-align: center;
+}
+
+table {
+	margin-left: 250px;
+	text-align: center;
+}
+
+#boardDiv {
+	height: 800px;
+}
+
+#btnTr {
+	align:center;
+}
+
+.boardDiv {
+	background-color: #f1f2f2;
+	padding: 20px;
+}
+
+a {
+	text-decoration: none !important;
+}
