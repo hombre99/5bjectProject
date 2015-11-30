@@ -317,4 +317,12 @@ public class MemberController {
 		}
 		return "/WEB-INF/script/login/find_password_result.jsp";
 	}
+	
+	// 게임 점수 조회 페이지
+	@RequestMapping("/memberScore.do")
+	public String memberScore(HttpSession session, @RequestParam String id ){
+		List<GameScore> score =  gameService.selectGameScore(id);
+		session.setAttribute("score", score);
+		return "/WEB-INF/script/login/member_score.jsp";
+	}
 }
