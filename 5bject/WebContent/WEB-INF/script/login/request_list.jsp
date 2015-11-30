@@ -8,7 +8,15 @@
 <title>고객요청문의</title>
 <script type="text/javascript" src="/5bject/jquery.do"></script>
 <script type="text/javascript">
+	var id = '${ sessionScope.member.id }';
+</script>
+<script type="text/javascript">
 	$(document).ready(function() {
+		if ( id != "objectclass" ) {
+			alert("관리자 페이지입니다.");
+			history.go(-1);
+		}
+		
 		$("#close").on("click", function() {
 			window.close();
 		});
@@ -27,7 +35,7 @@
 <link rel="stylesheet" type="text/css" href="/5bject/stylesheet/menu.css" />
 </head>
 <body>
-
+<c:if test="${ sessionScope.member.id == 'objectclass' }">
 	<menu>
 		&nbsp;&nbsp;<jsp:include page="/WEB-INF/script/layout/menu.jsp" />
 	</menu>
@@ -104,5 +112,6 @@
 			</c:when>
 			<c:otherwise>▶</c:otherwise>
 		</c:choose>
+</c:if>
 </body>
 </html>
