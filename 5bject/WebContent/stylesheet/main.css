@@ -61,6 +61,38 @@ footer {
 }
 
 #gamePannel {
-	width: 600px;
+	width: 1600px;
 	border-collapse: collapse;
 }
+/*game3 CSS 20151130*/
+	.background{
+		width: 100%;
+		background-color: white;
+		height: 450px;
+	}
+	.left{
+		float: left;
+		margin-left: 35%;
+		margin-top: 70px;
+		margin-button:50px;
+		width:25%;
+		font-weight:bold;
+	}
+	.right{
+		float:left;
+		margin-left:auto;
+		margin-right: 20%;
+		margin-top: 70px;
+	}
+
+	.typingHeader{
+		width: 100%;
+		color: lightblue;
+		margin-top: 50px;
+		text-align:center;
+	}
+	
+	img{
+		margin-left: auto;
+		margin-right: auto;
+	}

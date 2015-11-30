@@ -11,7 +11,7 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		
+
 		if ( id != "objectclass" ) {
 			alert("관리자 페이지입니다.");
 			history.go(-1);

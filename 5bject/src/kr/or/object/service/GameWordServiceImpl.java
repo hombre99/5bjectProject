@@ -22,7 +22,7 @@ public class GameWordServiceImpl implements GameWordService {
 	}
 
 	@Override
-	public GameWord findWord(String word) {
+	public  List<GameWord> findWord(String word) {
 		return dao.findWord(word);
 	}
 
