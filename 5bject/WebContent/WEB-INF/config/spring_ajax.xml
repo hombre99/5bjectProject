@@ -65,10 +65,6 @@
 	<mvc:view-controller path="/member/findPwd.do" view-name="/WEB-INF/script/login/find_password.jsp" /> 
 	<!-- 고객문의 요청 추가 -->
 	<mvc:view-controller path="/member/request.do" view-name="/WEB-INF/script/login/request_member.jsp" />
-	
-	<!-- 20151128 ADD KKH 회원 게임점수 조회 -->
-	<mvc:view-controller path="/member/memberScore.do" view-name="/WEB-INF/script/login/member_score.jsp"/>
-
 	<!-- Language CHJ-->
 	<mvc:view-controller path="/language/computer_language.do" view-name="/WEB-INF/script/language/computer_language.jsp" />
 	
