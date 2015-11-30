@@ -12,6 +12,9 @@
 			window.close();
 		});
 	});
+	function page_back(){
+		history.go(-1);
+	}
 </script>
 </head>
 <body>
@@ -73,8 +76,7 @@
 			</c:when>
 		</c:choose>
 	</c:forEach>
+<input type="button" onclick="page_back();" value="마이페이지">
 <input type="button" value="닫기" id="close">
-
-
 </body>
 </html>
