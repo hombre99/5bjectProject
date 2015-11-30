@@ -104,14 +104,25 @@ public class GameController {
 
 			
 	@RequestMapping("/findWord.do")
-	public String findWord(@RequestParam String word, ModelMap model) {
-		HashMap map = new HashMap();
-		List<GameWord> list = gwService.findWord(word);
+	public String findWord(@RequestParam String word, @RequestParam String pageNo, ModelMap model) {
+		int page = 1;
 		
-		if(list.size()==1){
+		try {
+			page = Integer.parseInt(pageNo);
+		} catch ( NumberFormatException e ) {
+		}
+
+		Map map = gwService.findWord(word, page);
+		List list = (List)map.get("list");
+		
+		if ( logger.isInfoEnabled() )
+			logger.info("list : " + list);
+		
+		if ( list.size() == 1 ) {
 			map.put("gameWord", list.get(0));
-		}else if(list.size()>1){
+		} else if ( list.size() > 1 ) {
 			map.put("list", list);
+			map.put("controllerName", "findWord");
 		}
 		
 		model.addAllAttributes(map);
@@ -128,6 +139,7 @@ public class GameController {
 		}
 
 		Map attributes = gwService.findAllWord(page);
+		attributes.put("controllerName", "findAllWord");
 		model.addAllAttributes(attributes);
 
 		return "/WEB-INF/script/game/find_gameword.jsp";

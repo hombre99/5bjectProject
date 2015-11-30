@@ -19,8 +19,13 @@
 	
 	<select id="selectGameWordByWord" parameterType="hashmap" resultMap="gameWord-resultMap">
 		<include refid="selectGameWord-sql" />
-		FROM 	GAMEWORD
-		WHERE	WORD = #{ word }
+		FROM	(<include refid="selectGameWord-sql" />, CEIL(ROWNUM / #{ contentsPerPage }) PAGE
+				FROM (<include refid="selectGameWord-sql" />
+						FROM GAMEWORD
+						WHERE WORD = #{ word }
+						ORDER BY GAME_NUM ASC, DIFFICULTY ASC, WORD ASC
+				)
+		) WHERE PAGE = #{ pageNo }
 	</select>
 	
 	<select id="selectAllGameWord" parameterType="hashmap" resultMap="gameWord-resultMap">
@@ -43,5 +48,9 @@
 	
 	<select id="selectWordCount" resultType="_int">
 		SELECT	COUNT(WORD) FROM GAMEWORD
+	</select>
+	
+	<select id="selectWordCountByWord" resultType="_int">
+		SELECT	COUNT(WORD) FROM GAMEWORD WHERE WORD = #{ word }
 	</select>
 </mapper>

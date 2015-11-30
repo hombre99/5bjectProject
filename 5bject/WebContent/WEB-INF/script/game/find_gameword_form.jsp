@@ -11,6 +11,7 @@
 </script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		$("input#findWord").focus();
 		
 		if ( id != "objectclass" ) {
 			alert("관리자 페이지입니다.");
@@ -31,7 +32,8 @@
 				<tr><td colspan="3" align="center"><h2><font face="HY견고딕" color="lightblue">등록된 특정단어 찾기</font></h2></td></tr>
 				<tr>
 					<td colspan="3" align="center">
-						<input type="text" name="word" />
+						<input type="hidden" name="pageNo" value="1" />
+						<input type="text" id="findWord" name="word" />
 					</td>
 				</tr>
 				<tr>

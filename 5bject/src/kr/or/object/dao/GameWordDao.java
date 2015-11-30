@@ -8,11 +8,13 @@ import kr.or.object.vo.GameWord;
 public interface GameWordDao {
 	void addWord(GameWord gw);
 	
-	List<GameWord> findWord(String word);
+	List<GameWord> findWord(String word, int pageNo);
 	
 	List<GameWord> findAllWord(int pageNo);
 
 	List<GameWord> findPlayingWord(HashMap map);
 	
 	int totalWordCount();
+
+	int totalWordCountByWord(String word);
 }
