@@ -120,6 +120,9 @@ public class BoardController {
 		hit++;
 		contectBoard.setHit(hit);	
 		service.updateHit(contectBoard);
+		if(session.getAttribute("writer")!=null){
+		session.removeAttribute("writer");
+		}
 		
 		Members members = (Members) session.getAttribute("member");
 		if(members!=null){
