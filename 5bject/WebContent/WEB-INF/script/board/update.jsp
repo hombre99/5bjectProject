@@ -12,6 +12,7 @@
 				var ref = 0;
 				
 				$("input#correctBtn").on("click", function() {
+					var writeNo = $("input#writeNo").val();
 					var title = $("input#title").val();
 					var content = $("#content").val();
 
@@ -29,7 +30,7 @@
 
 					$.ajax({
 						"url" : "/5bject/board/update_success.do",
-						"data" : {"id" : id, "title" : title, "content" : content, "notice" : notice, "ref" : ref},
+						"data" : {"writeNo" : writeNo, "id" : id, "title" : title, "content" : content, "notice" : notice, "ref" : ref},
 						"type" : "POST",
 						"success" : function(success_url) {
 							location.replace(success_url);
