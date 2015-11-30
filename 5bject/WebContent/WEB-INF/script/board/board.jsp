@@ -45,7 +45,7 @@
 		</div>
 
 		<div id="boardDiv">
-			<table id="boardTable" width="70%" cellpadding="0" cellspacing="0" border="0">
+			<table class="boardTable" width="70%" cellpadding="0" cellspacing="0" border="0">
 				<tr>
 					<td colspan="7" align="center">
 						<h1>자유게시판</h1>
@@ -110,7 +110,7 @@
 									end="${ requestScope.pagingBean.endPageOfPageGroup }" var="page">
 							<c:choose>
 								<c:when test="${page == requestScope.pagingBean.currentPage }">
-									[${ page }]
+									<b>${ page }</b>
 								</c:when>
 								<c:otherwise>
 									<a href="/5bject/board/boardInfo.do?boardInfo=2&pageNo=${ page }">
