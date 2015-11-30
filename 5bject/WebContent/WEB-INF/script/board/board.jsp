@@ -81,9 +81,9 @@
 							</c:otherwise>
 						</c:choose>
 					 	<%
-							Date aaa = (Date)((Board)pageContext.findAttribute("board")).getDate();
+							Date writeDay = (Date)((Board)pageContext.findAttribute("board")).getDate();
 							SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-							if ( sdf.format(aaa).equals(sdf.format(new Date())) ) {
+							if ( sdf.format(writeDay).equals(sdf.format(new Date())) ) {
 						%>
 						<td><fmt:formatDate value="${ board.date }" pattern="HH:mm:ss" /></td>
 						<% } else { %>

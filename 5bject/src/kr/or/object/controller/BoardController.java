@@ -116,20 +116,19 @@ public class BoardController {
 	@RequestMapping("/view.do")
 	public String View(HttpSession session,@RequestParam int writeNo){
 		Board contectBoard = service.getView(writeNo);
-		
+		String loginId = "";
 		int hit = contectBoard.getHit();
 		hit++;
 		contectBoard.setHit(hit);	
 		service.updateHit(contectBoard);
 		
 		Members members = (Members) session.getAttribute("member");
-		String loginId = members.getId();
-		
-
-		if(loginId.equals(contectBoard.getId())){
-			session.setAttribute("writer", "writer");
+		if(members!=null){
+			loginId = members.getId();
+			if(loginId.equals(contectBoard.getId())){
+				session.setAttribute("writer", "writer");
+			}
 		}
-		
 		session.setAttribute("contectBoard", contectBoard);	
 
 		List<Board> replyList = service.getReplyList(contectBoard.getWriteNo());
