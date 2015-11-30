@@ -1,5 +1,6 @@
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -132,8 +133,8 @@
 							<tr style="background: url('/5bject/image/board/table_mid.gif') repeat-x; text-align: center;">
 								<td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
 								<td align="left">글쓴이 : ${ sessionScope.contectBoard.id }</td>
-								<td align="center">등록일 : ${ sessionScope.contectBoard.date }</td>
-								<td align="right">조회 수 : ${essionScope.contectBoard.hit }</td>
+								<td align="center">등록일 : <fmt:formatDate value="${ sessionScope.contectBoard.date }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+								<td align="right">조회 수 : ${sessionScope.contectBoard.hit }</td>
 								<td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
 							</tr>
 						</table>
