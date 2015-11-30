@@ -4,9 +4,9 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Insert title here</title>
+		<title>WRITE</title>
 		<script type="text/javascript" src="/5bject/jquery.do"></script>
-		<script type="text/javascript">  // 자바 스크립트 시작
+		<script type="text/javascript">
 			$(document).ready(function() {
 				var id = '${ sessionScope.member.id }';
 				var notice = 2;
@@ -50,32 +50,20 @@
 				});
 			});
 		</script>
-		<style type="text/css">
-			header {
-				background-color: lightblue;
-				
-				color: white;
-				text-align: left;
-				padding: 5px;
-			}
-
-			footer {
-				background-color: lightblue;
-				color: white;
-				height: 100px;
-				clear: both;
-				text-align: center;
-			}
-
-			#contentText {
-				size: 20;
-				width: 100%;
-				height: 360px;
-			}
-		</style>
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/board.css" />
 	</head>
 	<body>
-		<table>
+		<header>
+			<jsp:include page="/WEB-INF/script/layout/header.jsp" />
+		</header>
+
+		<div class="boardDiv">
+			<board>
+				<jsp:include page="/WEB-INF/script/layout/board.jsp" />
+			</board>
+		</div>
+
+		<table class="boardTable">
 			<tr>
 				<td>
 					<table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -85,7 +73,7 @@
 							<td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
 						</tr>
 					</table>
-					<table border="1">
+					<table border="0">
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">제목</td>
@@ -96,7 +84,7 @@
 						<tr>
 							<td>&nbsp;</td>
 							<td align="center">작성자</td>
-							<td>
+							<td align="left">
 								<input type="text" readonly="readonly" id="id" name="id" value="${sessionScope.member.id}" size="20" />
 								<c:if test="${ sessionScope.member.id == 'objectclass' }">
 									<label><input type="checkbox" id="noticeChk" name="notice" />공지사항</label>
@@ -127,5 +115,9 @@
 				</td>
 			</tr>
 		</table>
+
+		<footer>
+			<jsp:include page="/WEB-INF/script/layout/footer.jsp" />
+		</footer>
 	</body>
 </html>

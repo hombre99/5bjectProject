@@ -28,6 +28,7 @@ $(document).ready(function(){
 		answerCount = gameDifficulty;
 	}
 
+	// 게임단어 받는 배열
 	var words = new Array();
 	
 	$.ajax({
@@ -108,6 +109,7 @@ $(document).ready(function(){
 		var timer = setInterval( function() {
 				if ( gameTime < 1 || totalScore ) {
 					alert("게임이 끝났습니다." + (totalScore ? " " + totalScore + "점 입니다." : ""));
+					clearInterval(timer);
 					if ( !loginId ) {
 						alert("비회원은 점수가 저장되지 않습니다.");
 						if ( confirm("다시 시작하시겠습니까?") ) {
@@ -116,8 +118,6 @@ $(document).ready(function(){
 							location.replace("/5bject/main.do");
 						}
 					} else {
-						clearInterval(timer);
-					
 						if ( difficulty == 2 )
 							easyScore = totalScore;
 						else if ( difficulty == 3 )
