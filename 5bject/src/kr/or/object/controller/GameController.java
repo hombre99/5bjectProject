@@ -106,11 +106,16 @@ public class GameController {
 	@RequestMapping("/findWord.do")
 	public String findWord(@RequestParam String word, ModelMap model) {
 		HashMap map = new HashMap();
+		List<GameWord> list = gwService.findWord(word);
 		
-		map.put("gameWord", gwService.findWord(word));
-
+		if(list.size()==1){
+			map.put("gameWord", list.get(0));
+		}else if(list.size()>1){
+			map.put("list", list);
+		}
+		
 		model.addAllAttributes(map);
-			
+		System.out.println(map);
 		return "/WEB-INF/script/game/find_gameword.jsp";
 	}
 	

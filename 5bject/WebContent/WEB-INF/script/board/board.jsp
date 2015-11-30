@@ -68,7 +68,7 @@
 						<td align="center">&nbsp;</td>
 						<td>${ board.writeNo }</td>
 						<td id="boardTitle">
-							<a href="/5bject/board/view.do?writeNo=${ board.writeNo }&hit=${ board.hit }&id=${ board.id }&sessionId=${ sessionScope.member.id }">
+							<a href="/5bject/board/view.do?writeNo=${ board.writeNo }">
 								${ fn:length(board.title) > 15 ? fn:substring(board.title,0,15).concat(".....") : board.title }
 							</a>
 						</td>
@@ -81,9 +81,9 @@
 							</c:otherwise>
 						</c:choose>
 					 	<%
-							Date aaa = (Date)((Board)pageContext.findAttribute("board")).getDate();
+							Date writeDay = (Date)((Board)pageContext.findAttribute("board")).getDate();
 							SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
-							if ( sdf.format(aaa).equals(sdf.format(new Date())) ) {
+							if ( sdf.format(writeDay).equals(sdf.format(new Date())) ) {
 						%>
 						<td><fmt:formatDate value="${ board.date }" pattern="HH:mm:ss" /></td>
 						<% } else { %>
