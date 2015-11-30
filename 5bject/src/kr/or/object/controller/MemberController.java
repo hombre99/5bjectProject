@@ -46,7 +46,6 @@ public class MemberController {
 	//회원가입시-게임시  필요한 컨트롤러 
 	@RequestMapping(value = "/register_form_validate.do", method = RequestMethod.POST)
 	@Transactional(rollbackFor={Exception.class})
-	
 	public String registerValidate(HttpServletRequest request, @ModelAttribute Members member, Errors errors) {
 		MemberValidator validate = new MemberValidator();
 		validate.validate(member, errors);
