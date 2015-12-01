@@ -20,9 +20,14 @@
 				window.close();
 			});
 			$("#leave").on("click",function(){
+				var password = '${ sessionScope.member.password }';
 				if(confirm("정말 탈퇴하시겠습니까?")){
-					opener.location.replace('/5bject/member/leave.do?id=${sessionScope.member.id}');					
-					window.close();
+					if ( password == window.prompt("비밀번호를 입력해주세요.") ) {
+						opener.location.replace('/5bject/member/leave.do?id=${sessionScope.member.id}');					
+						window.close();
+					} else {
+						alert("비밀번호가 맞지 않습니다.");
+					}
 				}
 			});
 			/*2015 11 25일 width size change*/
