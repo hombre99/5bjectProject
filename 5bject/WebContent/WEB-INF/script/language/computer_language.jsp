@@ -62,7 +62,7 @@
 			<div id="middle2">
 				<div id="content2">
 					<br>
-					<div class="algo"><font size="3"><b>알고리즘이란 <br> 무엇일까요?</b></font></div>
+					<div id="algo"><b>알고리즘이란 <br> 무엇일까요?</b></div>
 				</div>
 				<div id ="content3">
 					<br>
