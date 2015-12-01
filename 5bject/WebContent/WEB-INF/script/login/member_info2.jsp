@@ -59,7 +59,7 @@
 <!-- table로 처리 -->
    <!-- header include로 처리 -->
    <header>
-      <jsp:include page="/WEB-INF/script/layout/header.jsp" />
+      <jsp:include page="/WEB-INF/script/layout/header_popup.jsp" />
    </header>
       <table>
       <!--***님의 회원정보 font color change 20151125 -->
