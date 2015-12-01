@@ -70,7 +70,7 @@
 </script>
 <!--  css 설정  -->
 <style type="text/css">
-	.error {
+	table .error {
 		color: red;
 		face: impact;
 		font-size: 1;
@@ -83,8 +83,21 @@
 		padding: 10px;
 	}
 	
-	table {
+	table{
+		margin-top: 20px;
 		margin-left: 70px;
+	}
+	
+	#subject{
+		font-size: 16px;
+		font-weight: bold;
+	}
+	input {
+	  background-color:transparent;
+	  border-width:1px;
+	  border-color:skyblue;
+	  border-style:solid; 
+	  height: 20px;
 	}
 </style>
 </head>
@@ -96,41 +109,39 @@
 	<!--  ADD id ="regForm 20151125-->
 	<form action="/5bject/member/register_form_validate.do" method="post" id="regForm">
 		<table>
-			<tr><td colspan="2" align="center"><h1><font color="skyblue">Sign Up</font></h1></td></tr>
-			<tr><td colspan="2" align="center"><font color="skyblue">회원가입</font></td></tr>	
-					
+			<tr><td colspan="2"> <img src="/5bject/image/member/signup_form.jpg"></td></tr>				
 			<tr>
-				<td colspan="2"><b>ID</b></td>
+				<td colspan="2" id="subject"><b>아이디</b></td>
 			</tr>
 			<tr>		
 				<td>
-					<input type="text" name="id" id="id" value="${requestScope.members.id}"  placeholder="사용할 아이디를 입력하세요." size="25" maxlength="25"  onkeyup="noSpaceForm(this); checkEngNum(this);" onchange="noSpaceForm(this); " />
+					<input type="text" name="id" id="id" value="${requestScope.members.id}"  placeholder="사용할 아이디를 입력하세요."  autofocus="autofocus" size="30" maxlength="25"  onkeyup="noSpaceForm(this); checkEngNum(this);" onchange="noSpaceForm(this); " />
 					<br><span class="error" id="idErrorMessage"><form:errors path="members.id" /></span>
 				</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="2"><b>Password</b></td>
+				<td colspan="2" id="subject"><b>비밀번호</b></td>
 			</tr>
 			<tr>
 				<td>
-					<input type="password" name="password" value="${ requestScope.members.password }" placeholder="비밀번호를 입력하세요." size="25" maxlength="25"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" />
+					<input type="password" name="password" value="${ requestScope.members.password }" placeholder="사용할 비밀번호를 입력하세요." size="30" maxlength="25"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);" />
 					 <br> <span class="error"><form:errors path="members.password" delimiter=" - " /></span>
 				</td>
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="2"><b>Name</b></td>
+				<td colspan="2" id="subject"><b>이름</b></td>
 			</tr>
 			<tr>
-				<td colspan="2"><input type="text" name="name" id="name" value="${requestScope.members.name}" placeholder="이름을 입력하세요" autofocus="autofocus"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this); checkKor();" /> 
+				<td colspan="2"><input type="text" name="name" id="name" value="${requestScope.members.name}" placeholder="본인의 이름을 입력하세요" size="30"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this); checkKor();" /> 
 					<br> <span class="error"><form:errors path="members.name" delimiter=" - " /></span></td>
 			</tr>
 			<tr>
 				<td colspan="2"><font color="white">BLANK</font></td>
 			</tr>
 			<tr>
-				<td colspan="2"><b>생년월일</b></td>
+				<td colspan="2" id="subject"><br><b>생년월일</b></td>
 			</tr>
 			<tr>
 				<td colspan="2"><select name="month">
@@ -160,7 +171,7 @@
 					<span class="error"><form:errors path="members.month" /></span></td>
 			</tr>
 			<tr>
-				<td colspan="2"><b>이메일</b></td>
+				<td colspan="2" id="subject"><b>이메일</b></td>
 			</tr>
 			<tr>
 				<td colspan="2">
@@ -177,7 +188,7 @@
 				</select>
 						 <br> <span class="error"><form:errors path="members.emailId" delimiter=" - " /></span></td>
 			<tr>
-				<td colspan="2"><b>성별</b></td>
+				<td colspan="2" id="subject"><br><b>성별</b></td>
 			</tr>
 			<tr>
 			<!-- value="male" female 되어있는것 삭제 20151126 CHJ -->
@@ -187,7 +198,7 @@
 						 <br><span class="error"><form:errors path="members.gender" /></span></td>
 			</tr>
 			<tr>
-				<td colspan="2"><b>Phone Number</b> (ex:01012341234)</td>
+				<td colspan="2" id="subject"><b>Phone Number</b> (ex:01012341234)</td>
 			</tr>
 			<tr>
 				<td>
@@ -198,7 +209,7 @@
 				<td></td>
 			</tr>
 			<tr>
-				<td><input type="submit" value="회원가입"></td>
+				<td><br><input type="submit" value="회원가입"></td>
 				<td></td>
 			</tr>
 		</table>
