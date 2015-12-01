@@ -42,16 +42,9 @@
        	 table tr td.main{
       	 	font-weight: bold;
       	 }
-         header{
-            background-color: lightblue;
-            color: white;
-            text-align: left;
-            padding: 5px;
-         }
-         table{
-            margin-left: 70px;
-         }
       </style>
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/header_footer.css" />
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/find_info.css" />
 </head>
 
 <body>

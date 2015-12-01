@@ -17,13 +17,6 @@
 	}
 </script>
 <style type="text/css">
-	header{
-		background-color: lightblue;
-		color: white;
-		text-align: left;
-		padding: 5px;
-	}
-
 	table{
 		margin-top: 20px;
 		margin-left: 100px;
@@ -32,6 +25,7 @@
 		margin-left: 100px;
 	}
 </style>
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/header_footer.css" />
 </head>
 <body>
 	<header>

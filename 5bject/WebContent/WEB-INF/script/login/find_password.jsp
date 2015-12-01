@@ -29,12 +29,7 @@
    }
 
 </script>
-<style type="text/css">
-table {
-
-   margin-left: 70px;
-}
-</style>
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/find_info.css" />
 </head>
 
 <body>

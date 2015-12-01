@@ -49,22 +49,14 @@
 			font-size : 2;
 		}
 		/*20151124 CHJ ADD*/
-		table{
-		margin-left: 70px;
-		}
 		header {
 			background-color:lightblue;
 			color:white;
 			text-align:left;
 			padding: 10px;
 		}
-			.error {
-			color: red;
-			face: impact;
-			font-size : 2;
-		}
-
 		</style> 
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/find_info.css" />
 	</head>
 	<body>
 		<header>
