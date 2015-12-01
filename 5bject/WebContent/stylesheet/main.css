@@ -65,6 +65,10 @@ footer {
 	border-collapse: collapse;
 }
 
+#selectPannel{
+	margin-left: 100px;
+}
+
 /*game3 CSS 20151130*/
 	.background{
 		width: 100%;
