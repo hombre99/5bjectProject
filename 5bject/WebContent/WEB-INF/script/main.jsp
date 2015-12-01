@@ -129,14 +129,14 @@
 			</script>
 		</c:if>
 		<!-- 여기서부터 손대지 마세여... -->
-		<link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" />
+<!-- 		<link href="greybox/gb_styles.css" rel="stylesheet" type="text/css" /> -->
 		<link
 			href="https://cdn-production.codecademy.com/assets/rebrand/core-51a92b73616bc4ee9446ad082ee0ce7e.css"
 			media="screen" rel="stylesheet" type="text/css" />
 		<link
 			href="https://cdn-production.codecademy.com/assets/rebrand/controllers/home/show-17141dd9781a3ee228fefc2b7da9d7d3.css"
 			media="screen" rel="stylesheet" type="text/css" />
-		<link
+<!-- 		<link
 			href="https://cdn-production.codecademy.com/assets/webpack/vendor.bundle-59164de1b85d70aee596322a1c89ef69.css"
 			media="screen" rel="stylesheet" type="text/css" />
 
@@ -155,7 +155,7 @@
 			CCDATA['available_locales'] = "en|ko|fa|ru|es-AR|ja|fr|et-EE|zh|fr-FR|pt-BR|de|en-GB|ky-KG|es|en-US|pt|ar";
 			CCDATA.secureSandboxIndexPath = 'https://cdn-production.codecademy.com/assets/secure/index-c5bf1319f62cb07c26239e761a9ed5c9.html';
 			//]]>
-		</script>
+		</script> -->
 		<!-- 여기까지 손대지 마세여... -->
 
 		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/main.css" />
@@ -173,19 +173,39 @@
 			<c:choose>
 				<c:when test="${ (sessionScope.gameNum != null && sessionScope.difficulty != null) }">
 					<c:choose>
-						<c:when test="${ sessionScope.gameNum == 1 || sessionScope.gameNum == 2 }">
-							<div class="color-scheme--white learn-more grid-row margin-top--3" exclude="phone">
-								<div class="grid-row grid-col-11 grid-col--center grid-col--align-center">
-									<div class="grid-row margin-top--3 padding-top--1 padding-bottom--1 grid-col--align-center" id="gamePannel">
-									</div>
-									<div class="grid-col-7 margin-left--3 margin-top--3 grid-col--right" id="answerPannel">
-										<div id="question"></div>
+						<c:when test="${sessionScope.gameNum == 1}">
+							<div class="color-scheme--white learn-more grid-row margin-top--3">
+								<div class="typingHeader"><img src="/5bject/image/game/game1/algo1.jpg"/>
+										<br>
+								</div>
+								<div class="background1">
+									<div id="gamePannel1"></div>
+									 <div id="answerPannel1">
+ 										<div id="question"></div>
 										<div id="selectPannel"></div>
-										<div id="btnPannel">
+										<div id="btnPannel"> 
 											<input type="button" value="제출" id="okBtn" />
 											<input type="button" value="초기화" id="resetBtn" />
 										</div>
-									</div>
+									</div> 
+								</div>
+							</div>
+						</c:when>
+						<c:when test="${sessionScope.gameNum == 2 }">
+							<div class="color-scheme--white learn-more grid-row margin-top--3">
+								<div class="typingHeader"><img src="/5bject/image/game/game2/algo2.jpg"/>
+										<br>
+								</div>
+								<div class="background2">
+									<div id="gamePannel"></div>
+									 <div id="answerPannel">
+ 										<div id="question"></div>
+										<div id="selectPannel"></div>
+										<div id="btnPannel"> 
+											<input type="button" value="제출" id="okBtn" />
+											<input type="button" value="초기화" id="resetBtn" />
+										</div>
+									</div> 
 								</div>
 							</div>
 						</c:when>
@@ -194,7 +214,7 @@
  							<div class="color-scheme--white learn-more grid-row margin-top--3">
 								<div class="background">	
 									<div class="typingHeader"><img src="/5bject/image/game/game3/typing.jpg"/>
-										<br> 코딩할 때 연관되어 있는 단어들 입니다. 
+										<br> 
 									</div>
 									<div class="left" id="display">
 										<div id="display2"></div>

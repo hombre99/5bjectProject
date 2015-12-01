@@ -62,9 +62,8 @@
    background-color: white;
 }
 
-div, #algo{
-	color: lightblue;
-	font-size: 3px;
+ #algo{
+	font-size: 8px;
 	text-align: center;
 	margin-left: 40px;
 }

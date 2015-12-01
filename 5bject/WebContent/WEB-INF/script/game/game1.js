@@ -12,7 +12,7 @@ $(document).ready(function() {
 	//난이도에 따라 테이블을 자동생성하는 function
 	var gameTable = document.createElement("table");
 
-	$("div#gamePannel").append(gameTable);
+	$("div#gamePannel1").append(gameTable);
 
 	for ( var j = 1; j <= difficulty; j++ ) {
 		tr = document.createElement("tr");
@@ -105,7 +105,7 @@ $(document).ready(function() {
 		}
 	
 	//문제 
-	$("#question").html("<h3>다음 그림을 완성해 봅시다!!<br />" + step + "번 안에 왼쪽 그림과 같이 색칠할 수 있는 <br/> 알고리즘을 완성해주세요.</h3>");
+	$("#question").html("<h4><b>다음 그림을 완성해 봅시다!!<br />" + step + "번 안에 왼쪽 그림과 같이 색칠할 수 있는 <br/> 알고리즘을 완성해주세요.</b></h4>");
 
 	//정답 체크 버튼 function
 	$("#select1").on("click", function() {   // 답선택 td id별로 클릭이벤트 부여                  
