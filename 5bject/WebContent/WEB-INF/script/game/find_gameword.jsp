@@ -5,19 +5,22 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>FIND_GAMEWORD</title>
-<script type="text/javascript" src="/5bject/jquery.do"></script>
-<script type="text/javascript">
-	var id = '${ sessionScope.member.id }';
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {
+		<script type="text/javascript" src="/5bject/jquery.do"></script>
+		<script type="text/javascript">
+			var id = '${ sessionScope.member.id }';
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				if ( id != "objectclass" ) {
+					alert("관리자 페이지입니다.");
+					history.go(-1);
+				}
 
-		if ( id != "objectclass" ) {
-			alert("관리자 페이지입니다.");
-			history.go(-1);
-		}
-	});
-</script>		
+				$("#close").on("click", function() {
+					window.close();
+				});
+			});
+		</script>		
 		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/menu.css" />
 	</head>
 	<body>
@@ -26,11 +29,15 @@
 			<jsp:include page="/WEB-INF/script/layout/game_menu.jsp" />
 		</menu>
 		
-		<table style="width: 500px" border="1">
-			<tr><td colspan="3" align="center"><h2><font face="HY견고딕" color="lightblue">게임 단어 조회</font></h2></td></tr>
+		<table style="width: 800px" border="1">
 			<tr>
-				<th>게임번호</th>
-				<th> 난이도</th>
+				<td colspan="3" align="center">
+					<h2><font face="HY견고딕" color="lightblue">게임 단어 조회</font></h2>
+				</td>
+			</tr>
+			<tr>
+				<th style="width:200px">게임종류</th>
+				<th style="width:100px">난이도</th>
 				<th> 단어 </th>
 			</tr>
 			<c:choose>
@@ -44,9 +51,19 @@
 				<c:when test="${ requestScope.list != null }">
 					<c:forEach items="${ requestScope.list }" var="gameWord">
 						<tr>
-							<td> ${ gameWord.gameNum } </td>
-							<td> ${ gameWord.difficulty } </td>
-							<td> ${ gameWord.word } </td>
+							<td align="center">
+								<c:choose>
+									<c:when test="${ gameWord.gameNum == 3 }"> 타자연습게임 </c:when>
+								</c:choose>
+							</td>
+							<td align="center">
+								<c:choose>
+									<c:when test="${ gameWord.difficulty == 2 }"> 하 </c:when>
+									<c:when test="${ gameWord.difficulty == 3 }"> 중 </c:when>
+									<c:when test="${ gameWord.difficulty == 4 }"> 상 </c:when>
+								</c:choose>
+							</td>
+							<td style="padding-left:5px"> ${ gameWord.word } </td>
 						</tr>
 					</c:forEach>
 					<tr>
@@ -60,11 +77,11 @@
 								end="${ requestScope.pagingBean.endPageOfPageGroup }" var="page">
 								<c:choose>
 									<c:when test="${ page == requestScope.pagingBean.currentPage }">
-										<b>${ page }</b>
+										<b>&nbsp;${ page }&nbsp;</b>
 									</c:when>
 									<c:otherwise>
 										<a href="/5bject/game/${ requestScope.controllerName }.do?pageNo=${ page }&word=${ requestScope.list[0].word }">
-											${ page }
+											&nbsp;${ page }&nbsp;
 										</a>
 									</c:otherwise>
 								</c:choose>
@@ -87,6 +104,13 @@
 					</c:if>
 				</c:otherwise>
 			</c:choose>
+		</table>
+		<table style="width: 800px" border="0">
+			<tr>
+				<td align="right">
+					<input type="button" value="닫기" id="close">
+				</td>
+			</tr>
 		</table>
 		</c:if>
 	</body>

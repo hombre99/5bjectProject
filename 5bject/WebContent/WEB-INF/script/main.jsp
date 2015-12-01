@@ -34,6 +34,7 @@
 				<script type="text/javascript">
 					$(document).ready(function() {
 						$("#loginId").focus();
+
 						$("#link2").on("click", function() {
 							window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
@@ -83,7 +84,7 @@
 						});
 
 						$("#gameInfo").on("click", function() {
-							window.open("/5bject/game/findAllWord.do?pageNo=${param.pageNo}", "ok", "width=1000, height=700");
+							window.open("/5bject/game/findAllWord.do?pageNo=${param.pageNo}", "ok", "width=900, height=700");
 						})
 
 						// 20151127. ADD. JSJ.
