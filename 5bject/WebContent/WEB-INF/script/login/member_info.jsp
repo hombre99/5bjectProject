@@ -58,7 +58,7 @@
 <!-- table로 처리 -->
    <!-- header include로 처리 -->
    <header>
-      <jsp:include page="/WEB-INF/script/layout/header.jsp" />
+      <jsp:include page="/WEB-INF/script/layout/header_popup.jsp" />
    </header>
       <table>
          <tr><td colspan="2" align="center"><h2><font color="lightblue">${memberInfo.id}의 회원정보</font></h2></td></tr>

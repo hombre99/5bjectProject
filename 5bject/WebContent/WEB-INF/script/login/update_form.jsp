@@ -68,7 +68,7 @@
 	</head>
 	<body>
 		<header>
-			<jsp:include page="/WEB-INF/script/layout/header.jsp" />
+			<jsp:include page="/WEB-INF/script/layout/header_popup.jsp" />
 		</header>
 <!--  error위에 br추가했습니다. -->
 		<spring:hasBindErrors name="members" /> 

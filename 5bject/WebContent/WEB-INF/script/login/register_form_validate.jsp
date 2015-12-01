@@ -103,7 +103,7 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="/WEB-INF/script/layout/header.jsp" />
+		<jsp:include page="/WEB-INF/script/layout/header_popup.jsp" />
 	</header>
 	<spring:hasBindErrors name="members" />
 	<!--  ADD id ="regForm 20151125-->
@@ -136,9 +136,6 @@
 			<tr>
 				<td colspan="2"><input type="text" name="name" id="name" value="${requestScope.members.name}" placeholder="본인의 이름을 입력하세요" size="30"  onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this); checkKor();" /> 
 					<br> <span class="error"><form:errors path="members.name" delimiter=" - " /></span></td>
-			</tr>
-			<tr>
-				<td colspan="2"><font color="white">BLANK</font></td>
 			</tr>
 			<tr>
 				<td colspan="2" id="subject"><br><b>생년월일</b></td>

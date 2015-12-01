@@ -36,7 +36,7 @@
 </head>
 <body>
 	<header>
-		<jsp:include page="/WEB-INF/script/layout/header.jsp" />
+		<jsp:include page="/WEB-INF/script/layout/header_popup.jsp" />
 	</header>
 	
 	<p></p>
