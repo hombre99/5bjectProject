@@ -87,7 +87,8 @@
 						})
 
 						// 20151127. ADD. JSJ.
-						$("#login").on("click", login);
+						if ( !'${ sessionScope.member.id }' )
+							$("#login").on("click", login);
 
 						$("input#loginPassword").on("keypress", function() {
 							if ( event.keyCode == 13 ) {
