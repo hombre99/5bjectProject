@@ -58,9 +58,9 @@
 								window.open("/5bject/language/computer_language.do","ok","width=1220, height=930,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
-						//  20151125 same
+						//  20151201
 						$("#mypage_link").on("click", function() {
-							window.open("/5bject/member/mypage.do", "ok", "width=600, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
+							window.open("/5bject/member/mypage.do", "ok", "width=650, height=700,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
 						});
 
 						// 20151120. ADD KKH - 포인터 발생

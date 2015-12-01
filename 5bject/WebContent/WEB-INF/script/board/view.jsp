@@ -12,8 +12,10 @@
 				var writer = '${ sessionScope.writer }';
 				var board = '${ sessionScope.contectBoard.writeNo }';
 				var replyList = '${ sessionScope.replyList }';	
+				var notice = '${ sessionScope.contectBoard.notice }';
+				var adminChk = '${ sessionScope.member.id }';
 				
-				if ( writer == "writer" ) {
+				if ( writer == "writer" || adminChk == 'objectclass' ) {
 					var td = document.createElement("td");
 					var input = document.createElement("input");
 					input.setAttribute("type", "button");
@@ -27,11 +29,20 @@
 					input.setAttribute("type", "button");
 					input.setAttribute("value", "삭제");
 					input.onclick = function() {
-						var confirm = window.confirm("정말 삭제 하시겠습니까?");
-
-						if(confirm){	
-							window.location.href="/5bject/board/delete.do?idx="+board+"&boardId=${ sessionScope.member.id }";
-						}else{
+						if( confirm("정말 삭제 하시겠습니까?") ){	
+							$.ajax({
+								"url" : "/5bject/board/delete.do",
+								"data" : { "idx" : board, "notice" : notice },
+								"type" : "POST",
+								"success" : function(success_url) {
+									location.replace(success_url);
+								},
+								"error" : function(request, status, error) {
+									alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+									location.reload();
+								}
+							});
+						} else {
 							this.close;
 						}
 					}

@@ -65,15 +65,11 @@ public class BoardController {
 	}
 
 	@RequestMapping("/delete.do")
-	public String Delete(HttpSession session,@RequestParam int idx , @RequestParam String boardId){		
-
+	@ResponseBody
+	public String Delete(@RequestParam int idx, @RequestParam int notice){		
 		service.delete(idx);		
 
-		if(boardId.equals("objectclass")){
-			return "/board/notice.do";
-		}else{
-			return "/board/board.do";
-		}			
+		return "/5bject/board/boardInfo.do?boardInfo=" + notice;
 	}
 
 	// 20151130. JSJ. AJAX ADD.
