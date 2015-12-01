@@ -5,20 +5,20 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>FIND_GAMEWORD_FORM</title>
-<script type="text/javascript" src="/5bject/jquery.do"></script>
-<script type="text/javascript">
-	var id = '${ sessionScope.member.id }';
-</script>
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("input#findWord").focus();
-		
-		if ( id != "objectclass" ) {
-			alert("관리자 페이지입니다.");
-			history.go(-1);
-		}
-	});
-	</script>
+		<script type="text/javascript" src="/5bject/jquery.do"></script>
+		<script type="text/javascript">
+			var id = '${ sessionScope.member.id }';
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("input#findWord").focus();
+
+				if ( id != "objectclass" ) {
+					alert("관리자 페이지입니다.");
+					history.go(-1);
+				}
+			});
+		</script>
 		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/menu.css" />
 	</head>
 	<body>
