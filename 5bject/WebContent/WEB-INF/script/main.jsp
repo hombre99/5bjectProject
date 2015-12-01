@@ -157,7 +157,6 @@
 			//]]>
 		</script> -->
 		<!-- 여기까지 손대지 마세여... -->
-
 		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/header_footer.css" />
 		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/main.css" />
 	</head>

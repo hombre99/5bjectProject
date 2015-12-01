@@ -94,7 +94,7 @@
 	.background1{
 		width:100%;
 		background-color: white;
-		height: 630px;
+		height: 680px;
 	}
 
 	#gamePannel1{
@@ -135,7 +135,7 @@
 	#answerPannel{
 		float:left;
 		width: 30%;
-		margin-left:2%;
+		margin-left:3%;
 		margin-right: auto;
 		margin-top: 35px;
 		margin-button: 80px;
