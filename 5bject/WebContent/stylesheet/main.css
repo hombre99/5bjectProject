@@ -34,7 +34,7 @@ footer {
 }
 
 /* 게임1용 CSS */
-#td2 {
+/* #td2 {
 	border: 1px solid black;
 	padding: 0px;
 	height: 200px;
@@ -61,14 +61,13 @@ footer {
 }
 
 #gamePannel {
-/*  width: 30%; 	 */	
  	float:left;
 	margin-left: 20%;
 	margin-top: 80px;
 	margin-button: 80px;
 	width: 30%;	
 	border-collapse: collapse;	
-}
+} */
 
 /* #selectPannel{
 	margin-left: 100px;
@@ -95,7 +94,7 @@ footer {
 		margin-top: 70px;
 	}
 	.typingHeader{
-		width: 100%;
+		width:100%;
 		color: lightblue;
 		margin-top: 50px;
 		text-align:center;
@@ -106,18 +105,18 @@ footer {
 		margin-right: auto;
 	}
 	
-	/*game1 */
+/*game1 */
 	.background1{
-		width: 100%;
+		width:100%;
 		background-color: white;
-		height: 620px;
+		height: 630px;
 	}
 
 	#gamePannel1{
 	 	float:left;
 	 	margin-top: 35px;
 		margin-button: 80px;;
-		width: auto;	
+		width: 30%;	
 		border-collapse: collapse;
 		margin-left:20%; 
     	margin-right:auto;
@@ -126,31 +125,32 @@ footer {
 
 	#answerPannel1{
 		float:left;
-		margin-left:3%;
+		width:30%;
+		margin-left:1%; 
 		margin-right: auto;
 		margin-top: 30px;
 		margin-button: 80px;
 		font-weight: bold;
 	}
 
-	/* game2*/
-	
+	/* game2*/	
 	.background2{
 		width: 100%;
 		background-color: white;
-		height: 480px;
+		height: 550px;
 	}
 	#gamePannel {
 	 	float:left;
 		margin-left: 22%;
 		margin-top: 35px;
 		margin-button: 80px;
-		width: auto;	
+		width: 30%;	
 		border-collapse: collapse;	
-}
+	}
 	#answerPannel{
 		float:left;
-		margin-left:6%;
+		width: 30%;
+		margin-left:2%;
 		margin-right: auto;
 		margin-top: 35px;
 		margin-button: 80px;
