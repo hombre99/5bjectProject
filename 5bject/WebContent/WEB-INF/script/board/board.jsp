@@ -70,13 +70,9 @@
 						<td id="boardTitle">
 							<a href="/5bject/board/view.do?writeNo=${ board.writeNo }">
 								${ fn:length(board.title) > 15 ? fn:substring(board.title,0,15).concat(".....") : board.title }
-								<c:choose>
-									<c:when test="${ board.reply==0 }">
-									</c:when>
-									<c:otherwise>
-										[${board.reply }]
-									</c:otherwise>
-								</c:choose>
+								<c:if test="${ board.reply > 0 }">
+									<font size="2">[${ board.reply }]</font>
+								</c:if>
 							</a>
 						</td>
 						<c:choose>
@@ -113,20 +109,22 @@
 							Page Group 내의 page들 링크 처리
 							PageGroup의 시작/끝페이지 번호 - 반복문 처리
 	 					-->
-						<c:forEach begin="${ requestScope.pagingBean.startPageOfPageGroup }"
-									end="${ requestScope.pagingBean.endPageOfPageGroup }" var="page">
-							<c:choose>
-								<c:when test="${page == requestScope.pagingBean.currentPage }">
-									<b>${ page }</b>
-								</c:when>
-								<c:otherwise>
-									<a href="/5bject/board/boardInfo.do?boardInfo=2&pageNo=${ page }">
-										${ page }
-									</a>
-								</c:otherwise>
-							</c:choose>
-							&nbsp;&nbsp;
-						</c:forEach>
+	 					<c:if test="${ requestScope.pagingBean.startPageOfPageGroup > 0 }">
+							<c:forEach begin="${ requestScope.pagingBean.startPageOfPageGroup }"
+										end="${ requestScope.pagingBean.endPageOfPageGroup }" var="page">
+								<c:choose>
+									<c:when test="${page == requestScope.pagingBean.currentPage }">
+										<b>${ page }</b>
+									</c:when>
+									<c:otherwise>
+										<a href="/5bject/board/boardInfo.do?boardInfo=2&pageNo=${ page }">
+											${ page }
+										</a>
+									</c:otherwise>
+								</c:choose>
+								&nbsp;&nbsp;
+							</c:forEach>
+						</c:if>
 
 						<!--
 							3. 다음 페이지 그룹 링크

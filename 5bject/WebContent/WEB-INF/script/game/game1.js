@@ -89,7 +89,7 @@ $(document).ready(function() {
 	var tr = document.createElement("tr");
 	$(table).append(tr); 
 	for ( var i = 1 ; i < step + 1; i++ ) {
-		if ( difficulty==4 && i == 9 ) {
+		if ( i%5==1) {
 			var tr = document.createElement("tr");    
 			$(table).append(tr); 
 		}
