@@ -42,17 +42,11 @@
 		</script>
 		<!-- css header, table 처리 -->
 		<style type="text/css">
-			header{
-				background-color: lightblue;
-				color: white;
-				text-align: left;
-				padding: 5px;
-			}
-
 			table{
 				margin-left: 100px;
 			}
 		</style>
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/header_footer.css" />
 </head>
 <body>
 <!-- table로 처리 -->
@@ -82,7 +76,5 @@
 				</td>
 			</tr>
 		</table>			
-	<footer>
-	</footer>
 </body>
 </html>

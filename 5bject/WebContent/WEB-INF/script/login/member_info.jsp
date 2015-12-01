@@ -41,17 +41,12 @@
       	 table tr td.main{
       	 	font-weight: bold;
       	 }
-         header{
-            background-color: lightblue;
-            color: white;
-            text-align: left;
-            padding: 5px;
-         }
          /*margin change for Internet Explorer 20151125 130 to 250*/
          table{
             margin-left: 250px;
          }
       </style>
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/header_footer.css" />
 </head>
 <body>
 <c:if test="${ sessionScope.member.id == 'objectclass' }">

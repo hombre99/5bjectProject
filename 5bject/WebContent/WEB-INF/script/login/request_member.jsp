@@ -20,19 +20,12 @@
 </script>
 
 <style type="text/css">
-		table{
-		margin-left: 50px;
-	}
-		header{
-	background-color: lightblue;
-	color: white;
-	text-align: left;
-	padding: 5px;
-	}
 	.error{
-	color: red;
+		color: red;
 	}
 </style>
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/header_footer.css" />
+		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/find_info.css" />
 </head>
 <body>
 	<header>

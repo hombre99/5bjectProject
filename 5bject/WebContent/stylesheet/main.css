@@ -1,21 +1,6 @@
-header {
-	background-color: lightblue;
-	color: white;
-	text-align: left;
-	padding: 5px;
-}
-
 .blank {
 	background-color: aliceblue;
 	padding: 20px;
-}
-
-footer {
-	background-color: lightblue;
-	color: white;
-	height: 100px;
-	clear: both;
-	text-align: center;
 }
 
 /* css login 추가  CHJ */

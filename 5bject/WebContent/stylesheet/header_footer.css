@@ -1,0 +1,14 @@
+header {
+	background-color: lightblue;
+	color: white;
+	text-align: left;
+	padding: 5px;
+}
+
+footer {
+	background-color: lightblue;
+	color: white;
+	height: 100px;
+	clear: both;
+	text-align: center;
+}
