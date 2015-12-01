@@ -16,21 +16,42 @@
 		history.go(-1);
 	}
 </script>
+<style type="text/css">
+	header{
+		background-color: lightblue;
+		color: white;
+		text-align: left;
+		padding: 5px;
+	}
+
+	table{
+		margin-top: 20px;
+		margin-left: 100px;
+	}
+	#mypage{
+		margin-left: 100px;
+	}
+</style>
 </head>
 <body>
-	<h2>게임점수 조회</h2>
-
+	<header>
+		<jsp:include page="/WEB-INF/script/layout/header.jsp" />
+	</header>
+	
 	<c:forEach items='${sessionScope.score }' var="list">
-
 		<c:choose>
 			<c:when test="${list.gameNum==-1 }">
-	 		게임 정보가 없습니다.<br>
+			<table style="width: 400px" border="1">
+				<tr><td colspan="3"><h2>게임점수 조회</h2></td></tr>
+				<tr><td colspan="3" align="center">게임 정보가 없습니다.</td></tr>
+			</table>
 	 		</c:when>
 		</c:choose>
 
 		<c:choose>
 			<c:when test="${list.gameNum!=-1 }">
 				<table style="width: 400px" border="1">
+				<tr><td colspan="4" align="center"><h2><font color="lightblue">게임점수 조회</font></h2></td></tr>
 					<tr>
 						<th>게임</th>
 						<th>하</th>
@@ -76,7 +97,7 @@
 			</c:when>
 		</c:choose>
 	</c:forEach>
-<input type="button" onclick="page_back();" value="마이페이지">
+<input type="button" id ="mypage" onclick="page_back();" value="마이페이지">
 <input type="button" value="닫기" id="close">
 </body>
 </html>
