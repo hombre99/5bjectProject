@@ -18,6 +18,7 @@
 				return false;
 			}
 			$(document).ready(function() {
+				$("input#addWord").focus();
 				
 				if ( id != "objectclass" ) {
 					alert("관리자 페이지입니다.");
@@ -57,7 +58,7 @@
 						</select>
 					</td>
 					<td>
-						<input type="text" name="word" />
+						<input type="text" id="addWord" name="word" />
 					</td>
 				</tr>
 				<tr>

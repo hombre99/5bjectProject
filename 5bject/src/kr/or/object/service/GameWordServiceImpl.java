@@ -22,8 +22,13 @@ public class GameWordServiceImpl implements GameWordService {
 	}
 
 	@Override
-	public  List<GameWord> findWord(String word) {
-		return dao.findWord(word);
+	public Map findWord(String word, int pageNo) {
+		HashMap map = new HashMap();
+		map.put("list", dao.findWord(word, pageNo));
+		PagingBean pagingBean = new PagingBean(dao.totalWordCountByWord(word), pageNo);
+		map.put("pagingBean", pagingBean);
+		
+		return map;
 	}
 
 	@Override

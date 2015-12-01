@@ -52,18 +52,25 @@
 					<tr>
 						<td colspan="3" align="center">
 							<c:if test="${ requestScope.pagingBean.previousPageGroup }">
-								<a href="/5bject/game/findAllWord.do?pageNo=${ requestScope.pagingBean.startPageOfPageGroup - 1 }">
+								<a href="/5bject/game/${ requestScope.controllerName }.do?pageNo=${ requestScope.pagingBean.startPageOfPageGroup - 1 }">
 									◀
 								</a>
 							</c:if>
 							<c:forEach begin="${ requestScope.pagingBean.startPageOfPageGroup }"
 								end="${ requestScope.pagingBean.endPageOfPageGroup }" var="page">
-								<a href="/5bject/game/findAllWord.do?pageNo=${ page }">
-									${ page }
-								</a>
+								<c:choose>
+									<c:when test="${ page == requestScope.pagingBean.currentPage }">
+										<b>${ page }</b>
+									</c:when>
+									<c:otherwise>
+										<a href="/5bject/game/${ requestScope.controllerName }.do?pageNo=${ page }&word=${ requestScope.list[0].word }">
+											${ page }
+										</a>
+									</c:otherwise>
+								</c:choose>
 							</c:forEach>
 							<c:if test="${ requestScope.pagingBean.nextPageGroup }">
-								<a href="/5bject/game/findAllWord.do?pageNo=${ requestScope.pagingBean.endPageOfPageGroup + 1 }">
+								<a href="/5bject/game/${ requestScope.controllerName }.do?pageNo=${ requestScope.pagingBean.endPageOfPageGroup + 1 }">
 									▶
 								</a>
 							</c:if>

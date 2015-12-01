@@ -21,8 +21,13 @@ public class GameWordDaoImpl implements GameWordDao {
 	}
 
 	@Override
-	public List<GameWord> findWord(String word) {
-		return session.selectList("gamewordMapper.selectGameWordByWord", word);
+	public List<GameWord> findWord(String word, int pageNo) {
+		HashMap map = new HashMap();
+		
+		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
+		map.put("pageNo", pageNo);
+		map.put("word", word);
+		return session.selectList("gamewordMapper.selectGameWordByWord", map);
 	}
 
 	@Override
@@ -42,5 +47,10 @@ public class GameWordDaoImpl implements GameWordDao {
 	@Override
 	public int totalWordCount() {
 		return session.selectOne("gamewordMapper.selectWordCount");
+	}
+	
+	@Override
+	public int totalWordCountByWord(String word) {
+		return session.selectOne("gamewordMapper.selectWordCountByWord", word);
 	}
 }

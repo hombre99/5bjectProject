@@ -9,7 +9,7 @@ import kr.or.object.vo.GameWord;
 public interface GameWordService {
 	void addWord(GameWord gw);
 	
-	List<GameWord> findWord(String word);
+	Map findWord(String word, int pageNo);
 	
 	Map findAllWord(int pageNo);
 

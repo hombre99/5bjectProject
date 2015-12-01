@@ -1,6 +1,8 @@
 package kr.or.object.vo;
 
-public class GameScore {
+import java.io.Serializable;
+
+public class GameScore implements Serializable {
 	private String id;
 	private int gameNum;
 	private int easy;
