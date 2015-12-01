@@ -11,7 +11,7 @@ function incorrectPop(){
 }
 </script>
 </head>
-<body>
-<img src="/5bject/image/game/incorrect.jpg" width=370px, height=130px, onclick="incorrectPop()">
+<body onload='resizeTo(incorrect.width+110, incorrect.height+135)'>
+<img src="/5bject/image/game/incorrect.jpg" name=incorrect onclick="incorrectPop()">
 </body>
 </html>
