@@ -175,10 +175,10 @@
 					<c:choose>
 						<c:when test="${sessionScope.gameNum == 1}">
 							<div class="color-scheme--white learn-more grid-row margin-top--3">
-								<div class="typingHeader"><img src="/5bject/image/game/game1/algo1.jpg"/>
-										<br>
-								</div>
 								<div class="background1">
+									<div class="typingHeader"><img src="/5bject/image/game/game1/algo1.jpg"/>
+										<br>
+									</div>
 									<div id="gamePannel1"></div>
 									 <div id="answerPannel1">
  										<div id="question"></div>
@@ -193,10 +193,10 @@
 						</c:when>
 						<c:when test="${sessionScope.gameNum == 2 }">
 							<div class="color-scheme--white learn-more grid-row margin-top--3">
+								<div class="background2">
 								<div class="typingHeader"><img src="/5bject/image/game/game2/algo2.jpg"/>
 										<br>
 								</div>
-								<div class="background2">
 									<div id="gamePannel"></div>
 									 <div id="answerPannel">
  										<div id="question"></div>
