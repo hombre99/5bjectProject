@@ -68,7 +68,6 @@ $(document).ready(function(){
 
 		var inputWord = document.createElement("input");
 		inputWord.setAttribute("type", "text");
-		inputWord.setAttribute("id", "inputWord");
 	
 		var inputBtn = document.createElement("input");
 		inputBtn.setAttribute("type", "button");
