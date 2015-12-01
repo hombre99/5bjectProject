@@ -138,9 +138,6 @@
 					<br> <span class="error"><form:errors path="members.name" delimiter=" - " /></span></td>
 			</tr>
 			<tr>
-				<td colspan="2"><font color="white">BLANK</font></td>
-			</tr>
-			<tr>
 				<td colspan="2" id="subject"><br><b>생년월일</b></td>
 			</tr>
 			<tr>
