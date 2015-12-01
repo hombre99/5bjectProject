@@ -57,15 +57,11 @@ public class MemberValidator implements Validator {
 		}
 
 		int phone = 0;
-
 		try {
 			phone = Integer.parseInt(member.getPhoneNumber());
 		} catch ( Exception e ) {
 			errors.rejectValue("phoneNumber", "phone_1", "핸드폰 번호는 숫자로 입력하세요.");
 		}
 		
-		if ( phone < 1000000000 || phone > 2000000000 ) {
-			errors.rejectValue("phoneNumber", "phone", "번호는 10~11숫자를 입력하셔야합니다.");	  
-		}
 	}
 }
