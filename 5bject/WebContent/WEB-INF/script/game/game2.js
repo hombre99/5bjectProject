@@ -13,10 +13,15 @@ $(document).ready(function() {
 	//난이도에 따라 테이블을 자동생성하는 function
 	var gameTable = document.createElement("table");
 	$("div#gamePannel").append(gameTable);
+	$(gameTable).css({
+		"margin-left": "auto",
+		"margin-right": "auto"
+	});
+	
 	for ( var j = 1; j <= difficulty; j++ ) {         
 		tr = document.createElement("tr");
 		$(gameTable).append(tr);  
-
+		
 		for ( var i = 1; i <= difficulty; i++ ) {
 			td = document.createElement("td");
 			if ( difficulty == 4 )

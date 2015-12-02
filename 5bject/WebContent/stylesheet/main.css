@@ -3,7 +3,7 @@
 	padding: 20px;
 }
 
-/* css login 추가  CHJ */
+/* css login */
 .login {
 	margin-left: 20px;
 }
@@ -58,7 +58,58 @@
 	margin-left: 100px;
 } */
 
-/*game3 CSS 20151130*/
+/*game1 Algo */
+	.background1{
+		width:100%;
+		background-color: white;
+		height: 760px;
+	}
+
+	#gamePannel1{
+	 	float:left;
+	 	margin-top: 35px;
+		margin-button: 50px;;
+		margin-left:21%; 
+    	margin-right:auto;
+    	width: 28%;	
+		border-collapse: collapse;
+    	text-align: center;
+	}
+
+	#answerPannel1{
+		float:left;
+		width:30%;
+		margin-left:1.5%; 
+		margin-right: auto;
+		margin-top: 25px;
+		margin-button: 50px;
+		font-weight: bold;
+	}
+
+	/* game2 Algo*/	
+	.background2{
+		width: 100%;
+		background-color: white;
+		height: 630px;
+	}
+	#gamePannel {
+	 	float:left;
+		margin-left: 22%;
+		margin-top: 40px;
+		margin-button: 50px;
+		width: 30%;	
+		border-collapse: collapse;	
+	}
+	#answerPannel{
+		float:left;
+		width: 30%;
+		margin-left:3%;
+		margin-right: auto;
+		margin-top: 35px;
+		margin-button: 50px;
+	}
+	
+	/*game3 typing Game CSS 20151130*/
 	.background{
 		width: 100%;
 		background-color: white;
@@ -88,56 +139,5 @@
 	img{
 		margin-left: auto;
 		margin-right: auto;
-	}
-	
-/*game1 */
-	.background1{
-		width:100%;
-		background-color: white;
-		height: 680px;
-	}
-
-	#gamePannel1{
-	 	float:left;
-	 	margin-top: 35px;
-		margin-button: 80px;;
-		width: 30%;	
-		border-collapse: collapse;
-		margin-left:20%; 
-    	margin-right:auto;
-    	text-align: center;
-	}
-
-	#answerPannel1{
-		float:left;
-		width:30%;
-		margin-left:1%; 
-		margin-right: auto;
-		margin-top: 30px;
-		margin-button: 80px;
-		font-weight: bold;
-	}
-
-	/* game2*/	
-	.background2{
-		width: 100%;
-		background-color: white;
-		height: 550px;
-	}
-	#gamePannel {
-	 	float:left;
-		margin-left: 22%;
-		margin-top: 35px;
-		margin-button: 80px;
-		width: 30%;	
-		border-collapse: collapse;	
-	}
-	#answerPannel{
-		float:left;
-		width: 30%;
-		margin-left:3%;
-		margin-right: auto;
-		margin-top: 35px;
-		margin-button: 80px;
 	}
 	
