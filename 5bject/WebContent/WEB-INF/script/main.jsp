@@ -211,8 +211,10 @@
 							<!-- 20151130 game3 -->
  							<div class="color-scheme--white learn-more grid-row margin-top--3">
 								<div class="background">	
-									<div class="typingHeader"><img src="/5bject/image/game/game3/typing.jpg"/>
-										<br> 
+									<div class="typingHeader">
+										<img src="/5bject/image/game/game3/typing.jpg"/><br>
+										<img src="/5bject/image/game/game3/game3Info.jpg"/>	
+									<br> 
 									</div>
 									<div class="left" id="display">
 										<div id="display2"></div>
