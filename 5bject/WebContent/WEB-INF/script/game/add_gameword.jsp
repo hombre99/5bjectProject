@@ -62,7 +62,7 @@
 					<td>
 						<select name="difficulty" style="width:100px">
 							<c:forEach begin="2" end="4" var="num">
-								<option>
+								<option value="${ num }">
 									<c:choose>
 										<c:when test="${ num == 2 }"> 하 </c:when>
 										<c:when test="${ num == 3 }"> 중 </c:when>
