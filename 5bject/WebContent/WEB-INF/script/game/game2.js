@@ -70,7 +70,7 @@ $(document).ready(function() {
 	// 고양이
 	var catImg = document.createElement("img");
 	catImg.setAttribute("src", gameImgPath + "/angrycat.jpg");
-	catImg.setAttribute("width", "200px");
+	catImg.setAttribute("width", "150px");
 	catImg.setAttribute("height", "100px"); 
 
 	// 생선
