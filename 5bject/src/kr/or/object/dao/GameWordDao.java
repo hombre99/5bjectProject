@@ -8,6 +8,8 @@ import kr.or.object.vo.GameWord;
 public interface GameWordDao {
 	void addWord(GameWord gw);
 	
+	void removeWord(GameWord gw);
+	
 	List<GameWord> findWord(String word, int pageNo);
 	
 	List<GameWord> findAllWord(int pageNo);

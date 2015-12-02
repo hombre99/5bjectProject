@@ -9,6 +9,8 @@ import kr.or.object.vo.GameWord;
 public interface GameWordService {
 	void addWord(GameWord gw);
 	
+	void removeWord(GameWord gw);
+	
 	Map findWord(String word, int pageNo);
 	
 	Map findAllWord(int pageNo);

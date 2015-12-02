@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -102,6 +103,16 @@ public class GameController {
 		return "/WEB-INF/script/game/add_gameword.jsp";
 	}
 
+	@RequestMapping("/removeWord.do")
+	@ResponseBody
+	public String removeWord(@ModelAttribute GameWord gw) {
+		if ( logger.isInfoEnabled() )
+			logger.info("gameword : " + gw);
+
+		gwService.removeWord(gw);
+
+		return "/5bject/game/findAllWord.do";
+	}
 			
 	@RequestMapping("/findWord.do")
 	public String findWord(@RequestParam String word, @RequestParam String pageNo, ModelMap model) {

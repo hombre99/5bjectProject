@@ -19,6 +19,11 @@ public class GameWordDaoImpl implements GameWordDao {
 	public void addWord(GameWord gw) {
 		session.insert("gamewordMapper.insertGameWord", gw);
 	}
+	
+	@Override
+	public void removeWord(GameWord gw) {
+		session.delete("gamewordMapper.deleteGameWord", gw);
+	}
 
 	@Override
 	public List<GameWord> findWord(String word, int pageNo) {

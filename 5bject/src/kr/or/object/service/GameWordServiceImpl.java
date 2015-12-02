@@ -22,6 +22,11 @@ public class GameWordServiceImpl implements GameWordService {
 	}
 
 	@Override
+	public void removeWord(GameWord gw) {
+		dao.removeWord(gw);
+	}
+
+	@Override
 	public Map findWord(String word, int pageNo) {
 		HashMap map = new HashMap();
 		map.put("list", dao.findWord(word, pageNo));
