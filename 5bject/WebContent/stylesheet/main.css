@@ -69,9 +69,9 @@
 	 	float:left;
 	 	margin-top: 35px;
 		margin-button: 50px;;
-		margin-left:21%; 
+		margin-left:18%; 
     	margin-right:auto;
-    	width: 28%;	
+    	width: 30%;	
 		border-collapse: collapse;
     	text-align: center;
 	}
@@ -94,10 +94,10 @@
 	}
 	#gamePannel {
 	 	float:left;
-		margin-left: 22%;
-		margin-top: 40px;
+		margin-left: 18%;
+		margin-top: 45px;
 		margin-button: 50px;
-		width: 30%;	
+		width: 33%;	
 		border-collapse: collapse;	
 	}
 	#answerPannel{
