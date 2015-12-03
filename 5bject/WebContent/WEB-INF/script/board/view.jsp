@@ -80,10 +80,22 @@
 					$("#btnTr").append(td);
 				}
 
-				$("input#addReplyBtn").on("click", addReply);
+				$("input#addReplyBtn").on("click", function() {
+					if ( $("input#replyText").val().length > 30 ) {
+						alert("30글자 이하로 입력하세요.");
+						this.focus();
+						return;
+					}
+					addReply();
+				});
 
 				$("input#replyText").on("keypress", function() {
 					if ( event.keyCode == 13 ) {
+						if ( $("input#replyText").val().length > 30 ) {
+							alert("30글자 이하로 입력하세요.");
+							this.focus();
+							return;
+						}
 						addReply();
 					}
 				});
@@ -187,12 +199,12 @@
 							</c:choose>
 							<!-- 댓글 등록 폼 -->
 							<c:if test="${ sessionScope.member.id != null }">
-								<table class="boardTable">
+								<table class="boardTable" border="0">
 									<tr>
 										<td><img src="/5bject/image/board/reply_icon.gif" /></td>
 										<td>${ sessionScope.member.id }</td>
 										<td><input type="text" id="replyText" size="100" /></td>
-										<td><input type="button" id="addReplyBtn" value="등록" /></td>
+										<td align="left" style="width:152px"><input type="button" id="addReplyBtn" value="등록" /></td>
 									</tr>
 								</table>
 							</c:if>

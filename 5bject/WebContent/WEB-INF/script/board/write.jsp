@@ -28,6 +28,12 @@
 						$("input#titleText").focus();
 						return;
 					}
+					
+					if ( title.length > 30 ) {
+						alert("제목은 30글자 이하로 입력하세요.");
+						$("input#titleText").focus();
+						return;
+					}
 
 					if ( !content ) {
 						alert("내용을 입력하세요.");
