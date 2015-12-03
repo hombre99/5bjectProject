@@ -72,8 +72,6 @@
             </td>
          </tr>
       </table>         
-   <footer>
-   </footer>
    </c:if>
 </body>
 </html>

@@ -19,17 +19,9 @@
 					var gameNum = '${ sessionScope.gameNum }';
 					var difficulty = '${ sessionScope.difficulty }';
 				</script>
-				<c:choose>
-					<c:when test="${ sessionScope.gameNum == 1 }">
-						<script type="text/javascript" src="/5bject/game/game1js.do"></script>
-					</c:when>
-					<c:when test="${ sessionScope.gameNum == 2 }">
-						<script type="text/javascript" src="/5bject/game/game2js.do"></script>
-					</c:when>
-					<c:when test="${ sessionScope.gameNum == 3 }">
-						<script type="text/javascript" src="/5bject/game/game3js.do"></script>
-					</c:when>
-				</c:choose>
+				<c:if test="${ sessionScope.gameNum != null }">
+					<script type="text/javascript" src="/5bject/game/game${ sessionScope.gameNum }js.do"></script>
+				</c:if>
 			</c:when>
 			<c:otherwise>
 				<script type="text/javascript">
