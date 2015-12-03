@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=8">
 		<meta charset="UTF-8">
 		<title>Insert title here</title>
 		<script type="text/javascript" src="/5bject/jquery.do"></script>
