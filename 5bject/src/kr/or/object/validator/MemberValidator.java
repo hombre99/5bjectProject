@@ -34,10 +34,10 @@ public class MemberValidator implements Validator {
 		}
 
 		if ( member.getMonth().equals("선택하세요") ) {
-			errors.rejectValue("day", "birth", new Object[]{"달(Month)"},"정확하게 설정해주세요.");
+			errors.rejectValue("day", "birth", new Object[]{"월(Month)"},"정확하게 설정해주세요.");
 		}      
 		if ( member.getDay() == 0 ) {
-			errors.rejectValue("day", "birth", new Object[]{"월(Day)"}, "정확하게 설정해주세요.");
+			errors.rejectValue("day", "birth", new Object[]{"일(Day)"}, "정확하게 설정해주세요.");
 		}      
 
 		if ( member.getEmailAddress() == "선택하세요" ) {
