@@ -69,6 +69,7 @@ $(document).ready(function(){
 		var inputWord = document.createElement("input");
 		inputWord.setAttribute("type", "text");
 		inputWord.setAttribute("id", "inputWord");
+		$(inputWord).css("width", "400px");
 	
 		var inputBtn = document.createElement("input");
 		inputBtn.setAttribute("type", "button");
@@ -89,13 +90,14 @@ $(document).ready(function(){
 		var scoreTable = document.createElement("table");
 		scoreTable.setAttribute("id", "scoreTable");
 	
-		for ( var i = 1; i < 4; i++ ) {
+		for ( var i = 1; i < 3; i++ ) {
 			var tr = document.createElement("tr");
 			tr.setAttribute("id", "scoreTr" + i);
 		
 			var td = document.createElement("td");
 			td.setAttribute("id", "scoreTd" + i);
 			
+			$(td).css("text-align", "center");
 			$(tr).append(td);
 
 			if ( i == 1 )		$(td).append(firstScore);
@@ -103,6 +105,7 @@ $(document).ready(function(){
 
 			$(scoreTable).append(tr);
 		}
+		$(scoreTable).css("width", "100px").css("height", "200px");
 		$("div#score").append(scoreTable);
 	
 		var timer = setInterval( function() {
@@ -229,7 +232,10 @@ $(document).ready(function(){
 	}
 
 	function createGameTable() {
+		var maxTableWidth = 600;
+		var maxTableHeight = 200;
 		var gameTable = document.createElement("table");
+		$(gameTable).css("word-break", "break-all");
 
 		var gameWordsIndex = 0;
 		for ( var i = 0; i < difficulty; i++ ) {
@@ -240,7 +246,8 @@ $(document).ready(function(){
 				td.setAttribute("id", "GameTd" + (gameWordsIndex));
 
 				var gameWord = document.createTextNode(gameWords[gameWordsIndex]);
-				$(td).append(gameWord);
+				$(td).css("word-break", "break-all");
+				$(td).css("width", (maxTableWidth / difficulty) + "px").css("height", (maxTableHeight / difficulty) + "px").append(gameWord);
 				$(tr).append(td);
 				gameWordsIndex++;
 			}
@@ -249,7 +256,7 @@ $(document).ready(function(){
 		// display.append(gameTable);
 		display.children().eq(0).before(gameTable);
 	}
-
+	
 	/* 메인페이지 클릭이벤트 등록 */
 	$("#link2").on("click", function() {
 		window.open("/5bject/game/select_game.do", "ok", "width=880,height=310,top=300,left=300,toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0");
