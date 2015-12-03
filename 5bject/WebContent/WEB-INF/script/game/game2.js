@@ -341,6 +341,24 @@ $(document).ready(function() {
 		$("#resetBtn").on("click", function() {
 			location.reload();
 		});
+		
+		// 20151203. JSJ. 크롬에서 답 선택시 이미지 변경처리.
+		$("input[name='answer']").on("click", function() {
+			// 선택 바꾸기
+			var orgSrc = $("input[name='answer']:checked").next().attr("src");
+			var strIdx = orgSrc.lastIndexOf("_select") > 0 ? orgSrc.lastIndexOf("_select") : orgSrc.lastIndexOf(".jpg");
+			var imgName = orgSrc.substr(0, strIdx);
+			$("input[name='answer']:checked").next().attr("src", imgName += "_select.jpg");
+
+			// 나머지바꾸기
+			var unchecked = $("input[name='answer']").not(":checked").next();
+			for ( var index = 0; index < 3; index++ ) {
+				var orgSrc = unchecked.eq(index).attr("src");
+				strIdx = orgSrc.lastIndexOf("_select") > 0 ? orgSrc.lastIndexOf("_select") : orgSrc.lastIndexOf(".jpg");
+				imgName = orgSrc.substr(0, strIdx);
+				unchecked.eq(index).attr("src", imgName + ".jpg");
+			}
+		});
 	}
 	
 	/* 메인페이지 클릭이벤트 등록 */
