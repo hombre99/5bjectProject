@@ -113,11 +113,11 @@
 	.background{
 		width: 100%;
 		background-color: white;
-		height: 450px;
+		height: 550px;
 	}
 	.left{
 		float: left;
-		margin-left: 35%;
+		margin-left: 34%;
 		margin-top: 70px;
 		margin-button:50px;
 		width:25%;
@@ -125,8 +125,8 @@
 	}
 	.right{
 		float:left;
-		margin-left:auto;
-		margin-right: 20%;
+		margin-left:2%;
+		margin-right: auto;
 		margin-top: 70px;
 	}
 	.typingHeader{

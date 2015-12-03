@@ -235,6 +235,10 @@ $(document).ready(function(){
 		var maxTableWidth = 600;
 		var maxTableHeight = 200;
 		var gameTable = document.createElement("table");
+		$(gameTable).css({
+			"margin-left": "auto",
+			"margin-right": "auto",
+		});
 		$(gameTable).css("word-break", "break-all");
 
 		var gameWordsIndex = 0;
@@ -247,6 +251,7 @@ $(document).ready(function(){
 
 				var gameWord = document.createTextNode(gameWords[gameWordsIndex]);
 				$(td).css("word-break", "break-all");
+				$(td).css("text-align", "center");
 				$(td).css("width", (maxTableWidth / difficulty) + "px").css("height", (maxTableHeight / difficulty) + "px").append(gameWord);
 				$(tr).append(td);
 				gameWordsIndex++;

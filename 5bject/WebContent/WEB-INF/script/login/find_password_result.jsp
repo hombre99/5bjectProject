@@ -26,8 +26,7 @@
 	         <c:when test="${ (requestScope.password!=null) }">
 	            <br><img src="/5bject/image/member/successPassword.jpg" />
 	            <br><font color="lightblue" size="3">임시 비밀번호는${requestScope.newPassword} 입니다</font>
-	         </c:when>
-	         
+	         </c:when>	         
 	         <c:otherwise>
 	            <br><font color="lightblue" size="3">고객님의 아이디와 이메일주소와 전화번호를 제대로 입력해 주세요.</font>
 	            <br><input type="button" onclick="page_back();" value="뒤로가기">
