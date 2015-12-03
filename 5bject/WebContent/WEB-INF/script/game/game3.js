@@ -105,7 +105,7 @@ $(document).ready(function(){
 
 			$(scoreTable).append(tr);
 		}
-		$(scoreTable).css("width", "100px").css("height", "200px");
+		$(scoreTable).css("width", "100px").css("height", "250px");
 		$("div#score").append(scoreTable);
 	
 		var timer = setInterval( function() {
@@ -232,19 +232,20 @@ $(document).ready(function(){
 	}
 
 	function createGameTable() {
-		var maxTableWidth = 600;
-		var maxTableHeight = 200;
+		var maxTableWidth = 730;
+		var maxTableHeight = 250;
 		var gameTable = document.createElement("table");
 		$(gameTable).css({
 			"margin-left": "auto",
 			"margin-right": "auto",
+			"border-style":"inset"
 		});
 		$(gameTable).css("word-break", "break-all");
 
 		var gameWordsIndex = 0;
 		for ( var i = 0; i < difficulty; i++ ) {
 			var tr = document.createElement("tr");
-
+			
 			for ( var j = 0; j < difficulty; j++ ) {
 				var td = document.createElement("td");
 				td.setAttribute("id", "GameTd" + (gameWordsIndex));
