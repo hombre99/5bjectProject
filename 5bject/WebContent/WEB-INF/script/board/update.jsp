@@ -55,12 +55,9 @@
 				<jsp:include page="/WEB-INF/script/layout/board.jsp" />
 			</board>
 		</div>
-
-		<form name="writeform" method="post" action="/5bject/board/update_success.do">
-			<table>
-				<tr>
-					<td>
-						<table width="100%" cellpadding="0" cellspacing="0" border="0">
+		<div id="boardDiv">
+			<form name="writeform" method="post" action="/5bject/board/update_success.do">
+						<table class="boardTable" width="50%" cellpadding="0" cellspacing="0" border="0">
 							<tr style="background:url('/5bject/image/board/table_mid.gif') repeat-x; text-align:center;">
 								<td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
 								<td colspan="2">글 수정 하기</td>
@@ -104,11 +101,8 @@
 								<td>&nbsp;</td>
 							</tr>
 						</table>
-					</td>
-				</tr>
-			</table>
-		</form>
-	
+			</form>
+		</div>	
 		<footer>
 			<jsp:include page="/WEB-INF/script/layout/footer.jsp" />
 		</footer>

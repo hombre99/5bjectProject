@@ -86,9 +86,7 @@
 		</c:choose>
 		<c:if test="${ sessionScope.id == null }">
 			<script type="text/javascript">
-				/* 20151123 findId & Pwd ADD */
-				/* 20151125 width and height changed */
-				/* 20151125. MOD. 위치변경. JSJ. */
+
 				function findId() {
 					window.open("/5bject/member/findId.do", "ok", "width=650, height=300");
 				};
@@ -114,16 +112,20 @@
 				};
 			</script>
 		</c:if>
-		
+		<!-- 여기서부터 손대지 마세여... -->
 		<link
-			href="https://cdn-production.codecademy.com/assets/rebrand/core-51a92b73616bc4ee9446ad082ee0ce7e.css"
+			href="/5bject/stylesheet/core1.css"
 			media="screen" rel="stylesheet" type="text/css" />
 		<link
-			href="https://cdn-production.codecademy.com/assets/rebrand/controllers/home/show-17141dd9781a3ee228fefc2b7da9d7d3.css"
+			href="/5bject/stylesheet/show1.css"
 			media="screen" rel="stylesheet" type="text/css" />
+ 		<link
+			href="/5bject/stylesheet/bundle1.css"
+			media="screen" rel="stylesheet" type="text/css" />
+
+		<!-- 여기까지 손대지 마세여... -->
 		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/header_footer.css" />
 		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/main.css" />
-		
 	</head>
 	<body>
 		<header>
@@ -195,12 +197,9 @@
 					<div class="color-scheme--white learn-more" exclude="phone">
 						<div class="fit-fixed grid-row margin-top--3 padding-top--3 padding-bottom--3 grid-row-no-collapse">
 							<div class="grid-col-4 padding-top--5 grid-col--align-right">
-								<!-- Intro Image ADD. 20151116. CHJ -->
-								<!-- <img src="/5bject/image/member/intro.jpg" /> -->
 								<h1>
 									<font face="impact">How Can coding help you?</font>
 								</h1>
-								<!-- <img src="/5bject/image/member/intro.jpg" /> -->
 								<b>교육용 홈페이지들이 부족하고 <br/>
 								학생들에게 흥미있을 만한   <br />
 								교육용 웹이 필요합니다. <br/>
@@ -219,8 +218,6 @@
 			<c:remove var="difficulty" scope="session" />
 		</div>
 		<div class="blank"></div>
-
-		<!-- <article class="fit-full color-scheme#e6e6fa" -->
 		<article id="art" class="fit-full color-scheme--red">
 			<article class="fit-fixed">
 				<div class="grid-row stories padding-top--3">
@@ -237,8 +234,7 @@
 						class="grid-col-4 grid-col--no--padding grid-col--no-margin card card--link">
 						<img src="/5bject/image/member/newlink22.jpg" />
 					</div>
-					
-					<!-- 로그인  -->
+					<!-- login -->
 					<div class="login">         
 						<c:choose>         
 							<c:when test="${ sessionScope.member.id == 'objectclass' }">
