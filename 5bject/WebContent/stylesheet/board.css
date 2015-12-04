@@ -1,11 +1,11 @@
 header {
+	width:100%;
 	background-color: lightblue;
-	color: white;
-	text-align: left;
-	padding: 5px;
+	height:55px; 
 }
 
 footer {
+	width:100%;
 	background-color: lightblue;
 	color: white;
 	height: 100px;
@@ -13,23 +13,29 @@ footer {
 	text-align: center;
 }
 
-.boardTable {
-	display: table; margin-left: auto; margin-right: auto;
-	text-align: center;
-	position: relative;
+.boardDiv {
+	width:100%;
+	background-color: #f1f2f2;
+	height:40px;
+	float:right;
+
 }
 
 #boardDiv {
 	height: 800px;
 }
 
-#btnTr {
-	align:center;
+.boardTable {
+	width:70%;
+	display: table; 
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	position: relative;
 }
 
-.boardDiv {
-	background-color: #f1f2f2;
-	padding: 20px;
+#btnTr {
+	align:center;
 }
 
 a {

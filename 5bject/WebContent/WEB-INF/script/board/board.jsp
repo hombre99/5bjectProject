@@ -39,9 +39,7 @@
 		</header>
 
 		<div class="boardDiv">
-			<board>
 				<jsp:include page="/WEB-INF/script/layout/board.jsp" />
-			</board>
 		</div>
 
 		<div id="boardDiv">
