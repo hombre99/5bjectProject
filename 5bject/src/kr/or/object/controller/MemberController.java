@@ -55,8 +55,7 @@ public class MemberController {
 			return "/WEB-INF/script/login/register_form_validate.jsp";
 		}
 
-		if (logger.isInfoEnabled() )
-			logger.info("EmailId[ " + member.getEmailId() + " ] EmailAddress[ " + member.getEmailAddress() + " ]");
+		logger.info("EmailId[ " + member.getEmailId() + " ] EmailAddress[ " + member.getEmailAddress() + " ]");
 
 		service.insertMember(member);		
 		gameService.insertMember(member.getId());
@@ -203,8 +202,7 @@ public class MemberController {
 				// 파일에 시간을 같이 넣어 회원들 요청을 매칭하여 관리
 				String downFileName = date + "_" + upImage.getOriginalFilename();
 
-				if ( logger.isInfoEnabled() )
-					logger.info("downFileName : " + downFileName);
+				logger.info("downFileName : " + downFileName);
 
 				// c:\\java\\request에 회원들이 요청하는 파일이 도착하는 경로 설정
 				File destFile = new File("c:\\Java\\request", downFileName);
@@ -233,8 +231,7 @@ public class MemberController {
 			List<Upload> list = (List<Upload>)attributes.get("list");
 			model.addAllAttributes(attributes);
 		
-		if ( logger.isInfoEnabled() )
-			logger.info("attributes : " + attributes);
+		logger.info("attributes : " + attributes);
 
 		return "/WEB-INF/script/login/request_list.jsp";
 
@@ -243,8 +240,7 @@ public class MemberController {
 	// 잃어버린 아이디를 찾는 컨트롤러
 	@RequestMapping(value = "/find_memberId.do", method = RequestMethod.POST)
 	public String findMemberId(HttpServletRequest request ,@RequestParam String emailId, @RequestParam String emailAddress, @RequestParam String phoneNumber){
-		if ( logger.isInfoEnabled() )
-			logger.info("eID[" + emailId + "]eAdd[" + emailAddress + "]pn[" + phoneNumber + "]");
+		logger.info("eID[" + emailId + "]eAdd[" + emailAddress + "]pn[" + phoneNumber + "]");
 		
 		HashMap map = new HashMap();
 		map.put("emailId", emailId);
@@ -273,8 +269,7 @@ public class MemberController {
 		
 		if (password != null) {
 			// 총 36개의 문자
-			if ( logger.isInfoEnabled() )
-				logger.info("ID : " + id);
+			logger.info("ID : " + id);
 
 			String[] str = { "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r",
 					"s", "t", "u", "v", "w", "x", "y", "z", "1", "2", "3", "4", "5", "6", "7", "8", "9", "0" };
@@ -285,8 +280,7 @@ public class MemberController {
 				newPassword = newPassword + str[j];
 			}
 
-			if ( logger.isInfoEnabled() )
-				logger.info("newPassword : " + newPassword);
+			logger.info("newPassword : " + newPassword);
 
 			map.put("newPassword", newPassword);
 			service.updateMemberPassword(map);

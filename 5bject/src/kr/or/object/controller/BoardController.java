@@ -56,8 +56,7 @@ public class BoardController {
 					@RequestParam int notice, @RequestParam int ref) {
 		Board board = new Board(id, title, content, notice, ref);
 		
-		if ( logger.isInfoEnabled() )
-			logger.info("board : " + board);
+		logger.info("board : " + board);
 		
 		service.insertWrite(board);
 		return "/5bject/board/boardInfo.do?boardInfo=" + notice;
@@ -79,8 +78,7 @@ public class BoardController {
 		Board board = new Board(id, title, content, notice, ref);
 		board.setWriteNo(writeNo);
 
-		if ( logger.isInfoEnabled() )
-			logger.info("boardupdate : " + board);
+		logger.info("boardupdate : " + board);
 		
 		service.update(board);
 		return "/5bject/board/boardInfo.do?boardInfo=" + notice;
@@ -96,9 +94,8 @@ public class BoardController {
 		replyCount++;
 		original.setReply(replyCount);
 			
-		if ( logger.isInfoEnabled() ) {
-			logger.info("board : " + board);
-		}
+		logger.info("board : " + board);
+
 		service.insertReply(board, original);
 	}
 
@@ -126,8 +123,7 @@ public class BoardController {
 		List<Board> replyList = service.getReplyList(contectBoard.getWriteNo());
 		session.setAttribute("replyList", replyList);
 
-		if ( logger.isInfoEnabled() )
-			logger.info("board.getWriteNo() : " + contectBoard.getWriteNo());
+		logger.info("board.getWriteNo() : " + contectBoard.getWriteNo());
 
 		return "/WEB-INF/script/board/view.jsp";
 	}
