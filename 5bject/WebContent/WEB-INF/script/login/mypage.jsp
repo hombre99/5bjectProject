@@ -13,7 +13,6 @@
 		<script type="text/javascript">
 		$(document).ready(function() {
 			$("#update_link").on("click", function() {
-				/* width 800과 height 700으로 수정*/
 				window.open('/5bject/member/update.do','ok','width=800, height=500, toolbar=0,location=0,status=0,menubar=0,scrollbars=0,resizable=0');
 			});
 			$("#close").on("click",function(){
@@ -30,7 +29,7 @@
 					}
 				}
 			});
-			/*2015 11 25일 width size change*/
+
 			$("#request_link").on("click",function(){
 				window.open('/5bject/member/request.do?requestId=${sessionScope.member.id}','ok','width=1600, height=600');
 			});
@@ -40,7 +39,7 @@
 			});
 		});
 		</script>
-		<!-- css header, table 처리 -->
+
 		<style type="text/css">
 			table{
 				margin-left: 100px;
@@ -49,8 +48,7 @@
 		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/header_footer.css" />
 </head>
 <body>
-<!-- table로 처리 -->
-	<!-- header include로 처리 -->
+
 	<header>
 		<jsp:include page="/WEB-INF/script/layout/header_popup.jsp" />
 	</header>

@@ -16,7 +16,6 @@
 					alert("관리자 페이지입니다.");
 					history.go(-1);
 				}
-
 				$("#close").on("click", function() {
 					window.close();
 				});

@@ -56,7 +56,6 @@
 	
 	<!-- 공지사항 내용 셀렉트 -->
 	<!-- 게시글 목록 셀렉트 -->
-	<!-- 20151127. JSJ. ADD. -->
 	<select id="selectBoard" resultMap="board-resultMap" resultType="board">
 		SELECT	<include refid="selectBoard-sql" />
 		FROM	BOARD
@@ -82,7 +81,6 @@
 	</select>
 	
 	<!-- 페이징 처리 관련 -->
-	<!-- 20151127. JSJ. ADD. -->
 	<select id="selectCount" resultType="_int">
 		SELECT	COUNT(WRITE_NO) FROM BOARD WHERE NOTICE = #{ noticeFlag } AND REF = 0
 	</select>

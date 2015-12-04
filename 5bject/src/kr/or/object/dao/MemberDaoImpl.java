@@ -22,9 +22,9 @@ public class MemberDaoImpl implements MemberDao{
 		this.session = session;
 	}
 	@Override
-	
+
 	//고객문의요청 페이징 처리 
-	public List<Upload> getRequests(int pageNo) {
+	public List<Upload> getRequests(int pageNo){
 		HashMap map= new HashMap();
 		map.put("contentsPerPage", PagingBean.CONTENTS_PER_PAGE);
 		map.put("pageNo", pageNo);
@@ -91,7 +91,6 @@ public class MemberDaoImpl implements MemberDao{
 		return session.update("memberMapper.updateMemberPassword",map);
 	}
 	
-
 	@Override
 	public List<Members> getMembersPaging(int pageNo) {
 		HashMap map = new HashMap();

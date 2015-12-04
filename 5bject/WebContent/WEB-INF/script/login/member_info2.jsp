@@ -55,7 +55,7 @@
       <jsp:include page="/WEB-INF/script/layout/header_popup.jsp" />
    </header>
       <table>
-      <!--***님의 회원정보 font color change 20151125 -->
+      <!--***님의 회원정보 -->
          <tr><td colspan="2" align="center"><h2><font color="lightblue">${sessionScope.memberInfo.id}의 회원정보</font></h2></td></tr>
      	 <tr><td class="main">Id </td><td> ${sessionScope.memberInfo.id}<br></td></tr>
          <tr><td class="main">Name </td><td> ${sessionScope.memberInfo.name }<br></td></tr>

@@ -16,8 +16,7 @@
 <style type="text/css">
 	table{
 		margin-left:30px;
-	}
-	
+	}	
 </style>
 </head>
 <body>
