@@ -151,6 +151,7 @@
 						<option  ${requestScope.members.month=='June' ? 'selected=selected':' ' }>June</option>
 						<option  ${requestScope.members.month=='July' ? 'selected=selected':' ' }>July</option>
 						<option  ${requestScope.members.month=='August' ? 'selected=selected':' ' }>August</option>
+						<option  ${requestScope.members.month=='September' ? 'selected=selected':' ' }>September</option>
 						<option  ${requestScope.members.month=='October' ? 'selected=selected':' ' }>October</option>
 						<option  ${requestScope.members.month=='November' ? 'selected=selected':' ' }>November</option>
 						<option  ${requestScope.members.month=='December' ? 'selected=selected':' ' }>December</option>

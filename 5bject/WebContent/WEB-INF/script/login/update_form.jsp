@@ -119,6 +119,7 @@
 								<option ${sessionScope.member.month=='June' ? 'selected=selected':' ' }>June</option>
 								<option ${sessionScope.member.month=='July' ? 'selected=selected':' ' }>July</option>
 								<option ${sessionScope.member.month=='August' ? 'selected=selected':' ' }>August</option>
+								<option ${sessionScope.member.month=='September' ? 'selected=selected':' ' }>September</option>
 								<option ${sessionScope.member.month=='October' ? 'selected=selected':' ' }> October</option>
 								<option ${sessionScope.member.month=='November' ? 'selected=selected':' ' }>November</option>
 								<option ${sessionScope.member.month=='December' ? 'selected=selected':' ' }>December</option>
