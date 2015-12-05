@@ -11,7 +11,7 @@ function correctPop(){
 }
 </script>
 </head>
-<body  onload='resizeTo(correct.width+110, correct.height+135)'>
+<body  onload='resizeTo(correct.width+30, correct.height+100)'>
 <a href=""></a>
 <img src="/5bject/image/game/correct.jpg"  name="correct"  onclick="correctPop()">
 </html>
