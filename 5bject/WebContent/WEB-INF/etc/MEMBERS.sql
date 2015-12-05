@@ -30,17 +30,31 @@ create table members(
 	-- 참조하는 값이 삭제된 경우 자식테이블의 row도 같이 삭제.
 	--references department
 	 )
-  	insert into members values('aaaaa1','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com','01033910602');
-  	insert into members values('aaaaa2','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
-  	insert into members values('aaaaa3','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
-  	insert into members values('aaaaa4','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
-  	insert into members values('aaaaa5','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
-  	insert into members values('aaaaa6','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
-  	insert into members values('aaaaa7','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
-  	insert into members values('aaaaa8','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
-  	insert into members values('aaaaa9','123456','kunhoe','March', 11, 2000, 'male', 'aaaaaa','gmail.com',09999999999);
-  	insert into members values('cccccc41','123456','kunhoe','March', 11, 2000, 'male', 'ranibow','gmail.com',01111111112);
-  	insert into members values('object','class','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com',01111111111);
+  	insert into members values('member01','member01','회원','March', 11, 2000, 'male', 'member01','gmail.com','01033910602');
+    insert into members values('member02','member02','회원','March', 11, 2001, 'male', 'member02','gmail.com','01033910601');
+    insert into members values('member03','member03','회원','March', 11, 2000, 'male', 'member03','gmail.com','01033910622');
+    insert into members values('member04','member04','회원','March', 10, 2000, 'male', 'member04','gmail.com','01033910602');
+    insert into members values('member05','member05','회원','March', 12, 2000, 'male', 'member05','naver.com','01012345678');
+    insert into members values('member06','member06','회원','March', 10, 2000, 'male', 'member06','gmail.com','01033510612');
+    insert into members values('member07','member07','회원','March', 11, 2000, 'male', 'member07','gmail.com','01033910602');
+    insert into members values('member08','member08','회원','March', 11, 1999, 'male', 'member08','gmail.com','01073910602');
+    insert into members values('member09','member09','회원','March', 11, 1998, 'male', 'member09','gmail.com','01036910602');
+    insert into members values('member10','member10','회원','March', 11, 1997, 'male', 'member10','gmail.com','01063910602');
+    insert into members values('member11','member11','회원','March', 11, 2000, 'male', 'member11','gmail.com','01022234344');
+    insert into members values('member12','member12','회원','March', 11, 2001, 'male', 'member12','gmail.com','01033913355');
+    insert into members values('member13','member13','회원','March', 11, 2000, 'male', 'member13','gmail.com','01033945622');
+    insert into members values('member14','member14','회원','March', 10, 2000, 'male', 'member14','gmail.com','01099910602');
+    insert into members values('member15','member15','회원','March', 12, 2000, 'male', 'member15','naver.com','01014945678');
+    insert into members values('member16','member16','회원','March', 10, 2000, 'male', 'member16','gmail.com','01087510612');
+    insert into members values('member17','member17','회원','March', 11, 2000, 'male', 'member17','gmail.com','01033955602');
+    insert into members values('member18','member18','회원','March', 11, 1999, 'male', 'member18','gmail.com','01073934602');
+    insert into members values('member19','member19','회원','March', 11, 1998, 'male', 'member19','gmail.com','01036936602');
+    insert into members values('member20','member20','회원','March', 11, 1997, 'male', 'member20','gmail.com','01063924602');
+    insert into members values('member21','member21','회원','March', 11, 1997, 'male', 'member21','gmail.com','01063978602');
+    insert into members values('member22','member22','회원','March', 11, 1997, 'male', 'member22','gmail.com','01063956602');
+    insert into members values('member23','member23','회원','March', 11, 1997, 'male', 'member23','gmail.com','01063985602');
+    insert into members values('member24','member24','회원','March', 11, 1997, 'male', 'member24','gmail.com','01063934602');
+    insert into members values('member25','member25','회원','March', 11, 1997, 'male', 'member25','gmail.com','01063922602');
   	insert into members values('objectclass','123456','kunhoe','March', 11, 2000, 'male', 'ranibow00','gmail.com','01033910602');
 
 	

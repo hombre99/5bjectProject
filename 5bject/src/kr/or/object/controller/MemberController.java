@@ -247,7 +247,14 @@ public class MemberController {
 		map.put("emailAddress", emailAddress);
 		map.put("phoneNumber",phoneNumber);
 		List idList = service.findMemberId(map);
+		
 		if(idList.size()!=0){
+			for(int i=0; i<idList.size(); i++){
+				if(idList.get(i).equals("objectclass")){
+					idList.remove(i);
+					break;
+				}
+			}
 			request.setAttribute("memId", idList);
 		}
 		return "/WEB-INF/script/login/find_id_result.jsp";  
