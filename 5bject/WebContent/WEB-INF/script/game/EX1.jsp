@@ -31,19 +31,12 @@
 						game1.empty();
 
 						var gameSpan1 = document.createElement("span");
-
 						gameSpan1.setAttribute("id", "gameSpan1");
-
 						game1.append(gameSpan1);
-
 						gameSpan1 = $("span#gameSpan1");
-
 						var gameImg1 = document.createElement("img");
-
 						gameImg1.setAttribute("src", gameImgPath + "/game1.jpg");
-
-						gameSpan1.append(gameImg1);
-					
+						gameSpan1.append(gameImg1);				
 						game1.append(gameImg1);
 						mouseoverFlag1 = true;
 					}
@@ -60,6 +53,7 @@
 							span.setAttribute("class", "spanTr" + i);
 							game1.append(span);
 						}
+						
 	
 						var childSpan = $("span#game1>span");
 						childSpan.appendTo(game1);

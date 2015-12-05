@@ -28,30 +28,24 @@ public class MemberValidator implements Validator {
 		if ( member.getPassword().trim().isEmpty() ) {
 			errors.rejectValue("password", "required", new Object[]{"고객 password"}, "password를 입력해주세요.");
 		}      
-
 		if ( member.getName().trim().isEmpty() || member.getName().trim().length()==1 ) {
 			errors.rejectValue("name", "required", new Object[]{"name"}, "이름을 입력해주세요");
 		}
-
 		if ( member.getMonth().equals("선택하세요") ) {
 			errors.rejectValue("day", "birth", new Object[]{"월(Month)"},"정확하게 설정해주세요.");
 		}      
 		if ( member.getDay() == 0 ) {
 			errors.rejectValue("day", "birth", new Object[]{"일(Day)"}, "정확하게 설정해주세요.");
 		}      
-
 		if ( member.getEmailAddress() == "선택하세요" ) {
 			errors.rejectValue("emailAddress", "emailAddress", "이메일을 정확하게 선택하여 주세요");
 		}   
-
 		if ( member.getEmailId().trim().length() == 0 ) {
 			errors.rejectValue("emailId", "emailId", "이메일을 정확하게 입력하여 주세요");
 		}         
-
 		if ( member.getGender() ==null ) {
 			errors.rejectValue("gender", "gender", "성별을 선택하여 주세요.");
 		}
-
 		if ( member.getPhoneNumber().trim().length() < 9 ) {
 			errors.rejectValue("phoneNumber", "phone", "번호는 10~11숫자를 입력하셔야합니다.");	  
 		}

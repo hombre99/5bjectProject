@@ -39,7 +39,7 @@
 		});
 	});
 	</script>
-	<script type="text/javascript">	
+<script type="text/javascript">	
 	//아이디 영문과 숫자처리 20151126
 	function checkEngNum(obj){
 		var regType =/^[a-z0-9+]*$/;
@@ -151,6 +151,7 @@
 						<option  ${requestScope.members.month=='June' ? 'selected=selected':' ' }>June</option>
 						<option  ${requestScope.members.month=='July' ? 'selected=selected':' ' }>July</option>
 						<option  ${requestScope.members.month=='August' ? 'selected=selected':' ' }>August</option>
+						<option  ${requestScope.members.month=='September' ? 'selected=selected':' ' }>September</option>
 						<option  ${requestScope.members.month=='October' ? 'selected=selected':' ' }>October</option>
 						<option  ${requestScope.members.month=='November' ? 'selected=selected':' ' }>November</option>
 						<option  ${requestScope.members.month=='December' ? 'selected=selected':' ' }>December</option>

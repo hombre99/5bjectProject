@@ -49,7 +49,7 @@ public class BoardController {
 		return "/WEB-INF/script" + filePath + ".jsp";
 	}
 
-	// 20151128. JSJ. AJAX ADD.
+	
 	@RequestMapping(value="/write_success.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String Write(@RequestParam String id, @RequestParam String title, @RequestParam String content,
@@ -70,7 +70,7 @@ public class BoardController {
 		return "/5bject/board/boardInfo.do?boardInfo=" + notice;
 	}
 
-	// 20151130. JSJ. AJAX ADD.
+	
 	@RequestMapping(value="/update_success.do", method=RequestMethod.POST)
 	@ResponseBody
 	public String update(@RequestParam int writeNo, @RequestParam String id, @RequestParam String title,

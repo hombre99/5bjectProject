@@ -18,45 +18,6 @@
 	text-align: center;
 }
 
-/* 게임1용 CSS */
-/* #td2 {
-	border: 1px solid black;
-	padding: 0px;
-	height: 200px;
-	width: 300px;
-	position: relative;
-	text-align: center;
-}
-
-#td3 {
-	border: 1px solid black;
-	padding: 0px;
-	height: 130px;
-	width: 170px;
-	text-align: center;
-}
-
-#td4 {
-	border: 1px solid black;
-	padding: 0px;
-	height: 100px;
-	width: 150px;
-	position: relative;
-	text-align: center;
-}
-
-#gamePannel {
- 	float:left;
-	margin-left: 20%;
-	margin-top: 80px;
-	margin-button: 80px;
-	width: 30%;	
-	border-collapse: collapse;	
-} */
-
-/* #selectPannel{
-	margin-left: 100px;
-} */
 
 /*game1 Algo */
 	.background1{
@@ -109,7 +70,7 @@
 		margin-button: 50px;
 	}
 	
-	/*game3 typing Game CSS 20151130*/
+	/*game3 */
 	.background{
 		width: 100%;
 		background-color: white;

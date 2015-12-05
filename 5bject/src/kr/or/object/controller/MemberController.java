@@ -70,31 +70,8 @@ public class MemberController {
 		Members member = service.findMemberById(id);
 		return String.valueOf(member!=null);
 	}
-
-	//로그인시 필요한 컨트롤러
-	/* 20151127. NOT_USE. JSJ
-	@RequestMapping("/login.do")
-	public String login(HttpSession session, @RequestParam String id, @RequestParam String password) {
-		Members login = service.findMemberById(id);
-
-		if (login != null) {
-			if (id.equals(login.getId()) && password.equals(login.getPassword())) {
-				session.setAttribute("id", id);
-				session.setAttribute("member", login);
-			}else{
-				//20151124
-				String error = "아이디 또는 비밀번호를 정확하게 입력하여 주세요.";
-				session.setAttribute("error", error);
-			}
-		} else {
-			String error = "아이디 또는 비밀번호를 정확하게 입력하여 주세요.";
-			session.setAttribute("error", error);
-		}
-		return "/WEB-INF/script/main.jsp";
-	}
-	*/
 	
-	/* 20151127. ADD. 로그인 로직 AJAX로 수정 */
+	/* 로그인 로직 AJAX로 수정 */
 	@RequestMapping("/login.do")
 	@ResponseBody
 	public String login(HttpSession session, @RequestParam String id, @RequestParam String password) {

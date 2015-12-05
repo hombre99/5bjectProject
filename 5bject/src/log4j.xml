@@ -10,37 +10,6 @@
 			<param name="ConversionPattern" value="%d{yy-MM-dd HH:mm:ss.SSS} %5p %C [%M :%L] %m%n" />
 		</layout>
 	</appender>
-
-	<!--
-	<appender name="dailyRollingFile" class="org.apache.log4j.DailyRollingFileAppender">
-		<param name="File" value="c://java_kkh//mylog.log" />
-		<param name="DatePattern" value="'-'yyyyMMdd'.log'" />
-		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{yy-MM-dd HH:mm:ss.SSS} %5p %C [%M :%L] %m%n" />
-		</layout>
-	</appender>
-	-->
-
-	<!--
-		Logger - 로깅을 관리하는 Component(Container)
-		root : 기본로거를 등록
-			로그 priority(우선순위:레벨) 등록
-			appender 등록
-		logger : 로거 설정을 패키지나 클래스 별로 재정의
-	-->
-	<!--
-	<logger name="kr.or.kosta" additivity="false">
-    	<level value="debug" />
-		<appender-ref ref="stdout" />
-		<appender-ref ref="dailyRollingFile"/>
-	</logger>
-
-   <root>
-      <priority value="WARN" />
-      <appender-ref ref="stdout" />
-      <appender-ref ref="dailyRollingFile"/>
-   </root>
-	-->
 	
 	<root>
 		<priority value="ERROR" />

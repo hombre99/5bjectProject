@@ -4,7 +4,7 @@
 <head>
 <meta charset=" UTF-8">
 <title>Insert title here</title>
-<!-- 20151116~지속중 -->
+
 <script type="text/javascript">
 		function request_click(){
 			if(confirm("문의사항을 제출하시겠습니까?")){
@@ -13,7 +13,6 @@
 				return false;
 			}
 		}
-		/*20151124 CHJ page back ADD*/
 		function page_back(){
 			history.go(-1);
 		}

@@ -9,12 +9,13 @@
 	<head>
 		<meta charset=" UTF-8">
 		<title>UPDATE FORM</title>
-		<!-- 20151124 page back 과 jquery경로 설정 -->
+		
 		<script type="text/javascript" src="/5bject/jquery.do"></script>
 		<script type="text/javascript">
 			function page_back(){
 				history.go(-1);
 			}
+			//영문과 숫자만 사용
 			function checkEngNum(obj){
 				var regType =/^[a-z0-9+]*$/;
 				if (!regType.test(obj.value)){
@@ -23,22 +24,22 @@
 					obj.value="";
 				}
 			};	
+			//한글만 사용
 			function checkKor(){
 				var regType=/^[가-힣+]*$/;
 				if (!regType.test(document.getElementById('name').value)){
 					alert('이름은 한국말로 정확하게 입력하여주세요.\n 외국인도 한글로 입력해주세요');
-					//이름 삭제 20151127
 					document.getElementById('name').value="";
 				}
 			};
-			function noSpaceForm(obj) { // 공백사용못하게
-			    var str_space = /\s/;  // 공백체크
-			    if(str_space.exec(obj.value)) { //공백 체크
+			//공백제거
+			function noSpaceForm(obj) { 
+			    var str_space = /\s/;  
+			    if(str_space.exec(obj.value)) { 
 			        alert("해당 항목에는 공백을 사용할수 없습니다.\n\n공백은 자동적으로 제거 됩니다.");
 			        obj.focus();
-			        obj.value = obj.value.replace(' ',''); // 공백제거
+			        obj.value = obj.value.replace(' ',''); 
 			    }
-			 // onkeyup="noSpaceForm(this);" onchange="noSpaceForm(this);"
 			};
 		</script>
 		<style type="text/css">
@@ -48,7 +49,7 @@
 			face: impact;
 			font-size : 2;
 		}
-		/*20151124 CHJ ADD*/
+
 		header {
 			background-color:lightblue;
 			color:white;
@@ -62,7 +63,7 @@
 		<header>
 			<jsp:include page="/WEB-INF/script/layout/header_popup.jsp" />
 		</header>
-<!--  error위에 br추가했습니다. -->
+
 		<spring:hasBindErrors name="members" /> 
 			<form action="/5bject/member/update_form.do" method="post">
 				<table>
@@ -118,6 +119,7 @@
 								<option ${sessionScope.member.month=='June' ? 'selected=selected':' ' }>June</option>
 								<option ${sessionScope.member.month=='July' ? 'selected=selected':' ' }>July</option>
 								<option ${sessionScope.member.month=='August' ? 'selected=selected':' ' }>August</option>
+								<option ${sessionScope.member.month=='September' ? 'selected=selected':' ' }>September</option>
 								<option ${sessionScope.member.month=='October' ? 'selected=selected':' ' }> October</option>
 								<option ${sessionScope.member.month=='November' ? 'selected=selected':' ' }>November</option>
 								<option ${sessionScope.member.month=='December' ? 'selected=selected':' ' }>December</option>
