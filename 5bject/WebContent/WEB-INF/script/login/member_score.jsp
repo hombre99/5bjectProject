@@ -24,6 +24,9 @@
 	#mypage{
 		margin-left: 100px;
 	}
+	td {
+		text-align: center;
+	}
 </style>
 		<link rel="stylesheet" type="text/css" href="/5bject/stylesheet/header_footer.css" />
 </head>
@@ -55,9 +58,7 @@
 
 					<tr>
 						<c:choose>
-							<c:when test="${list.gameNum==3 }">
-								<td>게임3</td>
-							</c:when>
+							<c:when test="${ list.gameNum == 3 }"> <td>타자연습게임</td> </c:when>
 						</c:choose>
 
 						<c:choose>
