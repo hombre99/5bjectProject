@@ -110,27 +110,27 @@
 						<td colspan="2">
 							<select name="month">
 								<option>선택하세요</option>
-								<option ${sessionScope.member.month=='January' ? 'selected=selected':' ' }>January</option>
-								<option ${sessionScope.member.month=='Fabruary' ? 'selected=selected':' ' }>Fabruary</option>
-								<option ${sessionScope.member.month=='March' ? 'selected=selected':' ' }>March</option>
-								<option ${sessionScope.member.month=='April' ? 'selected=selected':' ' }>April</option>
-								<option ${sessionScope.member.month=='May' ? 'selected=selected':' ' }>May</option>
-								<option ${sessionScope.member.month=='June' ? 'selected=selected':' ' }>June</option>
-								<option ${sessionScope.member.month=='July' ? 'selected=selected':' ' }>July</option>
-								<option ${sessionScope.member.month=='August' ? 'selected=selected':' ' }>August</option>
-								<option ${sessionScope.member.month=='September' ? 'selected=selected':' ' }>September</option>
-								<option ${sessionScope.member.month=='October' ? 'selected=selected':' ' }> October</option>
-								<option ${sessionScope.member.month=='November' ? 'selected=selected':' ' }>November</option>
-								<option ${sessionScope.member.month=='December' ? 'selected=selected':' ' }>December</option>
+								<option ${sessionScope.memberInfo.month=='January' ? 'selected=selected':' ' }>January</option>
+								<option ${sessionScope.memberInfo.month=='Fabruary' ? 'selected=selected':' ' }>Fabruary</option>
+								<option ${sessionScope.memberInfo.month=='March' ? 'selected=selected':' ' }>March</option>
+								<option ${sessionScope.memberInfo.month=='April' ? 'selected=selected':' ' }>April</option>
+								<option ${sessionScope.memberInfo.month=='May' ? 'selected=selected':' ' }>May</option>
+								<option ${sessionScope.memberInfo.month=='June' ? 'selected=selected':' ' }>June</option>
+								<option ${sessionScope.memberInfo.month=='July' ? 'selected=selected':' ' }>July</option>
+								<option ${sessionScope.memberInfo.month=='August' ? 'selected=selected':' ' }>August</option>
+								<option ${sessionScope.memberInfo.month=='September' ? 'selected=selected':' ' }>September</option>
+								<option ${sessionScope.memberInfo.month=='October' ? 'selected=selected':' ' }> October</option>
+								<option ${sessionScope.memberInfo.month=='November' ? 'selected=selected':' ' }>November</option>
+								<option ${sessionScope.memberInfo.month=='December' ? 'selected=selected':' ' }>December</option>
 							</select>
 							<select name="day">
 									<c:forEach var="num" begin="0" end="31">
-										<option   ${num==sessionScope.member.day? 'selected=selected':' ' }>${ num }</option>
+										<option   ${num==sessionScope.memberInfo.day? 'selected=selected':' ' }>${ num }</option>
 									</c:forEach>
 							</select>
 						 	<select name="year">
 								<c:forEach var="num" begin="1900" end="2015">
-										<option  ${num==sessionScope.member.year ? 'selected=selected':' ' }>${ num }</option>
+										<option  ${num==sessionScope.memberInfo.year ? 'selected=selected':' ' }>${ num }</option>
 								</c:forEach>
 							</select>
 						<br>
@@ -144,15 +144,15 @@
 				<tr><td colspan="2"><b>이메일</b></td></tr>
 				<tr>
 					<td colspan="2">
-						<input type="text" name=emailId  value="${sessionScope.member.emailId}" onkeyup="noSpaceForm(this); checkEngNum(this);" onchange="noSpaceForm(this);" placeholder="email을 입력하세요" />@
+						<input type="text" name=emailId  value="${sessionScope.memberInfo.emailId}" onkeyup="noSpaceForm(this); checkEngNum(this);" onchange="noSpaceForm(this);" placeholder="email을 입력하세요" />@
 						<select name="emailAddress">
-							<option value="gmail.com" ${sessionScope.member.emailAddress=='gmail.com'? 'selected=selected':''}>gmail.com</option>
-							<option value="nate.com"  ${sessionScope.member.emailAddress=='nate.com'? 'selected=selected':''}>nate.com</option>
-							<option value="hanmail.net" ${sessionScope.member.emailAddress=='hanmail.net'? 'selected=selected':''}>hanmail.net</option>
-							<option value="yahoo.com"  ${sessionScope.member.emailAddress=='yahoo.com'? 'selected=selected':''}>yahoo.com</option>
-							<option value="naver.com"  ${sessionScope.member.emailAddress=='naver.com'? 'selected=selected':''}>naver.com</option>
-							<option value="hotmail.com"  ${sessionScope.member.emailAddress=='hotmail.com'? 'selected=selected':''}>hotmail.com</option>
-							<option value="daum.com"  ${sessionScope.member.emailAddress=='daum.com'? 'selected=selected':''}>daum.com</option>
+							<option value="gmail.com" ${sessionScope.memberInfo.emailAddress=='gmail.com'? 'selected=selected':''}>gmail.com</option>
+							<option value="nate.com"  ${sessionScope.memberInfo.emailAddress=='nate.com'? 'selected=selected':''}>nate.com</option>
+							<option value="hanmail.net" ${sessionScope.memberInfo.emailAddress=='hanmail.net'? 'selected=selected':''}>hanmail.net</option>
+							<option value="yahoo.com"  ${sessionScope.memberInfo.emailAddress=='yahoo.com'? 'selected=selected':''}>yahoo.com</option>
+							<option value="naver.com"  ${sessionScope.memberInfo.emailAddress=='naver.com'? 'selected=selected':''}>naver.com</option>
+							<option value="hotmail.com"  ${sessionScope.memberInfo.emailAddress=='hotmail.com'? 'selected=selected':''}>hotmail.com</option>
+							<option value="daum.com"  ${sessionScope.memberInfo.emailAddress=='daum.com'? 'selected=selected':''}>daum.com</option>
 						</select>
 						<br>
 						<span class="error"><form:errors path = "members.emailId" delimiter=" - " /></span>
@@ -162,8 +162,8 @@
 				<tr><td colspan="2"><b>성별</b></td></tr>
 				<tr>
 					<td colspan="2">
-						<label>male:<input type="radio" name="gender" value="male" ${sessionScope.member.gender=='male'? 'checked=checked':''} /></label>
-						<label>female:<input type="radio" name="gender" value="female" ${sessionScope.member.gender=='female'? 'checked=checked':''}/></label>
+						<label>male:<input type="radio" name="gender" value="male" ${sessionScope.memberInfo.gender=='male'? 'checked=checked':''} /></label>
+						<label>female:<input type="radio" name="gender" value="female" ${sessionScope.memberInfo.gender=='female'? 'checked=checked':''}/></label>
 						<span class="error"><form:errors path = "members.gender" delimiter=" - " /></span>
 					</td>
 				</tr>
