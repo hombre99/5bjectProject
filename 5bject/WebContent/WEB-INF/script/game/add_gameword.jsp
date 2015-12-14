@@ -24,10 +24,11 @@
 			});
 
 			function check() {
-				var addWord = $("#addWord").val();
-				if ( addWord.length > 20 ) {
+				var addWord = $("#addWord");
+				if ( addWord.val().length > 20 ) {
 					alert("단어는 20글자 미만으로 입력해 주세요.");
 					addWord.focus();
+					return false;
 				}
 				
 				if ( confirm("등록하시겠습니까?") ) {
