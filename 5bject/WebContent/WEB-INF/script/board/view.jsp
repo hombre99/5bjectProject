@@ -210,11 +210,11 @@
 							</c:choose>
 							<!-- 댓글 등록 폼 -->
 							<c:if test="${ sessionScope.member.id != null }">
-									<tr>
+									<tr align="left">
 										<td><img src="/5bject/image/board/reply_icon.gif" /></td>
 										<td>${ sessionScope.member.id }</td>
-										<td colspan="3" align="left"><input type="text" id="replyText" style="width:99%" /></td>
-										<td align="left" style="width:152px"><input type="button" id="addReplyBtn" value="등록" /></td>
+										<td colspan="3"><input type="text" id="replyText" style="width:99%" /></td>
+										<td style="width:152px"><input type="button" id="addReplyBtn" value="등록" /></td>
 									</tr>
 							</c:if>
 						</table>

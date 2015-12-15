@@ -69,13 +69,14 @@
 			</board>
 		</div>
 
+		<div id="boardDiv">
 		<table class="boardTable">
 			<tr>
 				<td>
 					<table width="100%" cellpadding="0" cellspacing="0" border="0">
 						<tr style="background:url('/5bject/image/board/table_mid.gif') repeat-x; text-align:center;">
 							<td width="6"><img src="/5bject/image/board/table_left.gif" width="6" height="30" /></td>
-							<td>글쓰기</td>
+							<td><b>글쓰기</b></td>
 							<td width="6"><img src="/5bject/image/board/table_right.gif" width="6" height="30" /></td>
 						</tr>
 					</table>
@@ -121,6 +122,7 @@
 				</td>
 			</tr>
 		</table>
+		</div>
 
 		<footer>
 			<jsp:include page="/WEB-INF/script/layout/footer.jsp" />
