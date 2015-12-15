@@ -1,3 +1,6 @@
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="kr.or.object.vo.Board"%>
+<%@page import="java.util.Date"%>
 <%@page contentType="text/html;charset=UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -190,23 +193,29 @@
 											<td> <img src="/5bject/image/board/reply_icon.gif" > </td>	
 											<td> ${reply.id} </td>
 											<td colspan="3">
-												<input type="text" readonly="readonly" size="100" value="${reply.content}" />
+												<input type="text" readonly="readonly" style="width:99%" value="${reply.content}" />
 											</td>
-											<td><fmt:formatDate value="${reply.date }" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+					 						<%
+												Date writeDay = (Date)((Board)pageContext.findAttribute("reply")).getDate();
+												SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+												if ( sdf.format(writeDay).equals(sdf.format(new Date())) ) {
+											%>
+											<td style="width:100px"><fmt:formatDate value="${ reply.date }" pattern="HH:mm:ss" /></td>
+											<% } else { %>
+											<td style="width:100px"><fmt:formatDate value="${ reply.date }" pattern="yy/MM/dd" /></td>
+											<% } %>
 										</tr>
 									</c:forEach>
 								</c:otherwise>
 							</c:choose>
 							<!-- 댓글 등록 폼 -->
 							<c:if test="${ sessionScope.member.id != null }">
-								<table class="boardTable" border="0">
 									<tr>
 										<td><img src="/5bject/image/board/reply_icon.gif" /></td>
 										<td>${ sessionScope.member.id }</td>
-										<td><input type="text" id="replyText" size="100" /></td>
+										<td colspan="3" align="left"><input type="text" id="replyText" style="width:99%" /></td>
 										<td align="left" style="width:152px"><input type="button" id="addReplyBtn" value="등록" /></td>
 									</tr>
-								</table>
 							</c:if>
 						</table>
 						<div align="center">

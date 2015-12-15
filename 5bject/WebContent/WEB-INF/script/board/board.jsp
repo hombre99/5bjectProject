@@ -88,7 +88,7 @@
 						%>
 						<td><fmt:formatDate value="${ board.date }" pattern="HH:mm:ss" /></td>
 						<% } else { %>
-						<td><fmt:formatDate value="${ board.date }" pattern="yyyy-MM-dd" /></td>
+						<td><fmt:formatDate value="${ board.date }" pattern="yyyy/MM/dd" /></td>
 						<% } %>
 					<td>${ board.hit }</td>        
 					<td align="center">&nbsp;</td>                                                                                                                                                                                                                 
